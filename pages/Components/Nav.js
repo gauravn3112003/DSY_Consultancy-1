@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Link from "next/link";
 const Nav = () => {
   const [nav, setnav] = useState("");
   const [overlay, setOverlay] = useState("");
@@ -13,20 +13,73 @@ const Nav = () => {
       setOverlay("");
     }
   };
+
+  const closeNav = () => {
+    if (nav == "mobileNav") {
+      setnav("");
+      setOverlay("");
+    }
+  };
+
+  const list = [
+    {
+      name: "Home",
+      location: "/Home",
+    },
+    {
+      name: "Blog",
+      location: "/Blog",
+    },
+    {
+      name: "Colleges",
+      location: "/Colleges",
+    },
+    {
+      name: "About",
+      location: "/AboutUs",
+    },
+    {
+      name: "Services",
+      location: "/Sevices",
+    },
+    {
+      name: "Contact",
+      location: "/ContactUs",
+    },
+  ];
+
+  const ListItem = (props) => {
+    return (
+      <li>
+        <Link href={props.location}>
+          <a
+            onClick={closeNav}
+            className="block  colorBlack py-2 navItem pl-3 pr-4  rounded  md:p-0"
+            aria-current="page"
+          >
+            {props.name}
+          </a>
+        </Link>
+      </li>
+    );
+  };
+
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
-          <a href="https://flowbite.com/" className="flex items-center">
-            <img
-              src="/img/logo.svg"
-              className="h-6 mr-3 sm:h-9"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-xl font-semibold whitespace-nowrap pColor">
-              DSY
-            </span>
-          </a>
+          <Link href="/">
+            <a className="flex items-center">
+              <img
+                src="/img/logo.svg"
+                className="h-6 mr-3 sm:h-9"
+                alt="Flowbite Logo"
+              />
+              <span className="self-center text-xl font-semibold whitespace-nowrap pColor">
+                DSY
+              </span>
+            </a>
+          </Link>
           <div className="flex md:order-2">
             <button
               type="button"
@@ -37,7 +90,7 @@ const Nav = () => {
             <button
               onClick={toggleNav}
               type="button"
-              className="inline-flex items-center p-2 text-sm md:hidden hover:bg-gray-100 focus:outline-none "
+              className="inline-flex items-center p-2 text-sm md:hidden colorBlack"
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
@@ -58,62 +111,21 @@ const Nav = () => {
             </button>
           </div>
           <div
-            onClick={toggleNav}
-            className={`items-center justify-between hidden ${overlay} w-full md:flex md:w-auto md:order-1`}
+            className={`items-center justify-between navUI hidden ${overlay} w-full md:flex md:w-auto md:order-1`}
             id="navbar-sticky"
           >
             <ul
-              className={`flex flex-col  navUI  bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ${nav}  dark:border-gray-700`}
+              className={`flex flex-col    bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ${nav}  dark:border-gray-700`}
             >
-              <li>
-                <a
-                  href="#"
-                  className="block  colorBlack py-2 navItem pl-3 pr-4  rounded  md:p-0"
-                  aria-current="page"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
-                >
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
-                >
-                  Colleges
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
-                >
-                  Contact
-                </a>
-              </li>
+              {list.map((item, index) => {
+                return (
+                  <ListItem
+                    key={index}
+                    location={item.location}
+                    name={item.name}
+                  />
+                );
+              })}
             </ul>
           </div>
         </div>

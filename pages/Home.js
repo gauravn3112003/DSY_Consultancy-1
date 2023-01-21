@@ -4,7 +4,9 @@ import React from "react";
 const Home = () => {
   return (
     <HomeLayout>
-     This is Home
+<div className="colorBlack">
+This is Home
+</div>
     </HomeLayout>
   );
 };

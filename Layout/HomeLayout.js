@@ -17,7 +17,7 @@ export default function HomeLayout({ children }) {
     {
       icon: "",
       name: "Colleges",
-      location: "/",
+      location: "/College",
     },
     {
       icon: "",
@@ -49,19 +49,22 @@ export default function HomeLayout({ children }) {
       setOpenNav("openNav");
     } else {
       setOpenNav("");
-
     }
   };
   return (
     <>
       <section className="body-font">
+        <div className="userData container ">gvrv</div>
         <div className="container home  ">
           <div className="open">
             <i className="bi colorBlack bi-list " onClick={toggleNav}></i>
           </div>
           <aside className={`screenSidebar ${openNav}  `}>
             <div className="rounded">
-              <i className="bi bi-x-lg colorBlack close " onClick={toggleNav}></i>
+              <i
+                className="bi bi-x-lg colorBlack close "
+                onClick={toggleNav}
+              ></i>
               <ul className="space-y-2">
                 {items.map((item, index) => {
                   return (
@@ -74,9 +77,11 @@ export default function HomeLayout({ children }) {
                 })}
               </ul>
             </div>
+
+            <div className="sideAds">Space for ads</div>
           </aside>
 
-          <div className="sreenLayout">{children}</div>
+          <div className="sreenLayout ">{children}</div>
         </div>
       </section>
     </>

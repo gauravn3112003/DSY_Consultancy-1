@@ -42,7 +42,7 @@ const Teams = () => {
                   <h2 className="text-gray-900 title-font font-medium">
                     Om Raut
                   </h2>
-                  <p className="text-gray-500">Data Analytics</p>
+                  <p className="text-gray-500">Data Analyst</p>
                 </div>
               </div>
             </div>
