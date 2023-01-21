@@ -5,11 +5,11 @@ import Link from "next/link";
 const Login = () => {
   return (
     <Auth>
-      <form className="lg:w-2/6 md:w-1/2 bg-gray-100  p-8 flex flex-col md:ml-auto w-full  md:mt-0">
+      <form className="lg:w-2/6 md:w-1/2 bg-gray-100  p-8 flex flex-col md:ml-auto w-full mt-10  md:mt-0">
         <h2 className="text-gray-900 font-bold text-center text-lg title-font mb-5">
           Welcome Back !
         </h2>
-        <h2 className="text-gray-900 text-lg text-center font-medium title-font mb-5">
+        <h2 className="text-gray-900 text-center text-lg font-medium title-font mb-5">
           Sign In
         </h2>
         <div className="relative mb-4">

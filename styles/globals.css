@@ -9,9 +9,9 @@ body {
 
 /* VAriables */
 :root {
-    --pColor: rgb(161, 0, 0);
+    --pColor: rgb(98, 0, 255);
     --btn-color: white;
-    --pColorHover: rgb(255, 0, 0);
+    --pColorHover: rgb(44, 9, 138);
 
 
     /* --pColor:#00B4D8; */
