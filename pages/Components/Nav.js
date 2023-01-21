@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 
 const Nav = () => {
-  const [nav, setnav] = useState("sada");
+  const [nav, setnav] = useState("");
   const [overlay, setOverlay] = useState("");
 
-  const openNav = () => {};
+  const toggleNav = () => {
+    if (nav == "") {
+      setnav("mobileNav");
+      setOverlay("overlay");
+    } else {
+      setnav("");
+      setOverlay("");
+    }
+  };
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
@@ -27,9 +35,9 @@ const Nav = () => {
               Get started
             </button>
             <button
-              onClick={openNav()}
+              onClick={toggleNav}
               type="button"
-              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center p-2 text-sm md:hidden hover:bg-gray-100 focus:outline-none "
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
@@ -50,16 +58,17 @@ const Nav = () => {
             </button>
           </div>
           <div
+            onClick={toggleNav}
             className={`items-center justify-between hidden ${overlay} w-full md:flex md:w-auto md:order-1`}
             id="navbar-sticky"
           >
             <ul
-              className={`flex flex-col p-4 mt-4 border  bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ${nav}  dark:border-gray-700`}
+              className={`flex flex-col  navUI  bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ${nav}  dark:border-gray-700`}
             >
               <li>
                 <a
                   href="#"
-                  className="block py-2 navItem pl-3 pr-4  rounded  md:p-0"
+                  className="block  colorBlack py-2 navItem pl-3 pr-4  rounded  md:p-0"
                   aria-current="page"
                 >
                   Home
@@ -68,7 +77,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block navItem py-2 pl-3 pr-4 rounded md:p-0 "
+                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
                 >
                   Blog
                 </a>
@@ -76,7 +85,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block navItem py-2 pl-3 pr-4 rounded md:p-0 "
+                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
                 >
                   Colleges
                 </a>
@@ -84,7 +93,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block navItem py-2 pl-3 pr-4 rounded md:p-0 "
+                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
                 >
                   About
                 </a>
@@ -92,7 +101,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block navItem py-2 pl-3 pr-4 rounded md:p-0 "
+                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
                 >
                   Services
                 </a>
@@ -100,7 +109,7 @@ const Nav = () => {
               <li>
                 <a
                   href="#"
-                  className="block navItem py-2 pl-3 pr-4 rounded md:p-0 "
+                  className="block colorBlack navItem py-2 pl-3 pr-4 rounded md:p-0 "
                 >
                   Contact
                 </a>

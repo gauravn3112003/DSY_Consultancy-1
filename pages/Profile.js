@@ -4,7 +4,7 @@ import React from 'react'
 const Profile = () => {
   return (
     <HomeLayout>
-        <div>
+        <div className='colorBlack'>
             This is profile
         </div>
     </HomeLayout>

@@ -1,4 +1,3 @@
-
 import Pricing from "./Components/Pricing";
 import Steps from "./Components/Steps";
 import Teams from "./Components/Teams";
@@ -9,12 +8,12 @@ export default function Home() {
       <section className="md:mt-20  body-font">
         <div className="container  mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+            <h1 className="title-font text-left sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
               Direct Second Year Admission
               <br className="hidden lg:inline-block" />
               Consultancy
             </h1>
-            <p className="mb-8 lightC leading-relaxed">
+            <p className="mb-8 lightC text-justify leading-relaxed">
               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
