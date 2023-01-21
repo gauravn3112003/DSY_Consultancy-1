@@ -32,11 +32,16 @@ body {
     color: var(--btn-color);
   }
 
-
+.lightC{
+  color: rgba(0, 0, 0, 0.555);
+}
   .border-p{
     border: 1px solid var(--pColor);
   }
 
+  .pColor{
+    color: var(--pColor);
+  }
 /* Responsive Nav  */
 
   .overlay{
@@ -54,3 +59,11 @@ body {
     width: 71%;
     margin: 0;
 }
+
+.navItem{
+  color: rgba(0, 0, 0, 0.644);
+}
+.navItem:hover{
+  color: var(--pColor);
+  }
+

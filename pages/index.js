@@ -1,4 +1,4 @@
-import Footer from "./Components/Footer";
+
 import Pricing from "./Components/Pricing";
 import Steps from "./Components/Steps";
 import Teams from "./Components/Teams";
@@ -14,7 +14,7 @@ export default function Home() {
               <br className="hidden lg:inline-block" />
               Consultancy
             </h1>
-            <p className="mb-8 divide-black leading-relaxed">
+            <p className="mb-8 lightC leading-relaxed">
               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
@@ -88,7 +88,6 @@ export default function Home() {
       <Pricing />
 
       <Teams />
-      <Footer />
     </>
   );
 }
