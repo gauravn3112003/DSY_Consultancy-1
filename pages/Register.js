@@ -12,7 +12,7 @@ const Register = () => {
         </h2>
 
         <div className="relative mb-4">
-          <label for="email" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="email" className="leading-7 text-sm text-gray-600">
             Full Name
           </label>
           <input
@@ -24,7 +24,7 @@ const Register = () => {
         </div>
 
         <div className="relative mb-4">
-          <label for="Username" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="Username" className="leading-7 text-sm text-gray-600">
             Username
           </label>
           <input
@@ -36,7 +36,7 @@ const Register = () => {
         </div>
 
         <div className="relative mb-4">
-          <label for="fullName" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="fullName" className="leading-7 text-sm text-gray-600">
             Full Name
           </label>
           <input
@@ -48,7 +48,7 @@ const Register = () => {
         </div>
 
         <div className="relative mb-4">
-          <label for="password" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="password" className="leading-7 text-sm text-gray-600">
             Password
           </label>
           <input
@@ -60,7 +60,7 @@ const Register = () => {
         </div>
 
         <div className="relative mb-4">
-          <label for="cpassword" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="cpassword" className="leading-7 text-sm text-gray-600">
             Password
           </label>
           <input

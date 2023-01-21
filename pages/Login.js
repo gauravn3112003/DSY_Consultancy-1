@@ -13,7 +13,7 @@ const Login = () => {
           Sign In
         </h2>
         <div className="relative mb-4">
-          <label for="Username" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="Username" className="leading-7 text-sm text-gray-600">
             Username & Email
           </label>
           <input
@@ -24,7 +24,7 @@ const Login = () => {
           />
         </div>
         <div className="relative mb-4">
-          <label for="password" className="leading-7 text-sm text-gray-600">
+          <label htmlFor="password" className="leading-7 text-sm text-gray-600">
             Password
           </label>
           <input
