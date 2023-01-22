@@ -29,7 +29,7 @@ body {
   width: 0px;
 }
 /* Ads  */
-.ads{
+.ads {
   display: grid;
   /* margin: 0 10px; */
   place-items: center;
@@ -85,7 +85,6 @@ body {
 }
 
 .navItem {
-  color: rgba(0, 0, 0, 0.644);
   width: 100%;
 }
 .navItem:hover {
@@ -110,7 +109,8 @@ body {
   width: 100%;
 }
 .screenSidebar {
-  background-color: rgb(241, 239, 250);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.158);
   width: 20%;
   padding: 10px;
   /* margin-right: 20px; */
@@ -128,7 +128,7 @@ body {
 .sreenLayout {
   /* background-color: rgb(255, 0, 0); */
 
-  padding: 0 10px;
+  padding: 0px 0px 10px 10px;
   height: 100vh;
   overflow-y: scroll;
   width: 80%;
@@ -138,6 +138,11 @@ body {
 }
 .open {
   display: none;
+}
+
+.navItem:hover {
+  color: var(--pColor);
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 770px) {
@@ -163,6 +168,7 @@ body {
     /* background-color: yellow; */
     width: 100%;
     position: relative;
+    margin-top: 10px;
     padding: 0px;
     /* padding: 0 10px; */
     top: 40px;
@@ -183,12 +189,8 @@ body {
     font-size: 30px;
     position: absolute;
     background-color: rgb(244, 238, 253);
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 20px;
-  }
-  .navItem:hover {
-    color: white;
-    background-color: var(--pColor);
   }
 }
 
@@ -201,12 +203,13 @@ body {
 .PContainer {
   width: 100%;
   display: flex;
-  height: 150px;
+  /* height: 150px; */
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: rgb(236, 232, 245);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.192);
 }
 .PContainer .CImage {
   width: 10%;
@@ -222,14 +225,14 @@ body {
 .CData {
   margin: 0 20px;
   /* background-color: rgb(187, 255, 0); */
-  width: 80%;
+  width: 60%;
   height: 100%;
 }
 
 .CBtn {
-  width: 10%;
+  width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   height: 100%;
   /* background-color: red; */

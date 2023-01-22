@@ -35,8 +35,8 @@ export default function HomeLayout({ children }) {
     return (
       <li>
         <Link href={props.location}>
-          <a className="flex items-center p-2 text-base font-norma rounded-lg ">
-            <span className="ml-3 colorBlack">{props.name}</span>
+          <a className="flex items-center p-2 my-1 navItem   rounded-lg ">
+            <span className="text-sm" >{props.name}</span>
           </a>
         </Link>
       </li>
@@ -53,7 +53,7 @@ export default function HomeLayout({ children }) {
   };
   return (
     <>
-      <section className="body-font">
+      <section className="body-font px-5">
         <div className="userData container ">gvrv</div>
         <div className="container home  ">
           <div className="open">
@@ -65,7 +65,7 @@ export default function HomeLayout({ children }) {
                 className="bi bi-x-lg colorBlack close "
                 onClick={toggleNav}
               ></i>
-              <ul className="space-y-2">
+              <ul className="mb-2">
                 {items.map((item, index) => {
                   return (
                     <ListItem
