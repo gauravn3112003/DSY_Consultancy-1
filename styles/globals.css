@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  background-color: white;
+  background-color: #f3f4f6bb;
   color: black;
 }
 
@@ -33,8 +33,8 @@ body {
   display: grid;
   /* margin: 0 10px; */
   place-items: center;
-  /* background-color: red; */
-  border: 1px solid rgba(0, 0, 0, 0.322);
+  background-color: white;
+  /* border: 1px solid rgba(0, 0, 0, 0.322); */
   height: 100px;
 }
 
@@ -94,10 +94,11 @@ body {
 /* home Layouut */
 .userData {
   margin: auto;
-  margin-top: 60px;
+  margin-top: 70px;
+  padding: 14px;
   height: 100px;
   margin-bottom: 10px;
-  background-color: red;
+  background-color: white;
 }
 .home {
   /* background-color: rgb(155, 136, 136); */
@@ -110,7 +111,7 @@ body {
 }
 .screenSidebar {
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, 0.158);
+  /* border: 1px solid rgba(0, 0, 0, 0.158); */
   width: 20%;
   padding: 10px;
   /* margin-right: 20px; */
@@ -208,8 +209,8 @@ body {
   align-items: center;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, 0.192);
+  background-color: white;
+  /* border: 1px solid rgba(0, 0, 0, 0.192); */
 }
 .PContainer .CImage {
   width: 10%;
