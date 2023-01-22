@@ -55,9 +55,9 @@ export default function HomeLayout({ children }) {
     <>
       <section className="body-font px-5">
         <div className="userData container ">gvrv</div>
-        <div className="container home  ">
-          <div className="open">
-            <i className="bi colorBlack bi-list " onClick={toggleNav}></i>
+        <div className="container   home  ">
+          <div className="open ">
+            <i className="bi colorBlack bi-list cursor-pointer " onClick={toggleNav}></i>
           </div>
           <aside className={`screenSidebar ${openNav}  `}>
             <div className="rounded">
@@ -81,7 +81,7 @@ export default function HomeLayout({ children }) {
             <div className="sideAds">Space for ads</div>
           </aside>
 
-          <div className="sreenLayout ">{children}</div>
+          <div className="screenLayout ">{children}</div>
         </div>
       </section>
     </>

@@ -43,7 +43,10 @@ body {
   background-color: var(--pColor);
   color: var(--btn-color);
 }
-
+.modalColor{
+  background-color: rgba(0, 0, 0, 0.699);
+  /* opacity: 50%; */
+}
 .lightC {
   color: rgba(0, 0, 0, 0.555);
 }
@@ -94,10 +97,10 @@ body {
 /* home Layouut */
 .userData {
   margin: auto;
-  margin-top: 70px;
+  margin-top: 80px;
   padding: 14px;
   height: 100px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   background-color: white;
 }
 .home {
@@ -126,7 +129,7 @@ body {
   display: flex;
   /* background-color: rgb(146, 148, 165); */
 }
-.sreenLayout {
+.screenLayout {
   /* background-color: rgb(255, 0, 0); */
 
   padding: 0px 0px 10px 10px;
@@ -165,7 +168,7 @@ body {
     z-index: 1;
     transition: 0.2s all ease-in;
   }
-  .sreenLayout {
+  .screenLayout {
     /* background-color: yellow; */
     width: 100%;
     position: relative;
