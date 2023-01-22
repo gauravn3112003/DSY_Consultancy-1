@@ -17,7 +17,7 @@ const Profile = () => {
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Basic Details</h1>
           <i
-            className="bi bi-pencil-square font-extrabold text-lg cursor-pointer "
+            className="bi bi-pencil-square font-extrabold text-2xl cursor-pointer "
             onClick={toggleUser}
           ></i>
         </div>
@@ -60,7 +60,7 @@ const Profile = () => {
       <div className="bg-white p-5 mt-5">
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Contact Details</h1>
-          <i className="bi bi-pencil-square font-extrabold text-lg cursor-pointer "></i>
+          <i className="bi bi-pencil-square font-extrabold text-2xl cursor-pointer "></i>
         </div>
 
         <div className=" flex flex-wrap mt-3 justify-between items-center">
@@ -93,7 +93,7 @@ const Profile = () => {
       <div className="bg-white p-5 mt-5">
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Education Details</h1>
-          <i className="bi bi-pencil-square font-extrabold text-lg cursor-pointer "></i>
+          <i className="bi bi-pencil-square font-extrabold text-2xl cursor-pointer "></i>
         </div>
         <h3 className="text-base text-slate-500 font-semibold">Class X</h3>
         <div className=" flex flex-wrap mt-3 justify-between items-center">
@@ -158,8 +158,8 @@ const Profile = () => {
     return (
       <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full `}>
         <div className="z-10  relative w-full flex justify-center items-center h-full modalColor">
-          <div className="absolute w-4/6 h-4/5 bg-white ">
-            <i onClick={toggleUser} className=" cursor-pointer bi bi-x-lg"></i>
+          <div className="absolute w-4/6 h-4/5 p-5 rounded-md bg-white ">
+            <i onClick={toggleUser} className="float-right text-2xl cursor-pointer bi bi-x-lg"></i>
           </div>
         </div>
       </div>
