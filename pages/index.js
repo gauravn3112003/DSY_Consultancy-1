@@ -15,11 +15,11 @@ export default function Home() {
   };
   return (
     <>
-      <section className="md:mt-14  body-font">
-        <div className="container  mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <section className="md:mt-14   body-font">
+        <div className="container  h-screen mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font text-left sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Direct Second Year Admission 
+              Direct Second Year Admission
               <br className="hidden lg:inline-block" />
               Consultancy
             </h1>
