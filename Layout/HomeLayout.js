@@ -37,7 +37,7 @@ export default function HomeLayout({ children }) {
     {
       icon: "bi-bar-chart-line-fill",
       name: "Dashboard",
-      location: "/Admin/Dashboard",
+      location: "/Admin/AllContact",
     },
 
     {

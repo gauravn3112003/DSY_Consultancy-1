@@ -2,7 +2,7 @@ import Dash from "directsecondyearadmission/Layout/Dash";
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
 
-const Dashboard = () => {
+const Dashboard = ({ children }) => {
   const HeaderAdmin = () => {
     return (
       <section className="text-gray-600 rounded-sm bg-white body-font">
@@ -41,11 +41,7 @@ const Dashboard = () => {
   return (
     <HomeLayout>
       <HeaderAdmin />
-      <Dash > 
-        <div className="p-5 bg-white">
-          hfgafk
-        </div>
-      </Dash>
+      <Dash>{children}</Dash>
     </HomeLayout>
   );
 };

@@ -15,32 +15,33 @@ const HeaderFilter = () => {
     {
       icon: "bi-house-door-fill",
       Name: "Contact Us",
-      Location: "/Home",
+      Location: "/Admin/AllContact",
     },
-    {
-      icon: "bi-person-fill",
-      Name: "Feedback",
-      Location: "/Profile",
-    },
+
     {
       icon: "bi-buildings-fill",
       Name: "Users",
-      Location: "/College",
+      Location: "/Admin/AllUsers",
     },
     {
       icon: "bi-buildings-fill",
       Name: "Colleges",
-      Location: "/College",
+      Location: "/Admin/AllColleges",
     },
     {
       icon: "bi-buildings-fill",
-      Name: "Updates",
-      Location: "/College",
+      Name: "Latest Updates",
+      Location: "/Admin/AllLatestUpdates",
     },
     {
       icon: "bi-buildings-fill",
       Name: "Blog Post",
-      Location: "/College",
+      Location: "/Admin/AllBlogs",
+    },
+    {
+      icon: "bi-person-fill",
+      Name: "Feedback",
+      Location: "/Admin/AllFeedback",
     },
   ];
 
