@@ -20,19 +20,35 @@ export default function HomeLayout({ children }) {
       location: "/College",
     },
     {
-      icon: "bi-headset",
-      name: "Counsellors",
+      icon: "bi-info-circle-fill",
+      name: "Help",
       location: "/",
     },
     {
-      icon: "bi-info-circle-fill",
-      name: "Help",
+      icon: "bi-file-earmark-fill",
+      name: "Document",
+      location: "/",
+    },
+    {
+      icon: "bi-key-fill",
+      name: "Insurance",
       location: "/",
     },
     {
       icon: "bi-bar-chart-line-fill",
       name: "Dashboard",
       location: "/Admin/Dashboard",
+    },
+
+    {
+      icon: "bi-headset",
+      name: "Counsellors",
+      location: "/",
+    },
+    {
+      icon: "bi-gear-fill",
+      name: "Account Setting",
+      location: "/",
     },
   ];
 
@@ -58,10 +74,29 @@ export default function HomeLayout({ children }) {
     }
   };
 
+  const UserData = () => {
+    return (
+      <div className="userData m-auto mt-20 mb-5  p-5 flex-wrap   text-white justify-between flex items-center container rounded-sm">
+        <div className="avtarP">GN</div>
+        <div className="mt-2 sm:mt-0  ">
+          <h1 className="font-semibold text-2xl">Gaurav Narnaware</h1>
+          <p className=" text-xs">Welcome to DSY consultancy !</p>
+        </div>
+        <div className="flex mt-2  sm:mt-0  flex-col items-center">
+          <a href="/" className=" text-xs">
+            Mange yor profile
+          </a>
+          <a href="/" className=" text-xs">
+            Track your Admission journey
+          </a>
+        </div>
+      </div>
+    );
+  };
   return (
     <>
       <section className="body-font  px-5">
-        <div className="userData container rounded-sm">gvrv</div>
+        <UserData />
         <div className="container   home  ">
           <div className="open ">
             <i

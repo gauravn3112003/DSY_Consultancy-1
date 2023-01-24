@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <HomeLayout>
       
-      <div className="colorBlack">This is Home</div>
+      <div className=" bg-white p-5 h-full colorBlack">This is Home</div>
     </HomeLayout>
   );
 };
