@@ -39,6 +39,11 @@ const HeaderFilter = () => {
       Location: "/Admin/AllBlogs",
     },
     {
+      icon: "bi-buildings-fill",
+      Name: "Add College",
+      Location: "/Admin/AddCollege/CollegeDetail",
+    },
+    {
       icon: "bi-person-fill",
       Name: "Feedback",
       Location: "/Admin/AllFeedback",
