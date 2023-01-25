@@ -28,7 +28,7 @@ export default function HomeLayout({ children }) {
     {
       icon: "bi-key-fill",
       name: "Insurance",
-      location: "/",
+      location: "/Insurance",
     },
     {
       icon: "bi-bar-chart-line-fill",
@@ -38,8 +38,8 @@ export default function HomeLayout({ children }) {
 
     {
       icon: "bi-headset",
-      name: "Counsellors",
-      location: "/",
+      name: "Counsellor",
+      location: "/Counsellor",
     },
     {
       icon: "bi-gear-fill",

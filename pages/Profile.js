@@ -173,10 +173,12 @@ const Profile = () => {
   };
   return (
     <HomeLayout>
+      <div className="overflow-y-scroll">
       <BasicDetails />
       <ContactDetails />
       <EducationDetails />
       <BasicDetailModal />
+      </div>
     </HomeLayout>
   );
 };

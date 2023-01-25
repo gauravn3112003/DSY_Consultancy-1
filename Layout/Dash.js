@@ -65,12 +65,6 @@ const HeaderFilter = () => {
     );
   };
 
-  const [search, setSearch] = useState("test");
-  const inputChangedHandler = (e) => {
-    const updatedKeyword = e.target.value;
-    // May be call for search result
-  };
-
   return (
     <div className="relative  rounded-sm   items-center p-5 flex justify-between h-14 mb-0  bg-white w-full">
       {/* <p className="font-semibold text-slate-400">College</p> */}
@@ -106,7 +100,6 @@ export default function Dash({ children }) {
   return (
     <>
       <section className="body-font  mt-5">
-        <HeaderFilter />
         <div className="w-full h-auto ">{children}</div>
       </section>
     </>
