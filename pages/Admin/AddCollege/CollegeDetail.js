@@ -15,9 +15,9 @@ const Stepper = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
           College <span className="hidden sm:inline-flex sm:ml-2">Info</span>
@@ -28,15 +28,18 @@ const Stepper = () => {
         <li className="flex md:w-full cursor-pointer items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
           <span className="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:font-light after:text-gray-200 dark:after:text-gray-500">
             <span className="mr-2">2</span>
-            Department <span className="hidden sm:inline-flex sm:ml-2">Info</span>
+            Department{" "}
+            <span className="hidden sm:inline-flex sm:ml-2">Info</span>
           </span>
         </li>
       </Link>
 
-      <li className="flex items-center">
-        <span className="mr-2">3</span>
-        Confirmation
-      </li>
+      <Link href="/Admin/TextEditor">
+        <li className="flex items-center cursor-pointer">
+          <span className="mr-2">3</span>
+          Description
+        </li>
+      </Link>
     </ol>
   );
 };
@@ -48,28 +51,28 @@ const CollegeDetail = () => {
         <Stepper />
         <div className="w-full p-5 h-auto bg-white ">
           <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
-            <div className="sm:w-1/2  mr-1  w-full">
+            <div className="sm:w-1/2  mr-1 mb-2  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="CollegeName"
+                htmlFor="CollegeName"
               >
                 College Name
               </label>
               <input
-                className="appearance-none border  w-full rounded py-2 px-3 text-grey-darker"
+                className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker"
                 type="text"
                 placeholder="Enter College name"
               />
             </div>
-            <div className="sm:w-1/2 ml-1 w-full">
+            <div className="sm:w-1/2   w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="InstituteCode"
+                htmlFor="InstituteCode"
               >
                 Institute Code
               </label>
               <input
-                className="appearance-none w-full border rounded py-2 px-3 text-grey-darker"
+                className=" bg-white w-full border rounded py-2 px-3 text-grey-darker"
                 id="InstituteCode"
                 type="number"
                 placeholder="Institute Code"
@@ -77,26 +80,26 @@ const CollegeDetail = () => {
             </div>
           </div>
           <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
-            <div className="sm:w-1/2  mr-1  w-full">
+            <div className="sm:w-1/2  mr-1  mb-2 w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="CollegeUnder"
+                htmlFor="CollegeUnder"
               >
                 College Under
               </label>
-              <select className="appearance-none border  w-full rounded py-2 px-3 text-grey-darker">
+              <select className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker">
                 <option value="Government">Government</option>
                 <option value="Private">Private</option>
               </select>
             </div>
-            <div className="sm:w-1/2 ml-1 w-full">
+            <div className="sm:w-1/2  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="CollegeType"
+                htmlFor="CollegeType"
               >
                 College Type
               </label>
-              <select className="appearance-none border  w-full rounded py-2 px-3 text-grey-darker">
+              <select className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker">
                 <option value="Autonomous">Autonomous</option>
                 <option value="Non-Autonomous">Non-Autonomous</option>
               </select>
@@ -107,12 +110,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="ApprovedBy"
+                htmlFor="ApprovedBy"
               >
                 Approved By
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="ApprovedBy"
                 type="text"
                 placeholder="Enter Approved By"
@@ -121,12 +124,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="Rating"
+                htmlFor="Rating"
               >
                 Rating
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="Rating"
                 type="text"
                 placeholder="Enter Rating"
@@ -142,12 +145,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="AddressLine"
+                htmlFor="AddressLine"
               >
                 Address Line
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="AddressLine"
                 type="text"
                 placeholder="Enter College Address"
@@ -156,12 +159,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="Taluka"
+                htmlFor="Taluka"
               >
                 Taluka
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="Taluka"
                 type="text"
                 placeholder="Enter Taluka"
@@ -173,12 +176,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="District"
+                htmlFor="District"
               >
                 District
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="District"
                 type="text"
                 placeholder="Enter District"
@@ -187,12 +190,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="City"
+                htmlFor="City"
               >
                 City
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="City"
                 type="text"
                 placeholder="Enter City"
@@ -204,12 +207,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="Longitute"
+                htmlFor="Longitute"
               >
                 Longitute
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="Longitute"
                 type="text"
                 placeholder="Enter Longitute"
@@ -218,12 +221,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="Latitute"
+                htmlFor="Latitute"
               >
                 Latitute
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="Latitute"
                 type="text"
                 placeholder="Enter Latitute"
@@ -239,12 +242,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="ContactNO"
+                htmlFor="ContactNO"
               >
                 Contact NO
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="ContactNO"
                 type="number"
                 placeholder="Enter Contact NO"
@@ -253,12 +256,12 @@ const CollegeDetail = () => {
             <div className="sm:w-1/2  mr-1  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
-                for="Website"
+                htmlFor="Website"
               >
                 Website
               </label>
               <input
-                className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
                 id="Website"
                 type="text"
                 placeholder="Enter Website"
@@ -269,12 +272,12 @@ const CollegeDetail = () => {
           <div className="mb-4">
             <label
               className="block text-grey-darker text-sm font-bold mb-2"
-              for="Email"
+              htmlFor="Email"
             >
               E-mail
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
               id="Email"
               type="email"
               placeholder="Enter Email"
@@ -284,12 +287,12 @@ const CollegeDetail = () => {
           <div className="mb-4">
             <label
               className="block text-grey-darker text-sm font-bold mb-2"
-              for="TopRecuiters"
+              htmlFor="TopRecuiters"
             >
               Top Recuiters
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
               id="TopRecuiters"
               type="text"
               placeholder="Enter Top Recuiters"
@@ -299,12 +302,12 @@ const CollegeDetail = () => {
           <div className="mb-4">
             <label
               className="block text-grey-darker text-sm font-bold mb-2"
-              for="password"
+              htmlFor="password"
             >
               Password
             </label>
             <input
-              className="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
               id="password"
               type="password"
               placeholder="Your secure password"

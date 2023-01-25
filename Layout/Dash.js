@@ -76,10 +76,8 @@ const HeaderFilter = () => {
       {/* <p className="font-semibold text-slate-400">College</p> */}
       <div className="font-semibold">View Data</div>
       <div className="cursor-pointer relative">
-        <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
-        <span onClick={toggleUser} className="text-slate-400">
-          Filter
-        </span>
+        <i className="bi bi-three-dots-vertical " onClick={toggleUser}></i>
+
         <div
           className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           role="menu"

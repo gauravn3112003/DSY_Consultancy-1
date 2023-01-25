@@ -19,11 +19,7 @@ export default function HomeLayout({ children }) {
       name: "Colleges",
       location: "/College",
     },
-    {
-      icon: "bi-info-circle-fill",
-      name: "Help",
-      location: "/",
-    },
+
     {
       icon: "bi-file-earmark-fill",
       name: "Document",
@@ -48,6 +44,11 @@ export default function HomeLayout({ children }) {
     {
       icon: "bi-gear-fill",
       name: "Account Setting",
+      location: "/",
+    },
+    {
+      icon: "bi-info-circle-fill",
+      name: "Help",
       location: "/",
     },
   ];

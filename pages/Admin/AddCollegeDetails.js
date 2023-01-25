@@ -10,8 +10,6 @@ const AddCollegeDetails = ({ children }) => {
         Add College
       </div>
 
-      
-
       {children}
     </Dashboard>
   );
