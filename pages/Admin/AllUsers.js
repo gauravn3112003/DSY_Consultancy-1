@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 const AllUsers = () => {
   return (
     <Dashboard>
-      <div className="p-5 font-semibold text-slate-400 bg-white">All Users</div>
+      <div className="px-5 font-semibold text-slate-400 bg-white">All Users</div>
 
       <div className="flex flex-col">
         <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

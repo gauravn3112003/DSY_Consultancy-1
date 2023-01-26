@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard";
 const AllContact = () => {
   return (
     <Dashboard>
-      <div className="p-5 font-semibold text-slate-400 bg-white">
+      <div className="px-5 font-semibold text-slate-400 bg-white">
         All Contact
       </div>
 

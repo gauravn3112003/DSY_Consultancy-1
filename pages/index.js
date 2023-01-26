@@ -1,6 +1,8 @@
 import Pricing from "./Components/Pricing";
 import Link from "next/link";
 import Steps from "./Components/Steps";
+import Typewriter from "typewriter-effect";
+
 import Teams from "./Components/Teams";
 
 export default function Home() {
@@ -27,17 +29,32 @@ export default function Home() {
         <div className="container  h-screen mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
             <h1 className="title-font text-left sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Direct Second Year Admission
+              Direct Second Year Admission&nbsp;
               <br className="hidden lg:inline-block" />
               Consultancy
             </h1>
-            <p className="mb-8 lightC text-justify leading-relaxed">
+            <p className=" lightC text-justify leading-relaxed">
               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
               park mlkshk tote bag selvage hot chicken authentic tumeric
               truffaut hexagon try-hard chambray.
             </p>
-            <div className="flex justify-center">
+
+
+            <div className="py-5 flex text-left w-full sm:text-left font-bold text-xl ">
+              We help&nbsp;
+              <span className="pColor text-left">
+                <Typewriter
+                  options={{
+                    strings: ["to find right College", "to get Admission"],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </span>
+            </div>
+
+            <div className="flex w-full  justify-start ">
               <button className="inline-flex pBtn border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Search College
               </button>

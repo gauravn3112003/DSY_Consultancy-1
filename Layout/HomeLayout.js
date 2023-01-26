@@ -99,7 +99,7 @@ export default function HomeLayout({ children }) {
       <section className="body-font  px-5">
         <UserData />
         <div className="container   home  ">
-          <div className="open ">
+          <div className="open  ">
             <i
               className="bi colorBlack bi-list cursor-pointer "
               onClick={toggleNav}
