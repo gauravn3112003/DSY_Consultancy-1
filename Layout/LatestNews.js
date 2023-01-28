@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 // components
 
-export default function HomeLayout({ children }) {
+export default function Latest({ children }) {
   const items = [
     {
       icon: "bi-house-door-fill",
@@ -75,23 +75,18 @@ export default function HomeLayout({ children }) {
     }
   };
 
+  const [userOpen, setUserOpen] = useState("hidden");
+  const toggleUser = () => {
+    if (userOpen == "hidden") {
+      setUserOpen("block");
+    } else {
+      setUserOpen("hidden");
+    }
+  };
+
   const UserData = () => {
     return (
-      <div className="userData m-auto mt-20 mb-5  p-5 flex-wrap   text-white justify-between flex items-center container rounded-sm">
-        <div className="avtarP">GN</div>
-        <div className="mt-2 sm:mt-0  ">
-          <h1 className="text-center font-semibold text-2xl">Gaurav Narnaware</h1>
-          <p className=" text-center text-xs">Welcome to DSY consultancy !</p>
-        </div>
-        <div className="flex mt-2  sm:mt-0  flex-col items-center">
-          <a href="/" className=" text-xs">
-            Mange yor profile
-          </a>
-          <a href="/" className=" text-xs">
-            Track your Admission journey
-          </a>
-        </div>
-      </div>
+      <div className=" bg-white m-auto mt-30 mb-10  p-5 flex-wrap   "></div>
     );
   };
   return (
@@ -104,6 +99,13 @@ export default function HomeLayout({ children }) {
               className="bi colorBlack bi-list cursor-pointer "
               onClick={toggleNav}
             ></i>
+
+            <div>
+              <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
+              <span onClick={toggleUser} className="text-slate-400">
+                Filter
+              </span>
+            </div>
           </div>
           <aside className={`screenSidebar ${openNav}  rounded-sm `}>
             <div className="rounded">

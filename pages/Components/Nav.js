@@ -1,6 +1,55 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import UserDropdown from "./UserDropdown";
+
+const SearchDropdown = () => {
+  const [userOpen, setUserOpen] = useState("hidden");
+  const toggleUser = () => {
+    if (userOpen == "hidden") {
+      setUserOpen("block");
+    } else {
+      setUserOpen("hidden");
+    }
+  };
+
+  return (
+    <>
+      <section className="relative">
+        <div
+          onClick={toggleUser}
+          type="button"
+          className="h-8 mr-3 w-8 rounded-full flex items-center justify-center font-semibold  sm:h-10 sm:w-10 cursor-pointer "
+          // src="/img/logo.svg"
+          alt="User dropdown"
+        >
+          <i className="bi font-bold text-xl bi-search"></i>
+        </div>
+
+        <div
+          className={`absolute ${userOpen} px-2 right-0 z-10 mt-5 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabIndex="-1"
+        >
+          <form
+            method="POST"
+            action="#"
+            className=" py-2  w-full shadow-sm"
+            role="none"
+          >
+            <input
+              type="search"
+              placeholder="Search College..."
+              className=" outline-none w-full text-sm bg-white rounded-r-none"
+            />
+          </form>
+        </div>
+      </section>
+    </>
+  );
+};
+
 const Nav = () => {
   const [nav, setnav] = useState("");
   const [overlay, setOverlay] = useState("");
@@ -28,8 +77,8 @@ const Nav = () => {
       location: "/Home",
     },
     {
-      name: "Blog",
-      location: "/Blog",
+      name: "Latest News",
+      location: "/Latest",
     },
     {
       name: "Colleges",
@@ -38,10 +87,6 @@ const Nav = () => {
     {
       name: "About",
       location: "/AboutUs",
-    },
-    {
-      name: "Services",
-      location: "/Sevices",
     },
     {
       name: "Contact",
@@ -82,14 +127,16 @@ const Nav = () => {
             </a>
           </Link>
           <div className="flex items-center md:order-2">
-            <button
-              type="button"
-              className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Get started
-            </button>
+            <Link href="/Login">
+              <button
+                type="button"
+                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3  pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Get started
+              </button>
+            </Link>
             <UserDropdown />
-
+            <SearchDropdown />
             <button
               onClick={toggleNav}
               type="button"

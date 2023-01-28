@@ -55,7 +55,7 @@ export default function Home() {
             </div>
 
             <div className="flex w-full  justify-start ">
-              <button className="inline-flex pBtn border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button className="inline-flex pBtn border-0 py-2  px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 Search College
               </button>
               <Link href="/Login">
