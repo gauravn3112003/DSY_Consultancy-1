@@ -161,7 +161,7 @@ const Profile = () => {
     return (
       <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full `}>
         <div className="z-10  relative w-full flex justify-center items-center h-full modalColor">
-          <div className="absolute w-4/6 h-4/5 p-5 rounded-md bg-white ">
+          <div className="absolute w-4/6 h-4/5 p-5 rounded-sm bg-white ">
             <i
               onClick={toggleUser}
               className="float-right text-2xl cursor-pointer bi bi-x-lg"

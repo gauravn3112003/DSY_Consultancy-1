@@ -31,6 +31,7 @@
     "react-hook-form": "^7.8.3",
     "suneditor": "^2.44.3",
     "suneditor-react": "^3.4.1",
+    "swiper": "^8.4.6",
     "typewriter-effect": "^2.19.0"
   },
   "devDependencies": {

@@ -26,7 +26,7 @@ const SearchDropdown = () => {
         </div>
 
         <div
-          className={`absolute ${userOpen} px-2 right-0 z-10 mt-5 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+          className={`absolute ${userOpen} px-2 right-0 z-10 mt-5 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
@@ -82,7 +82,7 @@ const Nav = () => {
     },
     {
       name: "Colleges",
-      location: "/Colleges",
+      location: "/AllCollege",
     },
     {
       name: "About",
@@ -130,7 +130,7 @@ const Nav = () => {
             <Link href="/Login">
               <button
                 type="button"
-                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3  pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5 text-center mr-3  pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Get started
               </button>

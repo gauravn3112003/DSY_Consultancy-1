@@ -85,7 +85,7 @@ export default function Home() {
             </h1>
           </div>
           <div className="flex md:ml-auto md:mr-0 mx-auto items-center flex-shrink-0 space-x-4">
-            <button className="bg-white inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
+            <button className="bg-white inline-flex py-3 px-5 rounded-sm items-center hover:bg-gray-200 focus:outline-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -99,7 +99,7 @@ export default function Home() {
                 <span className="title-font font-medium">Google Play</span>
               </span>
             </button>
-            <button className="bg-white inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
+            <button className="bg-white inline-flex py-3 px-5 rounded-sm items-center hover:bg-gray-200 focus:outline-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
