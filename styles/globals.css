@@ -10,7 +10,7 @@ body {
 
 /* VAriables */
 :root {
-  --pColor: rgb(49, 15, 104);
+  --pColor: rgb(27, 5, 64);
   --btn-color: white;
   --pColorHover: rgb(44, 9, 138);
 
@@ -27,6 +27,17 @@ body {
 
 ::-webkit-scrollbar {
   width: 0px;
+}
+
+/* Blink Animation  */
+.blink {
+  animation: blinker 1.5s linear infinite;
+  font-family: sans-serif;
+}
+@keyframes blinker {
+  50% {
+      opacity: 0;
+  }
 }
 /* Ads  */
 .ads {

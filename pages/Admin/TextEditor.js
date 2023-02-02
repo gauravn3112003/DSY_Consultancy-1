@@ -73,7 +73,7 @@ const TextEditor = () => {
             <input
               type="text"
               name="ChoicceCode"
-              className="rounded px-2 py-1 bg-white  border"
+              className="rounded-sm  px-2 py-1 bg-white  border"
             />
           </div>
 

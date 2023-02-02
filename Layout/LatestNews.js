@@ -108,7 +108,7 @@ export default function Latest({ children }) {
             </div>
           </div>
           <aside className={`screenSidebar ${openNav}  rounded-sm `}>
-            <div className="rounded">
+            <div className="rounded-sm">
               <i
                 className="bi bi-x-lg colorBlack close "
                 onClick={toggleNav}

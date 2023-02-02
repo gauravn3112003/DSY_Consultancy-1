@@ -44,16 +44,16 @@ const BasicDoc = () => {
   return (
     <div className="w-full ">
       <h1 className=" font-semibold text-lg mb-5">Document</h1>
-      <div className=" flex w-full gap-5 flex-wrap ">
+      <div className=" flex w-full  gap-5 flex-wrap ">
         
         
-        <div className="w-48 bg-slate-100 p-2 ">
+        <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div class="max-w-xl">
-            <label class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label class="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span class="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 text-gray-600"
+                  class="w-3 h-3 pColor"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -66,27 +66,28 @@ const BasicDoc = () => {
                   />
                 </svg>
                 <span class="font-medium text-gray-600">
-                  Drop files to Attach, or
-                  <span class="pColor "> browse</span>
+                  <span class="pColor "> Upload</span>
                 </span>
               </span>
               <input type="file" name="file_upload" class="hidden" />
             </label>
           </div>
-          <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-          <p className="text-sm text-slate-400">
-            File should be max 2mb and jpg, jpeg, png, pdf
-          </p>
+          <div>
+            <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
+            <p className="text-sm text-slate-400">
+              File should be max 2mb and jpg, jpeg, png, pdf
+            </p>
+          </div>
         </div>
 
 
-        <div className="w-48 bg-slate-100 p-2 ">
+        <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div class="max-w-xl">
-            <label class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label class="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span class="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 text-gray-600"
+                  class="w-3 h-3 pColor"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -99,27 +100,25 @@ const BasicDoc = () => {
                   />
                 </svg>
                 <span class="font-medium text-gray-600">
-                  Drop files to Attach, or
-                  <span class="pColor "> browse</span>
+                  <span class="pColor "> Upload</span>
                 </span>
               </span>
               <input type="file" name="file_upload" class="hidden" />
             </label>
           </div>
-          <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-          <p className="text-sm text-slate-400">
-            File should be max 2mb and jpg, jpeg, png, pdf
-          </p>
-        </div>
-
-
-        <div className="w-48 bg-slate-100 p-2 ">
+          <div>
+            <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
+            <p className="text-sm text-slate-400">
+              File should be max 2mb and jpg, jpeg, png, pdf
+            </p>
+          </div>
+        </div> <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div class="max-w-xl">
-            <label class="flex justify-center w-full h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label class="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span class="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6 text-gray-600"
+                  class="w-3 h-3 pColor"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -132,17 +131,18 @@ const BasicDoc = () => {
                   />
                 </svg>
                 <span class="font-medium text-gray-600">
-                  Drop files to Attach, or
-                  <span class="pColor "> browse</span>
+                  <span class="pColor "> Upload</span>
                 </span>
               </span>
               <input type="file" name="file_upload" class="hidden" />
             </label>
           </div>
-          <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-          <p className="text-sm text-slate-400">
-            File should be max 2mb and jpg, jpeg, png, pdf
-          </p>
+          <div>
+            <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
+            <p className="text-sm text-slate-400">
+              File should be max 2mb and jpg, jpeg, png, pdf
+            </p>
+          </div>
         </div>
       </div>
     </div>

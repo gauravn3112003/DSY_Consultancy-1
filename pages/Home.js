@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
 
 
-  const [progress, setProgress] = useState("10")
+  const [progress, setProgress] = useState("50")
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log("Latitude is :", position.coords.latitude);

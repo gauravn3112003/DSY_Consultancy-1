@@ -74,7 +74,7 @@ const Pricing = () => {
                   </span>
                   Mixtape chillwave tumeric
                 </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded-sm">
                   Button
                   <svg
                     fill="none"
@@ -173,7 +173,7 @@ const Pricing = () => {
                   </span>
                   Mixtape chillwave tumeric
                 </p>
-                <button className="flex items-center mt-auto text-white pBtn border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded">
+                <button className="flex items-center mt-auto text-white pBtn border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded-sm">
                   Button
                   <svg
                     fill="none"
@@ -284,7 +284,7 @@ const Pricing = () => {
                   </span>
                   Mixtape chillwave tumeric
                 </p>
-                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded">
+                <button className="flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded-sm">
                   Button
                   <svg
                     fill="none"

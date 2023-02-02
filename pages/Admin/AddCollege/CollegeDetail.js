@@ -59,7 +59,7 @@ const CollegeDetail = () => {
                 College Name
               </label>
               <input
-                className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker"
+                className=" bg-white border  w-full rounded-sm  py-2 px-3 text-grey-darker"
                 type="text"
                 placeholder="Enter College name"
               />
@@ -72,7 +72,7 @@ const CollegeDetail = () => {
                 Institute Code
               </label>
               <input
-                className=" bg-white w-full border rounded py-2 px-3 text-grey-darker"
+                className=" bg-white w-full border rounded-sm  py-2 px-3 text-grey-darker"
                 id="InstituteCode"
                 type="number"
                 placeholder="Institute Code"
@@ -87,7 +87,7 @@ const CollegeDetail = () => {
               >
                 College Under
               </label>
-              <select className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker">
+              <select className=" bg-white border  w-full rounded-sm  py-2 px-3 text-grey-darker">
                 <option value="Government">Government</option>
                 <option value="Private">Private</option>
               </select>
@@ -99,7 +99,7 @@ const CollegeDetail = () => {
               >
                 College Type
               </label>
-              <select className=" bg-white border  w-full rounded py-2 px-3 text-grey-darker">
+              <select className=" bg-white border  w-full rounded-sm  py-2 px-3 text-grey-darker">
                 <option value="Autonomous">Autonomous</option>
                 <option value="Non-Autonomous">Non-Autonomous</option>
               </select>
@@ -115,7 +115,7 @@ const CollegeDetail = () => {
                 Approved By
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="ApprovedBy"
                 type="text"
                 placeholder="Enter Approved By"
@@ -129,7 +129,7 @@ const CollegeDetail = () => {
                 Rating
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="Rating"
                 type="text"
                 placeholder="Enter Rating"
@@ -150,7 +150,7 @@ const CollegeDetail = () => {
                 Address Line
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="AddressLine"
                 type="text"
                 placeholder="Enter College Address"
@@ -164,7 +164,7 @@ const CollegeDetail = () => {
                 Taluka
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="Taluka"
                 type="text"
                 placeholder="Enter Taluka"
@@ -181,7 +181,7 @@ const CollegeDetail = () => {
                 District
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="District"
                 type="text"
                 placeholder="Enter District"
@@ -195,7 +195,7 @@ const CollegeDetail = () => {
                 City
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="City"
                 type="text"
                 placeholder="Enter City"
@@ -212,7 +212,7 @@ const CollegeDetail = () => {
                 Longitute
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="Longitute"
                 type="text"
                 placeholder="Enter Longitute"
@@ -226,7 +226,7 @@ const CollegeDetail = () => {
                 Latitute
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="Latitute"
                 type="text"
                 placeholder="Enter Latitute"
@@ -247,7 +247,7 @@ const CollegeDetail = () => {
                 Contact NO
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="ContactNO"
                 type="number"
                 placeholder="Enter Contact NO"
@@ -261,7 +261,7 @@ const CollegeDetail = () => {
                 Website
               </label>
               <input
-                className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
                 id="Website"
                 type="text"
                 placeholder="Enter Website"
@@ -277,7 +277,7 @@ const CollegeDetail = () => {
               E-mail
             </label>
             <input
-              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
               id="Email"
               type="email"
               placeholder="Enter Email"
@@ -292,7 +292,7 @@ const CollegeDetail = () => {
               Top Recuiters
             </label>
             <input
-              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
               id="TopRecuiters"
               type="text"
               placeholder="Enter Top Recuiters"
@@ -307,7 +307,7 @@ const CollegeDetail = () => {
               Password
             </label>
             <input
-              className=" bg-white border rounded w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
               id="password"
               type="password"
               placeholder="Your secure password"

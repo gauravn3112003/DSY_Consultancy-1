@@ -100,7 +100,7 @@ const Nav = () => {
         <Link href={props.location}>
           <a
             onClick={closeNav}
-            className="block  colorBlack py-2 navItem pl-3 pr-4 text-sm rounded  md:p-0"
+            className="block  colorBlack py-2 navItem pl-3 pr-4 text-sm rounded-sm   md:p-0"
             aria-current="page"
           >
             {props.name}

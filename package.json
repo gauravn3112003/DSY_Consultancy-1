@@ -29,6 +29,7 @@
     "react-dom": "^17.0.1",
     "react-gist": "^1.2.4",
     "react-hook-form": "^7.8.3",
+    "react-scroll-up": "^1.4.0",
     "suneditor": "^2.44.3",
     "suneditor-react": "^3.4.1",
     "swiper": "^8.4.6",

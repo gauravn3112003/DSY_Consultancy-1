@@ -15,17 +15,19 @@ const Teams = () => {
               haven't heard of them.
             </p>
           </div>
-          <div className="flex  flex-wrap -m-2">
 
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center bg-white p-4 rounded-sm">
+          <marquee width="100%" direction="left" scrollamount="12">
+
+
+            <div className="flex gap-5 w-fit flex-row bg-white p-5 ">
+              <div className="h-full flex  w-auto  rounded-sm">
                 <img
                   alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                  className="w-16 h-16 bg-gray-100  rounded-full mr-4"
                   src="https://dummyimage.com/80x80"
                 />
 
-                <div className="flex-grow">
+                <div className="">
                   <h2 className="text-gray-900 title-font font-medium">
                     Gaurav Narnaware
                   </h2>
@@ -34,41 +36,8 @@ const Teams = () => {
               </div>
             </div>
 
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center bg-white p-4 rounded-sm">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/84x84"
-                />
-                <div className="flex-grow">
-                  <h2 className="text-gray-900 title-font font-medium">
-                    Om Raut
-                  </h2>
-                  <p className="text-gray-500">Data Analyst</p>
-                </div>
-              </div>
-            </div>
-
-
-            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-              <div className="h-full flex items-center bg-white p-4 rounded-sm">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
-                  src="https://dummyimage.com/88x88"
-                />
-                <div className="flex-grow">
-                  <h2 className="text-gray-900 title-font font-medium">
-                    Sakshi More
-                  </h2>
-                  <p className="text-gray-500">Designer</p>
-                </div>
-              </div>
-            </div>
-         
-          
-          </div>
+            
+          </marquee>
         </div>
       </section>
     </>
