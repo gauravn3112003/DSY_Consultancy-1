@@ -56,6 +56,9 @@ const College = () => {
     {
       Name: "Rating",
       Location: "/",
+    }, {
+      Name: "Near Me",
+      Location: "/",
     },
     {
       Name: "Rating",

@@ -36,6 +36,10 @@ const BreadCrumb = () => {
       Location: "/",
     },
     {
+      Name: "Near Me",
+      Location: "/",
+    },
+    {
       Name: "Rating",
       Location: "/",
     },

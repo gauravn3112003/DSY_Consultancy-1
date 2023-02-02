@@ -157,6 +157,43 @@ const Profile = () => {
     );
   };
 
+  const PreferenceDetails = () => {
+    return (
+      <div className="bg-white p-5 mt-5 rounded-sm">
+        <div className="header flex pb-2  justify-between items-center">
+          <h1 className="text-lg font-bold">Preferences</h1>
+          <i className="bi bi-pencil-square font-extrabold text-2xl cursor-pointer "></i>
+        </div>
+
+        <div className=" flex flex-wrap mt-3 justify-between items-center">
+          <div className="w-2/6 detailWrap">
+            <div className="text-slate-400 text-sm">Univercity</div>
+            <div className="text-sm">7796305801e</div>
+          </div>
+          <div className="w-2/6 detailWrap">
+            <div className="text-slate-400 text-sm">Branch</div>
+            <div className="text-sm">Computer Engineering</div>
+          </div>
+          <div className="w-2/6 detailWrap">
+            <div className="text-slate-400 text-sm">Location</div>
+            <div className="text-sm">Ghatanji</div>
+          </div>
+        </div>
+        <div className=" flex flex-wrap mt-3  items-center">
+          <div className="w-2/6 detailWrap">
+            <div className="text-slate-400 text-sm">College Type</div>
+            <div className="text-sm">7796305801e</div>
+          </div>
+          <div className="w-2/6 detailWrap">
+            <div className="text-slate-400 text-sm">Need a loan?</div>
+            <div className="text-sm">Computer Engineering</div>
+          </div>
+         
+        </div>
+      </div>
+    );
+  };
+
   const BasicDetailModal = () => {
     return (
       <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full `}>
@@ -173,10 +210,11 @@ const Profile = () => {
   };
   return (
     <HomeLayout>
-        <BasicDetails />
-        <ContactDetails />
-        <EducationDetails />
-        <BasicDetailModal />
+      <BasicDetails />
+      <ContactDetails />
+      <EducationDetails />
+      <BasicDetailModal />
+      <PreferenceDetails />
     </HomeLayout>
   );
 };

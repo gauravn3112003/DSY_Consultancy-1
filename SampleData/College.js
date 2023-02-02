@@ -55,6 +55,7 @@ var College = [
     InstituteCode: 788541,
     CollegeUnder: "Government",
     CollegeType: "Autonomous",
+    Univercity: "Autonomous",
     Location: {
       AddressLine: "Wellesley Rd, Shivajinagar, Pune, Maharashtra 411005",
       Taluka: "Pune",

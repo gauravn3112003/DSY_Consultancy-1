@@ -5,7 +5,7 @@ const Counsellor = () => {
   return (
     <HomeLayout>
       <div className="bg-white p-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
-        <div className="flex flex-col justify-around">
+        <div className="flex flex-col sm:w-2/4 w-full justify-around">
           <div>
             <p className="text-base font-semibold">
               Hi Gaurav Narnaware, we are here to help you.

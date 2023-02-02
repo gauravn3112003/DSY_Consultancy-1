@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 // components
 
 export default function HomeLayout({ children }) {
@@ -23,7 +24,7 @@ export default function HomeLayout({ children }) {
     {
       icon: "bi-file-earmark-fill",
       name: "Document",
-      location: "/",
+      location: "/Document",
     },
     {
       icon: "bi-key-fill",
@@ -76,17 +77,25 @@ export default function HomeLayout({ children }) {
   };
 
   const UserData = () => {
+    const router = useRouter();
+    console.log("Location :" + router.pathname );
     return (
       <div className="userData m-auto mt-20 mb-5  p-5 flex-wrap   text-white justify-between flex items-center container rounded-sm">
         <div className="avtarP">GN</div>
         <div className="mt-2 sm:mt-0  ">
-          <h1 className="text-center font-semibold text-2xl">Gaurav Narnaware</h1>
+          <h1 className="text-center font-semibold text-2xl">
+            Gaurav Narnaware
+          </h1>
           <p className=" text-center text-xs">Welcome to DSY consultancy !</p>
         </div>
         <div className="flex mt-2  sm:mt-0  flex-col items-center">
-          <a href="/" className=" text-xs">
-            Mange yor profile
-          </a>
+          {router.pathname == "/profile" ? (
+            ""
+          ) : (
+            <a href="/" className=" text-xs">
+              Mange your profile
+            </a>
+          )}
           <a href="/" className=" text-xs">
             Track your Admission journey
           </a>
