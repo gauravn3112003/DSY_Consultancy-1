@@ -28,13 +28,8 @@ const SearchDropdown = () => {
         <div
           className={`absolute ${userOpen} px-2 right-0 z-10 mt-5 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="menu-button"
-          tabIndex="-1"
         >
           <form
-            method="POST"
-            action="#"
             className=" py-2  w-full shadow-sm"
             role="none"
           >

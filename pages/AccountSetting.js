@@ -26,7 +26,7 @@ const NotiRemind = () => {
               <input
                 type="checkbox"
                 role="switch"
-                className="bg-white"
+                className="outline-none bg-white"
                 id="flexSwitchCheckDefault"
               />
             </div>
@@ -82,9 +82,11 @@ const ReportIssue = () => {
         className="border w-full mt-5 bg-white   outline-none p-5 text-sm"
       ></textarea>
 
-      <button type="button" className="pBtn px-10 rounded-sm   py-2">
-        Submit
-      </button>
+      <div className="flex justify-end mt-5">
+        <button type="button" className="pBtn px-10 rounded-sm   py-2">
+          Submit
+        </button>
+      </div>
     </div>
   );
 };
@@ -130,10 +132,12 @@ const AccountSetting = () => {
             <a> Forgot Password?</a>
           </Link>
         </p>
-        <button type="button" className="pBtn px-10 rounded-sm mt-2    py-2">
+       <div className="mt-5 flex justify-end">
+       <button type="button" className="pBtn px-10 rounded-sm py-2">
           {" "}
           Change password
         </button>
+       </div>
       </div>
     </HomeLayout>
   );
