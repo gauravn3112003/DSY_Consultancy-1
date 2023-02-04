@@ -18,7 +18,7 @@ const NotiRemind = () => {
           <div>
             <div className="form-check form-switch flex justify-start items-center">
               <label
-                className="form-check-label text-xs mr-2 inline-block text-gray-800"
+                className="form-check-label text-xs mr-2 inline-block "
                 htmlFor="flexSwitchCheckDefault"
               >
                 SMS
@@ -35,7 +35,7 @@ const NotiRemind = () => {
           <div>
             <div className="form-check form-switch flex justify-start items-center">
               <label
-                className="form-check-label text-xs mr-2 inline-block text-gray-800"
+                className="form-check-label text-xs mr-2 inline-block "
                 htmlFor="flexSwitchCheckDefault"
               >
                 E-mail
@@ -52,7 +52,7 @@ const NotiRemind = () => {
           <div>
             <div className="form-check form-switch flex justify-start items-center">
               <label
-                className="form-check-label text-xs mr-2 inline-block text-gray-800"
+                className="form-check-label text-xs mr-2 inline-block "
                 htmlFor="flexSwitchCheckDefault"
               >
                 Whatsapp
