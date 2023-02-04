@@ -1,6 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
-import Link from "next/link"
+import Link from "next/link";
 
 const NotiRemind = () => {
   return (
@@ -26,6 +26,7 @@ const NotiRemind = () => {
               <input
                 type="checkbox"
                 role="switch"
+                className="bg-white"
                 id="flexSwitchCheckDefault"
               />
             </div>
@@ -41,6 +42,7 @@ const NotiRemind = () => {
               </label>
               <input
                 type="checkbox"
+                className="bg-white"
                 role="switch"
                 id="flexSwitchCheckDefault"
               />
@@ -58,6 +60,7 @@ const NotiRemind = () => {
               <input
                 type="checkbox"
                 role="switch"
+                className="bg-white"
                 id="flexSwitchCheckDefault"
               />
             </div>
@@ -76,7 +79,7 @@ const ReportIssue = () => {
       <textarea
         rows="5"
         placeholder="Which issue do you have?"
-        className="border w-full mt-5 outline-none p-5 text-sm"
+        className="border w-full mt-5 bg-white   outline-none p-5 text-sm"
       ></textarea>
 
       <button type="button" className="pBtn px-10 rounded-sm   py-2">
@@ -94,14 +97,13 @@ const AccountSetting = () => {
 
       <div className="bg-white p-5  mt-5 rounded-sm ">
         <p className="font-bold text-lg">Change Password</p>
-
         <div className="mt-5 flex flex-col sm:flex-row gap-5">
           <div className="w-full ">
             <p className="text-slate-400">Current Password</p>
             <input
               type="text"
               name=""
-              className="border text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
+              className="border bg-white  text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
             />
           </div>
 
@@ -110,7 +112,7 @@ const AccountSetting = () => {
             <input
               type="text"
               name=""
-              className="border text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
+              className="border bg-white  text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
             />
           </div>
 
@@ -119,7 +121,7 @@ const AccountSetting = () => {
             <input
               type="text"
               name=""
-              className="border text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
+              className="border bg-white  text-sm outline-none w-full mt-2 rounded-sm px-4 py-2"
             />
           </div>
         </div>
