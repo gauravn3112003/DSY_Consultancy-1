@@ -5,12 +5,12 @@ const Insurance = () => {
   return (
     <HomeLayout>
       <div className="bg-white p-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
-        <div className="flex flex-col sm:w-2/4 w-full justify-around">
+        <div className="flex flex-col sm:w-2/4 w-full ">
           <div>
-            <p className="text-base font-semibold text-center">
+            <p className="text-base font-semibold ">
               Sorry! Seems like you have no Insurance
             </p>
-            <p className="text-sm mt-3 text-center text-slate-400">
+            <p className="text-sm mt-3  text-slate-400">
               Need help deciding the right insurance plan for you?
             </p>
           </div>

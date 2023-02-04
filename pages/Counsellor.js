@@ -22,7 +22,7 @@ const Counsellor = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <img width={200} src="/img/counsellor.svg" alt="" />
+          <img width={200}src="/img/counsellor.svg" alt="" />
         </div>
       </div>
     </HomeLayout>
