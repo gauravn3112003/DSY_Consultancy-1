@@ -45,7 +45,7 @@ export default function HomeLayout({ children }) {
     {
       icon: "bi-gear-fill",
       name: "Account Setting",
-      location: "/",
+      location: "/AccountSetting",
     },
     {
       icon: "bi-info-circle-fill",
@@ -78,7 +78,7 @@ export default function HomeLayout({ children }) {
 
   const UserData = () => {
     const router = useRouter();
-    console.log("Location :" + router.pathname );
+    // console.log("Location :" + router.pathname );
     return (
       <div className="userData m-auto mt-20 mb-5  p-5 flex-wrap   text-white justify-between flex items-center container rounded-sm">
         <div className="avtarP">GN</div>
@@ -89,12 +89,14 @@ export default function HomeLayout({ children }) {
           <p className=" text-center text-xs">Welcome to DSY consultancy !</p>
         </div>
         <div className="flex mt-2  sm:mt-0  flex-col items-center">
-          {router.pathname == "/profile" ? (
+          {router.pathname == "/Profile" ? (
             ""
           ) : (
-            <a href="/" className=" text-xs">
+            <Link href="/Profile" >
+            
+            <a className=" text-xs">
               Mange your profile
-            </a>
+            </a></Link>
           )}
           <a href="/" className=" text-xs">
             Track your Admission journey
@@ -105,7 +107,7 @@ export default function HomeLayout({ children }) {
   };
   return (
     <>
-      <section className="body-font  px-5">
+      <section className="body-font   px-5">
         <UserData />
         <div className="container   home  ">
           <div className="open  ">

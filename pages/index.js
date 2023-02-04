@@ -104,7 +104,7 @@ export default function Home() {
   };
   return (
     <>
-      <section className="md:mt-14 mt-0 bgColor pb-5  body-font">
+      <section className="md:mt-14 h-screen sm:h-auto mt-0 bg-blue-900 pb-5  body-font">
         <div className=" container m-auto mt-14 p-5 ">
           <marquee
             width="100%"
@@ -167,8 +167,6 @@ export default function Home() {
         </div>
       </section>
 
-      <AppDown />
-      {/* <HomeAds /> */}
       <section className="container m-auto p-5">
         <h1 className="sm:text-4xl text-center text-3xl font-medium title-font mb-5 text-gray-900">
           University
@@ -177,6 +175,8 @@ export default function Home() {
           <CollegeCard />
         </marquee>
       </section>
+      {/* <HomeAds /> */}
+      <AppDown />
       <Steps />
       <Pricing />
 
