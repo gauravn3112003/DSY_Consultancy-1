@@ -2,49 +2,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import UserDropdown from "./UserDropdown";
 
-const SearchDropdown = () => {
-  const [userOpen, setUserOpen] = useState("hidden");
-  const toggleUser = () => {
-    if (userOpen == "hidden") {
-      setUserOpen("block");
-    } else {
-      setUserOpen("hidden");
-    }
-  };
-
-  return (
-    <>
-      <section className="relative">
-        <div
-          onClick={toggleUser}
-          type="button"
-          className="h-8 mr-3 w-8 rounded-full flex items-center justify-center font-semibold  sm:h-10 sm:w-10 cursor-pointer "
-          // src="/img/logo.svg"
-          alt="User dropdown"
-        >
-          <i className="bi font-bold text-xl bi-search"></i>
-        </div>
-
-        <div
-          className={`absolute ${userOpen} px-2 right-0 z-10 mt-5 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
-          role="menu"
-        >
-          <form
-            className=" py-2  w-full shadow-sm"
-            role="none"
-          >
-            <input
-              type="search"
-              placeholder="Search College..."
-              className=" outline-none w-full text-sm bg-white rounded-r-none"
-            />
-          </form>
-        </div>
-      </section>
-    </>
-  );
-};
-
 const Nav = () => {
   const [nav, setnav] = useState("");
   const [overlay, setOverlay] = useState("");
@@ -102,6 +59,32 @@ const Nav = () => {
           </a>
         </Link>
       </li>
+    );
+  };
+
+  const [userOpen, setUserOpen] = useState("hidden");
+  const toggleUser = () => {
+    if (userOpen == "hidden") {
+      setUserOpen("block");
+    } else {
+      setUserOpen("hidden");
+    }
+  };
+  const SearchDropdown = () => {
+    return (
+      <>
+        <section className="relative">
+          <div
+            onClick={toggleUser}
+            type="button"
+            className="h-8 mr-3 w-8 rounded-full flex items-center justify-center font-semibold  sm:h-10 sm:w-10 cursor-pointer "
+            // src="/img/logo.svg"
+            alt="User dropdown"
+          >
+            <i className="bi font-bold text-xl bi-search"></i>
+          </div>
+        </section>
+      </>
     );
   };
 
@@ -176,6 +159,36 @@ const Nav = () => {
           </div>
         </div>
       </nav>
+
+      {/* Scroll Dropdown */}
+      <div
+        className={`fixed bg-black bg-opacity-40  filter   ${userOpen} px-2    h-screen mt-0   z-10  py-5 w-full transition-all  rounded-sm shadow-lg focus:outline-none`}
+      >
+        <form
+          className=" container relative flex justify-between items-center gap-5 bg-white px-5 py-3 m-auto shadow-sm"
+          role="none"
+        >
+          <input
+            type="search"
+            placeholder="Search College..."
+            className=" outline-none w-full  rounded-sm   text-sm bg-white rounded-r-none"
+          />
+
+          <i className="bi font-bold text-xl bi-search cursor-pointer "></i>
+        </form>
+        <div className="bg-white p-5 flex flex-col sm:flex-row justify-between gap-2 container m-auto ">
+          <Link href="/">
+            <div className=" cursor-pointer w-full sm:w-2/4 bg-slate-200 px-5 py-2 rounded-sm">
+              <h1 className="text-sm cursor-pointer font-semibold">COEP</h1>
+            </div>
+          </Link>
+          <Link href="/">
+            <div className=" cursor-pointer w-full sm:w-2/4 bg-slate-200 px-5 py-2 rounded-sm">
+              <h1 className="text-sm cursor-pointer font-semibold">COEP</h1>
+            </div>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
