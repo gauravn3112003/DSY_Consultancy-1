@@ -1,5 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
+import Link from "next/link";
 const Profile = () => {
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
@@ -10,9 +11,43 @@ const Profile = () => {
     }
   };
 
+  const ModelHeader = (props) => {
+    return (
+      <header className="bgColor p-5 flex justify-between items-center rounded-sm">
+        <div className="flex justify-center items-center gap-5">
+          <i
+            onClick={toggleUser}
+            className="bi bi-arrow-left text-2xl text-white cursor-pointer"
+          ></i>
+          <span className="border-b-2 border-yellow-300 text-base font-semibold text-white">
+            {props.name}
+          </span>
+        </div>
+        <div>
+          <i
+            onClick={toggleUser}
+            className=" text-2xl text-white cursor-pointer bi bi-x-lg"
+          ></i>
+        </div>
+      </header>
+    );
+  };
+
   const BasicDetails = () => {
+    const BasicDetailModal = () => {
+      return (
+        <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full  `}>
+          <div className="z-10  relative w-full flex justify-center items-center h-full modalColor">
+            <div className="absolute h-full w-full sm:w-4/6 sm:h-4/5 p-5 mt-24 sm:mt-0 rounded-sm bg-white">
+              <ModelHeader name="Basic Detail" />
+            </div>
+          </div>
+        </div>
+      );
+    };
     return (
       <div className="bg-white p-5 rounded-sm ">
+        <BasicDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Basic Details</h1>
           <i
@@ -188,7 +223,6 @@ const Profile = () => {
             <div className="text-slate-400 text-sm">Need a loan?</div>
             <div className="text-sm">Computer Engineering</div>
           </div>
-         
         </div>
       </div>
     );
@@ -196,13 +230,26 @@ const Profile = () => {
 
   const BasicDetailModal = () => {
     return (
-      <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full `}>
+      <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full  `}>
         <div className="z-10  relative w-full flex justify-center items-center h-full modalColor">
-          <div className="absolute w-4/6 h-4/5 p-5 rounded-sm bg-white ">
-            <i
-              onClick={toggleUser}
-              className="float-right text-2xl cursor-pointer bi bi-x-lg"
-            ></i>
+          <div className="absolute h-full w-full sm:w-4/6 sm:h-4/5 p-5 mt-24 sm:mt-0 rounded-sm bg-white">
+            <header className="bgColor p-5 flex justify-between items-center rounded-sm">
+              <div className="flex justify-center items-center gap-5">
+                <i
+                  onClick={toggleUser}
+                  className="bi bi-arrow-left text-2xl text-white cursor-pointer"
+                ></i>
+                <span className="border-b-2 border-yellow-300 text-base font-semibold text-white">
+                  Basic Details
+                </span>
+              </div>
+              <div>
+                <i
+                  onClick={toggleUser}
+                  className=" text-2xl text-white cursor-pointer bi bi-x-lg"
+                ></i>
+              </div>
+            </header>
           </div>
         </div>
       </div>
@@ -213,7 +260,6 @@ const Profile = () => {
       <BasicDetails />
       <ContactDetails />
       <EducationDetails />
-      <BasicDetailModal />
       <PreferenceDetails />
     </HomeLayout>
   );
