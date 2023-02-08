@@ -20,6 +20,11 @@ export default function HomeLayout({ children }) {
       name: "Colleges",
       location: "/College",
     },
+    {
+      icon: "bi-buildings-fill",
+      name: "Feed",
+      location: "/College",
+    },
 
     {
       icon: "bi-file-earmark-fill",
@@ -92,11 +97,9 @@ export default function HomeLayout({ children }) {
           {router.pathname == "/Profile" ? (
             ""
           ) : (
-            <Link href="/Profile" >
-            
-            <a className=" text-xs">
-              Mange your profile
-            </a></Link>
+            <Link href="/Profile">
+              <a className=" text-xs">Mange your profile</a>
+            </Link>
           )}
           <a href="/" className=" text-xs">
             Track your Admission journey

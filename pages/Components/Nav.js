@@ -176,14 +176,9 @@ const Nav = () => {
 
           <i className="bi font-bold text-xl bi-search cursor-pointer "></i>
         </form>
-        <div className="bg-white p-5 flex flex-col sm:flex-row justify-between gap-2 container m-auto ">
+        <div className="bg-white p-5 grid sm:grid-cols-2 grid-rows-1 place-items-center gap-2 container m-auto ">
           <Link href="/">
-            <div className=" cursor-pointer w-full sm:w-2/4 bg-slate-200 px-5 py-2 rounded-sm">
-              <h1 className="text-sm cursor-pointer font-semibold">COEP</h1>
-            </div>
-          </Link>
-          <Link href="/">
-            <div className=" cursor-pointer w-full sm:w-2/4 bg-slate-200 px-5 py-2 rounded-sm">
+            <div className=" cursor-pointer w-full  bg-slate-100 px-5 py-3 rounded-sm">
               <h1 className="text-sm cursor-pointer font-semibold">COEP</h1>
             </div>
           </Link>

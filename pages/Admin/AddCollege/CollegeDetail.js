@@ -234,6 +234,21 @@ const CollegeDetail = () => {
             </div>
           </div>
 
+          <div className="mb-4">
+            <label
+              className="block text-grey-darker text-sm font-bold mb-2"
+              htmlFor="iFrameLocation"
+            >
+              IFrame Location
+            </label>
+            <input
+              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+              id="iFrameLocation"
+              type="text"
+              placeholder="Ex: <iframe>...</iframe>"
+            />
+          </div>
+
           <div className=" font-semibold text-slate-400 bg-white py-5">
             Contact Information
           </div>

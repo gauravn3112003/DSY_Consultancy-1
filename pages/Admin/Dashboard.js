@@ -72,7 +72,7 @@ const HeaderFilter = () => {
   return (
     <div className="relative  rounded-sm mt-5  items-center p-5 flex justify-between h-14 mb-0  bg-white w-full">
       {/* <p className="font-semibold text-slate-400">College</p> */}
-      <div className="font-semibold">View Data</div>
+      <div className="font-semibold">Dashboard</div>
       <div className="cursor-pointer relative">
         <i className="bi bi-three-dots-vertical " onClick={toggleUser}></i>
 

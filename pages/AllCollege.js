@@ -137,7 +137,15 @@ const BreadCrumb = () => {
 
 const CollegeCard = () => {
   return (
-    <Link href="/">
+    <Link
+      href={{
+        pathname: `/CollegeDa/[cName]`,
+        query: {
+          id: "HeyCollegeswala",
+          cName: "COEP",
+        },
+      }}
+    >
       <article className="flex flex-col bg-white cursor-pointer ">
         <p
           rel="noopener noreferrer"

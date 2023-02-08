@@ -1,6 +1,7 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Link from "next/link";
+
 const College = () => {
   const SingleCollege = () => {
     return (
@@ -11,7 +12,6 @@ const College = () => {
             alt=""
           />
         </div>
-
         <div className="CData">
           <h1 className="font-bold text-xl">College of engineering Pune</h1>
           <div className="CShortData">
@@ -36,9 +36,19 @@ const College = () => {
         </div>
 
         <div className="CBtn">
-          <button type="button" className="pBtn px-3 text-sm py-2">
-            Read More
-          </button>
+          <Link
+            href={{
+              pathname: `/CollegeDa/[id]`,
+              query: {
+                id: "HeyCollegeswala",
+                cName: "COEP",
+              },
+            }}
+          >
+            <button type="button" className="pBtn px-3 text-sm py-2">
+              Read More
+            </button>
+          </Link>
         </div>
       </div>
     );
@@ -56,7 +66,8 @@ const College = () => {
     {
       Name: "Rating",
       Location: "/",
-    }, {
+    },
+    {
       Name: "Near Me",
       Location: "/",
     },
