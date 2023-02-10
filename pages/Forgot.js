@@ -9,7 +9,11 @@ const Forgot = () => {
         <h2 className="text-gray-900 text-center text-lg font-medium title-font mb-5">
           Forgot Password
         </h2>
-        <div className="relative mb-4">
+
+        <div className="text-xs text-center bg-red-50 text-red-900 py-4 font-semibold border border-red-200">
+          Invalid E-mail
+        </div>
+        <div className=" mt-5 relative mb-4">
           <label htmlFor="email" className="leading-7 text-sm text-gray-600">
             Email
           </label>

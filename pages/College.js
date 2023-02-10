@@ -35,7 +35,7 @@ const College = () => {
           </div>
         </div>
 
-        <div className="CBtn">
+        <div className="flex flex-col gap-4">
           <Link
             href={{
               pathname: `/CollegeDa/[id]`,
@@ -47,6 +47,14 @@ const College = () => {
           >
             <a type="button" target="_blank"  className="pBtn px-3 text-sm py-2">
               Read More
+            </a>
+          </Link>
+
+          <Link
+            href="/"
+          >
+            <a type="button"  className="border px-3 text-sm py-2">
+              Schedule a call
             </a>
           </Link>
         </div>

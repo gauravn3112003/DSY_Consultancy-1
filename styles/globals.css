@@ -3,10 +3,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   background-color: var(--pBackground);
   color: black;
 }
+
 
 /* VAriables */
 :root {

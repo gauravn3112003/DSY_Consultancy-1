@@ -12,7 +12,10 @@ const Login = () => {
         <h2 className="text-gray-900 text-center text-lg font-medium title-font mb-5">
           Sign In
         </h2>
-        <div className="relative mb-4">
+        <div className="text-xs text-center text-red-900 bg-red-50 py-4 font-semibold border border-red-200">
+          Incorrect Password
+        </div>
+        <div className="relative mb-4 mt-5">
           <label htmlFor="Username" className="leading-7 text-sm text-gray-600">
             Username & Email
           </label>

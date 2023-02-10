@@ -9,8 +9,11 @@ const Register = () => {
         <h2 className="text-gray-900 text-center text-lg font-medium title-font mb-5">
           Sign Up
         </h2>
+        <div className="text-xs text-center bg-red-50 text-red-900 py-4 font-semibold border border-red-200">
+          Customer Already Exist
+        </div>
 
-        <div className="relative mb-4">
+        <div className="relative mb-4 mt-5">
           <label htmlFor="Username" className="leading-7 text-sm text-gray-600">
             Username
           </label>
@@ -80,11 +83,11 @@ const Register = () => {
             By clicking Sign Up, you agree to our{" "}
             <span className="pColor">
               {" "}
-              <a href="/">Terms</a>,<a href="/"> Privacy Policy</a>
+              <a href="/" className="font-semibold" >Terms</a>,<a href="/" className="font-semibold" > Privacy Policy</a>
             </span>{" "}
             and
             <span className="pColor">
-              <a href="/"> Cookies Policy</a>.
+              <a href="/" className="font-semibold" > Cookies Policy</a>.
             </span>
           </label>
         </div>
