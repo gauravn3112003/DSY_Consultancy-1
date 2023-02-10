@@ -50,6 +50,10 @@ body {
 }
 
 /* Utilities */
+
+td,tr,th{
+  border: 0.5px solid rgba(0, 0, 0, 0.205);
+}
 .pBtn {
   background-color: var(--pColor);
   color: var(--btn-color);

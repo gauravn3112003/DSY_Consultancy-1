@@ -52,141 +52,254 @@ const SunEditor = dynamic(() => import("suneditor-react"), {
 });
 
 const TextEditor = () => {
-  const [valueText, setValueText] = useState("");
+  const CollegeTextEditor = () => {
+    const [valueText, setValueText] = useState("");
 
-  function handleChange(content) {
-    setValueText(content);
-  }
-  console.log("Content : " + valueText);
-  return (
-    <AddCollegeDetails>
-      <Stepper />
-      <div className=" container m-auto p-5 bg-white">
-        <div className="">
-          <div className="mb-5">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="InstituteCode"
-            >
-              Institute Code :
-            </label>
-            <input
-              type="text"
-              name="ChoicceCode"
-              className="rounded-sm  px-2 py-1 bg-white  border"
-            />
-          </div>
+    function handleChange(content) {
+      setValueText(content);
+    }
+    return (
+      <AddCollegeDetails>
+        <Stepper />
+        <div className=" container m-auto p-5 bg-white">
+          <div className="">
+            <div className="mb-5">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="InstituteCode"
+              >
+                Institute Code :
+              </label>
+              <input
+                type="text"
+                name="ChoicceCode"
+                className="rounded-sm  px-2 py-1 bg-white  border"
+              />
+            </div>
 
-          <SunEditor
-            // value={valueText}
-            onChange={handleChange}
-            placeholder="Write brief information"
-            height="100%"
-            setOptions={{
-              mode: "Classic",
+            <SunEditor
+              // value={valueText}
+              onChange={handleChange}
+              placeholder="Write brief information"
+              height="100%"
+              setOptions={{
+                mode: "Classic",
 
-              rtl: false,
+                rtl: false,
 
-              katex: "window.katex",
+                katex: "window.katex",
 
-              imageGalleryUrl:
-                "https://etyswjpn79.execute-api.ap-northeast-1.amazonaws.com/suneditor-demo",
+                imageGalleryUrl:
+                  "https://etyswjpn79.execute-api.ap-northeast-1.amazonaws.com/suneditor-demo",
 
-              videoFileInput: false,
+                videoFileInput: false,
 
-              tabDisable: false,
-              buttonList: [
-                [
-                  "undo",
+                tabDisable: false,
+                buttonList: [
+                  [
+                    "undo",
 
-                  "redo",
+                    "redo",
 
-                  "font",
+                    "font",
 
-                  "fontSize",
+                    "fontSize",
 
-                  "formatBlock",
+                    "formatBlock",
 
-                  "paragraphStyle",
+                    "paragraphStyle",
 
-                  "blockquote",
+                    "blockquote",
 
-                  "bold",
+                    "bold",
 
-                  "underline",
+                    "underline",
 
-                  "italic",
+                    "italic",
 
-                  "strike",
+                    "strike",
 
-                  "subscript",
+                    "subscript",
 
-                  "superscript",
+                    "superscript",
 
-                  "fontColor",
+                    "fontColor",
 
-                  "hiliteColor",
+                    "hiliteColor",
 
-                  "textStyle",
+                    "textStyle",
 
-                  "removeFormat",
+                    "removeFormat",
 
-                  "outdent",
+                    "outdent",
 
-                  "indent",
+                    "indent",
 
-                  "align",
+                    "align",
 
-                  "horizontalRule",
+                    "horizontalRule",
 
-                  "list",
+                    "list",
 
-                  "lineHeight",
+                    "lineHeight",
 
-                  "table",
+                    "table",
 
-                  "link",
+                    "link",
 
-                  "image",
+                    "image",
 
-                  "video",
+                    "video",
 
-                  "audio",
+                    "audio",
 
-                  "math",
+                    "math",
 
-                  "imageGallery",
+                    "imageGallery",
 
-                  "fullScreen",
+                    "fullScreen",
 
-                  "showBlocks",
+                    "showBlocks",
 
-                  "codeView",
+                    "codeView",
 
-                  "preview",
+                    "preview",
 
-                  "print",
+                    "print",
 
-                  "save",
+                    "save",
 
-                  "template",
+                    "template",
+                  ],
                 ],
-              ],
 
-
-              "lang(In nodejs)": "en",
-            }}
-          />
-          <button type="submit" className="pBtn px-10 mt-5 py-3">
-            Submit
-          </button>
+                "lang(In nodejs)": "en",
+              }}
+            />
+            <button type="submit" className="pBtn px-10 mt-5 py-3">
+              Submit
+            </button>
+          </div>
+          <div className="mt-7 bg-white p-5">
+            <h1 className="font-semibold text-slate-400 mb-5">Preview</h1>
+            <CollegeData data={valueText} />
+          </div>
         </div>
-        <div className="mt-7 bg-white p-5">
-          <h1 className="font-semibold text-slate-400 mb-5">Preview</h1>
-          <div dangerouslySetInnerHTML={{ __html: valueText }} />
+      </AddCollegeDetails>
+    );
+  };
+
+  const CollegeCard = () => {
+    return (
+      <div className="flex flex-col w-full sm:w-80 bg-slate-100 cursor-pointer ">
+        <p
+          rel="noopener noreferrer"
+          aria-label="Te nulla oportere reprimique his dolorum"
+        >
+          <img
+            className="object-cover cursor-pointer w-full h-52 "
+            src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          />
+        </p>
+        <div className="flex flex-col flex-1 p-6">
+          <p
+            rel="noopener noreferrer"
+            aria-label="Te nulla oportere reprimique his dolorum"
+          ></p>
+          <a
+            rel="noopener noreferrer"
+            className="text-xs tracking-wider uppercase hover:underline dark:text-violet-400"
+          >
+            Convenire
+          </a>
+          <Link
+            target="_blank"
+            href={{
+              pathname: `/CollegeDa/[id]`,
+              query: {
+                id: "HeyCollegeswala",
+                cName: "COEP",
+              },
+            }}
+          >
+            <a target="_blank" className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug">
+              Te nulla oportere reprimique his dolorum
+            </a>
+          </Link>
+          <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
+            <span>June 1, 2020</span>
+          </div>
         </div>
       </div>
-    </AddCollegeDetails>
+    );
+  };
+
+  const CollegeData = (props) => {
+    return (
+      <>
+        <div className="container bg-white rounded-sm  mx-auto space-y-12">
+          <article className=" ">
+            <div className="space-y-6 border-b-2 pb-5">
+              <h1 className="text-4xl font-bold sm:text-3xl md:tracking-tight ">
+                Suspendisse ut magna et ipsum sodales accumsan.
+              </h1>
+              <div className="flex items-start text-slate-400 justify-between w-full flex-row md:items-center ">
+                <div className="flex items-center ">
+                  <img
+                    src="/img/logo.svg"
+                    alt=""
+                    className="w-4 h-4 border mr-2 rounded-full "
+                  />
+                  <p className="text-sm ">Gaurav Narnaware • July 19th, 2021</p>
+                </div>
+                <p className=" text-sm ">4 min read • 1,570 views</p>
+              </div>
+            </div>
+            <div className="mt-5 overflow-x-scroll">
+              <div dangerouslySetInnerHTML={{ __html: props.data }} />
+            </div>
+          </article>
+          <div>
+            <div className="flex flex-wrap py-6 space-x-2 border-b-2 border-dashed ">
+              <a
+                rel="noopener noreferrer"
+                href="#"
+                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
+              >
+                #MambaUI
+              </a>
+              <a
+                rel="noopener noreferrer"
+                href="#"
+                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
+              >
+                #TailwindCSS
+              </a>
+              <a
+                rel="noopener noreferrer"
+                href="#"
+                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
+              >
+                #Angular
+              </a>
+            </div>
+            <div className="space-y-2 mt-5">
+              <h4 className="text-lg font-semibold">More Colleges</h4>
+              <div className="flex  gap-5 flex-wrap ">
+                <CollegeCard />
+                <CollegeCard />
+                <CollegeCard />
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  };
+  return (
+    <>
+      <CollegeTextEditor />
+    </>
   );
 };
 

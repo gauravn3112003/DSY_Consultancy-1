@@ -42,12 +42,12 @@ const College = () => {
               query: {
                 id: "HeyCollegeswala",
                 cName: "COEP",
-              },
+              },  
             }}
           >
-            <button type="button" className="pBtn px-3 text-sm py-2">
+            <a type="button" target="_blank"  className="pBtn px-3 text-sm py-2">
               Read More
-            </button>
+            </a>
           </Link>
         </div>
       </div>

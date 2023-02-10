@@ -137,16 +137,8 @@ const BreadCrumb = () => {
 
 const CollegeCard = () => {
   return (
-    <Link
-      href={{
-        pathname: `/CollegeDa/[cName]`,
-        query: {
-          id: "HeyCollegeswala",
-          cName: "COEP",
-        },
-      }}
-    >
-      <article className="flex flex-col bg-white cursor-pointer ">
+    <>
+      <div target="_blank" className="flex flex-col bg-white cursor-pointer ">
         <p
           rel="noopener noreferrer"
           aria-label="Te nulla oportere reprimique his dolorum"
@@ -167,15 +159,29 @@ const CollegeCard = () => {
           >
             Convenire
           </a>
-          <h3 className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug">
-            Te nulla oportere reprimique his dolorum
-          </h3>
+          <Link
+            target="_blank"
+            href={{
+              pathname: `/CollegeDa/[id]`,
+              query: {
+                id: "HeyCollegeswala",
+                cName: "COEP",
+              },
+            }}
+          >
+            <a
+              target="_blank"
+              className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug"
+            >
+              Te nulla oportere reprimique his dolorum
+            </a>
+          </Link>
           <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
             <span>June 1, 2020</span>
           </div>
         </div>
-      </article>
-    </Link>
+      </div>
+    </>
   );
 };
 
