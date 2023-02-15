@@ -53,6 +53,7 @@ var College = [
       },
     ],
     InstituteCode: 788541,
+    iframe: "",
     CollegeUnder: "Government",
     CollegeType: "Autonomous",
     Univercity: "Autonomous",
