@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
-import AddCollegeDetails from "./AddCollegeDetails";
+import AddCollegeDetails from "../AddCollegeDetails";
 
 const Stepper = () => {
   return (
@@ -63,18 +63,30 @@ const TextEditor = () => {
         <Stepper />
         <div className=" container m-auto p-5 bg-white">
           <div className="">
-            <div className="mb-5">
-              <label
-                className="block text-grey-darker text-sm font-bold mb-2"
-                htmlFor="InstituteCode"
-              >
-                Institute Code :
-              </label>
-              <input
-                type="text"
-                name="ChoicceCode"
-                className="rounded-sm  px-2 py-1 bg-white  border"
-              />
+            <div className="mb-5 ">
+              <div>
+                <label
+                  className="block text-grey-darker text-sm font-bold mb-2"
+                  htmlFor="InstituteCode"
+                >
+                  Institute Code :
+                </label>
+                <input
+                  placeholder="Ex. 1001"
+                  type="text"
+                  name="ChoicceCode"
+                  className="  rounded-sm outline-none  px-2 py-1 bg-white  border"
+                />
+                <button
+                  type="button"
+                  className="bg-red-500 px-5 text-white text-base font-semibold py-1 ml-5"
+                >
+                  Check
+                </button>
+              </div>
+              <div className="text-xs mt-2 text-red-700 font-semibold  ">
+                Institute already Exists
+              </div>
             </div>
 
             <SunEditor
@@ -222,7 +234,10 @@ const TextEditor = () => {
               },
             }}
           >
-            <a target="_blank" className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug">
+            <a
+              target="_blank"
+              className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug"
+            >
               Te nulla oportere reprimique his dolorum
             </a>
           </Link>
