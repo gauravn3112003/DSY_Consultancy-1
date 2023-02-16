@@ -1,7 +1,7 @@
 import mongoose, { models } from "mongoose";
 const { Schema } = mongoose;
 
-const CollegeSchema = new Schema(
+const collegeSchema = new Schema(
   {
   Name: String,
   InstituteCode: Number,
@@ -225,4 +225,4 @@ const CollegeSchema = new Schema(
     default: Date.now,
   },
 });
-export default mongoose.models.blog || mongoose.model("college", CollegeSchema);
+export default mongoose.models.college || mongoose.model("college", collegeSchema);
