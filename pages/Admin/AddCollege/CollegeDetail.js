@@ -1,6 +1,7 @@
 import React from "react";
 import AddCollegeDetails from "../AddCollegeDetails";
 import Link from "next/link";
+import InstituteCheck from "./InstituteCheck";
 
 const Stepper = () => {
   return (
@@ -50,31 +51,7 @@ const CollegeDetail = () => {
       <AddCollegeDetails>
         <Stepper />
         <div className="w-full p-5 h-auto bg-white ">
-          <div className="mb-5 ">
-            <div>
-              <label
-                className="block text-grey-darker text-sm font-bold mb-2"
-                htmlFor="InstituteCode"
-              >
-                Institute Code :
-              </label>
-              <input
-                placeholder="Ex. 1001"
-                type="text"
-                name="ChoicceCode"
-                className="  rounded-sm outline-none  px-2 py-1 bg-white  border"
-              />
-              <button
-                type="button"
-                className="bg-red-500 px-5 text-white text-base font-semibold py-1 ml-5"
-              >
-                Check
-              </button>
-            </div>
-            <div className="text-xs mt-2 text-red-700 font-semibold  ">
-              Institute already Exists
-            </div>
-          </div>
+         <InstituteCheck/>
 
           <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
             <div className="sm:w-1/2  mr-1 mb-2  w-full">
@@ -85,7 +62,7 @@ const CollegeDetail = () => {
                 College Name
               </label>
               <input
-                className=" bg-white border  w-full rounded-sm  py-2 px-3 text-grey-darker"
+                className=" bg-white border  w-full rounded-sm outline-none  py-2 px-3 text-grey-darker"
                 type="text"
                 placeholder="Enter College name"
               />
@@ -98,7 +75,7 @@ const CollegeDetail = () => {
                 Institute Code
               </label>
               <input
-                className=" bg-white w-full border rounded-sm  py-2 px-3 text-grey-darker"
+                className=" bg-white w-full border rounded-sm  outline-none py-2 px-3 text-grey-darker"
                 id="InstituteCode"
                 type="number"
                 placeholder="Institute Code"
@@ -141,7 +118,7 @@ const CollegeDetail = () => {
                 Approved By
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="ApprovedBy"
                 type="text"
                 placeholder="Enter Approved By"
@@ -155,7 +132,7 @@ const CollegeDetail = () => {
                 Rating
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="Rating"
                 type="text"
                 placeholder="Enter Rating"
@@ -176,7 +153,7 @@ const CollegeDetail = () => {
                 Address Line
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="AddressLine"
                 type="text"
                 placeholder="Enter College Address"
@@ -190,7 +167,7 @@ const CollegeDetail = () => {
                 Taluka
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="Taluka"
                 type="text"
                 placeholder="Enter Taluka"
@@ -207,7 +184,7 @@ const CollegeDetail = () => {
                 District
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="District"
                 type="text"
                 placeholder="Enter District"
@@ -221,7 +198,7 @@ const CollegeDetail = () => {
                 City
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="City"
                 type="text"
                 placeholder="Enter City"
@@ -238,7 +215,7 @@ const CollegeDetail = () => {
                 Longitute
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="Longitute"
                 type="text"
                 placeholder="Enter Longitute"
@@ -252,7 +229,7 @@ const CollegeDetail = () => {
                 Latitute
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="Latitute"
                 type="text"
                 placeholder="Enter Latitute"
@@ -268,7 +245,7 @@ const CollegeDetail = () => {
               IFrame Location
             </label>
             <input
-              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
               id="iFrameLocation"
               type="text"
               placeholder="Ex: <iframe>...</iframe>"
@@ -288,7 +265,7 @@ const CollegeDetail = () => {
                 Contact NO
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="ContactNO"
                 type="number"
                 placeholder="Enter Contact NO"
@@ -302,7 +279,7 @@ const CollegeDetail = () => {
                 Website
               </label>
               <input
-                className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+                className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
                 id="Website"
                 type="text"
                 placeholder="Enter Website"
@@ -318,7 +295,7 @@ const CollegeDetail = () => {
               E-mail
             </label>
             <input
-              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
+              className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
               id="Email"
               type="email"
               placeholder="Enter Email"
@@ -328,33 +305,19 @@ const CollegeDetail = () => {
           <div className="mb-4">
             <label
               className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="TopRecuiters"
+              htmlFor="TopRecruiters"
             >
-              Top Recuiters
+              Top Recruiters
             </label>
             <input
-              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
-              id="TopRecuiters"
+              className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
+              id="TopRecruiters"
               type="text"
-              placeholder="Enter Top Recuiters"
+              placeholder="Enter Top Recruiters"
             />
           </div>
 
-          <div className="mb-4">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              className=" bg-white border rounded-sm  w-full py-2 px-3 text-grey-darker"
-              id="password"
-              type="password"
-              placeholder="Your secure password"
-            />
-            <p className="text-grey text-xs mt-1">At least 6 characters</p>
-          </div>
+        
           <button className=" w-32 pBtn px-5 py-3  " type="submit">
             Submit
           </button>

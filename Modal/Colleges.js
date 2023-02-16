@@ -1,5 +1,4 @@
 import mongoose, { models } from "mongoose";
-const date = require("date-and-time");
 const { Schema } = mongoose;
 
 const CollegeSchema = new Schema(
@@ -219,7 +218,7 @@ const CollegeSchema = new Schema(
   },
   ApprovedBy: String,
   Image: String,
-  TopRecuiters: String,
+  TopRecruiters: String,
   FullDescription: String,
   UpdatedDate: {
     type: Date,

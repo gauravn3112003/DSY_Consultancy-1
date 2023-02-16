@@ -1,6 +1,7 @@
 import React from "react";
 import AddCollegeDetails from "../AddCollegeDetails";
 import Link from "next/link";
+import InstituteCheck from "./InstituteCheck";
 
 const Stepper = () => {
   return (
@@ -47,31 +48,7 @@ const AddDepartment = () => {
     <AddCollegeDetails>
       <Stepper />
       <div className="w-full p-5 h-auto bg-white ">
-        <div className="mb-5 ">
-          <div>
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="InstituteCode"
-            >
-              Institute Code :
-            </label>
-            <input
-              placeholder="Ex. 1001"
-              type="text"
-              name="ChoicceCode"
-              className="  rounded-sm outline-none  px-2 py-1 bg-white  border"
-            />
-            <button
-              type="button"
-              className="bg-red-500 px-5 text-white text-base font-semibold py-1 ml-5"
-            >
-              Check
-            </button>
-          </div>
-          <div className="text-xs mt-2 text-red-700 font-semibold  ">
-            Institute already Exists
-          </div>
-        </div>
+       <InstituteCheck/>
 
         <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
           <div className="sm:w-1/2  mr-1 mb-2  w-full">
@@ -132,24 +109,305 @@ const AddDepartment = () => {
           </div>
         </div>
 
-        <div className="bg-slate-50 p-5  rounded-sm">
+        <div className=" rounded-sm">
           <h1 className="text-sm font-bold">Category</h1>
 
-        <div>
-        <div className="w-52  rounded-sm bg-white mt-5 p-3 ">
-            <h3 className="font-semibold text-sm mb-3 ">OPEN</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <input type="text" placeholder="Category" name="" className="text-xs px-2 py-1 outline-none border rounded-sm " />
-              <input type="text" placeholder="Annual fees" name="" className="text-xs px-2 py-1 outline-none border rounded-sm " />
-              <input type="text" placeholder="Min" name="" className="text-xs px-2 py-1 outline-none border rounded-sm " />
-              <input type="text" placeholder="Max" name="" className="text-xs px-2 py-1 outline-none border rounded-sm " />
-              <input type="text" placeholder="Seats" name="" className="text-xs px-2 py-1 outline-none border rounded-sm " />
+          <div className="grid grid-cols-1 sm:grid-cols-5 ">
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">OPEN</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
             </div>
 
-            
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">ST</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">OBC</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">NT</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">VJ</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">SC</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">EWS</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
+
+            <div className="sm:w-52  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+              <h3 className="font-semibold text-sm mb-3 ">SEBC</h3>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="text"
+                  placeholder="Category"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Annual fees"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Min"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Max"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+                <input
+                  type="text"
+                  placeholder="Seats"
+                  name=""
+                  className="text-xs px-2 py-1 bg-white  outline-none border rounded-sm "
+                />
+              </div>
+            </div>
           </div>
         </div>
-        </div>
+
+
+
+
+
+        <button type="submit" className="mt-5 pBtn px-10 py-2 ">Submit</button>
       </div>
     </AddCollegeDetails>
   );
