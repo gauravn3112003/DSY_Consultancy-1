@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 const InstituteCheck = () => {
+  const [instituteCode, setInstituteCode] = useState({});
+  const [message, setMessage] = useState("");
+  const onChange = (e) => {
+    setInstituteCode({
+      ...instituteCode,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onCheck = async (e) => {
+    e.preventDefault();
+    const { insCode } = instituteCode;
+    onSubmit(insCode);
+  };
+  const onSubmit = async (insCode) => {
+    const res = await fetch("/api/checkCollege", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        instituteCode: insCode,
+      }),
+    });
+
+    const res2 = await res.json();
+    if (res2.msg) {
+      setMessage(res2.msg);
+    } else {
+      setMessage(res2.error);
+    }
+  };
   return (
     <div>
       <div className="mb-5 ">
-        <div>
+        <form onSubmit={onCheck}>
           <label
             className="block text-grey-darker text-sm font-bold mb-2"
             htmlFor="InstituteCode"
@@ -13,19 +45,22 @@ const InstituteCheck = () => {
           </label>
           <input
             placeholder="Ex. 1001"
-            type="text"
-            name="ChoicceCode"
+            onChange={onChange}
+            value={instituteCode.insCode ? instituteCode.insCode : ""}
+            type="number"
+            required={true}
+            name="insCode"
             className="  rounded-sm outline-none  px-2 py-1 bg-white  border"
           />
           <button
-            type="button"
+            type="submit"
             className="bg-red-500 px-5 text-white text-base font-semibold py-1 ml-5"
           >
             Check
           </button>
-        </div>
+        </form>
         <div className="text-xs mt-2 text-red-700 font-semibold  ">
-          Institute already Exists
+          {message}
         </div>
       </div>
     </div>
