@@ -16,15 +16,18 @@ const InstituteCheck = () => {
     onSubmit(insCode);
   };
   const onSubmit = async (insCode) => {
-    const res = await fetch("/api/checkCollege", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        instituteCode: insCode,
-      }),
-    });
+    const res = await fetch(
+      "/api/checkCollege",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          instituteCode: insCode,
+        }),
+      }
+    );
 
     const res2 = await res.json();
     if (res2.msg) {
