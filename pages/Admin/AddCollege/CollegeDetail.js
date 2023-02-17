@@ -51,7 +51,7 @@ const CollegeDetail = () => {
       <AddCollegeDetails>
         <Stepper />
         <div className="w-full p-5 h-auto bg-white ">
-         <InstituteCheck/>
+          <InstituteCheck />
 
           <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
             <div className="sm:w-1/2  mr-1 mb-2  w-full">
@@ -138,6 +138,21 @@ const CollegeDetail = () => {
                 placeholder="Enter Rating"
               />
             </div>
+          </div>
+
+          <div className="mb-4">
+            <label
+              className="block text-grey-darker text-sm font-bold mb-2"
+              htmlFor="University"
+            >
+              University
+            </label>
+            <input
+              className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
+              id="University"
+              type="text"
+              placeholder="University "
+            />
           </div>
 
           <div className=" font-semibold text-slate-400 bg-white py-5">
@@ -252,6 +267,21 @@ const CollegeDetail = () => {
             />
           </div>
 
+          <div className="mb-4">
+            <label
+              className="block text-grey-darker text-sm font-bold mb-2"
+              htmlFor="image"
+            >
+              Image
+            </label>
+            <input
+              className=" bg-white border rounded-sm  w-full outline-none py-2 px-3 text-grey-darker"
+              id="image"
+              type="text"
+              placeholder="Ex: http://localhost:3000/img/hero.png"
+            />
+          </div>
+
           <div className=" font-semibold text-slate-400 bg-white py-5">
             Contact Information
           </div>
@@ -317,7 +347,6 @@ const CollegeDetail = () => {
             />
           </div>
 
-        
           <button className=" w-32 pBtn px-5 py-3  " type="submit">
             Submit
           </button>
