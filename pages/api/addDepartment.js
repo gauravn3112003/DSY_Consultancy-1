@@ -3,20 +3,26 @@ import Colleges from "../../Modal/Colleges";
 initDB();
 
 export default async (req, res) => {
-  const { CourseName, InstituteCode, AnnalFee, ChoiceCode, CName } = req.body;
+  const { courseName, instituteCode, annalFee, choiceCode, cName } = req.body;
   let dep = {
-    CourseName,
-    AnnalFee,
-    ChoiceCode,
-    CName,
+    courseName,
+    annalFee,
+    choiceCode,
+    cName,
   };
 
-  const filter = { InstituteCode: InstituteCode };
+  const filter = { instituteCode: instituteCode };
+  const update = { $push: { department: dep } };
 
-  const update = { $push: { Department: dep } };
   try {
+    const checkDep = await Colleges.findOne({
+      department: { $elemMatch: { choiceCode } },
+    });
+    if (checkDep) {
+      return res.status(422).json({ error: "department already added" });
+    }
     const addDep = await Colleges.findOneAndUpdate(filter, update);
-    res.status(201).json({ msg: "Department Added", addDep });
+    res.status(201).json({ msg: "department Added", addDep });
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
   }

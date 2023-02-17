@@ -1,228 +1,63 @@
 import mongoose, { models } from "mongoose";
 const { Schema } = mongoose;
 
-const collegeSchema = new Schema(
-  {
-  Name: String,
-  InstituteCode: Number,
-  Iframe: String,
-  CollegeUnder: String,
-  CollegeType: String,
-  University: String,
-  Department: [
+const collegeSchema = new Schema({
+  name: String,
+  instituteCode: Number,
+  iframe: String,
+  collegeUnder: String,
+  collegeType: String,
+  university: String,
+  department: [
     {
-      CourseName: String,
-      AnnalFee: Number,
-      ChoiceCode: Number,
-      CName: String,
-      Categories: [
+      courseName: String,
+      annalFee: Number,
+      choiceCode: Number,
+      cName: String,
+      categories: [
         {
-          Category: {
+          category: {
             type: String,
-            default: "Open",
           },
-          Min: {
+          min: {
             type: String,
-            default: "0",
           },
-          Max: {
+          max: {
             type: String,
-            default: "0",
           },
-          AFees: {
+          aFees: {
             type: String,
-            default: "0",
           },
-          ASeats: {
+          aSeats: {
             type: String,
-            default: "0",
-          },
-        },
-        {
-          Category: {
-            type: String,
-            default: "ST",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "OBC",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "NT",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "VJ",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "SC",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "EWS",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
-          },
-        },
-
-        {
-          Category: {
-            type: String,
-            default: "SEBC",
-          },
-          Min: {
-            type: String,
-            default: "0",
-          },
-          Max: {
-            type: String,
-            default: "0",
-          },
-          AFees: {
-            type: String,
-            default: "0",
-          },
-          ASeats: {
-            type: String,
-            default: "0",
           },
         },
       ],
     },
   ],
 
-  Location: {
-    AddressLine: String,
-    Taluka: String,
-    District: String,
-    City: String,
-    Latitude: String,
-    Longitude: String,
+  location: {
+    addressLine: String,
+    taluka: String,
+    district: String,
+    city: String,
+    latitude: String,
+    longitude: String,
   },
-  Rating: String,
-  Contacts: {
-    ContactNo: Number,
-    Website: String,
-    Email: String,
+  rating: String,
+  contacts: {
+    contactNo: Number,
+    website: String,
+    email: String,
   },
-  ApprovedBy: String,
-  Image: String,
-  TopRecruiters: String,
-  FullDescription: String,
-  UpdatedDate: {
+  approvedBy: String,
+  image: String,
+  topRecruiters: String,
+  fullDescription: String,
+  updatedDate: {
     type: Date,
     default: Date.now,
   },
 });
-export default mongoose.models.college || mongoose.model("college", collegeSchema);
+export default mongoose.models.college ||
+  mongoose.model("college", collegeSchema);

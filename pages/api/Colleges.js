@@ -12,56 +12,56 @@ export default async (req, res) => {
 // To Add College
 const addCollege = async (req, res) => {
   const {
-    Name,
-    InstituteCode,
-    Iframe,
-    CollegeUnder,
-    CollegeType,
-    University,
-    AddressLine,
-    Taluka,
-    District,
-    City,
-    Latitude,
-    Longitude,
-    Rating,
-    ContactNo,
-    Website,
-    Email,
-    ApprovedBy,
-    Image,
-    TopRecruiters,
+    name,
+    instituteCode,
+    iframe,
+    collegeUnder,
+    collegeType,
+    university,
+    addressLine,
+    taluka,
+    district,
+    city,
+    latitude,
+    longitude,
+    rating,
+    contactNo,
+    website,
+    email,
+    approvedBy,
+    image,
+    topRecruiters,
   } = req.body;
 
   try {
-    const checkCollege = await Colleges.findOne({ InstituteCode });
+    const checkCollege = await Colleges.findOne({ instituteCode });
     if (checkCollege) {
       return res.status(422).json({ error: "Already College Added" });
     }
     const college = await new Colleges({
-      Name,
-      InstituteCode,
-      Iframe,
-      CollegeUnder,
-      CollegeType,
-      University,
-      Location: {
-        AddressLine,
-        Taluka,
-        District,
-        City,
-        Latitude,
-        Longitude,
+      name,
+      instituteCode,
+      iframe,
+      collegeUnder,
+      collegeType,
+      university,
+      location: {
+        addressLine,
+        taluka,
+        district,
+        city,
+        latitude,
+        longitude,
       },
-      Rating,
-      Contacts: {
-        ContactNo,
-        Website,
-        Email,
+      rating,
+      contacts: {
+        contactNo,
+        website,
+        email,
       },
-      ApprovedBy,
-      Image,
-      TopRecruiters,
+      approvedBy,
+      image,
+      topRecruiters,
     }).save();
     res.status(201).json({ msg: "College Added", college });
   } catch (err) {
