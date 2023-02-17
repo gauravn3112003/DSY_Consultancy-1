@@ -3,9 +3,6 @@ import Colleges from "../../Modal/Colleges";
 initDB();
 export default async (req, res) => {
   switch (req.method) {
-    case "GET":
-      await fetchBlog(req, res);
-      break;
     case "POST":
       await addCollege(req, res);
       break;
@@ -37,7 +34,11 @@ const addCollege = async (req, res) => {
   } = req.body;
 
   try {
-   const college = await new Colleges({
+    const checkCollege = await Colleges.findOne({ InstituteCode });
+    if (checkCollege) {
+      return res.status(422).json({ error: "Already College Added" });
+    }
+    const college = await new Colleges({
       Name,
       InstituteCode,
       Iframe,
@@ -62,18 +63,8 @@ const addCollege = async (req, res) => {
       Image,
       TopRecruiters,
     }).save();
-    res.status(201).json(college);
+    res.status(201).json({ msg: "College Added", college });
   } catch (err) {
-    res.status(500).json({ error: err });
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-// // Fetch All Blogs
-// const fetchBlog = async (req, res) => {
-//   try {
-//     const blog = await Blogs.find();
-//     res.status(200).json(blog);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
