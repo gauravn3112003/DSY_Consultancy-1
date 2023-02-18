@@ -1,6 +1,7 @@
 import Dash from "directsecondyearadmission/Layout/Dash";
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
-import React from "react";
+import React, { useEffect } from "react";
+import baseUrl from "../../baseUrl";
 
 import Link from "next/link";
 import { useState } from "react";
@@ -100,8 +101,24 @@ const HeaderFilter = () => {
   );
 };
 
-const Dashboard = ({ children, college }) => {
+const Dashboard = ({ children }) => {
+  
   const HeaderAdmin = () => {
+    const [data, setData] = useState();
+  
+    useEffect(() => {
+      const status = async () => {
+        const res = await fetch(baseUrl + "/api/colleges", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        setData(data);
+      };
+      status();
+    }, []);
     return (
       <section className="text-gray-600 rounded-sm bg-white body-font">
         <div className="container px-5 py-5 mx-auto">
@@ -114,7 +131,9 @@ const Dashboard = ({ children, college }) => {
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-                {college.length}
+              {data ? data.length :(
+                <>...</>
+              )}
               </h2>
               <p className="leading-relaxed">Colleges</p>
             </div>
@@ -138,7 +157,7 @@ const Dashboard = ({ children, college }) => {
 
   return (
     <HomeLayout>
-      <HeaderAdmin />
+      <HeaderAdmin  />
       <HeaderFilter />
 
       <div className="overflow-scroll bg-white h-full">

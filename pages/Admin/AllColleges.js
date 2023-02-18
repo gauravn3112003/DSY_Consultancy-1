@@ -2,8 +2,9 @@ import React from "react";
 import Dashboard from "./Dashboard";
 import baseUrl from "../../baseUrl";
 const AllColleges = (props) => {
+  // console.log(props);
   return (
-    <Dashboard college={props.data}>
+    <Dashboard >
       <div className="px-5  font-semibold text-slate-400 bg-white">
         All Colleges
       </div>
@@ -25,7 +26,7 @@ const AllColleges = (props) => {
           <tbody className="mt-10">
             {props.data.map((i, index) => {
               return (
-                <tr className="border-none  mt-10">
+                <tr className="border-none  mt-10" key={index}>
                   <td className="px-3 py-2   mt-2 border-none font-bold text-lg text-center">
                     <span className="text-black">{index + 1}</span>
                   </td>
