@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import UserDropdown from "./UserDropdown";
+import baseUrl from "../../baseUrl";
 
 const Nav = () => {
   const [nav, setnav] = useState("");
@@ -87,6 +88,22 @@ const Nav = () => {
       </>
     );
   };
+
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const status = async () => {
+      const res = await fetch(baseUrl + "/api/Colleges", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setData(data);
+    };
+    status();
+  }, []);
 
   return (
     <>
@@ -177,11 +194,16 @@ const Nav = () => {
           <i className="bi font-bold text-xl bi-search cursor-pointer "></i>
         </form>
         <div className="bg-white p-5 grid sm:grid-cols-2 grid-rows-1 place-items-center gap-2 container m-auto ">
-          <Link href="/">
-            <div className=" cursor-pointer w-full  bg-slate-100 px-5 py-3 rounded-sm">
-              <h1 className="text-sm cursor-pointer font-semibold">COEP</h1>
-            </div>
-          </Link>
+          {data.map((item,index) => {
+            return (
+              <Link href="/" key={index}>
+                <div className=" cursor-pointer w-full flex items-center justify-start gap-5  bg-slate-100 px-5 py-3 rounded-sm">
+                  <img src={item.image} className="w-7 border-blue-900 border h-7 rounded-full" alt=""/>
+                  <h1 className="text-sm cursor-pointer font-semibold">{item.name}</h1>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </>
