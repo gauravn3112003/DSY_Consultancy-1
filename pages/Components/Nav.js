@@ -194,7 +194,7 @@ const Nav = () => {
           <i className="bi font-bold text-xl bi-search cursor-pointer "></i>
         </form>
         <div className="bg-white p-5 grid sm:grid-cols-2 grid-rows-1 place-items-center gap-2 container m-auto ">
-          {data.map((item,index) => {
+          {/* {data.map((item,index) => {
             return (
               <Link href="/" key={index}>
                 <div className=" cursor-pointer w-full flex items-center justify-start gap-5  bg-slate-100 px-5 py-3 rounded-sm">
@@ -203,7 +203,7 @@ const Nav = () => {
                 </div>
               </Link>
             );
-          })}
+          })} */}
         </div>
       </div>
     </>

@@ -4,7 +4,7 @@ import baseUrl from "../../baseUrl";
 const AllColleges = (props) => {
   // console.log(props);
   return (
-    <Dashboard >
+    <Dashboard>
       <div className="px-5  font-semibold text-slate-400 bg-white">
         All Colleges
       </div>
@@ -20,7 +20,9 @@ const AllColleges = (props) => {
               <th className="border-none py-3 text-left px-3">College Under</th>
               <th className="border-none py-3 text-left px-3">College Type</th>
               <th className="border-none py-3 text-left px-3">City</th>
-              <th className="border-none py-3  text-center px-3">Institute Code</th>
+              <th className="border-none py-3  text-center px-3">
+                Institute Code
+              </th>
             </tr>
           </thead>
           <tbody className="mt-10">

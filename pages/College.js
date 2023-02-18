@@ -1,36 +1,76 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Link from "next/link";
+import baseUrl from "directsecondyearadmission/baseUrl";
 
-const College = () => {
-  const SingleCollege = () => {
+const College = ({ data }) => {
+  const AllCollegesData = (props) => {
+    return (
+      <div className=" h-full overflow-y-scroll w-full ">
+        {data.map((item, index) => {
+          return (
+            <span  key={index}>
+              {" "}
+              {item.instituteCode == props.data ? (
+                <SingleCollege
+                  collegeName={item.name}
+                 
+                  approvedBy={item.approvedBy}
+                  collegeType={item.collegeType}
+                  location={item.location.addressLine}
+                  instituteCode={item.instituteCode}
+                  contactNo={item.contactNo}
+                />
+              ) : (
+                ""
+              )}
+              {props.data == "" ? (
+                <SingleCollege
+                  collegeName={item.name}
+                  approvedBy={item.approvedBy}
+                  collegeType={item.collegeType}
+                  location={item.location.addressLine}
+                  instituteCode={item.instituteCode}
+                  contactNo={item.contactNo}
+                />
+              ) : (
+                ""
+              )}
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const SingleCollege = (props) => {
     return (
       <div className="PContainer rounded-sm p-5 ">
         <div className="CImage">
           <img
-            src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/College_of_Engineering%2C_Pune_logo.jpg/220px-College_of_Engineering%2C_Pune_logo.jpg"
+            className="rounded-full border-blue-900 border h-24 w-24" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/College_of_Engineering%2C_Pune_logo.jpg/220px-College_of_Engineering%2C_Pune_logo.jpg"
             alt=""
           />
         </div>
         <div className="CData">
-          <h1 className="font-bold text-xl">College of engineering Pune</h1>
+          <h1 className="font-bold text-xl">{props.collegeName} </h1>
           <div className="CShortData">
             <span className="text-xs">
-              <span className="font-semibold">Approved By :</span> AICTE,NBA{" "}
+              <span className="font-semibold">Approved By :</span>{" "}
+              {props.approvedBy}
             </span>
             <br />
             <span className="text-xs">
-              <span className="font-semibold">Type :</span> Autonomous
-              Government
+              <span className="font-semibold">Type :</span> {props.collegeType}
             </span>
             <br />
             <span className="text-xs">
-              <span className="font-semibold">Location :</span> Wellesley Rd,
-              Shivajinagar, Pune, Maharashtra 411005
+              <span className="font-semibold">Location :</span> {props.location}
             </span>
             <br />
             <span className="text-xs">
-              <span className="font-semibold">Institute Code :</span> 411005
+              <span className="font-semibold">Institute Code :</span>{" "}
+              {props.instituteCode}
             </span>
           </div>
         </div>
@@ -42,18 +82,20 @@ const College = () => {
               query: {
                 id: "HeyCollegeswala",
                 cName: "COEP",
-              },  
+              },
             }}
           >
-            <a type="button" target="_blank"  className="pBtn px-3 text-sm py-2">
+            <a
+              type="button"
+              target="_blank"
+              className="pBtn text-center px-3 text-sm py-2"
+            >
               Read More
             </a>
           </Link>
 
-          <Link
-            href="/"
-          >
-            <a type="button"  className="border px-3 text-sm py-2">
+          <Link href={`tel:+91${props.contactNo}`}>
+            <a type="button" className="border px-3 text-sm py-2">
               Schedule a call
             </a>
           </Link>
@@ -110,86 +152,76 @@ const College = () => {
   };
 
   const HeaderFilter = () => {
-    const [search, setSearch] = useState("test");
+    const [search, setSearch] = useState("");
     const inputChangedHandler = (e) => {
-      const updatedKeyword = e.target.value;
-      // May be call for search result
+      e.preventDefault();
+      setSearch(e.target.value);
     };
-
     return (
-      <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
-        {/* <p className="font-semibold text-slate-400">College</p> */}
-        <div>
-          <form>
-            <input
-              type="search"
-              name="search"
-              value={search}
-              onChange={inputChangedHandler}
-              className="text-sm bg-slate-100 px-2 py-1 rounded-sm  "
-              placeholder="Search"
-            />
-          </form>
-        </div>
-        <div className="cursor-pointer relative">
-          <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
-          <span onClick={toggleUser} className="text-slate-400">
-            Filter
-          </span>
-          <div
-            className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabIndex="-1"
-          >
-            <div className="py-1" role="none">
-              {items.map((item, index) => {
-                return (
-                  <NavItem
-                    location={item.Location}
-                    name={item.Name}
-                    key={index}
-                  />
-                );
-              })}
+      <>
+        <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
+          {/* <p className="font-semibold text-slate-400">College</p> */}
+          <div>
+            <form>
+              <input
+                type="search"
+                name="search"
+                onChange={inputChangedHandler}
+                className="text-sm outline-none rounded-sm bg-slate-100 px-2 py-1 rounded-sm  "
+                placeholder="Search"
+              />
+            </form>
+          </div>
+          <div className="cursor-pointer relative">
+            <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
+            <span onClick={toggleUser} className="text-slate-400">
+              Filter
+            </span>
+            <div
+              className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="menu-button"
+              tabIndex="-1"
+            >
+              <div className="py-1" role="none">
+                {items.map((item, index) => {
+                  return (
+                    <NavItem
+                      location={item.Location}
+                      name={item.Name}
+                      key={index}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <AllCollegesData data={search} />
+      </>
     );
   };
 
   return (
     <HomeLayout>
       <HeaderFilter />
-      <div className=" h-full overflow-y-scroll w-full ">
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-        <SingleCollege />
-      </div>
     </HomeLayout>
   );
 };
+
+export async function getServerSideProps() {
+  // for show all Colleges
+  const res = await fetch(baseUrl + "/api/Colleges", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  return {
+    props: { data },
+  };
+}
 
 export default College;
