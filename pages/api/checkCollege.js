@@ -1,5 +1,5 @@
 import initDB from "../../Helpers/initDB";
-import Colleges from "../../Modal/colleges";
+import colleges from "../../Modal/colleges";
 initDB();
 
 export default async (req, res) => {
@@ -8,7 +8,7 @@ export default async (req, res) => {
   const filter = { instituteCode: instituteCode };
 
   try {
-    const checkInstitute = await Colleges.findOne(filter);
+    const checkInstitute = await colleges.findOne(filter);
     if (checkInstitute) {
       return res
         .status(201)

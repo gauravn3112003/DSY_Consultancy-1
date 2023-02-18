@@ -1,5 +1,5 @@
 import initDB from "../../Helpers/initDB";
-import Colleges from "../../Modal/colleges";
+import colleges from "../../Modal/colleges";
 initDB();
 export default async (req, res) => {
   switch (req.method) {
@@ -37,11 +37,11 @@ const addCollege = async (req, res) => {
   } = req.body;
 
   try {
-    const checkCollege = await Colleges.findOne({ instituteCode });
+    const checkCollege = await colleges.findOne({ instituteCode });
     if (checkCollege) {
       return res.status(422).json({ error: "Already College Added" });
     }
-    const college = await new Colleges({
+    const college = await new colleges({
       name,
       instituteCode,
       iframe,
@@ -74,7 +74,7 @@ const addCollege = async (req, res) => {
 
 const getCollege = async (req, res) => {
   try {
-    const getAllCollege = await Colleges.find();
+    const getAllCollege = await colleges.find();
     res.status(200).json(getAllCollege);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
