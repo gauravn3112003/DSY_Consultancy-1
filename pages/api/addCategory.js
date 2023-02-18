@@ -1,5 +1,5 @@
 import initDB from "../../Helpers/initDB";
-import colleges from "../../Modal/colleges";
+import Colleges from "../../Modal/Colleges";
 initDB();
 
 export default async (req, res) => {
@@ -15,7 +15,7 @@ export default async (req, res) => {
   const filter = { department: { $elemMatch: { choiceCode } } };
   const update = { $push: { "department.$.categories": studentCategory } };
   try {
-    const checkCat = await colleges.findOne({
+    const checkCat = await Colleges.findOne({
       department: {
         $elemMatch: {
           choiceCode,
