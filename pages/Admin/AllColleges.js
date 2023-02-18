@@ -67,7 +67,7 @@ const AllColleges = (props) => {
 
 export async function getServerSideProps() {
   // for show all Colleges
-  const res = await fetch(baseUrl + "/api/colleges", {
+  const res = await fetch(baseUrl + "/api/Colleges", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

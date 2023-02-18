@@ -108,7 +108,7 @@ const Dashboard = ({ children }) => {
   
     useEffect(() => {
       const status = async () => {
-        const res = await fetch(baseUrl + "/api/colleges", {
+        const res = await fetch(baseUrl + "/api/Colleges", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
