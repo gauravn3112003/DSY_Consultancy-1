@@ -1,7 +1,9 @@
+let baseUrl = "";
 
- const baseUrl = "https://dsyconsultancy.netlify.app/"
-  export default baseUrl
+if (process.env.NODE_ENV == "development") {
+  baseUrl = "http://localhost:3000";
+} else {
+  baseUrl = "https://dsyconsultancy.netlify.app/";
+}
 
-
-// const baseUrl ="http://localhost:3000"
-// export default baseUrl
+export default baseUrl;
