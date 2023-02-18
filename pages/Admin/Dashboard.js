@@ -100,7 +100,7 @@ const HeaderFilter = () => {
   );
 };
 
-const Dashboard = ({ children }) => {
+const Dashboard = ({ children, college }) => {
   const HeaderAdmin = () => {
     return (
       <section className="text-gray-600 rounded-sm bg-white body-font">
@@ -114,7 +114,7 @@ const Dashboard = ({ children }) => {
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-                1
+                {college.length}
               </h2>
               <p className="leading-relaxed">Colleges</p>
             </div>

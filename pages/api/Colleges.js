@@ -1,8 +1,11 @@
 import initDB from "../../Helpers/initDB";
-import Colleges from "../../Modal/Colleges";
+import Colleges from "../../Modal/colleges";
 initDB();
 export default async (req, res) => {
   switch (req.method) {
+    case "GET":
+      await getCollege(req, res);
+      break;
     case "POST":
       await addCollege(req, res);
       break;
@@ -65,6 +68,15 @@ const addCollege = async (req, res) => {
     }).save();
     res.status(201).json({ msg: "College Added", college });
   } catch (err) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const getCollege = async (req, res) => {
+  try {
+    const getAllCollege = await Colleges.find();
+    res.status(200).json(getAllCollege);
+  } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

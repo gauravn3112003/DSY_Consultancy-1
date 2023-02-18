@@ -1,5 +1,5 @@
 import initDB from "../../Helpers/initDB";
-import Colleges from "../../Modal/Colleges";
+import Colleges from "../../Modal/colleges";
 initDB();
 
 export default async (req, res) => {
