@@ -106,6 +106,7 @@ export default function Home() {
   return (
     <>
       <section className="md:mt-14 h-screen sm:h-auto mt-0 bg-blue-900 pb-5  body-font">
+        
         <div className=" container m-auto mt-14 p-5 ">
           <marquee
             width="100%"

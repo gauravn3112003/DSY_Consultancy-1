@@ -50,9 +50,9 @@ const InstituteCheck = () => {
             placeholder="Ex. 1001"
             onChange={onChange}
             value={instituteCode.insCode ? instituteCode.insCode : ""}
+            name="insCode"
             type="number"
             required={true}
-            name="insCode"
             className="  rounded-sm outline-none  px-2 py-1 bg-white  border"
           />
           <button

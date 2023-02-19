@@ -39,7 +39,7 @@ const addCollege = async (req, res) => {
   try {
     const checkCollege = await Colleges.findOne({ instituteCode });
     if (checkCollege) {
-      return res.status(422).json({ error: "Already College Added" });
+      return res.status(200).json({ error: "Already College Added" });
     }
     const college = await new Colleges({
       name,
