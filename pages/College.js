@@ -9,33 +9,44 @@ const College = ({ data }) => {
       <div className=" h-full overflow-y-scroll w-full ">
         {data.map((item, index) => {
           return (
-            <span  key={index}>
-              {" "}
-              {item.instituteCode == props.data ? (
-                <SingleCollege
-                  collegeName={item.name}
-                 
-                  approvedBy={item.approvedBy}
-                  collegeType={item.collegeType}
-                  location={item.location.addressLine}
-                  instituteCode={item.instituteCode}
-                  contactNo={item.contactNo}
-                />
-              ) : (
-                ""
-              )}
-              {props.data == "" ? (
-                <SingleCollege
-                  collegeName={item.name}
-                  approvedBy={item.approvedBy}
-                  collegeType={item.collegeType}
-                  location={item.location.addressLine}
-                  instituteCode={item.instituteCode}
-                  contactNo={item.contactNo}
-                />
-              ) : (
-                ""
-              )}
+            <span key={index}>
+              {item.department.map((department, indexDep) => {
+                return (
+                  <span key={indexDep}>
+                    {" "}
+                    {item.instituteCode == props.data ? (
+                      <SingleCollege
+                        collegeName={item.name}
+                        approvedBy={item.approvedBy}
+                        collegeType={item.collegeType}
+                        collegeId={item._id}
+                        location={item.location.addressLine}
+                        instituteCode={item.instituteCode}
+                        image={item.image}
+                        contactNo={item.contactNo}
+                        department={department.courseName}
+                      />
+                    ) : (
+                      ""
+                    )}
+                    {props.data == "" ? (
+                      <SingleCollege
+                        collegeName={item.name}
+                        approvedBy={item.approvedBy}
+                        image={item.image}
+                        collegeId={item._id}
+                        collegeType={item.collegeType}
+                        location={item.location.addressLine}
+                        instituteCode={item.instituteCode}
+                        contactNo={item.contactNo}
+                        department={department.courseName}
+                      />
+                    ) : (
+                      ""
+                    )}
+                  </span>
+                );
+              })}
             </span>
           );
         })}
@@ -45,57 +56,66 @@ const College = ({ data }) => {
 
   const SingleCollege = (props) => {
     return (
-      <div className="PContainer rounded-sm p-5 ">
-        <div className="CImage">
-          <img
-            className="rounded-full border-blue-900 border h-24 w-24" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/College_of_Engineering%2C_Pune_logo.jpg/220px-College_of_Engineering%2C_Pune_logo.jpg"
-            alt=""
-          />
-        </div>
-        <div className="CData">
-          <h1 className="font-bold text-xl">{props.collegeName} </h1>
-          <div className="CShortData">
-            <span className="text-xs">
-              <span className="font-semibold">Approved By :</span>{" "}
-              {props.approvedBy}
-            </span>
-            <br />
-            <span className="text-xs">
-              <span className="font-semibold">Type :</span> {props.collegeType}
-            </span>
-            <br />
-            <span className="text-xs">
-              <span className="font-semibold">Location :</span> {props.location}
-            </span>
-            <br />
-            <span className="text-xs">
-              <span className="font-semibold">Institute Code :</span>{" "}
-              {props.instituteCode}
-            </span>
+      <div className="flex-wrap flex   gap-5 sm:gap-5 bg-white mb-5  rounded-sm p-5 ">
+        <div className="flex w-full gap-5">
+          <div className="sm:w-32 w-20  grid place-items-center">
+            <img
+              className="rounded-full border-blue-900 border sm:h-24 w-10 h-10 sm:w-24"
+              src={props.image}
+              alt=""
+            />
+          </div>
+          <div className="   w-full">
+            <h1 className="font-bold text-xl">{props.collegeName} </h1>
+            <div className="">
+              <span className="text-xs">
+                <span className="font-bold">Approved By :</span>{" "}
+                {props.approvedBy}
+              </span>
+              <br />
+              <span className="text-xs">
+                <span className="font-bold">Type :</span> {props.collegeType}
+              </span>
+              <br />
+              <span className="text-xs">
+                <span className="font-bold">Location :</span> {props.location}
+              </span>
+              <br />
+              <span className="text-xs">
+                <span className="font-bold">Institute Code :</span>{" "}
+                {props.instituteCode}
+              </span>
+              <span className="ml-5 text-xs">
+                <span className="font-bold">Branch :</span> {props.department}
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="  flex  gap-5 w-full">
           <Link
             href={{
               pathname: `/CollegeDa/[id]`,
               query: {
-                id: "HeyCollegeswala",
-                cName: "COEP",
+                id: props.collegeId,
+                cName: props.collegeName.replace(" ","+"),
               },
             }}
           >
             <a
               type="button"
               target="_blank"
-              className="pBtn text-center px-3 text-sm py-2"
+              className="pBtn w-2/4 text-center px-3 text-sm py-2"
             >
               Read More
             </a>
           </Link>
 
           <Link href={`tel:+91${props.contactNo}`}>
-            <a type="button" className="border px-3 text-sm py-2">
+            <a
+              type="button"
+              className="border w-2/4 text-center px-3 text-sm py-2"
+            >
               Schedule a call
             </a>
           </Link>
@@ -167,7 +187,7 @@ const College = ({ data }) => {
                 type="search"
                 name="search"
                 onChange={inputChangedHandler}
-                className="text-sm outline-none rounded-sm bg-slate-100 px-2 py-1 rounded-sm  "
+                className="text-sm outline-none rounded-sm bg-slate-100 px-2 py-1  "
                 placeholder="Search"
               />
             </form>
