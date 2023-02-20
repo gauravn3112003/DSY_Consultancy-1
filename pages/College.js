@@ -6,7 +6,7 @@ import baseUrl from "directsecondyearadmission/baseUrl";
 const College = ({ data }) => {
   const AllCollegesData = (props) => {
     return (
-      <div className=" h-full flex flex-col-reverse overflow-y-scroll w-full ">
+      <div className=" h-full flex flex-col overflow-y-scroll w-full ">
         {data.map((item, index) => {
           return (
             <span key={index}>

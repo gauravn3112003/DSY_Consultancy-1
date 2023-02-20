@@ -62,9 +62,24 @@ const TextEditor = () => {
     return (
       <AddCollegeDetails>
         <Stepper />
+
         <div className=" container m-auto p-5 bg-white">
           <div className="">
-           <InstituteCheck/>
+            <InstituteCheck />
+            <div className="  mr-1 mb-2  w-full">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="InsCode"
+              >
+                Institute Code
+              </label>
+              <input
+                className=" bg-white border  w-full rounded-sm outline-none  py-2 px-3 text-grey-darker"
+                type="number"
+                name="InsCode"
+                placeholder="Ex. 1001"
+              />
+            </div>
             <SunEditor
               // value={valueText}
               onChange={handleChange}
