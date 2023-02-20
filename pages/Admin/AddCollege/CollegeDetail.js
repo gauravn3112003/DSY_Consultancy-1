@@ -9,9 +9,7 @@ const CollegeDetail = () => {
 
   const [cDetails, setCDetails] = useState({});
   const [requiredState, setRequired] = useState(false);
-  const [message, setMessage] = useState("");
-
-  console.log(message);
+ 
   const onChange = (e) => {
     setCDetails({
       ...cDetails,
@@ -118,7 +116,6 @@ const CollegeDetail = () => {
     if (res2.msg) {
       toast.success(res2.msg, {});
     } else {
-      setMessage(res2.error);
       toast.error(res2.error, {});
     }
   }

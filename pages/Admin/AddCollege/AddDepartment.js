@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import AddCollegeDetails from "../AddCollegeDetails";
 import Link from "next/link";
 import InstituteCheck from "./InstituteCheck";
+import { toast } from "react-toastify";
+import Toastmsg from "directsecondyearadmission/pages/Components/Toastmsg";
 
 const Stepper = () => {
   return (
@@ -44,74 +46,132 @@ const Stepper = () => {
 };
 
 const AddDepartment = () => {
+  const [requiredState, setRequired] = useState(false);
+  const [depDetails, setDepDetails] = useState({});
+
+  const onChange = (e) => {
+    setDepDetails({
+      ...depDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  console.log(depDetails);
+
+  const addDep = async (e) => {
+    e.preventDefault();
+    const { courseName, annualFees, choiceCode, insCode } = depDetails;
+    onSubmit(courseName, annualFees, choiceCode, insCode);
+  };
+
+  const onSubmit = async (courseName, annualFees, choiceCode, insCode) => {
+    const res = await fetch("/api/addDepartment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        courseName: courseName,
+        instituteCode: insCode,
+        annalFee: annualFees,
+        choiceCode: choiceCode,
+      }),
+    });
+
+    const res2 = await res.json();
+    if (res2.msg) {
+      toast.success(res2.msg, {});
+    } else {
+      toast.error(res2.error, {});
+    }
+  };
   return (
     <AddCollegeDetails>
       <Stepper />
       <div className="w-full p-5 h-auto bg-white ">
+        <Toastmsg />
         <InstituteCheck />
 
-        <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
-          <div className="sm:w-1/2  mr-1 mb-2  w-full">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="CName"
-            >
-              Course Name
-            </label>
-            <input
-              className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
-              type="text"
-              placeholder="Enter Course name"
-            />
-          </div>
-          <div className="sm:w-1/2   w-full">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="AFees"
-            >
-              Annual Fees
-            </label>
-            <input
-              className=" bg-white w-full outline-none border rounded-sm  py-2 px-3 text-grey-darker"
-              id="Afees"
-              type="number"
-              placeholder="Annual fees"
-            />
-          </div>
-        </div>
-
-        <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
-          <div className="sm:w-1/2  mr-1 mb-2  w-full">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="CCode"
-            >
-              Choice Code
-            </label>
-            <input
-              className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
-              type="text"
-              placeholder="Enter Choice code"
-            />
+        <form onSubmit={addDep}>
+          <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
+            <div className="sm:w-1/2  mr-1 mb-2  w-full">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="CName"
+              >
+                Course Name
+              </label>
+              <input
+                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="Enter Course name"
+                onChange={onChange}
+                required={requiredState}
+                value={depDetails.courseName ? depDetails.courseName : ""}
+                name="courseName"
+              />
+            </div>
+            <div className="sm:w-1/2   w-full">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="AFees"
+              >
+                Annual Fees
+              </label>
+              <input
+                className=" bg-white w-full outline-none border rounded-sm  py-2 px-3 text-grey-darker"
+                id="Afees"
+                type="number"
+                required={requiredState}
+                placeholder="Annual fees"
+                onChange={onChange}
+                value={depDetails.annualFees ? depDetails.annualFees : ""}
+                name="annualFees"
+              />
+            </div>
           </div>
 
-          <div className="sm:w-1/2   w-full">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="InsCode"
-            >
-              Institute Code
-            </label>
-            <input
-              className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
-              type="number"
-              placeholder="Enter College name"
-            />
+          <div className="flex mb-4 flex-wrap bg sm:flex-nowrap">
+            <div className="sm:w-1/2  mr-1 mb-2  w-full">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="CCode"
+              >
+                Choice Code
+              </label>
+              <input
+                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="Enter Choice code"
+                onChange={onChange}
+                required={requiredState}
+                value={depDetails.choiceCode ? depDetails.choiceCode : ""}
+                name="choiceCode"
+              />
+            </div>
+
+            <div className="sm:w-1/2   w-full">
+              <label
+                className="block text-grey-darker text-sm font-bold mb-2"
+                htmlFor="InsCode"
+              >
+                Institute Code
+              </label>
+              <input
+                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+                type="number"
+                onChange={onChange}
+                required={requiredState}
+                value={depDetails.insCode ? depDetails.insCode : ""}
+                name="insCode"
+                placeholder="Enter College name"
+              />
+            </div>
           </div>
-        </div>
-        <button type="submit" className="pBtn px-10 py-2">
-          Add Department
-        </button>
+          <button type="submit" className="pBtn px-10 py-2">
+            Add Department
+          </button>
+        </form>
 
         <div className=" rounded-sm mt-10">
           <h1 className="text-sm font-bold">Category</h1>
@@ -122,30 +182,35 @@ const AddDepartment = () => {
                 <input
                   type="text"
                   placeholder="Category"
+                  required={requiredState}
                   name=""
                   className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
                 />
                 <input
                   type="text"
                   placeholder="Annual fees"
+                  required={requiredState}
                   name=""
                   className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
                 />
                 <input
                   type="text"
                   placeholder="Min"
+                  required={requiredState}
                   name=""
                   className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
                 />
                 <input
                   type="text"
                   placeholder="Max"
+                  required={requiredState}
                   name=""
                   className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
                 />
                 <input
                   type="text"
                   placeholder="Seats"
+                  required={requiredState}
                   name=""
                   className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
                 />

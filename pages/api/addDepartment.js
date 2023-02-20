@@ -18,7 +18,6 @@ export default async (req, res) => {
     if (checkDep) {
       return res.status(422).json({ error: "Department already added" });
     }
-
     let dep = {
       courseName,
       annalFee,
