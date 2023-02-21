@@ -8,6 +8,9 @@ export default async (req, res) => {
   const filter = { instituteCode: instituteCode };
 
   try {
+    if (!courseName || !instituteCode || !annalFee || !choiceCode) {
+      return res.status(422).json({ error: "please fill all the fields" });
+    }
     const checkDep = await Colleges.findOne({
       department: { $elemMatch: { choiceCode } },
     });

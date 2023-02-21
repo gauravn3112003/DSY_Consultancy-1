@@ -15,6 +15,9 @@ export default async (req, res) => {
   const filter = { department: { $elemMatch: { choiceCode } } };
   const update = { $push: { "department.$.categories": studentCategory } };
   try {
+    if (!category || !min || !max || !aFees || !aSeats || !choiceCode) {
+      return res.status(422).json({ error: "please fill all the fields" });
+    }
     const checkCat = await Colleges.findOne({
       department: {
         $elemMatch: {

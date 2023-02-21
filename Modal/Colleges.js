@@ -20,16 +20,16 @@ const collegeSchema = new Schema({
             type: String,
           },
           min: {
-            type: String,
+            type: Number,
           },
           max: {
-            type: String,
+            type: Number,
           },
           aFees: {
-            type: String,
+            type: Number,
           },
           aSeats: {
-            type: String,
+            type: Number,
           },
         },
       ],

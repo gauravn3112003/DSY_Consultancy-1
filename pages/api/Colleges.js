@@ -37,6 +37,29 @@ const addCollege = async (req, res) => {
   } = req.body;
 
   try {
+    if (
+      !name ||
+      !instituteCode ||
+      !iframe ||
+      !collegeUnder ||
+      !collegeType ||
+      !university ||
+      !addressLine ||
+      !taluka ||
+      !district ||
+      !city ||
+      !latitude ||
+      !longitude ||
+      !rating ||
+      !contactNo ||
+      !website ||
+      !email ||
+      !approvedBy ||
+      !image ||
+      !topRecruiters
+    ) {
+      return res.status(422).json({ error: "please fill all the fields" });
+    }
     const checkCollege = await Colleges.findOne({ instituteCode });
     if (checkCollege) {
       return res.status(200).json({ error: "Already College Added" });

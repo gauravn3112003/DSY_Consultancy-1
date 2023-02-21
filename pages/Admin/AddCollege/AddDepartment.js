@@ -85,6 +85,128 @@ const AddDepartment = () => {
       toast.error(res2.error, {});
     }
   };
+
+  const AddCat = () => {
+    const [catDetails, setCatDetails] = useState({});
+
+    const onChange = (e) => {
+      setCatDetails({
+        ...catDetails,
+        [e.target.name]: e.target.value,
+      });
+    };
+
+    const addCat = async (e) => {
+      e.preventDefault();
+      const { category, Annualfees, Min, Max, Seats, choiceCode } = catDetails;
+      onSubmit(category, Annualfees, Min, Max, Seats, choiceCode);
+    };
+
+    const onSubmit = async (
+      category,
+      Annualfees,
+      Min,
+      Max,
+      Seats,
+      choiceCode
+    ) => {
+      const res = await fetch("/api/addCategory", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category: category,
+          min: Min,
+          max: Max,
+          aFees: Annualfees,
+          aSeats: Seats,
+          choiceCode: choiceCode,
+        }),
+      });
+
+      const res2 = await res.json();
+      if (res2.msg) {
+        toast.success(res2.msg, {});
+      } else {
+        toast.error(res2.error, {});
+      }
+    };
+
+    return (
+      <div className=" rounded-sm mt-10">
+        <h1 className="text-sm font-bold">Category</h1>
+
+        <div className="w-full  ">
+          <div className="  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
+            <form
+              onSubmit={addCat}
+              className="grid grid-cols-2 sm:grid-cols-3 gap-2"
+            >
+              <input
+                type="text"
+                placeholder="Category"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.category ? catDetails.category : ""}
+                name="category"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+              <input
+                type="text"
+                placeholder="Annual fees"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.Annualfees ? catDetails.Annualfees : ""}
+                name="Annualfees"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+              <input
+                type="text"
+                placeholder="Min"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.Min ? catDetails.Min : ""}
+                name="Min"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+              <input
+                type="text"
+                placeholder="Max"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.Max ? catDetails.Max : ""}
+                name="Max"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+              <input
+                type="text"
+                placeholder="Seats"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.Seats ? catDetails.Seats : ""}
+                name="Seats"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+
+              <input
+                type="text"
+                placeholder="choiceCode"
+                required={requiredState}
+                onChange={onChange}
+                value={catDetails.choiceCode ? catDetails.choiceCode : ""}
+                name="choiceCode"
+                className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
+              />
+              <button type="submit" className=" pBtn px-10 py-3 text-sm ">
+                Add Category
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <AddCollegeDetails>
       <Stepper />
@@ -173,54 +295,7 @@ const AddDepartment = () => {
           </button>
         </form>
 
-        <div className=" rounded-sm mt-10">
-          <h1 className="text-sm font-bold">Category</h1>
-
-          <div className="w-full  ">
-            <div className="  w-full rounded-sm bg-slate-50 mt-5 p-3  ">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                <input
-                  type="text"
-                  placeholder="Category"
-                  required={requiredState}
-                  name=""
-                  className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
-                />
-                <input
-                  type="text"
-                  placeholder="Annual fees"
-                  required={requiredState}
-                  name=""
-                  className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
-                />
-                <input
-                  type="text"
-                  placeholder="Min"
-                  required={requiredState}
-                  name=""
-                  className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
-                />
-                <input
-                  type="text"
-                  placeholder="Max"
-                  required={requiredState}
-                  name=""
-                  className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
-                />
-                <input
-                  type="text"
-                  placeholder="Seats"
-                  required={requiredState}
-                  name=""
-                  className="text-xs px-2 py-3 bg-white  outline-none border rounded-sm "
-                />
-                <button type="submit" className=" pBtn px-10 py-3 text-sm ">
-                  Add Category
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AddCat />
       </div>
     </AddCollegeDetails>
   );
