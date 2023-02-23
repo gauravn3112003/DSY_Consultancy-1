@@ -9,6 +9,10 @@ const collegeSchema = new Schema({
   collegeUnder: String,
   collegeType: String,
   university: String,
+  views: {
+    type:String,
+    default:2
+  },
   department: [
     {
       courseName: String,

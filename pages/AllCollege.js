@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import College from "./College";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import baseUrl from "directsecondyearadmission/baseUrl";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -135,17 +135,18 @@ const BreadCrumb = () => {
   );
 };
 
-const CollegeCard = () => {
+const CollegeCard = (props) => {
   return (
     <>
       <div target="_blank" className="flex flex-col bg-white cursor-pointer ">
         <p
           rel="noopener noreferrer"
+          className="  h-52 grid place-items-center overflow-hidden"
           aria-label="Te nulla oportere reprimique his dolorum"
         >
           <img
-            className="object-cover cursor-pointer w-full h-52 "
-            src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            className="object-cover h-full cursor-pointer "
+            src={props.image}
           />
         </p>
         <div className="flex flex-col flex-1 p-6">
@@ -157,15 +158,15 @@ const CollegeCard = () => {
             rel="noopener noreferrer"
             className="text-xs tracking-wider uppercase hover:underline dark:text-violet-400"
           >
-            Convenire
+            {props.approvedBy}
           </a>
           <Link
             target="_blank"
             href={{
               pathname: `/CollegeDa/[id]`,
               query: {
-                id: "HeyCollegeswala",
-                cName: "COEP",
+                id: props.id,
+                cName: props.cName.replace(" ", "+"),
               },
             }}
           >
@@ -173,7 +174,7 @@ const CollegeCard = () => {
               target="_blank"
               className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug"
             >
-              Te nulla oportere reprimique his dolorum
+              {props.cName}
             </a>
           </Link>
           <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
@@ -185,7 +186,7 @@ const CollegeCard = () => {
   );
 };
 
-const AllCollege = () => {
+const AllCollege = ({ data }) => {
   return (
     <>
       <div className="mt-20 px-5 sm:px-0  container m-auto">
@@ -234,24 +235,19 @@ const AllCollege = () => {
 
             {/* Cards */}
             <div className="grid  grid-cols-1 gap-x-4 gap-y-8  md:grid-cols-2 lg:grid-cols-4">
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
-              <CollegeCard />
+              {data.map((item, index) => {
+                return (
+                  <CollegeCard
+                    key={index}
+                    approvedBy={item.approvedBy}
+                    id={item._id}
+                    cName={item.name}
+                    image={item.image}
+                  />
+                );
+              })}
             </div>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <button
                 type="button"
                 className="px-6 py-3 text-sm rounded-sm hover:underline pBtn"
@@ -259,12 +255,26 @@ const AllCollege = () => {
               >
                 Load more posts...
               </button>
-            </div>
+            </div> */}
           </div>
         </section>
       </div>
     </>
   );
 };
+
+export async function getServerSideProps() {
+  // for show all Colleges
+  const res = await fetch(baseUrl + "/api/Colleges", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await res.json();
+  return {
+    props: { data },
+  };
+}
 
 export default AllCollege;

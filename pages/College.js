@@ -98,7 +98,7 @@ const College = ({ data }) => {
               pathname: `/CollegeDa/[id]`,
               query: {
                 id: props.collegeId,
-                cName: props.collegeName.replace(" ","+"),
+                cName: props.collegeName.replace(" ", "+"),
               },
             }}
           >
@@ -116,7 +116,7 @@ const College = ({ data }) => {
               type="button"
               className="border w-2/4 text-center px-3 text-sm py-2"
             >
-              Schedule a call
+              Make a call
             </a>
           </Link>
         </div>
