@@ -1,14 +1,12 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 
 import Rating from "@mui/material/Rating";
-import Stack from "@mui/material/Stack";
 import baseUrl from "directsecondyearadmission/baseUrl";
 
 const CollegeCard = () => {
@@ -70,7 +68,7 @@ const CollegeData = ({ College }) => {
   const CInfoData = ({ children }) => {
     return (
       <div className="bg-white  mt-5 rounded-sm">
-        <div className="flex gap-5 p-3  border rounded-sm ">
+        <div className="flex gap-5 overflow-x-scroll p-3  border rounded-sm ">
           <button
             onClick={function () {
               setCount(1);
@@ -285,19 +283,12 @@ const CollegeData = ({ College }) => {
               {props.locationCollege.latitude}{" "}
             </span>
           </div>
-
-          <div>
-            <div>
-              {/* <Image layout='fill' width={500}
-          height={500} src="http://sinhgadcollegeofscience.com/images/college_photo.jpg" /> */}
-            </div>
-          </div>
         </div>
       </div>
     );
   };
 
-  const CollegeImages = () => {
+  const CollegeImages = ({ images }) => {
     const itemData = [
       {
         img: "https://images.unsplash.com/photo-1549388604-817d15aa0110",
@@ -352,14 +343,9 @@ const CollegeData = ({ College }) => {
       <div className="">
         <Box sx={{ height: 1000, overflowY: "scroll" }}>
           <ImageList variant="masonry" cols={4} gap={8}>
-            {itemData.map((item) => (
-              <ImageListItem key={item.img}>
-                <img
-                  src={`${item.img}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                />
+            {images.map((item, index) => (
+              <ImageListItem key={index}>
+                <img src={`${item}`} loading="lazy" />
               </ImageListItem>
             ))}
           </ImageList>
@@ -374,10 +360,14 @@ const CollegeData = ({ College }) => {
         <article className=" ">
           <div className="space-y-6 border-b-2 pb-5">
             <h1 className="text-4xl font-bold sm:text-3xl md:tracking-tight ">
-              {College.name}
+              {College.name} ({College.instituteCode})
             </h1>
             <p className="text-sm font-bold ">
-              University : <span className="font-normal text-sm"> {College.university} </span>
+              University :{" "}
+              <span className="font-normal text-sm">
+                {" "}
+                {College.university}{" "}
+              </span>
             </p>
             <div className="flex items-start text-slate-400 justify-between w-full flex-row md:items-center ">
               <div className="flex items-center ">
@@ -431,7 +421,7 @@ const CollegeData = ({ College }) => {
             {count == 1 && <CollegeArtical Artical={College.fullDescription} />}
             {count == 2 && <CollegeCourses courses={College.department} />}
             {count == 3 && <CollegeCategory category={College.department} />}
-            {count == 4 && <CollegeImages />}
+            {count == 4 && <CollegeImages images={College.images} />}
             {count == 5 && (
               <CollegeAddress
                 maps={College.iframe}
@@ -464,7 +454,17 @@ export async function getServerSideProps(context) {
       "Content-Type": "application/json",
     },
   });
+
   const data = await res.json();
+  await fetch(baseUrl + "/api/viewsIn", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      instituteCode: data.instituteCode,
+    }),
+  });
   return {
     props: { College: data },
   };
