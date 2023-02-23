@@ -5,6 +5,7 @@ const collegeSchema = new Schema({
   name: String,
   instituteCode: Number,
   iframe: String,
+  addedBy: String,
   collegeUnder: String,
   collegeType: String,
   university: String,
@@ -44,7 +45,7 @@ const collegeSchema = new Schema({
     latitude: String,
     longitude: String,
   },
-  rating: String,
+  rating: Number,
   contacts: {
     contactNo: Number,
     website: String,
@@ -53,7 +54,10 @@ const collegeSchema = new Schema({
   approvedBy: String,
   image: String,
   topRecruiters: String,
-  fullDescription: String,
+  fullDescription: {
+    type: String,
+    default: " ",
+  },
   updatedDate: {
     type: Date,
     default: Date.now,

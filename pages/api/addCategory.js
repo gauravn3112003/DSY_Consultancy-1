@@ -18,6 +18,17 @@ export default async (req, res) => {
     if (!category || !min || !max || !aFees || !aSeats || !choiceCode) {
       return res.status(422).json({ error: "please fill all the fields" });
     }
+
+    if (!filter) {
+      return res.status(404).json({ error: "This choiceCode not Exists" });
+    }
+    const checkDep = await Colleges.findOne({
+      department: { $elemMatch: { choiceCode } },
+    });
+
+    if (!checkDep) {
+      return res.status(404).json({ error: "Department not exists" });
+    }
     const checkCat = await Colleges.findOne({
       department: {
         $elemMatch: {

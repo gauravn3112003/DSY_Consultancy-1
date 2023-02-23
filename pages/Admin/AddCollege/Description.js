@@ -4,6 +4,8 @@ import Link from "next/link";
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import AddCollegeDetails from "../AddCollegeDetails";
 import InstituteCheck from "./InstituteCheck";
+import { toast } from "react-toastify";
+import Toastmsg from "directsecondyearadmission/pages/Components/Toastmsg";
 
 const Stepper = () => {
   return (
@@ -54,18 +56,51 @@ const SunEditor = dynamic(() => import("suneditor-react"), {
 
 const TextEditor = () => {
   const CollegeTextEditor = () => {
-    const [valueText, setValueText] = useState("");
-
+    const [description, setDescription] = useState({});
+    const onChange = (e) => {
+      setDescription({
+        ...description,
+        [e.target.name]: e.target.value,
+      });
+    };
     function handleChange(content) {
-      setValueText(content);
+      setDescription({ collegeDetail: content });
     }
+    console.log(description);
+
+    const addDetails = async (e) => {
+      e.preventDefault();
+      const { collegeDetail, insCode } = description;
+      onSubmit(collegeDetail, insCode);
+    };
+
+    const onSubmit = async (collegeDetail, insCode) => {
+      const res = await fetch("/api/addDescription", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          collegeDetail: collegeDetail,
+          instituteCode: insCode,
+        }),
+      });
+
+      const res2 = await res.json();
+      if (res2.msg) {
+        toast.success(res2.msg);
+      } else {
+        toast.error(res2.error);
+      }
+    };
     return (
       <AddCollegeDetails>
         <Stepper />
 
         <div className=" container m-auto p-5 bg-white">
-          <div className="">
+          <Toastmsg />
             <InstituteCheck />
+          <form onSubmit={addDetails}>
             <div className="  mr-1 mb-2  w-full">
               <label
                 className="block text-grey-darker text-sm font-bold mb-2"
@@ -76,7 +111,9 @@ const TextEditor = () => {
               <input
                 className=" bg-white border  w-full rounded-sm outline-none  py-2 px-3 text-grey-darker"
                 type="number"
-                name="InsCode"
+                onChange={onChange}
+                value={description.insCode ? description.insCode : ""}
+                name="insCode"
                 placeholder="Ex. 1001"
               />
             </div>
@@ -182,10 +219,10 @@ const TextEditor = () => {
             <button type="submit" className="pBtn px-10 mt-5 py-3">
               Submit
             </button>
-          </div>
+          </form>
           <div className="mt-7 bg-white p-5">
             <h1 className="font-semibold text-slate-400 mb-5">Preview</h1>
-            <CollegeData data={valueText} />
+            <CollegeData data={description.collegeDetail} />
           </div>
         </div>
       </AddCollegeDetails>

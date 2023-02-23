@@ -58,7 +58,7 @@ const addCollege = async (req, res) => {
       !image ||
       !topRecruiters
     ) {
-      return res.status(422).json({ error: "please fill all the fields" });
+      return res.status(401).json({ error: "please fill all the fields" });
     }
     const checkCollege = await Colleges.findOne({ instituteCode });
     if (checkCollege) {
@@ -86,6 +86,7 @@ const addCollege = async (req, res) => {
         email,
       },
       approvedBy,
+      addedBy: "Gaurav Narnaware",
       image,
       topRecruiters,
     }).save();

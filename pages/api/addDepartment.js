@@ -18,6 +18,10 @@ export default async (req, res) => {
     const clgName = await Colleges.findOne({
       instituteCode: instituteCode,
     });
+    if (!clgName) {
+      return res.status(404).json({ error: "This Institute not Exists" });
+    }
+
     if (checkDep) {
       return res.status(422).json({ error: "Department already added" });
     }
