@@ -296,6 +296,36 @@ const AddDepartment = () => {
         </form>
 
         <AddCat />
+
+        <div className="flex mb-4 mt-5 flex-wrap sm:flex-nowrap">
+          <div className="  mr-1 mb-2  w-full">
+            <label
+              className="block text-grey-darker text-sm font-bold mb-2"
+              htmlFor="CName"
+            >
+              Add Images
+            </label>
+            <div className="grid gap-5 grid-cols-3">
+              <input
+                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="Ex. 1001"
+                required={requiredState}
+                name="InsCode"
+              />
+              <input
+                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+                type="text"
+                placeholder="image Link"
+                required={requiredState}
+                name="InsCode"
+              />
+              <button type="submit" className="pBtn px-10 py-3">
+                Add Image
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </AddCollegeDetails>
   );
