@@ -1,64 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
+import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 // components
 
 export default function HomeLayout({ children }) {
-  const items = [
-    {
-      icon: "bi-house-door-fill",
-      name: "Home",
-      location: "/Home",
-    },
-    {
-      icon: "bi-person-fill",
-      name: "Profile",
-      location: "/Profile",
-    },
-    {
-      icon: "bi-buildings-fill",
-      name: "Colleges",
-      location: "/College",
-    },
-    {
-      icon: "bi-buildings-fill",
-      name: "Feed",
-      location: "/College",
-    },
-
-    {
-      icon: "bi-file-earmark-fill",
-      name: "Document",
-      location: "/Document",
-    },
-    {
-      icon: "bi-key-fill",
-      name: "Insurance",
-      location: "/Insurance",
-    },
-    {
-      icon: "bi-bar-chart-line-fill",
-      name: "Dashboard",
-      location: "/Admin/AllContact",
-    },
-
-    {
-      icon: "bi-headset",
-      name: "Counsellor",
-      location: "/Counsellor",
-    },
-    {
-      icon: "bi-gear-fill",
-      name: "Account Setting",
-      location: "/AccountSetting",
-    },
-    {
-      icon: "bi-info-circle-fill",
-      name: "Help",
-      location: "/",
-    },
-  ];
-
   const ListItem = (props) => {
     return (
       <li>
@@ -71,16 +17,6 @@ export default function HomeLayout({ children }) {
       </li>
     );
   };
-
-  const [openNav, setOpenNav] = useState("");
-  const toggleNav = () => {
-    if (openNav === "") {
-      setOpenNav("openNav");
-    } else {
-      setOpenNav("");
-    }
-  };
-
   const UserData = () => {
     const router = useRouter();
     // console.log("Location :" + router.pathname );
@@ -113,20 +49,11 @@ export default function HomeLayout({ children }) {
       <section className="body-font   px-5">
         <UserData />
         <div className="container   home  ">
-          <div className="open  ">
-            <i
-              className="bi colorBlack bi-list cursor-pointer "
-              onClick={toggleNav}
-            ></i>
-          </div>
-          <aside className={`screenSidebar ${openNav}  rounded-sm `}>
+          <aside className={`screenSidebar rounded-sm `}>
             <div className="rounded-sm">
-              <i
-                className="bi bi-x-lg colorBlack close "
-                onClick={toggleNav}
-              ></i>
+              <i className="bi bi-x-lg colorBlack close "></i>
               <ul className="mb-2">
-                {items.map((item, index) => {
+                {HomeNav.map((item, index) => {
                   return (
                     <ListItem
                       key={index}

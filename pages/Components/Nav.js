@@ -2,50 +2,25 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import UserDropdown from "./UserDropdown";
 import baseUrl from "../../baseUrl";
+import TopNav from "directsecondyearadmission/navItem/TopNav";
+import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 
 const Nav = () => {
-  const [nav, setnav] = useState("");
+  const [nav, setnav] = useState("hidden");
   const [overlay, setOverlay] = useState("");
 
   const toggleNav = () => {
     if (nav == "") {
       setnav("mobileNav");
-      setOverlay("overlay");
     } else {
       setnav("");
-      setOverlay("");
     }
   };
 
   const closeNav = () => {
-    if (nav == "mobileNav") {
-      setnav("");
-      setOverlay("");
+    if (nav == "block") {
     }
   };
-
-  const list = [
-    {
-      name: "Home",
-      location: "/Home",
-    },
-    {
-      name: "Latest News",
-      location: "/Latest",
-    },
-    {
-      name: "Colleges",
-      location: "/AllCollege",
-    },
-    {
-      name: "About",
-      location: "/AboutUs",
-    },
-    {
-      name: "Contact",
-      location: "/ContactUs",
-    },
-  ];
 
   const ListItem = (props) => {
     return (
@@ -133,7 +108,9 @@ const Nav = () => {
             <UserDropdown />
             <SearchDropdown />
             <button
-              onClick={toggleNav}
+              onClick={function () {
+                setnav("block");
+              }}
               type="button"
               className="inline-flex items-center p-2 text-sm md:hidden colorBlack"
               aria-controls="navbar-sticky"
@@ -161,9 +138,9 @@ const Nav = () => {
             id="navbar-sticky"
           >
             <ul
-              className={`flex flex-col    bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white ${nav}  dark:border-gray-700`}
+              className={`md:flex flex-col  hidden  bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white  `}
             >
-              {list.map((item, index) => {
+              {TopNav.map((item, index) => {
                 return (
                   <ListItem
                     key={index}
@@ -193,17 +170,73 @@ const Nav = () => {
 
           <i className="bi font-bold text-xl bi-search cursor-pointer "></i>
         </form>
-        <div className="bg-white p-5 grid sm:grid-cols-2 grid-rows-1 place-items-center gap-2 container m-auto ">
-          {/* {data.map((item,index) => {
-            return (
-              <Link href="/" key={index}>
-                <div className=" cursor-pointer w-full flex items-center justify-start gap-5  bg-slate-100 px-5 py-3 rounded-sm">
-                  <img src={item.image} className="w-7 border-blue-900 border h-7 rounded-full" alt=""/>
-                  <h1 className="text-sm cursor-pointer font-semibold">{item.name}</h1>
+      </div>
+
+      <div className={`absolute w-full h-full top-0 z-20  md:hidden ${nav}`}>
+        <div
+          className="absolute w-full h-full top-0 z-20 lightBlack  cursor-pointer"
+          onClick={function () {
+            setnav("hidden");
+          }}
+        />
+        <div className="absolute w-4/5 h-full top-0 z-20  bg-white">
+          <div className=" flex flex-col justify-between items-start  bgColor w-full top-0 p-5">
+            <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                alt=""
+                className="w-full h-full"
+              />
+            </div>
+            <h1 className="text-white  font-bold text-xl">
+              Welcome to DSY Consultancy
+            </h1>
+            <h1 className="text-white  font-semibold text-lg">
+              Gaurav Narnaware
+            </h1>
+            <Link href="/Profile">
+              <a className="text-slate-400 text-sm">Manage Your Profile </a>
+            </Link>
+          </div>
+          <div className="p-5">
+            {TopNav.map((item, index) => {
+              return (
+                <div className="flex  items-center  mb-2" key={index}>
+                  <i className="bi-buildings-fill bi mr-5"></i>
+                  <Link href={item.location}>
+                    <button
+                      onClick={function () {
+                        setnav("hidden");
+                      }}
+                      className=" w-full text-sm font-semibold text-left "
+                    >
+                      {item.name}
+                    </button>
+                  </Link>
                 </div>
-              </Link>
-            );
-          })} */}
+              );
+            })}
+          </div>
+          <div className="border mx-5" />
+          <div className="p-5">
+            {HomeNav.map((item, index) => {
+              return (
+                <div className="flex  items-center  mb-2" key={index}>
+                  <i className={`${item.icon} bi mr-5`}></i>
+                  <Link href={item.location}>
+                    <button
+                      onClick={function () {
+                        setnav("hidden");
+                      }}
+                      className=" w-full text-sm font-semibold text-left "
+                    >
+                      {item.name}
+                    </button>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </>
