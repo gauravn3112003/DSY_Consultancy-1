@@ -1,5 +1,5 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import Box from "@mui/material/Box";
@@ -68,7 +68,7 @@ const CollegeData = ({ College }) => {
   const CInfoData = ({ children }) => {
     return (
       <div className="bg-white  mt-5 rounded-sm">
-        <div className="flex gap-5 overflow-x-scroll p-3  border rounded-sm ">
+        <div className="flex gap-5 sm:overflow-hidden overflow-x-scroll p-3  border rounded-sm ">
           <button
             onClick={function () {
               setCount(1);
@@ -192,7 +192,7 @@ const CollegeData = ({ College }) => {
   };
   const CollegeCategory = ({ category }) => {
     return (
-      <div className="mt-5">
+      <div className="mt-5 overflow-x-scroll">
         <table className="w-full border  outline-none">
           <thead className="border-none  outline-none">
             <tr className="border-none   outline-none">
@@ -209,7 +209,7 @@ const CollegeData = ({ College }) => {
           </thead>
           {category.map((item, index) => {
             return (
-              <tbody key={index}>
+              <tbody key={index} className="overflow-x-scroll">
                 {item.categories.map((category, indexCast) => {
                   return (
                     <tr className="border-none " key={indexCast}>

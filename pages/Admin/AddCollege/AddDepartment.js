@@ -56,8 +56,6 @@ const AddDepartment = () => {
     });
   };
 
-  console.log(depDetails);
-
   const addDep = async (e) => {
     e.preventDefault();
     const { courseName, annualFees, choiceCode, insCode } = depDetails;
@@ -84,6 +82,79 @@ const AddDepartment = () => {
     } else {
       toast.error(res2.error, {});
     }
+  };
+
+  const AddImage = () => {
+    const [addImage, setAddImage] = useState({});
+
+    const onChange = (e) => {
+      setAddImage({
+        ...addImage,
+        [e.target.name]: e.target.value,
+      });
+    };
+
+    const addImages = async (e) => {
+      e.preventDefault();
+      const { cImage, insCode } = addImage;
+      onSubmit(cImage, insCode);
+    };
+
+    const onSubmit = async (cImage, insCode) => {
+      const res = await fetch("/api/addImages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          instituteCode: insCode,
+          imageUrl: cImage,
+        }),
+      });
+
+      const res2 = await res.json();
+      if (res2.msg) {
+        toast.success(res2.msg, {});
+      } else {
+        toast.error(res2.error, {});
+      }
+    };
+
+    return (
+      <div className="flex mb-4 mt-5 flex-wrap sm:flex-nowrap">
+        <form onSubmit={addImages} className="  mr-1 mb-2  w-full">
+          <label
+            className="block text-grey-darker text-sm font-bold mb-2"
+            htmlFor="CName"
+          >
+            Add Images
+          </label>
+          <div className="grid gap-5 grid-cols-3">
+            <input
+              className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+              type="text"
+              placeholder="Ex. 1001"
+              required={requiredState}
+              onChange={onChange}
+              value={addImage.insCode ? addImage.insCode : ""}
+              name="insCode"
+            />
+            <input
+              className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
+              type="text"
+              placeholder="image Link"
+              required={requiredState}
+              onChange={onChange}
+              value={addImage.cImage ? addImage.cImage : ""}
+              name="cImage"
+            />
+            <button type="submit" className="pBtn px-10 py-3">
+              Add Image
+            </button>
+          </div>
+        </form>
+      </div>
+    );
   };
 
   const AddCat = () => {
@@ -296,36 +367,7 @@ const AddDepartment = () => {
         </form>
 
         <AddCat />
-
-        <div className="flex mb-4 mt-5 flex-wrap sm:flex-nowrap">
-          <div className="  mr-1 mb-2  w-full">
-            <label
-              className="block text-grey-darker text-sm font-bold mb-2"
-              htmlFor="CName"
-            >
-              Add Images
-            </label>
-            <div className="grid gap-5 grid-cols-3">
-              <input
-                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
-                type="text"
-                placeholder="Ex. 1001"
-                required={requiredState}
-                name="InsCode"
-              />
-              <input
-                className=" bg-white border  outline-none w-full rounded-sm  py-2 px-3 text-grey-darker"
-                type="text"
-                placeholder="image Link"
-                required={requiredState}
-                name="InsCode"
-              />
-              <button type="submit" className="pBtn px-10 py-3">
-                Add Image
-              </button>
-            </div>
-          </div>
-        </div>
+        <AddImage />
       </div>
     </AddCollegeDetails>
   );
