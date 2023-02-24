@@ -172,7 +172,7 @@ const Nav = () => {
         </form>
       </div>
 
-      <div className={`absolute w-full h-full top-0 z-20  md:hidden ${nav}`}>
+      <div className={`fixed w-full h-full top-0 z-20  md:hidden ${nav}`}>
         <div
           className="absolute w-full h-full top-0 z-20 lightBlack  cursor-pointer"
           onClick={function () {
