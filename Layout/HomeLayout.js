@@ -21,7 +21,7 @@ export default function HomeLayout({ children }) {
     const router = useRouter();
     // console.log("Location :" + router.pathname );
     return (
-      <div className="userData m-auto mt-20 mb-5  p-5 flex-wrap   text-white justify-between flex items-center container rounded-sm">
+      <div className="userData m-auto mt-20 hidden  mb-5  p-5 flex-wrap   text-white justify-between md:flex items-center container rounded-sm">
         <div className="avtarP">GN</div>
         <div className="mt-2 sm:mt-0  ">
           <h1 className="text-center font-semibold text-2xl">
@@ -69,7 +69,7 @@ export default function HomeLayout({ children }) {
             <div className="sideAds">Space for ads</div>
           </aside>
 
-          <div className="screenLayout ">{children}</div>
+          <div className="screenLayout mt-20 md:mt-0 ">{children}</div>
         </div>
       </section>
     </>

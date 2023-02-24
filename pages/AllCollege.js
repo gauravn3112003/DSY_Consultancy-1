@@ -178,7 +178,10 @@ const CollegeCard = (props) => {
             </a>
           </Link>
           <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
-            <span>June 1, 2020</span>
+            <div>
+              <i class="bi mr-2 bi-eye-fill"></i>
+              <span>{props.views} Views</span>
+            </div>
           </div>
         </div>
       </div>
@@ -243,6 +246,7 @@ const AllCollege = ({ data }) => {
                     id={item._id}
                     cName={item.name}
                     image={item.image}
+                    views={item.views}
                   />
                 );
               })}

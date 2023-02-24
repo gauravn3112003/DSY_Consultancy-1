@@ -63,7 +63,8 @@ const CollegeData = ({ College }) => {
   const rouuter = useRouter();
   const [count, setCount] = useState(1);
   const data = "";
-  var topRecu = College.approvedBy.split(",");
+  var approvedBy = College.approvedBy.split(",");
+  var topRec = College.topRecruiters.split(",");
 
   const CInfoData = ({ children }) => {
     return (
@@ -149,6 +150,18 @@ const CollegeData = ({ College }) => {
     return (
       <div className="mt-5">
         <div dangerouslySetInnerHTML={{ __html: props.Artical }} />
+        <span className="text-sm m-0  font-semibold  flex  border-t-2 py-5">
+          {" "}
+          <i className="bi text-slate-400 bi-building-fill-gear mr-2"></i>{" "}
+          <span className="mr-2 ">Top Recruiters : </span>
+          {topRec.map((item, index) => {
+            return (
+              <div key={index} className="mr-2 text-xs h-auto px-3 border">
+                {item}
+              </div>
+            );
+          })}
+        </span>
       </div>
     );
   };
@@ -289,56 +302,6 @@ const CollegeData = ({ College }) => {
   };
 
   const CollegeImages = ({ images }) => {
-    const itemData = [
-      {
-        img: "https://images.unsplash.com/photo-1549388604-817d15aa0110",
-        title: "Bed",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1525097487452-6278ff080c31",
-        title: "Books",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6",
-        title: "Sink",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3",
-        title: "Kitchen",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1588436706487-9d55d73a39e3",
-        title: "Blinds",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1574180045827-681f8a1a9622",
-        title: "Chairs",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1530731141654-5993c3016c77",
-        title: "Laptop",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1481277542470-605612bd2d61",
-        title: "Doors",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1517487881594-2787fef5ebf7",
-        title: "Coffee",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee",
-        title: "Storage",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1597262975002-c5c3b14bbd62",
-        title: "Candle",
-      },
-      {
-        img: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4",
-        title: "Coffee table",
-      },
-    ];
     return (
       <div className="">
         <Box sx={{ height: 1000, overflowY: "scroll" }}>
@@ -356,10 +319,10 @@ const CollegeData = ({ College }) => {
 
   return (
     <>
-      <div className="container bg-white rounded-sm mt-20   p-5 mx-auto space-y-12">
+      <div className="container bg-white rounded-sm mt-14  sm:mt-20 p-5 mx-auto space-y-12">
         <article className=" ">
           <div className="space-y-6 border-b-2 pb-5">
-            <h1 className="text-4xl font-bold sm:text-3xl md:tracking-tight ">
+            <h1 className="text-2xl font-bold sm:text-3xl md:tracking-tight ">
               {College.name} ({College.instituteCode})
             </h1>
             <p className="text-sm font-bold ">
@@ -369,50 +332,42 @@ const CollegeData = ({ College }) => {
                 {College.university}{" "}
               </span>
             </p>
-            <div className="flex items-start text-slate-400 justify-between w-full flex-row md:items-center ">
-              <div className="flex items-center ">
-                <img
-                  src="/img/logo.svg"
-                  alt=""
-                  className="w-4 h-4 border mr-2 rounded-full "
-                />
-                <p className="text-sm ">
-                  {College.addedBy} • {College.updatedDate}
-                </p>
-              </div>
-              <p className=" text-sm ">4 min read • {College.views} views</p>
-            </div>
-            <div className="flex flex-wrap gap-5  space-x-2">
-              <Rating
-                name="half-rating-read"
-                defaultValue={College.rating}
-                // precision={0.5}
-                size="small"
-                readOnly
-              />
-              <span className="text-sm font-semibold flex">
-                {" "}
-                <i className="bi text-slate-400 bi-award-fill mr-2"></i>{" "}
-                <span className="mr-2">Approved By : </span>
-                {topRecu.map((item, index) => {
-                  return (
-                    <div key={index} className="mr-2 text-xs  px-3 border">
-                      {item}
-                    </div>
-                  );
-                })}
-              </span>
 
-              <span className="text-sm font-semibold">
+            <div className="grid grid-cols-2 sm:grid-cols-8 gap-3  ">
+              <div>
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={College.rating}
+                  size="small"
+                  readOnly
+                />
+              </div>
+              <span className="text-sm  m-0  font-semibold">
                 <i className="bi text-slate-400 mr-2 bi-pin-map-fill"></i>
                 Location :{" "}
                 <span className="font-normal"> {College.location.city}</span>
               </span>
-              <span className="text-sm font-semibold">
-                <i className="bi text-slate-400 mr-2  bi-flag-fill"></i>
+              <span className="text-sm  m-0  font-semibold">
+                <i className="bi text-slate-400 mr-2   bi-flag-fill"></i>
                 <span className="font-normal"> {College.collegeUnder}</span>
               </span>
+              <span className="text-sm  m-0  font-semibold">
+                <i className="bi text-slate-400 mr-2   bi-send-fill"></i>
+                <span className="font-normal"> {College.collegeType}</span>
+              </span>
             </div>
+            <span className="text-sm m-0  font-semibold  flex ">
+              {" "}
+              <i className="bi text-slate-400 bi-award-fill mr-2"></i>{" "}
+              <span className="mr-2 ">Approved By : </span>
+              {approvedBy.map((item, index) => {
+                return (
+                  <div key={index} className="mr-2 text-xs h-auto px-3 border">
+                    {item}
+                  </div>
+                );
+              })}
+            </span>
           </div>
 
           <div></div>
