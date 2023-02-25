@@ -98,7 +98,7 @@ const College = ({ data }) => {
               pathname: `/CollegeDa/[id]`,
               query: {
                 id: props.collegeId,
-                cName: props.collegeName.replace(" ", "+"),
+                // cName: props.collegeName.replace(" ", "+"),
               },
             }}
           >

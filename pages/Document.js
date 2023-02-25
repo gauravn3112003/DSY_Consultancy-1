@@ -219,14 +219,22 @@ const Document = () => {
         <div className="flex gap-5 p-5 bg-slate-100 ">
           <button
             onClick={goToBasic}
-            className={`font-semibold  cursor-pointer `}
+            className={
+              docType == "basicDoc"
+                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
+                : " font-semibold"
+            }
             type="button"
           >
             {" "}
             Basic Document
           </button>
           <button
-            className={`font-semibold cursor-pointer `}
+            className={
+              docType == "admissionDoc"
+                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
+                : " font-semibold"
+            }
             onClick={goToAdmission}
             type="button"
           >

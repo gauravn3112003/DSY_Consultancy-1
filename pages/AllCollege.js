@@ -166,7 +166,7 @@ const CollegeCard = (props) => {
               pathname: `/CollegeDa/[id]`,
               query: {
                 id: props.id,
-                cName: props.cName.replace(" ", "+"),
+                // cName: props.cName.replace(" ", "+"),
               },
             }}
           >
@@ -251,15 +251,7 @@ const AllCollege = ({ data }) => {
                 );
               })}
             </div>
-            {/* <div className="flex justify-center">
-              <button
-                type="button"
-                className="px-6 py-3 text-sm rounded-sm hover:underline pBtn"
-                fdprocessedid="32olua"
-              >
-                Load more posts...
-              </button>
-            </div> */}
+  
           </div>
         </section>
       </div>

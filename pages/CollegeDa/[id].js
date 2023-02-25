@@ -333,7 +333,7 @@ const CollegeData = ({ College }) => {
               </span>
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-8 gap-3  ">
+            <div className="grid sm:flex grid-cols-2  gap-5  ">
               <div>
                 <Rating
                   name="half-rating-read"
@@ -411,6 +411,12 @@ export async function getServerSideProps(context) {
   });
 
   const data = await res.json();
+  if (data.error) {
+    return {
+      notFound: true,
+    };
+  }
+  console.log(data._id);
   await fetch(baseUrl + "/api/viewsIn", {
     method: "POST",
     headers: {
