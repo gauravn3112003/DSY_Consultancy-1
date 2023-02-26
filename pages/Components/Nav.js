@@ -4,14 +4,12 @@ import UserDropdown from "./UserDropdown";
 import baseUrl from "../../baseUrl";
 import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
-import { SpecificData } from "../_app";
 
-const Nav = () => {
+const Nav = ({ status, userData }) => {
   const [nav, setnav] = useState("hidden");
   const [overlay, setOverlay] = useState("");
-
-  const user = SpecificData().userStatus;
-  const userD = SpecificData().user.userAllData.credentails;
+  const user = status;
+  const userD = userData;
   const toggleNav = () => {
     if (nav == "") {
       setnav("mobileNav");
@@ -19,7 +17,6 @@ const Nav = () => {
       setnav("");
     }
   };
-
   const closeNav = () => {
     if (nav == "block") {
     }
@@ -56,7 +53,7 @@ const Nav = () => {
           <div
             onClick={toggleUser}
             type="button"
-            className="h-8 mr-3 w-8 rounded-full flex items-center justify-center font-semibold  sm:h-10 sm:w-10 cursor-pointer "
+            className="h-8 mr-0 w-8 rounded-full flex items-center justify-center font-semibold  sm:h-10 sm:w-10 cursor-pointer "
             // src="/img/logo.svg"
             alt="User dropdown"
           >
@@ -119,7 +116,7 @@ const Nav = () => {
                 setnav("block");
               }}
               type="button"
-              className="inline-flex items-center p-2 text-sm md:hidden colorBlack"
+              className="inline-flex items-center p-2  text-sm md:hidden colorBlack"
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
@@ -201,11 +198,11 @@ const Nav = () => {
               <h1 className="text-white  font-bold text-xl">
                 Welcome to DSY Consultancy
               </h1>
-              <h1 className="text-white  font-semibold text-lg">
+              <h1 className="text-white my-4  font-semibold text-lg">
                 {userD.fName}
               </h1>
               <Link href="/Profile">
-                <a className="text-slate-400 text-sm">Manage Your Profile </a>
+                <a className=" text-slate-400 text-sm">Manage Your Profile </a>
               </Link>
             </div>
           ) : (
@@ -216,14 +213,14 @@ const Nav = () => {
           <div className="p-5">
             {TopNav.map((item, index) => {
               return (
-                <div className="flex  items-center  mb-2" key={index}>
-                  <i className="bi-buildings-fill bi mr-5"></i>
+                <div className="flex  items-center mb-2" key={index}>
+                  <i className="bi-buildings-fill text-slate-800 bi text-sm  mr-5"></i>
                   <Link href={item.location}>
                     <button
                       onClick={function () {
                         setnav("hidden");
                       }}
-                      className=" w-full text-sm font-semibold text-left "
+                      className=" w-full text-xs font-light text-left "
                     >
                       {item.name}
                     </button>
@@ -238,7 +235,7 @@ const Nav = () => {
                     onClick={function () {
                       setnav("hidden");
                     }}
-                    className=" w-full text-sm text-center font-semibold "
+                    className=" w-full text-sm text-center font-light "
                   >
                     <i className="bi-person-fill bi mr-5"></i>
                     Sign In
@@ -254,13 +251,13 @@ const Nav = () => {
                 {HomeNav.map((item, index) => {
                   return (
                     <div className="flex  items-center  mb-2" key={index}>
-                      <i className={`${item.icon} bi mr-5`}></i>
+                      <i className={`${item.icon} text-sm text-slate-800 bi mr-5`}></i>
                       <Link href={item.location}>
                         <button
                           onClick={function () {
                             setnav("hidden");
                           }}
-                          className=" w-full text-sm font-semibold text-left "
+                          className=" w-full  text-xs font-light text-left "
                         >
                           {item.name}
                         </button>

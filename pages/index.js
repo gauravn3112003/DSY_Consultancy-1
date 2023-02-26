@@ -2,7 +2,6 @@ import Pricing from "./Components/Pricing";
 import Link from "next/link";
 import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
-
 import Teams from "./Components/Teams";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -95,9 +94,9 @@ const AppDown = () => {
   );
 };
 
-export default function Home() {
+export default function Home({ statusData }) {
   const router = useRouter();
-  const user = SpecificData().userStatus;
+  const user = statusData;
 
   const HomeAds = () => {
     return (

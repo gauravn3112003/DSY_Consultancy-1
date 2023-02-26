@@ -1,10 +1,9 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = ({ name }) => {
 
-
-  const [progress, setProgress] = useState("50")
+  const [progress, setProgress] = useState("50");
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
       console.log("Latitude is :", position.coords.latitude);
@@ -70,7 +69,8 @@ const Home = () => {
           <div className="flex flex-col sm:w-2/4 w-full justify-around">
             <div>
               <p className="text-base font-semibold">
-                Hey Gaurav Narnaware, Your profile is incomplete !
+                Hey {name}, Your profile is incomplete
+                !
               </p>
               <p className="text-sm mt-3 text-slate-400">
                 Complete your profile and we will help you in building better
@@ -93,7 +93,7 @@ const Home = () => {
           <div className="w-full bg-gray-200 rounded-full dark:bg-gray-200">
             <div
               className="bgColor text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-              style={{ width: progress+"%" }}
+              style={{ width: progress + "%" }}
             >
               {" "}
               {progress}%

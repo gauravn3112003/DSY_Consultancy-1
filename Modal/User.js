@@ -110,6 +110,22 @@ const userSchema = new Schema(
         default: "N/A",
       },
     },
+    coOrdinates: {
+      longitude: {
+        type: String,
+        default: "00.0000",
+      },
+      latitude: {
+        type: String,
+        default: "00.0000",
+      },
+    },
+    profileCompletion: {
+      type: String,
+      default: "0",
+    },
+    
+
   },
   { timestamps: true }
 );
