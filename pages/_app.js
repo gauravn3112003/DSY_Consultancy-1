@@ -6,6 +6,7 @@ import Nav from "./Components/Nav";
 import { useEffect, useState } from "react";
 
 export default function App({ Component, pageProps }) {
+  
   const status = SpecificData().userStatus;
   const userData = SpecificData().user;
   const name = SpecificData().name;
@@ -39,7 +40,7 @@ export const SpecificData = () => {
       }
     } else {
       setuserAllData({});
-      localStorage.removeItem("Name")
+      localStorage.removeItem("Name");
     }
   }, []);
 

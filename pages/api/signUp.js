@@ -39,11 +39,14 @@ const signUpUser = async (req, res) => {
       fName,
       username,
       email,
-      password:CryptoJS.AES.encrypt(password, 'secret key 123').toString(),
+      password: CryptoJS.AES.encrypt(password, "secret key 123").toString(),
     };
 
     if (password == cpassword) {
-      const userStatus = await new User({ credentails: credentail }).save();
+      const userStatus = await new User({
+        credentails: credentail,
+        "basicDetails.fName": fName,
+      }).save();
       res.status(201).json({ msg: "Account Created", userStatus });
     } else {
       res.status(400).json({ error: "Password not Matched" });

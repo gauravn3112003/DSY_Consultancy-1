@@ -3,17 +3,18 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema(
   {
+    role: {
+      type: String,
+      default: "user",
+    },
     credentails: {
       username: String,
       email: String,
-      role: {
-        type: String,
-        default: "user",
-      },
       password: String,
       fName: String,
     },
     basicDetails: {
+      fName: String,
       dob: {
         type: String,
         default: "N/A",
@@ -124,8 +125,24 @@ const userSchema = new Schema(
       type: String,
       default: "0",
     },
-    
-
+    notification: {
+      SMS: {
+        type: Boolean,
+        default: false,
+      },
+      Whatsapp: {
+        type: Boolean,
+        default: false,
+      },
+      Email: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    subscription: {
+      type: String,
+      default: "Free",
+    },
   },
   { timestamps: true }
 );
