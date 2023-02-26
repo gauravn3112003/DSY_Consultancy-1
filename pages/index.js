@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect";
 import Teams from "./Components/Teams";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import SpecificData from "./Components/SpecificData";
+import { SpecificData } from "./_app";
 const CollegeCard = () => {
   const Card = () => {
     return (

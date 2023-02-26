@@ -4,11 +4,12 @@ import UserDropdown from "./UserDropdown";
 import baseUrl from "../../baseUrl";
 import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
-import SpecificData from "./SpecificData";
+import { SpecificData } from "../_app";
 
 const Nav = () => {
   const [nav, setnav] = useState("hidden");
   const [overlay, setOverlay] = useState("");
+
   const user = SpecificData().userStatus;
   const userD = SpecificData().user.userAllData.credentails;
   const toggleNav = () => {
