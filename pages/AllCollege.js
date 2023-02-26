@@ -179,7 +179,7 @@ const CollegeCard = (props) => {
           </Link>
           <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
             <div>
-              <i class="bi mr-2 bi-eye-fill"></i>
+              <i className="bi mr-2 bi-eye-fill"></i>
               <span>{props.views} Views</span>
             </div>
           </div>
