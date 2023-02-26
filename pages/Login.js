@@ -1,16 +1,22 @@
 import Auth from "directsecondyearadmission/Layout/Auth";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  const [userDetail, setUserDetail] = useState({});
+  const [userDetail, setUserDetail] = useState([]);
   const [requiredState, setRequired] = useState(false);
   const router = useRouter();
   const [usermsg, setUserMsg] = useState({
     msgM: "",
     styleM: "hidden",
   });
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      router.push("/");
+    }
+  }, []);
 
   const alert = (msg) => {
     setUserMsg({ msgM: msg, styleM: "block" });
@@ -44,7 +50,9 @@ const Login = () => {
     });
 
     const res2 = await res.json();
+
     if (res2.msg) {
+      localStorage.setItem("token", res2.token);
       alert(res2.msg);
       setTimeout(() => {
         router.push("/");
@@ -58,7 +66,6 @@ const Login = () => {
     <Auth>
       <form
         onSubmit={loginUser}
-        method="POST"
         className="lg:w-2/6 md:w-1/2 bg-white   p-8 flex flex-col md:ml-auto w-full mt-10  md:mt-0"
       >
         <h2 className="text-gray-900 font-bold text-center text-lg title-font mb-5">

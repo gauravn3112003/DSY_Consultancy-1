@@ -4,11 +4,13 @@ import UserDropdown from "./UserDropdown";
 import baseUrl from "../../baseUrl";
 import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
+import SpecificData from "./SpecificData";
 
 const Nav = () => {
   const [nav, setnav] = useState("hidden");
   const [overlay, setOverlay] = useState("");
-
+  const user = SpecificData().userStatus;
+  const userD = SpecificData().user.userAllData.credentails;
   const toggleNav = () => {
     if (nav == "") {
       setnav("mobileNav");
@@ -80,6 +82,8 @@ const Nav = () => {
     status();
   }, []);
 
+  // console.log();
+
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
@@ -97,15 +101,17 @@ const Nav = () => {
             </a>
           </Link>
           <div className="flex items-center md:order-2">
-            <Link href="/Login">
-              <button
-                type="button"
-                className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5 text-center mr-3  pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Get started
-              </button>
-            </Link>
-            <UserDropdown />
+            {!user && (
+              <Link href="/Login">
+                <button
+                  type="button"
+                  className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5 text-center mr-3  pBtn dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Get started
+                </button>
+              </Link>
+            )}
+            {user && <UserDropdown />}
             <SearchDropdown />
             <button
               onClick={function () {
@@ -172,32 +178,40 @@ const Nav = () => {
         </form>
       </div>
 
-      <div className={`fixed w-full h-full top-0 z-20  md:hidden ${nav}`}>
+      <div
+        className={`fixed w-full h-full overflow top-0 z-20  md:hidden ${nav}`}
+      >
         <div
           className="absolute w-full h-full top-0 z-20 lightBlack  cursor-pointer"
           onClick={function () {
             setnav("hidden");
           }}
         />
-        <div className="absolute w-4/5 h-full top-0 z-20  bg-white">
-          <div className=" flex flex-col justify-between items-start  bgColor w-full top-0 p-5">
-            <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-                className="w-full h-full"
-              />
+        <div className="absolute overflow-y-scroll w-4/5 h-full top-0 z-20  bg-white">
+          {user == true ? (
+            <div className=" flex  flex-col justify-between items-start  bgColor w-full top-0 p-5">
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                  alt=""
+                  className="w-full h-full"
+                />
+              </div>
+              <h1 className="text-white  font-bold text-xl">
+                Welcome to DSY Consultancy
+              </h1>
+              <h1 className="text-white  font-semibold text-lg">
+                {userD.fName}
+              </h1>
+              <Link href="/Profile">
+                <a className="text-slate-400 text-sm">Manage Your Profile </a>
+              </Link>
             </div>
-            <h1 className="text-white  font-bold text-xl">
-              Welcome to DSY Consultancy
-            </h1>
-            <h1 className="text-white  font-semibold text-lg">
-              Gaurav Narnaware
-            </h1>
-            <Link href="/Profile">
-              <a className="text-slate-400 text-sm">Manage Your Profile </a>
-            </Link>
-          </div>
+          ) : (
+            <div className="mx-5 py-5 font-bold text-2xl pColor border-b">
+              DSY
+            </div>
+          )}
           <div className="p-5">
             {TopNav.map((item, index) => {
               return (
@@ -216,27 +230,46 @@ const Nav = () => {
                 </div>
               );
             })}
+            {!user && (
+              <div className="flex bg-red-100 py-3 mt-5 rounded-sm pBtn  items-center  mb-2">
+                <Link href="/Login">
+                  <button
+                    onClick={function () {
+                      setnav("hidden");
+                    }}
+                    className=" w-full text-sm text-center font-semibold "
+                  >
+                    <i className="bi-person-fill bi mr-5"></i>
+                    Sign In
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
-          <div className="border mx-5" />
-          <div className="p-5">
-            {HomeNav.map((item, index) => {
-              return (
-                <div className="flex  items-center  mb-2" key={index}>
-                  <i className={`${item.icon} bi mr-5`}></i>
-                  <Link href={item.location}>
-                    <button
-                      onClick={function () {
-                        setnav("hidden");
-                      }}
-                      className=" w-full text-sm font-semibold text-left "
-                    >
-                      {item.name}
-                    </button>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
+          {user == true && (
+            <>
+              <div className="border mx-5" />
+              <div className="p-5">
+                {HomeNav.map((item, index) => {
+                  return (
+                    <div className="flex  items-center  mb-2" key={index}>
+                      <i className={`${item.icon} bi mr-5`}></i>
+                      <Link href={item.location}>
+                        <button
+                          onClick={function () {
+                            setnav("hidden");
+                          }}
+                          className=" w-full text-sm font-semibold text-left "
+                        >
+                          {item.name}
+                        </button>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

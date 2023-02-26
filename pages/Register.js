@@ -12,6 +12,9 @@ const Register = () => {
     styleM: "hidden",
   });
 
+
+  
+
   const alert = (msg) => {
     setUserMsg({ msgM: msg, styleM: "block" });
     setTimeout(() => {

@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Toastmsg from "./Toastmsg";
+import { toast } from "react-toastify";
 const UserDropdown = () => {
   const [userOpen, setUserOpen] = useState("hidden");
+
+  const router = useRouter();
   const toggleUser = () => {
     if (userOpen == "hidden") {
       setUserOpen("block");
@@ -40,9 +45,18 @@ const UserDropdown = () => {
     );
   };
 
+  const signOut = () => {
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token");
+      toast.success("Logout Succesfully", {});
+      router.push("/");
+    }
+  };
+
   return (
     <>
       <section className="relative">
+        <Toastmsg />
         <div
           id="avatarButton"
           onClick={toggleUser}
@@ -72,7 +86,7 @@ const UserDropdown = () => {
               );
             })}
 
-            <form method="POST" action="#" role="none">
+            <form onSubmit={signOut}>
               <button
                 type="submit"
                 className="text-gray-700 block navItem w-full px-4 py-2 text-left text-sm"

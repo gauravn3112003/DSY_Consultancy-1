@@ -4,6 +4,9 @@ import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
 
 import Teams from "./Components/Teams";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import SpecificData from "./Components/SpecificData";
 const CollegeCard = () => {
   const Card = () => {
     return (
@@ -93,6 +96,8 @@ const AppDown = () => {
 };
 
 export default function Home() {
+  const router = useRouter();
+  const user = SpecificData().userStatus;
 
   const HomeAds = () => {
     return (
@@ -106,7 +111,6 @@ export default function Home() {
   return (
     <>
       <section className="md:mt-14 h-screen sm:h-auto mt-0 bg-blue-900 pb-5  body-font">
-        
         <div className=" container m-auto mt-14 p-5 ">
           <marquee
             width="100%"
@@ -152,11 +156,13 @@ export default function Home() {
               <button className="inline-flex font-semibold bg-yellow-300 border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
                 Search College
               </button>
-              <Link href="/Login">
-                <button className="ml-4 font-semibold inline-flex text-yellow-500 border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
-                  Login
-                </button>
-              </Link>
+              {!user && (
+                <Link href="/Login">
+                  <button className="ml-4 font-semibold inline-flex text-yellow-500 border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
+                    Sign In
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">

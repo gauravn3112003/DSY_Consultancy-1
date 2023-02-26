@@ -3,7 +3,9 @@ import "../styles/globals.css";
 import ScrollToTop from "react-scroll-up";
 import Footer from "./Components/Footer";
 import Nav from "./Components/Nav";
+import SpecificData from "./Components/SpecificData";
 export default function App({ Component, pageProps }) {
+  SpecificData();
   return (
     <ThemeProvider attribute="class">
       <Nav />
