@@ -2,8 +2,12 @@ import Auth from "directsecondyearadmission/Layout/Auth";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 
 const Login = () => {
+  const status = useContext(collegeContext);
+
   const [userDetail, setUserDetail] = useState([]);
   const [requiredState, setRequired] = useState(false);
   const router = useRouter();
@@ -52,7 +56,10 @@ const Login = () => {
     const res2 = await res.json();
 
     if (res2.msg) {
+      localStorage.setItem("userDetail", JSON.stringify(res2.userDetail));
       localStorage.setItem("token", res2.token);
+      status.setuserAllData(res2.userDetail);
+      status.setLoginStatus(true);
       alert(res2.msg);
       setTimeout(() => {
         router.push("/");

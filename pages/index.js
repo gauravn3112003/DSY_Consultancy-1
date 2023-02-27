@@ -4,8 +4,9 @@ import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
 import Teams from "./Components/Teams";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
-import { SpecificData } from "./_app";
 const CollegeCard = () => {
   const Card = () => {
     return (
@@ -94,9 +95,10 @@ const AppDown = () => {
   );
 };
 
-export default function Home({ statusData }) {
+export default function Home() {
   const router = useRouter();
-  const user = statusData;
+  const status = useContext(collegeContext);
+  const user = status.loginStatus;
 
   const HomeAds = () => {
     return (

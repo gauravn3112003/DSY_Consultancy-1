@@ -4,21 +4,21 @@ import ScrollToTop from "react-scroll-up";
 import Footer from "./Components/Footer";
 import Nav from "./Components/Nav";
 import { useEffect, useState } from "react";
+import CollegeState from "directsecondyearadmission/Context/CollegeState";
 
 export default function App({ Component, pageProps }) {
-  
   const status = SpecificData().userStatus;
   const userData = SpecificData().user;
   const name = SpecificData().name;
   return (
-    <ThemeProvider attribute="class">
-      <Nav status={status} userData={userData.userAllData.credentails} />
-      <Component {...pageProps} statusData={status} name={name} />
+    <CollegeState>
+      <Nav />
+      <Component {...pageProps} name={name} />
       <Footer />
       <ScrollToTop showUnder={160}>
         <i className="bi text-3xl pColor bi-arrow-up-square-fill"></i>
       </ScrollToTop>
-    </ThemeProvider>
+    </CollegeState>
   );
 }
 

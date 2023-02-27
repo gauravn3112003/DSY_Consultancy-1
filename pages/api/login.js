@@ -48,7 +48,9 @@ const signUpUser = async (req, res) => {
 
       // const decoded = jwt.verify(token, "secretKeyJWT");
       // const payload =
-      return res.status(200).json({ msg: "Login Successfull", token });
+      return res
+        .status(200)
+        .json({ msg: "Login Successfull", token, userDetail: checkUserEmail });
     } else {
       return res.status(401).json({ error: "Invalid Credentials" });
     }

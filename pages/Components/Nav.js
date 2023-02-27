@@ -4,12 +4,16 @@ import UserDropdown from "./UserDropdown";
 import baseUrl from "../../baseUrl";
 import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
-
-const Nav = ({ status, userData }) => {
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
+const Nav = ({ userData }) => {
+  const status = useContext(collegeContext);
+  // console.log(userData);
+  // console.log(status.userAllData.credentails);
   const [nav, setnav] = useState("hidden");
   const [overlay, setOverlay] = useState("");
-  const user = status;
-  const userD = userData;
+  const user = status.loginStatus;
+  const userD = status.userAllData.credentails;
   const toggleNav = () => {
     if (nav == "") {
       setnav("mobileNav");
@@ -251,7 +255,9 @@ const Nav = ({ status, userData }) => {
                 {HomeNav.map((item, index) => {
                   return (
                     <div className="flex  items-center  mb-2" key={index}>
-                      <i className={`${item.icon} text-sm text-slate-800 bi mr-5`}></i>
+                      <i
+                        className={`${item.icon} text-sm text-slate-800 bi mr-5`}
+                      ></i>
                       <Link href={item.location}>
                         <button
                           onClick={function () {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Toastmsg from "./Toastmsg";
-import { toast } from "react-toastify";
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 const UserDropdown = () => {
   const [userOpen, setUserOpen] = useState("hidden");
-
+  const context = useContext(collegeContext);
   const router = useRouter();
   const toggleUser = () => {
     if (userOpen == "hidden") {
@@ -46,17 +46,12 @@ const UserDropdown = () => {
   };
 
   const signOut = () => {
-    if (localStorage.getItem("token")) {
-      localStorage.removeItem("token");
-      toast.success("Logout Succesfully", {});
-      router.push("/");
-    }
+    context.logOut();
   };
 
   return (
     <>
       <section className="relative">
-        <Toastmsg />
         <div
           id="avatarButton"
           onClick={toggleUser}
