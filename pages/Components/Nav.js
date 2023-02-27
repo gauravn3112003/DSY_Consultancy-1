@@ -14,13 +14,7 @@ const Nav = ({ userData }) => {
   const [overlay, setOverlay] = useState("");
   const user = status.loginStatus;
   const userD = status.userAllData.credentails;
-  const toggleNav = () => {
-    if (nav == "") {
-      setnav("mobileNav");
-    } else {
-      setnav("");
-    }
-  };
+
   const closeNav = () => {
     if (nav == "block") {
     }
@@ -68,23 +62,7 @@ const Nav = ({ userData }) => {
     );
   };
 
-  const [data, setData] = useState();
 
-  useEffect(() => {
-    const status = async () => {
-      const res = await fetch(baseUrl + "/api/Colleges", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      setData(data);
-    };
-    status();
-  }, []);
-
-  // console.log();
 
   return (
     <>
@@ -190,7 +168,7 @@ const Nav = ({ userData }) => {
           }}
         />
         <div className="absolute overflow-y-scroll w-4/5 h-full top-0 z-20  bg-white">
-          {user == true ? (
+          {user ? (
             <div className=" flex  flex-col justify-between items-start  bgColor w-full top-0 p-5">
               <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
                 <img

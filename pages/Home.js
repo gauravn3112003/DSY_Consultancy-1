@@ -1,13 +1,20 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import { useRouter } from "next/router";
+const Home = () => {
+  const context = useContext(collegeContext);
+  const loginStatus = context.loginStatus;
+  const [coOrdinates, setcoOrdinates] = useState({});
 
-const Home = ({ name }) => {
-
-  const [progress, setProgress] = useState("50");
+  console.log(coOrdinates);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
+      setcoOrdinates({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      });
     });
   });
 
@@ -63,14 +70,17 @@ const Home = ({ name }) => {
     );
   };
   const HeaderCard = () => {
+    const name = context.userAllData.credentails.fName;
+    const [progress, setProgress] = useState(
+      context.userAllData.profileCompletion
+    );
     return (
       <div className="border mb-5 ">
         <div className="bg-white p-5   flex sm:flex-row flex-col-reverse items-center w-full  justify-between rounded-sm ">
           <div className="flex flex-col sm:w-2/4 w-full justify-around">
             <div>
               <p className="text-base font-semibold">
-                Hey {name}, Your profile is incomplete
-                !
+                Hey {name}, Your profile is incomplete !
               </p>
               <p className="text-sm mt-3 text-slate-400">
                 Complete your profile and we will help you in building better
@@ -105,11 +115,17 @@ const Home = ({ name }) => {
   };
   return (
     <HomeLayout>
-      <HeaderCard />
-      <div className="md:flex-row flex-col flex gap-5 ">
-        <CounsellorCard />
-        <InsuranceCard />
-      </div>{" "}
+      {loginStatus ? (
+        <>
+          <HeaderCard />
+          <div className="md:flex-row flex-col flex gap-5 ">
+            <CounsellorCard />
+            <InsuranceCard />
+          </div>
+        </>
+      ) : (
+        "Login First"
+      )}
     </HomeLayout>
   );
 };
