@@ -6,17 +6,17 @@ import { useRouter } from "next/router";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
-  const [coOrdinates, setcoOrdinates] = useState({});
+  // const [coOrdinates, setcoOrdinates] = useState({});
 
-  console.log(coOrdinates);
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      setcoOrdinates({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude,
-      });
-    });
-  });
+  // console.log(coOrdinates);
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     setcoOrdinates({
+  //       latitude: position.coords.latitude,
+  //       longitude: position.coords.longitude,
+  //     });
+  //   });
+  // });
 
   const CounsellorCard = () => {
     return (
@@ -115,17 +115,11 @@ const Home = () => {
   };
   return (
     <HomeLayout>
-      {loginStatus ? (
-        <>
-          <HeaderCard />
-          <div className="md:flex-row flex-col flex gap-5 ">
-            <CounsellorCard />
-            <InsuranceCard />
-          </div>
-        </>
-      ) : (
-        "Login First"
-      )}
+      <HeaderCard />
+      <div className="md:flex-row flex-col flex gap-5 ">
+        <CounsellorCard />
+        <InsuranceCard />
+      </div>
     </HomeLayout>
   );
 };

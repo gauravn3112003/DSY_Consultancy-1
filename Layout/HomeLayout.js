@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 // components
-
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 export default function HomeLayout({ children }) {
+  const context = useContext(collegeContext);
   const ListItem = (props) => {
     return (
       <li>
@@ -44,32 +46,44 @@ export default function HomeLayout({ children }) {
       </div>
     );
   };
+
+  if (context.loginStatus) {
+    return (
+      <>
+        <section className="body-font   px-5">
+          <UserData />
+          <div className="container   mt-20 home  ">
+            <aside className={`screenSidebar rounded-sm `}>
+              <div className="rounded-sm">
+                <i className="bi bi-x-lg colorBlack close "></i>
+                <ul className="mb-2">
+                  {HomeNav.map((item, index) => {
+                    return (
+                      <ListItem
+                        key={index}
+                        location={item.location}
+                        name={item.name}
+                        icon={item.icon}
+                      />
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="sideAds">Space for ads</div>
+            </aside>
+
+            <div className="screenLayout mt-20 md:mt-0 ">{children}</div>
+          </div>
+        </section>
+      </>
+    );
+  }
   return (
     <>
-      <section className="body-font   px-5">
-        <UserData />
-        <div className="container   home  ">
-          <aside className={`screenSidebar rounded-sm `}>
-            <div className="rounded-sm">
-              <i className="bi bi-x-lg colorBlack close "></i>
-              <ul className="mb-2">
-                {HomeNav.map((item, index) => {
-                  return (
-                    <ListItem
-                      key={index}
-                      location={item.location}
-                      name={item.name}
-                      icon={item.icon}
-                    />
-                  );
-                })}
-              </ul>
-            </div>
-
-            <div className="sideAds">Space for ads</div>
-          </aside>
-
-          <div className="screenLayout mt-20 md:mt-0 ">{children}</div>
+      <section className="body-font   ">
+        <div className="container p-5  mt-20 m-auto  ">
+          <div className="bg-white p-5">Login First</div>
         </div>
       </section>
     </>
