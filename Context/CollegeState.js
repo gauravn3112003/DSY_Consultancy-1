@@ -8,6 +8,7 @@ const CollegeState = (props) => {
   const router = useRouter();
   const [loginStatus, setLoginStatus] = useState(false); //login status
   const [userId, setUserId] = useState("");
+  const [username, setUsername] = useState("");
   const [userAllData, setuserAllData] = useState({});
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -16,9 +17,10 @@ const CollegeState = (props) => {
       const payloadString = atob(payloadBase64);
       const payload = JSON.parse(payloadString);
 
+      localStorage.setItem("userName", payload.userData.credentails.fName);
       localStorage.setItem("userId", payload.userData._id);
       setUserId(localStorage.getItem("userId"));
-
+      setUsername(localStorage.getItem("userName"));
       setLoginStatus(true);
       const userDetails = localStorage.getItem("userDetail");
       if (userDetails) {
@@ -40,6 +42,7 @@ const CollegeState = (props) => {
   return (
     <collegeContext.Provider
       value={{
+        username,
         loginStatus,
         setLoginStatus,
         userAllData,

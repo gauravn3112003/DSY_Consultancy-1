@@ -4,12 +4,14 @@ import Link from "next/link";
 import InstituteCheck from "./InstituteCheck";
 import Toastmsg from "directsecondyearadmission/pages/Components/Toastmsg";
 import { toast } from "react-toastify";
-
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 const CollegeDetail = () => {
-
+  const context = useContext(collegeContext);
+  console.log(context.username);
   const [cDetails, setCDetails] = useState({});
   const [requiredState, setRequired] = useState(false);
- 
+
   const onChange = (e) => {
     setCDetails({
       ...cDetails,
@@ -99,6 +101,7 @@ const CollegeDetail = () => {
         addressLine: addressLine,
         taluka: taluka,
         district: district,
+        addedBy: context.username,
         city: city,
         latitude: latitude,
         longitude: longitude,

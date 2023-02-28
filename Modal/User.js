@@ -31,6 +31,10 @@ const userSchema = new Schema(
         type: String,
         default: "N/A",
       },
+      gender: {
+        type: String,
+        default: "N/A",
+      },
     },
     contactDetails: {
       mobileNo: {

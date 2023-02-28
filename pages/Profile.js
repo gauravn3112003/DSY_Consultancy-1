@@ -1,7 +1,10 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Link from "next/link";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import { useContext } from "react";
 const Profile = () => {
+  const context = useContext(collegeContext);
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
     if (modalOpen == "hidden") {
@@ -170,6 +173,8 @@ const Profile = () => {
         </div>
       );
     };
+
+    const basicDetail = context.userAllData.basicDetails;
     return (
       <div className="bg-white p-5 rounded-sm ">
         <BasicDetailModal />
@@ -184,30 +189,31 @@ const Profile = () => {
         <div className=" flex flex-wrap mt-3 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Full Name</div>
-            <div className="text-sm">Gaurav Narnaware</div>
+            <div className="text-sm">{basicDetail.fName}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">DOB</div>
-            <div className="text-sm">03/11/2003</div>
+            <div className="text-sm"> {basicDetail.dob}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Social Category</div>
-            <div className="text-sm">ST</div>
+            <div className="text-sm"> {basicDetail.socialCategory}</div>
+            <div className="text-sm"></div>
           </div>
         </div>
 
         <div className=" flex flex-wrap mt-2 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Gender</div>
-            <div className="text-sm">Male</div>
+            <div className="text-sm">{basicDetail.gender}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Marital Status</div>
-            <div className="text-sm">Unmaried</div>
+            <div className="text-sm">{basicDetail.maritialStatus}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Physically Challenged</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{basicDetail.phyChanged}</div>
           </div>
         </div>
       </div>
@@ -306,6 +312,10 @@ const Profile = () => {
         </div>
       );
     };
+
+
+    const contactDetail = context.userAllData.contactDetails;
+console.log(contactDetail);
     return (
       <div className="bg-white p-5 mt-5 rounded-sm">
         <ContactDetailModal />
@@ -320,22 +330,22 @@ const Profile = () => {
         <div className=" flex flex-wrap mt-3 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Mobile No.</div>
-            <div className="text-sm">7796305801e</div>
+            <div className="text-sm">{contactDetail.mobileNo}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">E-mail Address</div>
-            <div className="text-sm">gauravnarnaware3112003@gmail.com</div>
+            <div className="text-sm">{context.userAllData.credentails.email}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">City</div>
-            <div className="text-sm">Ghatanji</div>
+            <div className="text-sm">{contactDetail.city}</div>
           </div>
         </div>
 
         <div className=" flex flex-wrap mt-2 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">State</div>
-            <div className="text-sm">Maharashtra</div>
+            <div className="text-sm">{contactDetail.state} </div>
           </div>
         </div>
       </div>
@@ -680,7 +690,6 @@ const Profile = () => {
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
-
 
                   <div className="flex flex-col ">
                     <label

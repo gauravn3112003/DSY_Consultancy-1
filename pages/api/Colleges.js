@@ -34,6 +34,7 @@ const addCollege = async (req, res) => {
     approvedBy,
     image,
     topRecruiters,
+    addedBy,
   } = req.body;
 
   try {
@@ -56,7 +57,8 @@ const addCollege = async (req, res) => {
       !email ||
       !approvedBy ||
       !image ||
-      !topRecruiters
+      !topRecruiters ||
+      !addedBy
     ) {
       return res.status(401).json({ error: "please fill all the fields" });
     }
@@ -86,7 +88,7 @@ const addCollege = async (req, res) => {
         email,
       },
       approvedBy,
-      addedBy: "Gaurav Narnaware",
+      addedBy: addedBy,
       image,
       topRecruiters,
     }).save();
