@@ -156,7 +156,7 @@ const Dashboard = ({ children }) => {
     );
   };
 
-  if (context.userAllData.role == "Admin") {
+  if (context.userAllData.role == context.adminKey) {
     return (
       <HomeLayout>
         <HeaderAdmin />

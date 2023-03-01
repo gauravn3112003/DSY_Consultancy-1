@@ -6,7 +6,7 @@ import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
-const Nav = ({ userData }) => {
+const Nav = () => {
   const status = useContext(collegeContext);
   // console.log(userData);
   // console.log(status.userAllData.credentails);
@@ -275,21 +275,23 @@ const Nav = ({ userData }) => {
                   );
                 })}
 
-                <div className="flex  items-center  mb-2">
-                  <i
-                    className={`bi-bar-chart-line-fill  text-sm text-slate-800 bi mr-5`}
-                  ></i>
-                  <Link href="/Admin/AllContact">
-                    <button
-                      onClick={function () {
-                        setnav("hidden");
-                      }}
-                      className=" w-full  text-xs font-light text-left "
-                    >
-                      Dashboard
-                    </button>
-                  </Link>
-                </div>
+                {status.userAllData.role == status.adminKey && (
+                  <div className="flex  items-center  mb-2">
+                    <i
+                      className={`bi-bar-chart-line-fill  text-sm text-slate-800 bi mr-5`}
+                    ></i>
+                    <Link href="/Admin/AllContact">
+                      <button
+                        onClick={function () {
+                          setnav("hidden");
+                        }}
+                        className=" w-full  text-xs font-light text-left "
+                      >
+                        Dashboard
+                      </button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </>
           )}
