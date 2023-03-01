@@ -20,11 +20,6 @@ const HomeNav = [
     name: "Insurance",
     location: "/Insurance",
   },
-  {
-    icon: "bi-bar-chart-line-fill",
-    name: "Dashboard",
-    location: "/Admin/AllContact",
-  },
 
   {
     icon: "bi-headset",

@@ -2,9 +2,11 @@ import Dash from "directsecondyearadmission/Layout/Dash";
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useEffect } from "react";
 import baseUrl from "../../baseUrl";
-
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const HeaderFilter = () => {
   const [userOpen, setUserOpen] = useState("hidden");
@@ -102,10 +104,11 @@ const HeaderFilter = () => {
 };
 
 const Dashboard = ({ children }) => {
-  
+  const context = useContext(collegeContext);
+  const router = useRouter();
   const HeaderAdmin = () => {
     const [data, setData] = useState();
-  
+    console.log(context.userAllData.role);
     useEffect(() => {
       const status = async () => {
         const res = await fetch(baseUrl + "/api/Colleges", {
@@ -131,9 +134,7 @@ const Dashboard = ({ children }) => {
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-              {data ? data.length :(
-                <>...</>
-              )}
+                {data ? data.length : <>...</>}
               </h2>
               <p className="leading-relaxed">Colleges</p>
             </div>
@@ -155,16 +156,23 @@ const Dashboard = ({ children }) => {
     );
   };
 
-  return (
-    <HomeLayout>
-      <HeaderAdmin  />
-      <HeaderFilter />
-
-      <div className="overflow-scroll bg-white h-full">
-        <Dash>{children}</Dash>
-      </div>
-    </HomeLayout>
-  );
+  if (context.userAllData.role == "Admin") {
+    return (
+      <HomeLayout>
+        <HeaderAdmin />
+        <HeaderFilter />
+        <div className="overflow-scroll bg-white h-full">
+          <Dash>{children}</Dash>
+        </div>
+      </HomeLayout>
+    );
+  } else {
+    return (
+      <HomeLayout>
+        <div className="overflow-scroll p-5 bg-white h-full">Access Denied</div>
+      </HomeLayout>
+    );
+  }
 };
 
 export default Dashboard;

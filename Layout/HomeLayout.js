@@ -39,7 +39,14 @@ export default function HomeLayout({ children }) {
           {router.pathname == "/Profile" ? (
             ""
           ) : (
-            <Link href="/Profile">
+            <Link
+              href={{
+                pathname: `/Profile`,
+                query: {
+                  id: context.userId,
+                },
+              }}
+            >
               <a className=" text-xs">Mange your profile</a>
             </Link>
           )}
@@ -91,6 +98,18 @@ export default function HomeLayout({ children }) {
                       />
                     );
                   })}
+                  <li>
+                    <Link href="/Admin/AllContact">
+                      <a
+                        className={`flex items-center ${
+                          router.pathname == "/Admin/AllContact" && "bg-sky-100"
+                        }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100  rounded-sm`}
+                      >
+                        <i className={`bi bi-bar-chart-line-fill mr-2`}></i>
+                        <span className="text-sm">Dashboard</span>
+                      </a>
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

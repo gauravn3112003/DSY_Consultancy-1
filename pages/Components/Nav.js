@@ -179,7 +179,14 @@ const Nav = ({ userData }) => {
               <h1 className="text-white my-4  font-semibold text-lg">
                 {userD.fName}
               </h1>
-              <Link href="/Profile">
+              <Link
+                href={{
+                  pathname: `/Profile`,
+                  query: {
+                    id: status.userId,
+                  },
+                }}
+              >
                 <a className=" text-slate-400 text-sm">Manage Your Profile </a>
               </Link>
             </div>
@@ -267,6 +274,22 @@ const Nav = ({ userData }) => {
                     </div>
                   );
                 })}
+
+                <div className="flex  items-center  mb-2">
+                  <i
+                    className={`bi-bar-chart-line-fill  text-sm text-slate-800 bi mr-5`}
+                  ></i>
+                  <Link href="/Admin/AllContact">
+                    <button
+                      onClick={function () {
+                        setnav("hidden");
+                      }}
+                      className=" w-full  text-xs font-light text-left "
+                    >
+                      Dashboard
+                    </button>
+                  </Link>
+                </div>
               </div>
             </>
           )}

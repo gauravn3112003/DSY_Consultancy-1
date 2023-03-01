@@ -792,8 +792,6 @@ export async function getServerSideProps(context) {
     };
   }
 
-  console.log(userData);
-
   return {
     props: { userData },
   };
