@@ -6,12 +6,17 @@ import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 export default function HomeLayout({ children }) {
+  const router = useRouter();
   const context = useContext(collegeContext);
   const ListItem = (props) => {
     return (
       <li>
         <Link href={props.location}>
-          <a className="flex items-center p-2 my-1 navItem   rounded-sm ">
+          <a
+            className={`flex items-center ${
+              router.pathname == props.location && "bg-sky-100"
+            }  mb-2 px-4 p-2 my-1 navItem   rounded-sm hover:bg-sky-100 `}
+          >
             <i className={`bi ${props.icon} mr-2`}></i>
             <span className="text-sm">{props.name}</span>
           </a>
@@ -21,13 +26,12 @@ export default function HomeLayout({ children }) {
   };
   const UserData = () => {
     const router = useRouter();
-    // console.log("Location :" + router.pathname );
     return (
-      <div className="userData m-auto mt-20 hidden  mb-5  p-5 flex-wrap   text-white justify-between md:flex items-center container rounded-sm">
-        <div className="avtarP">GN</div>
+      <div className="userData m-auto mt-20 hidden  mb-5  p-5 flex-wrap  text-white  justify-between md:flex items-center container rounded-sm">
+        <div className="avtarP">{context.username.charAt(0)}</div>
         <div className="mt-2 sm:mt-0  ">
           <h1 className="text-center font-semibold text-2xl">
-            Gaurav Narnaware
+            {context.username}
           </h1>
           <p className=" text-center text-xs">Welcome to DSY consultancy !</p>
         </div>
@@ -57,6 +61,26 @@ export default function HomeLayout({ children }) {
               <div className="rounded-sm">
                 <i className="bi bi-x-lg colorBlack close "></i>
                 <ul className="mb-2">
+                  <li>
+                    <Link
+                      href={{
+                        pathname: `/Profile`,
+                        query: {
+                          id: context.userId,
+                          // cName: props.collegeName.replace(" ", "+"),
+                        },
+                      }}
+                    >
+                      <a
+                        className={`flex items-center ${
+                          router.pathname == "/Profile" && "bg-sky-100"
+                        }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100  rounded-sm`}
+                      >
+                        <i className={`bi bi-person-fill mr-2`}></i>
+                        <span className="text-sm">Profile</span>
+                      </a>
+                    </Link>
+                  </li>
                   {HomeNav.map((item, index) => {
                     return (
                       <ListItem

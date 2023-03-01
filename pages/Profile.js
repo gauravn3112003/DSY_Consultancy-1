@@ -1,10 +1,12 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
+import baseUrl from "directsecondyearadmission/baseUrl";
 import Link from "next/link";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useContext } from "react";
-const Profile = () => {
-  const context = useContext(collegeContext);
+import { useRouter } from "next/router";
+const Profile = ({ userData }) => {
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
     if (modalOpen == "hidden") {
@@ -174,7 +176,7 @@ const Profile = () => {
       );
     };
 
-    const basicDetail = context.userAllData.basicDetails;
+    const basicDetail = userData.basicDetails;
     return (
       <div className="bg-white p-5 rounded-sm ">
         <BasicDetailModal />
@@ -313,9 +315,7 @@ const Profile = () => {
       );
     };
 
-
-    const contactDetail = context.userAllData.contactDetails;
-console.log(contactDetail);
+    const contactDetail = userData.contactDetails;
     return (
       <div className="bg-white p-5 mt-5 rounded-sm">
         <ContactDetailModal />
@@ -334,7 +334,7 @@ console.log(contactDetail);
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">E-mail Address</div>
-            <div className="text-sm">{context.userAllData.credentails.email}</div>
+            <div className="text-sm">{userData.credentails.email}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">City</div>
@@ -774,5 +774,28 @@ console.log(contactDetail);
     </HomeLayout>
   );
 };
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  // const context = useContext(collegeContext);
 
+  const res = await fetch(baseUrl + "/api/User/" + id, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const userData = await res.json();
+  if (userData.error) {
+    return {
+      notFound: true,
+    };
+  }
+
+  console.log(userData);
+
+  return {
+    props: { userData },
+  };
+}
 export default Profile;

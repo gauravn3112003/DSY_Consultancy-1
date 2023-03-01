@@ -561,4 +561,5 @@ const Stepper = () => {
     </ol>
   );
 };
+
 export default CollegeDetail;

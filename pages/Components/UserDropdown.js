@@ -60,7 +60,7 @@ const UserDropdown = () => {
           // src="/img/logo.svg"
           alt="User dropdown"
         >
-          GN
+          {context.username.charAt(0)}
         </div>
 
         <div

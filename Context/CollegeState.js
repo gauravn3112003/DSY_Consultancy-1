@@ -66,6 +66,7 @@ const CollegeState = (props) => {
     <collegeContext.Provider
       value={{
         username,
+        userId,
         loginStatus,
         setLoginStatus,
         userAllData,

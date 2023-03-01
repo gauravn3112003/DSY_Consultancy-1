@@ -62,8 +62,6 @@ const Nav = ({ userData }) => {
     );
   };
 
-
-
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
@@ -170,12 +168,10 @@ const Nav = ({ userData }) => {
         <div className="absolute overflow-y-scroll w-4/5 h-full top-0 z-20  bg-white">
           {user ? (
             <div className=" flex  flex-col justify-between items-start  bgColor w-full top-0 p-5">
-              <div className="w-24 h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                  className="w-full h-full"
-                />
+              <div className="w-24 grid place-items-center h-24 rounded-full overflow-hidden mb-5 border-white border-4 ">
+                <span className="font-extrabold  grid place-items-center  text-black bg-white w-full h-full text-5xl">
+                  {status.username.charAt(0)}
+                </span>
               </div>
               <h1 className="text-white  font-bold text-xl">
                 Welcome to DSY Consultancy
@@ -230,6 +226,28 @@ const Nav = ({ userData }) => {
             <>
               <div className="border mx-5" />
               <div className="p-5">
+                <div className="flex  items-center  mb-2">
+                  <i
+                    className={`bi-person-fill text-sm text-slate-800 bi mr-5`}
+                  ></i>
+                  <Link
+                    href={{
+                      pathname: `/Profile`,
+                      query: {
+                        id: status.userId,
+                      },
+                    }}
+                  >
+                    <button
+                      onClick={function () {
+                        setnav("hidden");
+                      }}
+                      className=" w-full  text-xs font-light text-left "
+                    >
+                      Profile
+                    </button>
+                  </Link>
+                </div>
                 {HomeNav.map((item, index) => {
                   return (
                     <div className="flex  items-center  mb-2" key={index}>

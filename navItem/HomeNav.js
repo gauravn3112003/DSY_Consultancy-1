@@ -1,10 +1,5 @@
 const HomeNav = [
   {
-    icon: "bi-person-fill",
-    name: "Profile",
-    location: "/Profile",
-  },
-  {
     icon: "bi-buildings-fill",
     name: "Colleges",
     location: "/College",
