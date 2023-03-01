@@ -3,10 +3,33 @@ import { useEffect, useState } from "react";
 import collegeContext from "./collegeContext";
 import Toastmsg from "directsecondyearadmission/pages/Components/Toastmsg";
 import { useRouter } from "next/router";
+import PopUpModal from "directsecondyearadmission/pages/Components/PopUpModal";
 
 const CollegeState = (props) => {
   const router = useRouter();
   const [loginStatus, setLoginStatus] = useState(false); //login status
+  const [toastMsg, settoastMsg] = useState({
+    state: "hidden",
+    icon: "success",
+    msg: "Already Exist",
+  });
+
+  const closeModal = () => {
+    settoastMsg({
+      state: "hidden",
+      icon: "",
+      msg: "",
+    });
+  };
+
+  const openModal = (icon, msg) => {
+    settoastMsg({
+      state: "block",
+      icon: icon,
+      msg: msg,
+    });
+  };
+
   const [userId, setUserId] = useState("");
   const [username, setUsername] = useState("");
   const [userAllData, setuserAllData] = useState({});
@@ -48,8 +71,17 @@ const CollegeState = (props) => {
         userAllData,
         setuserAllData,
         logOut,
+
+        // popup
+        openModal,
+        closeModal,
       }}
     >
+      <PopUpModal
+        state={toastMsg.state}
+        icon={toastMsg.icon}
+        msg={toastMsg.msg}
+      />
       <Toastmsg />
       {props.children}
     </collegeContext.Provider>

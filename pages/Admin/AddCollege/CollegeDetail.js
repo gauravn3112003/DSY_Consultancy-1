@@ -6,6 +6,7 @@ import Toastmsg from "directsecondyearadmission/pages/Components/Toastmsg";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import PopUpModal from "directsecondyearadmission/pages/Components/PopUpModal";
 const CollegeDetail = () => {
   const context = useContext(collegeContext);
   console.log(context.username);
@@ -117,9 +118,9 @@ const CollegeDetail = () => {
 
     const res2 = await res.json();
     if (res2.msg) {
-      toast.success(res2.msg, {});
+      context.openModal("success", res2.msg);
     } else {
-      toast.error(res2.error, {});
+      context.openModal("fail", res2.error);
     }
   }
 
