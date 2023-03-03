@@ -41,7 +41,6 @@ const CollegeState = (props) => {
       const payloadString = atob(payloadBase64);
       const payload = JSON.parse(payloadString);
 
-      
       setUserId(localStorage.getItem("userId"));
       setUsername(localStorage.getItem("userName"));
       setLoginStatus(true);
@@ -71,6 +70,7 @@ const CollegeState = (props) => {
         username,
         setUsername,
         userId,
+        setUserId,
         loginStatus,
         setLoginStatus,
         userAllData,

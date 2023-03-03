@@ -61,6 +61,8 @@ const Login = () => {
       status.setUsername(res2.userDetail.credentails.fName);
       localStorage.setItem("userName", res2.userDetail.credentails.fName);
       localStorage.setItem("userId", res2.userDetail._id);
+
+      status.setUserId(res2.userDetail._id);
       status.setuserAllData(res2.userDetail);
       status.setLoginStatus(true);
       alert(res2.msg);
