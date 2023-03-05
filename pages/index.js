@@ -165,13 +165,10 @@ const Home = () => {
                     Consultancy
                   </h1>
                   <p className="   opacity-70 text-justify leading-relaxed">
-                    Looking for guidance and support in securing admission to
-                    second year engineering courses in India? Our Direct Second
-                    Year Admission Consultancy can help you to navigate the
-                    application process, understand eligibility criteria, and
-                    select the right college for your academic goals. Contact us
-                    today to start your journey towards a successful career in
-                    engineering.
+                    Get help from our Direct Second Year Admission Consultancy
+                    to secure admission to second year engineering courses in
+                    India. Contact us today to start your journey towards a
+                    successful engineering career.
                   </p>
 
                   <div className="py-5 flex text-left w-full sm:text-left font-bold text-xl ">
