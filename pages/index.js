@@ -3,9 +3,6 @@ import Link from "next/link";
 import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
 import Teams from "./Components/Teams";
-import { useEffect, useState, useMemo } from "react";
-import { motion } from "framer-motion";
-import getScrollAnimation from "./Components/getScrollAnimation";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
@@ -97,8 +94,9 @@ const AppDown = () => {
   );
 };
 
-const Home = ({
-  listUser = [
+const Home = () => {
+  const router = useRouter();
+  const listUser = [
     {
       name: "Users",
       number: "1000",
@@ -114,11 +112,7 @@ const Home = ({
       number: "500",
       icon: "bi-ui-checks",
     },
-  ],
-}) => {
-  const scrollAnimation = useMemo(() => getScrollAnimation(), []);
-
-  const router = useRouter();
+  ];
   const status = useContext(collegeContext);
   const user = status.loginStatus;
 
@@ -215,8 +209,8 @@ const Home = ({
             <div
               className="flex items-center justify-start sm:justify-center py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0"
               key={index}
-              custom={{ duration: 2 + index }}
-              variants={scrollAnimation}
+              // custom={{ duration: 2 + index }}
+              // variants={scrollAnimation}
             >
               <div className="flex mx-auto w-40 sm:w-auto">
                 <div className="flex items-center justify-center bg-slate-100 w-12 h-12 mr-6 rounded-full">
