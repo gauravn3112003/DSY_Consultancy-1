@@ -129,78 +129,72 @@ const Home = () => {
   return (
     <>
       <div className="  bg-blue-900 ">
-        <div>
-          <section
-            // variants={scrollAnimation}
-            className=" h-screen sm:h-auto  md:pb-32 pb-5  "
-          >
-            <div className=" container m-auto mt-14 p-5 ">
-              <marquee
-                width="100%"
-                direction="left"
-                className="blink text-yellow-300"
-                scrollamount="12"
-              >
-                Admission for Direct second Year will be started{" "}
-                <span className="ml-5 text-white">
-                  <a href="/Home">Click Here</a>
+        <section className=" h-screen sm:h-auto  md:pb-32 pb-5  ">
+          <div className=" container m-auto mt-14 p-5 ">
+            <marquee
+              width="100%"
+              direction="left"
+              className="blink text-yellow-300"
+              scrollamount="12"
+            >
+              Admission for Direct second Year will be started{" "}
+              <span className="ml-5 text-white">
+                <a href="/Home">Click Here</a>
+              </span>
+            </marquee>
+          </div>
+          <div className="container   mx-auto flex px-5  md:pt-32    pt-0 md:flex-row flex-col items-center">
+            <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+              <h1 className="title-font text-left font-normal sm:text-4xl text-3xl mb-4  text-white">
+                <span className="font-bold"> Direct Second Year</span>{" "}
+                Admission&nbsp;
+                <br className="hidden lg:inline-block" />
+                Consultancy
+              </h1>
+              <p className="  text-white opacity-70 text-justify leading-relaxed">
+                Looking for guidance and support in securing admission to second
+                year engineering courses in India? Our Direct Second Year
+                Admission Consultancy can help you to navigate the application
+                process, understand eligibility criteria, and select the right
+                college for your academic goals. Contact us today to start your
+                journey towards a successful career in engineering.
+              </p>
+
+              <div className="py-5 flex text-left w-full sm:text-left text-white font-bold text-xl ">
+                We help&nbsp;
+                <span className="text-yellow-300 ntext-left">
+                  <Typewriter
+                    options={{
+                      strings: ["to find right College", "to get Admission"],
+                      autoStart: true,
+                      loop: true,
+                    }}
+                  />
                 </span>
-              </marquee>
-            </div>
-            <div className="container   mx-auto flex px-5  md:pt-32    pt-0 md:flex-row flex-col items-center">
-              <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                <h1 className="title-font text-left font-normal sm:text-4xl text-3xl mb-4  text-white">
-                  <span className="font-bold"> Direct Second Year</span>{" "}
-                  Admission&nbsp;
-                  <br className="hidden lg:inline-block" />
-                  Consultancy
-                </h1>
-                <p className="  text-white opacity-70 text-justify leading-relaxed">
-                  Looking for guidance and support in securing admission to
-                  second year engineering courses in India? Our Direct Second
-                  Year Admission Consultancy can help you to navigate the
-                  application process, understand eligibility criteria, and
-                  select the right college for your academic goals. Contact us
-                  today to start your journey towards a successful career in
-                  engineering.
-                </p>
-
-                <div className="py-5 flex text-left w-full sm:text-left text-white font-bold text-xl ">
-                  We help&nbsp;
-                  <span className="text-yellow-300 ntext-left">
-                    <Typewriter
-                      options={{
-                        strings: ["to find right College", "to get Admission"],
-                        autoStart: true,
-                        loop: true,
-                      }}
-                    />
-                  </span>
-                </div>
-
-                <div className="flex w-full  justify-start ">
-                  <button className="inline-flex font-semibold bg-yellow-300 border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
-                    Search College
-                  </button>
-                  {!user && (
-                    <Link href="/Login">
-                      <button className="ml-4 font-semibold inline-flex text-yellow-500 border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
-                        Sign In
-                      </button>
-                    </Link>
-                  )}
-                </div>
               </div>
-              <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                <img
-                  className="object-cover object-center w-full rounded-sm"
-                  alt="hero"
-                  src="/img/hero.png"
-                />
+
+              <div className="flex w-full  justify-start ">
+                <button className="inline-flex font-semibold bg-yellow-300 border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
+                  Search College
+                </button>
+                {!user && (
+                  <Link href="/Login">
+                    <button className="ml-4 font-semibold inline-flex text-yellow-500 border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
+                      Sign In
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
-          </section>
-        </div>
+            <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+              <img
+                className="object-cover object-center w-full rounded-sm"
+                alt="hero"
+                src="/img/hero.png"
+              />
+            </div>
+          </div>
+        </section>
       </div>
 
       <div className="w-full bg-white  flex">
@@ -209,8 +203,6 @@ const Home = () => {
             <div
               className="flex items-center justify-start sm:justify-center py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0"
               key={index}
-              // custom={{ duration: 2 + index }}
-              // variants={scrollAnimation}
             >
               <div className="flex mx-auto w-40 sm:w-auto">
                 <div className="flex items-center justify-center bg-slate-100 w-12 h-12 mr-6 rounded-full">
@@ -226,10 +218,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-        <div
-          className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"
-          style={{ filter: "blur(114px)" }}
-        ></div>
+        <div className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"></div>
       </div>
 
       <AppDown />
