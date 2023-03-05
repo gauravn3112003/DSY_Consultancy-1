@@ -191,11 +191,13 @@ const CollegeCard = (props) => {
 };
 
 const AllCollege = ({ data }) => {
+
   return (
     <>
-     <Head>
+      <Head>
         <title>Direct Second Year Admission Consultancy | All Colleges</title>
       </Head>
+
       <div className="mt-20 px-5 sm:px-0  container m-auto">
         <BreadCrumb />
         <section className=" overflow-y-scroll h-screen ">
@@ -241,6 +243,7 @@ const AllCollege = ({ data }) => {
             </Swiper>
 
             {/* Cards */}
+
             <div className="grid  grid-cols-1 gap-x-4 gap-y-8  md:grid-cols-2 lg:grid-cols-4">
               {data.map((item, index) => {
                 return (
@@ -255,7 +258,6 @@ const AllCollege = ({ data }) => {
                 );
               })}
             </div>
-  
           </div>
         </section>
       </div>
