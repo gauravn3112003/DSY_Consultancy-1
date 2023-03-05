@@ -7,11 +7,8 @@ const Footer = () => {
         <div className="py-5 px-5 sm:px-0  bg-white   container m-auto ">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <a href="https://flowbite.com/" className="flex items-center">
-                <img src="/img/logo.svg" className="h-8 mr-3" alt="FlowBite Logo" />
-                <span className="self-center text-2xl pColor font-semibold whitespace-nowrap ">
-                  DSY
-                </span>
+              <a href="/" className="flex items-center">
+                <img src="/img/DSY.svg" alt="" className="w-24" />
               </a>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -26,7 +23,10 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://tailwindcss.com/" className="hover:underline">
+                    <a
+                      href="https://tailwindcss.com/"
+                      className="hover:underline"
+                    >
                       Tailwind CSS
                     </a>
                   </li>

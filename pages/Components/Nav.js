@@ -69,12 +69,12 @@ const Nav = () => {
           <Link href="/">
             <a className="flex items-center">
               <img
-                src="/img/logo.svg"
-                className="h-7 mr-3 sm:h-9"
+                src="/img/DSY.svg"
+                className="w-2/4 mr-3 sm:h-9"
                 alt="Flowbite Logo"
               />
               <span className="self-center text-xl font-semibold whitespace-nowrap pColor">
-                DSY
+                {/* DSY */}
               </span>
             </a>
           </Link>
@@ -192,14 +192,15 @@ const Nav = () => {
             </div>
           ) : (
             <div className="mx-5 py-5 font-bold text-2xl pColor border-b">
-              DSY
+              {/* DSY */}
+              <img src="/img/DSY.svg" alt="" className="w-24" />
             </div>
           )}
           <div className="p-5">
             {TopNav.map((item, index) => {
               return (
                 <div className="flex  items-center mb-2" key={index}>
-                  <i className="bi-buildings-fill text-slate-800 bi text-sm  mr-5"></i>
+                  <i className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm text-slate-800 bi text-sm  mr-5`}></i>
                   <Link href={item.location}>
                     <button
                       onClick={function () {
@@ -235,7 +236,7 @@ const Nav = () => {
               <div className="p-5">
                 <div className="flex  items-center  mb-2">
                   <i
-                    className={`bi-person-fill text-sm text-slate-800 bi mr-5`}
+                    className={`bi-person-fill p-1 px-2 bg-blue-50 rounded-sm  text-sm text-slate-800 bi mr-5`}
                   ></i>
                   <Link
                     href={{
@@ -259,7 +260,7 @@ const Nav = () => {
                   return (
                     <div className="flex  items-center  mb-2" key={index}>
                       <i
-                        className={`${item.icon} text-sm text-slate-800 bi mr-5`}
+                        className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm   text-sm text-slate-800 bi mr-5`}
                       ></i>
                       <Link href={item.location}>
                         <button
@@ -278,7 +279,7 @@ const Nav = () => {
                 {status.userAllData.role == status.adminKey && (
                   <div className="flex  items-center  mb-2">
                     <i
-                      className={`bi-bar-chart-line-fill  text-sm text-slate-800 bi mr-5`}
+                      className={`bi-bar-chart-line-fill p-1 px-2 bg-blue-50 rounded-sm   text-sm text-slate-800 bi mr-5`}
                     ></i>
                     <Link href="/Admin/AllContact">
                       <button

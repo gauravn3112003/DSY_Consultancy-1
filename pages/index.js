@@ -152,7 +152,7 @@ const Home = () => {
                 >
                   Admission for Direct second Year will be started{" "}
                   <span className="ml-5 ">
-                    <a href="/Home">Click Here</a>
+                    <a href="/Home " className="cursor-pointer z-50">Click Here</a>
                   </span>
                 </marquee>
               </div>
@@ -173,7 +173,7 @@ const Home = () => {
 
                   <div className="py-5 flex text-left w-full sm:text-left font-bold text-xl ">
                     We help&nbsp;
-                    <span className="text-red-900 ntext-left">
+                    <span className="pColor ntext-left">
                       <Typewriter
                         options={{
                           strings: [
@@ -188,12 +188,12 @@ const Home = () => {
                   </div>
 
                   <div className="flex w-full  justify-start ">
-                    <button className="inline-flex font-semibold bg-red-900 text-white border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
+                    <button className="inline-flex font-semibold pBtn border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
                       Search College
                     </button>
                     {!user && (
                       <Link href="/Login">
-                        <button className="ml-4 font-semibold inline-flex text-red-500 border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
+                        <button className="ml-4 font-semibold inline-flex pColor border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
                           Sign In
                         </button>
                       </Link>
