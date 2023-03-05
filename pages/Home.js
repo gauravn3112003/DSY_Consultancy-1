@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
+import Head from "next/head";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
@@ -115,6 +116,9 @@ const Home = () => {
   };
   return (
     <HomeLayout>
+      <Head>
+        <title>Direct Second Year Admission Consultancy | Home</title>
+      </Head>
       <HeaderCard />
       <div className="md:flex-row flex-col flex gap-5 ">
         <CounsellorCard />

@@ -1,6 +1,7 @@
 import Auth from "directsecondyearadmission/Layout/Auth";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
@@ -76,6 +77,9 @@ const Login = () => {
 
   return (
     <Auth>
+       <Head>
+        <title>Login | DSY</title>
+      </Head>
       <form
         onSubmit={loginUser}
         className="lg:w-2/6 md:w-1/2 bg-white   p-8 flex flex-col md:ml-auto w-full mt-10  md:mt-0"

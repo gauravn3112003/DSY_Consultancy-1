@@ -1,9 +1,12 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
-
+import Head from "next/head";
 const Counsellor = () => {
   return (
     <HomeLayout>
+       <Head>
+        <title>Counsellor | DSY</title>
+      </Head>
       <div className="bg-white p-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
         <div className="flex flex-col sm:w-2/4 w-full justify-around">
           <div>

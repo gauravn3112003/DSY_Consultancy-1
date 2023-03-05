@@ -1,5 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
+import Head from "next/head";
 import Link from "next/link";
 
 const NotiRemind = () => {
@@ -94,6 +95,9 @@ const ReportIssue = () => {
 const AccountSetting = () => {
   return (
     <HomeLayout>
+       <Head>
+        <title>Account Setting | DSY</title>
+      </Head>
       <NotiRemind />
       <ReportIssue />
 

@@ -1,8 +1,11 @@
 import React from "react";
-
+import Head from "next/head";
 const ContactUs = () => {
   return (
     <div className="mt-20 px-5 sm:px-0  container m-auto">
+      <Head>
+        <title>Direct Second Year Admission Consultancy | Contact Us</title>
+      </Head>
       <section className="text-gray-600 body-font relative">
         <div className="absolute inset-0 bg-gray-300">
           <iframe

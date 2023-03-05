@@ -2,6 +2,7 @@ import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Link from "next/link";
+import Head from "next/head";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
@@ -767,6 +768,9 @@ const Profile = ({ userData }) => {
 
   return (
     <HomeLayout>
+      <Head>
+        <title>Profile | DSY</title>
+      </Head>
       <BasicDetails />
       <ContactDetails />
       <EducationDetails />

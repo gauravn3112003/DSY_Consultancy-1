@@ -1,6 +1,7 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import baseUrl from "directsecondyearadmission/baseUrl";
 
 const College = ({ data }) => {
@@ -225,6 +226,9 @@ const College = ({ data }) => {
 
   return (
     <HomeLayout>
+       <Head>
+        <title>College | DSY</title>
+      </Head>
       <HeaderFilter />
     </HomeLayout>
   );

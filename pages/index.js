@@ -4,6 +4,7 @@ import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
 import Teams from "./Components/Teams";
 import { useContext } from "react";
+import Head from "next/head";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
 const CollegeCard = () => {
@@ -128,6 +129,10 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>Direct Second Year Admission Consultancy | DSY</title>
+        
+      </Head>
       <div className="  bg-blue-900 ">
         <section className=" h-screen sm:h-auto  md:pb-32 pb-5  ">
           <div className=" container m-auto mt-14 p-5 ">

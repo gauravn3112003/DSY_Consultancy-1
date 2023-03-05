@@ -5,7 +5,7 @@ import { useRouter } from "next/dist/client/router";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-
+import Head from "next/head";
 import Rating from "@mui/material/Rating";
 import baseUrl from "directsecondyearadmission/baseUrl";
 
@@ -65,7 +65,7 @@ const CollegeData = ({ College }) => {
   const data = "";
   var approvedBy = College.approvedBy.split(",");
   var topRec = College.topRecruiters.split(",");
-
+  const collegeUrl = baseUrl + "/CollegeDa/" + rouuter.query.id;
   const CInfoData = ({ children }) => {
     return (
       <div className="bg-white  mt-5 rounded-sm">
@@ -319,6 +319,32 @@ const CollegeData = ({ College }) => {
 
   return (
     <>
+      <Head>
+        <title>{College.name}</title>
+        <meta name="keywords" content={College.name} />
+        <meta name="title" content={College.name} />
+        <meta name="description" content={College.name + College.university} />
+        <meta name="author" content={College.addedBy} />
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={collegeUrl} />
+        <meta property="og:title" content={College.name} />
+        <meta
+          property="og:description"
+          content={College.name + College.university}
+        />
+        <meta property="og:image" content="/img/hero.png" />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={collegeUrl} />
+        <meta property="twitter:title" content={College.name} />
+        <meta
+          property="twitter:description"
+          content={College.name + College.university}
+        />
+        <meta property="twitter:image" content="/img/hero.png" />
+      </Head>
       <div className="container bg-white rounded-sm mt-14  sm:mt-20 p-5 mx-auto space-y-12">
         <article className=" ">
           <div className="space-y-6 border-b-2 pb-5">

@@ -1,6 +1,7 @@
 import LatestNews from "directsecondyearadmission/Layout/LatestNews";
 import React, { useState } from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 const BreadCrumb = () => {
   const [userOpen, setUserOpen] = useState("hidden");
@@ -160,6 +161,9 @@ const Latest = () => {
 
   return (
     <section className="mt-20 px-5">
+      <Head>
+        <title>Direct Second Year Admission Consultancy | Latest Updates</title>
+      </Head>
       <div className="container  mx-auto space-y-8">
         <BreadCrumb />
         <div className="grid overflow-y-scroll h-screen grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import College from "./College";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Head from "next/head";
 import baseUrl from "directsecondyearadmission/baseUrl";
 // Import Swiper styles
 import "swiper/css";
@@ -192,6 +193,9 @@ const CollegeCard = (props) => {
 const AllCollege = ({ data }) => {
   return (
     <>
+     <Head>
+        <title>Direct Second Year Admission Consultancy | All Colleges</title>
+      </Head>
       <div className="mt-20 px-5 sm:px-0  container m-auto">
         <BreadCrumb />
         <section className=" overflow-y-scroll h-screen ">

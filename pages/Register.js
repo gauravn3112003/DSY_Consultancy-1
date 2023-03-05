@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Auth from "directsecondyearadmission/Layout/Auth";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 
 const Register = () => {
@@ -62,6 +63,9 @@ const Register = () => {
 
   return (
     <Auth>
+       <Head>
+        <title>Register | DSY</title>
+      </Head>
       <form
         method="POST"
         onSubmit={registerUser}

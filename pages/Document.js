@@ -1,5 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 
 const BasicDoc = () => {
@@ -249,6 +250,9 @@ const Document = () => {
 
   return (
     <HomeLayout>
+       <Head>
+        <title>Document | DSY</title>
+      </Head>
       <DocMsg />
       <UserDoc>
         {docType == "basicDoc" ? <BasicDoc /> : <AddmissionDoc />}
