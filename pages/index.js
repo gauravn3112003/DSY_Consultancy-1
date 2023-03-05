@@ -112,7 +112,7 @@ const Home = ({
       icon: "bi-person-fill-check",
     },
     {
-      name: "Ragistrations",
+      name: "Registrations",
       number: "500",
       icon: "bi-ui-checks",
     },
@@ -138,9 +138,9 @@ const Home = ({
     <>
       <div className="  bg-blue-900 ">
         <ScrollAnimationWrapper>
-          <motion.section
-            variants={scrollAnimation}
-              className=" h-screen sm:h-auto  md:pb-32 pb-5  "
+          <section
+            // variants={scrollAnimation}
+            className=" h-screen sm:h-auto  md:pb-32 pb-5  "
           >
             <div className=" container m-auto mt-14 p-5 ">
               <marquee
@@ -164,7 +164,13 @@ const Home = ({
                   Consultancy
                 </h1>
                 <p className="  text-white opacity-70 text-justify leading-relaxed">
-                Looking for guidance and support in securing admission to second year engineering courses in India? Our Direct Second Year Admission Consultancy can help you navigate the application process, understand eligibility criteria, and select the right college for your academic goals. Contact us today to start your journey towards a successful career in engineering.
+                  Looking for guidance and support in securing admission to
+                  second year engineering courses in India? Our Direct Second
+                  Year Admission Consultancy can help you to navigate the
+                  application process, understand eligibility criteria, and
+                  select the right college for your academic goals. Contact us
+                  today to start your journey towards a successful career in
+                  engineering.
                 </p>
 
                 <div className="py-5 flex text-left w-full sm:text-left text-white font-bold text-xl ">
@@ -201,41 +207,39 @@ const Home = ({
                 />
               </div>
             </div>
-          </motion.section>
+          </section>
         </ScrollAnimationWrapper>
       </div>
 
-        <div className="w-full bg-white  flex">
-          <ScrollAnimationWrapper className="rounded-lg container m-auto w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
-            {listUser.map((listUsers, index) => (
-              <motion.div
-                className="flex items-center justify-start sm:justify-center py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0"
-                key={index}
-                custom={{ duration: 2 + index }}
-                variants={scrollAnimation}
-              >
-                <div className="flex mx-auto w-40 sm:w-auto">
-                  <div className="flex items-center justify-center bg-slate-100 w-12 h-12 mr-6 rounded-full">
-                    {/* <img src={listUsers.icon} className="h-6 w-6" /> */}
-                    <i className={`bi ${listUsers.icon} `}></i>
-                  </div>
-                  <div className="flex flex-col">
-                    <p className="text-xl text-black-600 font-bold">
-                      {listUsers.number}+
-                    </p>
-                    <p className="text-lg text-black-500">{listUsers.name}</p>
-                  </div>
+      <div className="w-full bg-white  flex">
+        <ScrollAnimationWrapper className="rounded-lg container m-auto w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
+          {listUser.map((listUsers, index) => (
+            <motion.div
+              className="flex items-center justify-start sm:justify-center py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0"
+              key={index}
+              custom={{ duration: 2 + index }}
+              variants={scrollAnimation}
+            >
+              <div className="flex mx-auto w-40 sm:w-auto">
+                <div className="flex items-center justify-center bg-slate-100 w-12 h-12 mr-6 rounded-full">
+                  {/* <img src={listUsers.icon} className="h-6 w-6" /> */}
+                  <i className={`bi ${listUsers.icon} `}></i>
                 </div>
-              </motion.div>
-            ))}
-          </ScrollAnimationWrapper>
-          <div
-            className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"
-            style={{ filter: "blur(114px)" }}
-          ></div>
-        </div>
-
-
+                <div className="flex flex-col">
+                  <p className="text-xl text-black-600 font-bold">
+                    {listUsers.number}+
+                  </p>
+                  <p className="text-lg text-black-500">{listUsers.name}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </ScrollAnimationWrapper>
+        <div
+          className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"
+          style={{ filter: "blur(114px)" }}
+        ></div>
+      </div>
 
       <AppDown />
 
