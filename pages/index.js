@@ -4,13 +4,11 @@ import Steps from "./Components/Steps";
 import Typewriter from "typewriter-effect";
 import Teams from "./Components/Teams";
 import { useEffect, useState, useMemo } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import getScrollAnimation from "./Components/getScrollAnimation";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
-import ScrollAnimationWrapper from "./Components/ScrollAnimationWrapper";
 const CollegeCard = () => {
   const Card = () => {
     return (
@@ -137,7 +135,7 @@ const Home = ({
   return (
     <>
       <div className="  bg-blue-900 ">
-        <ScrollAnimationWrapper>
+        <div>
           <section
             // variants={scrollAnimation}
             className=" h-screen sm:h-auto  md:pb-32 pb-5  "
@@ -208,13 +206,13 @@ const Home = ({
               </div>
             </div>
           </section>
-        </ScrollAnimationWrapper>
+        </div>
       </div>
 
       <div className="w-full bg-white  flex">
-        <ScrollAnimationWrapper className="rounded-lg container m-auto w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
+        <div className="rounded-lg container m-auto w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
           {listUser.map((listUsers, index) => (
-            <motion.div
+            <div
               className="flex items-center justify-start sm:justify-center py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0"
               key={index}
               custom={{ duration: 2 + index }}
@@ -222,7 +220,6 @@ const Home = ({
             >
               <div className="flex mx-auto w-40 sm:w-auto">
                 <div className="flex items-center justify-center bg-slate-100 w-12 h-12 mr-6 rounded-full">
-                  {/* <img src={listUsers.icon} className="h-6 w-6" /> */}
                   <i className={`bi ${listUsers.icon} `}></i>
                 </div>
                 <div className="flex flex-col">
@@ -232,9 +229,9 @@ const Home = ({
                   <p className="text-lg text-black-500">{listUsers.name}</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </ScrollAnimationWrapper>
+        </div>
         <div
           className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"
           style={{ filter: "blur(114px)" }}
