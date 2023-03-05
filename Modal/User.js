@@ -106,6 +106,10 @@ const userSchema = new Schema(
         type: String,
         default: "N/A",
       },
+      location: {
+        type: String,
+        default: "N/A",
+      },
       collegeType: {
         type: String,
         default: "N/A",

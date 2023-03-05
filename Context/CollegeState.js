@@ -60,6 +60,7 @@ const CollegeState = (props) => {
       localStorage.removeItem("userDetail");
       toast.success("Logout Succesfully", {});
       router.push("/");
+      router.reload()
     }
   };
 

@@ -1,8 +1,15 @@
 import React from "react";
-
-// components
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import { useRouter } from "next/router";
 
 export default function Auth({ children }) {
+  const context = useContext(collegeContext);
+  const router = useRouter();
+  console.log(context);
+  if (context.loginStatus) {
+    router.push("/");
+  }
   return (
     <>
       <section className="text-gray-600 h-screen  overflow-y-scroll grid sm:place-items-center place-items-start md:mt-20 body-font">

@@ -17,11 +17,7 @@ const Login = () => {
     styleM: "hidden",
   });
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      router.push("/");
-    }
-  }, []);
+
 
   const alert = (msg) => {
     setUserMsg({ msgM: msg, styleM: "block" });

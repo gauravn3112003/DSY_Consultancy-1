@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Head from "next/head";
 const Home = () => {
   const context = useContext(collegeContext);
@@ -40,7 +41,8 @@ const Home = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <img width={200} src="/img/counsellor.svg" alt="" />
+          {/* <img width={100} src="/img/counsellor2.svg" alt="" /> */}
+          <Image src="/img/counsellor2.svg" width={250} height={150} />
         </div>
       </div>
     );
@@ -65,7 +67,7 @@ const Home = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <img width={200} src="/img/counsellor.svg" alt="" />
+          <Image width={250} src="/img/Insurance.svg" height={150} alt="" />
         </div>
       </div>
     );

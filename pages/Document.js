@@ -2,6 +2,7 @@ import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 const BasicDoc = () => {
   return (
@@ -198,7 +199,7 @@ const DocMsg = () => {
       </div>
 
       <div className="sm:mb-0 mb-10">
-        <img width={100} src="/img/counsellor.svg" alt="" />
+        <Image height={100} width={200} src="/img/document.svg" alt="" />
       </div>
     </div>
   );

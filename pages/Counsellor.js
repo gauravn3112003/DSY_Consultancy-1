@@ -1,6 +1,7 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 const Counsellor = () => {
   return (
     <HomeLayout>
@@ -25,7 +26,7 @@ const Counsellor = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <img width={200}src="/img/counsellor.svg" alt="" />
+          <Image  width={200} height={150 }src="/img/counsellor.svg" alt="" />
         </div>
       </div>
     </HomeLayout>

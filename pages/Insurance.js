@@ -1,5 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React from "react";
+import Image from "next/image";
 import Head from "next/head";
 const Insurance = () => {
   return (
@@ -25,10 +26,10 @@ const Insurance = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <img
+          <Image
             width={200}
-            src="https://www.collegedekho.com/_next/image?url=https%3A%2F%2Fnj1-static.collegedekho.com%2F_next%2Fstatic%2Fmedia%2Fimg-no-data.8653040d.svg&w=128&q=75"
-            alt=""
+            height={150}
+            src="/img/Insurance.svg"
           />
         </div>
       </div>

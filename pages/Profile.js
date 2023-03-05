@@ -110,15 +110,30 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="gender"
+                          value="Male"
+                        />
                         <span>Male</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="gender"
+                          value="Female"
+                        />
                         <span>Female </span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="gender"
+                          value="Other"
+                        />
                         <span>Other</span>
                       </div>
                     </div>
@@ -132,11 +147,11 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input className="mr-2" type="radio" value="Married" name="marStatus" />
                         <span>Married</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input className="mr-2" type="radio" name="marStatus" value="Unmarried"/>
                         <span>Unmarried </span>
                       </div>
                     </div>
@@ -150,11 +165,11 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input className="mr-2" type="radio" name="pyhChanged" value="Yes" />
                         <span>Yes</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input className="mr-2" type="radio" name="pyhChanged" value="No" />
                         <span>No </span>
                       </div>
                     </div>
@@ -542,6 +557,8 @@ const Profile = ({ userData }) => {
         </div>
       );
     };
+
+    const EducationDetail = userData.educationDetails;
     return (
       <div className="bg-white p-5 rounded-sm mt-5">
         <EducationDetailModal />
@@ -558,26 +575,26 @@ const Profile = ({ userData }) => {
         <div className=" flex flex-wrap mt-3 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Board</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.ssc.board}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">School</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.ssc.school}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Passing Year</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.ssc.passingYear}</div>
           </div>
         </div>
 
         <div className=" flex flex-wrap mt-2 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Mark Type</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.ssc.markType}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Percentage/CGPA</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.ssc.percentage}</div>
           </div>
           <div className="w-2/6 detailWrap" />
         </div>
@@ -588,26 +605,26 @@ const Profile = ({ userData }) => {
         <div className=" flex flex-wrap mt-3 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Board</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.diploma.board}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">College</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.diploma.school}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Passing Year</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.diploma.passingYear}</div>
           </div>
         </div>
 
         <div className=" flex flex-wrap mt-2 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Mark Type</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.diploma.markType}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Percentage/CGPA</div>
-            <div className="text-sm">N/A</div>
+            <div className="text-sm">{EducationDetail.diploma.percentage}</div>
           </div>
           <div className="w-2/6 detailWrap" />
         </div>
@@ -727,6 +744,8 @@ const Profile = ({ userData }) => {
         </div>
       );
     };
+    const preferenceDetail = userData.preferences;
+
     return (
       <div className="bg-white p-5 mt-5 rounded-sm">
         <PreferenceesDetailModal />
@@ -741,25 +760,25 @@ const Profile = ({ userData }) => {
         <div className=" flex flex-wrap mt-3 justify-between items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Univercity</div>
-            <div className="text-sm">7796305801e</div>
+            <div className="text-sm">{preferenceDetail.university}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Branch</div>
-            <div className="text-sm">Computer Engineering</div>
+            <div className="text-sm">{preferenceDetail.branch}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Location</div>
-            <div className="text-sm">Ghatanji</div>
+            <div className="text-sm">{preferenceDetail.location}</div>
           </div>
         </div>
         <div className=" flex flex-wrap mt-3  items-center">
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">College Type</div>
-            <div className="text-sm">7796305801e</div>
+            <div className="text-sm">{preferenceDetail.collegeType}</div>
           </div>
           <div className="w-2/6 detailWrap">
             <div className="text-slate-400 text-sm">Need a loan?</div>
-            <div className="text-sm">Computer Engineering</div>
+            <div className="text-sm">{preferenceDetail.needLoan}</div>
           </div>
         </div>
       </div>
