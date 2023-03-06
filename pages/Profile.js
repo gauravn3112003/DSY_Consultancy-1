@@ -788,7 +788,13 @@ const Profile = ({ userData }) => {
   return (
     <HomeLayout>
       <Head>
-        <title>Profile | DSY</title>
+        <title>DSY consultancy | Profile</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Profile"
+        />
+
+        <meta name="title" content="DSY consultancy | Profile" />
       </Head>
       <BasicDetails />
       <ContactDetails />

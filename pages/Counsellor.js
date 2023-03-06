@@ -6,7 +6,13 @@ const Counsellor = () => {
   return (
     <HomeLayout>
        <Head>
-        <title>Counsellor | DSY</title>
+        <title>DSY consultancy | Counsellor</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Counsellor"
+        />
+
+        <meta name="title" content="DSY consultancy | Counsellor" />
       </Head>
       <div className="bg-white p-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
         <div className="flex flex-col sm:w-2/4 w-full justify-around">

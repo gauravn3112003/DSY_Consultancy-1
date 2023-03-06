@@ -4,7 +4,13 @@ const ContactUs = () => {
   return (
     <div className="mt-20 px-5 sm:px-0  container m-auto">
       <Head>
-        <title>Direct Second Year Admission Consultancy | Contact Us</title>
+        <title>DSY consultancy | Contact Us</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Contact Us"
+        />
+
+        <meta name="title" content="DSY consultancy | Contact Us" />
       </Head>
       <section className="text-gray-600 body-font relative">
         <div className="absolute inset-0 bg-gray-300">

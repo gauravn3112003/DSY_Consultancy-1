@@ -7,7 +7,13 @@ const Forgot = () => {
   return (
     <Auth>
        <Head>
-        <title>Forgot Password | DSY</title>
+        <title>DSY consultancy | Forgot Password</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Forgot Password"
+        />
+
+        <meta name="title" content="DSY consultancy | Forgot Password" />
       </Head>
       <form className="lg:w-2/6 md:w-1/2 bg-white    p-8 flex flex-col md:ml-auto w-full mt-10  md:mt-0">
         <h2 className="text-gray-900 text-center text-lg font-medium title-font mb-5">

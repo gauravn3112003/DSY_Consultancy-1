@@ -13,9 +13,6 @@ const Register = () => {
     styleM: "hidden",
   });
 
-
-  
-
   const alert = (msg) => {
     setUserMsg({ msgM: msg, styleM: "block" });
     setTimeout(() => {
@@ -63,8 +60,14 @@ const Register = () => {
 
   return (
     <Auth>
-       <Head>
-        <title>Register | DSY</title>
+      <Head>
+        <title>DSY consultancy | Register</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Register"
+        />
+
+        <meta name="title" content="DSY consultancy | Register" />
       </Head>
       <form
         method="POST"

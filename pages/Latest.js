@@ -162,7 +162,13 @@ const Latest = () => {
   return (
     <section className="mt-20 px-5">
       <Head>
-        <title>Direct Second Year Admission Consultancy | Latest Updates</title>
+        <title>DSY consultancy | Latest Updates</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Latest Updates"
+        />
+
+        <meta name="title" content="DSY consultancy | Latest Updates" />
       </Head>
       <div className="container  mx-auto space-y-8">
         <BreadCrumb />

@@ -1,5 +1,6 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
@@ -219,13 +220,23 @@ const College = ({ data }) => {
             </div>
           </div>
         </div>
-        <AllCollegesData data={search}  />
+        <AllCollegesData data={search} />
       </>
     );
   };
 
   return (
     <HomeLayout>
+      <Head>
+        <title>DSY consultancy | Colleges</title>
+        <meta
+          name="keywords"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Colleges"
+        />
+
+        <meta name="title" content="DSY consultancy | Colleges" />
+      </Head>
+
       <HeaderFilter />
     </HomeLayout>
   );

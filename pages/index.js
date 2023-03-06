@@ -140,6 +140,15 @@ const Home = () => {
         <>
           <Head>
             <title>Direct Second Year Admission Consultancy | DSY</title>
+            <meta
+              name="keywords"
+              content="Direct Second Year Admission,Direct Second year Engineering Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | Home"
+            />
+
+            <meta
+              name="title"
+              content="DSY consultancy | Direct Second Year Admission Consultancy"
+            />
           </Head>
           <div className="  heroBg text-black">
             <section className=" h-screen sm:h-auto  md:pb-14 pb-5  ">
@@ -152,7 +161,9 @@ const Home = () => {
                 >
                   Admission for Direct second Year will be started{" "}
                   <span className="ml-5 ">
-                    <a href="/Home " className="cursor-pointer z-50">Click Here</a>
+                    <a href="/Home " className="cursor-pointer z-50">
+                      Click Here
+                    </a>
                   </span>
                 </marquee>
               </div>
