@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     const { id } = req.query;
     const user = await User.findById(id);
     if (!user) {
-      return res.status(404).json({ error: "This Institute not Exists" });
+      return res.status(404).json({ error: "This User not Exists" });
     }
     res.json(user);
   } catch (err) {

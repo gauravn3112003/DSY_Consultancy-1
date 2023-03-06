@@ -80,7 +80,7 @@ const Profile = ({ userData }) => {
         marStatus,
         phyChanged
       ) => {
-        const res = await fetch("/api/basicDetailUpdate", {
+        const res = await fetch(baseUrl+"/api/basicDetailUpdate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
