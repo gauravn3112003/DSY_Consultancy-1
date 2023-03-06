@@ -10,8 +10,6 @@ export default function HomeLayout({ children }) {
   const router = useRouter();
 
   const context = useContext(collegeContext);
-  // console.log(context.userAllData.role);
-  console.log(context.userId);
   const ListItem = (props) => {
     return (
       <li>

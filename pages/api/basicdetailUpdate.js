@@ -1,5 +1,5 @@
 import initDB from "../../Helpers/initDB";
-import Colleges from "../../Modal/Colleges";
+import User from "directsecondyearadmission/Modal/User";
 initDB();
 
 export default async (req, res) => {
@@ -8,27 +8,55 @@ export default async (req, res) => {
     dob,
     socialCategory,
     gender,
-    martialStatus,
+    maritialStatus,
     phyChanged,
-    insCode,
+    id,
   } = req.body;
 
+  const progress = await User.findById(id);
+  let newProcess = 40;
+  const process = 40;
+  if (progress.profileCompletion < 40) {
+    newProcess = process;
+  }
+
   try {
-    if (!imageUrl || !instituteCode) {
+    if (
+      !fullName ||
+      !dob ||
+      !socialCategory ||
+      !gender ||
+      !maritialStatus ||
+      !phyChanged ||
+      !id
+    ) {
       return res.status(422).json({ error: "Please fill all the fields" });
     }
 
-    const clgName = await Colleges.findOne({
-      instituteCode: instituteCode,
-    });
-    if (!clgName) {
-      return res.status(404).json({ error: "This Institute not Exists" });
-    }
+    let bDeatails = {
+      maritialStatus: maritialStatus,
+      dob: dob,
+      socialCategory: socialCategory,
+      phyChanged: phyChanged,
+      gender: gender,
+      fName: fullName,
+    };
 
-    const filter = { instituteCode: instituteCode };
-    const update = { $push: { images: imageUrl } };
-    const addImages = await Colleges.findOneAndUpdate(filter, update);
-    res.status(201).json({ msg: "Image Added", addImages });
+    const update = {
+      profileCompletion: newProcess,
+      basicDetails: bDeatails,
+      credentails: { fName: fullName },
+    };
+    const userData = await User.findOneAndUpdate({ _id: id }, update);
+
+    if (!userData) {
+      return res.status(404).json({ error: "This User not Exists" });
+    }
+    res.status(201).json({
+      process: progress.profileCompletion,
+      msg: "User Updated Sucessfll",
+      userData,
+    });
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
   }

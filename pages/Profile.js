@@ -1,5 +1,5 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Link from "next/link";
 import Head from "next/head";
@@ -7,6 +7,13 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 const Profile = ({ userData }) => {
+  const context = useContext(collegeContext);
+  const [requiredState, setRequired] = useState(false);
+  useEffect(() => {
+    localStorage.setItem("userName", userData.credentails.fName);
+
+  }, []);
+
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
@@ -41,6 +48,7 @@ const Profile = ({ userData }) => {
 
   const BasicDetails = () => {
     const [modalOpen, setModalOpen] = useState("hidden");
+
     const toggleUser = () => {
       if (modalOpen == "hidden") {
         setModalOpen("block");
@@ -49,12 +57,63 @@ const Profile = ({ userData }) => {
       }
     };
     const BasicDetailModal = () => {
+      const [basicDetails, setBasicDetails] = useState({});
+      const onChange = (e) => {
+        setBasicDetails({
+          ...basicDetails,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+      const updateBasicDetails = async (e) => {
+        e.preventDefault();
+        const { fullName, socialCategory, dob, gender, marStatus, phyChanged } =
+          basicDetails;
+        onSubmit(fullName, socialCategory, dob, gender, marStatus, phyChanged);
+      };
+
+      const onSubmit = async (
+        fullName,
+        socialCategory,
+        dob,
+        gender,
+        marStatus,
+        phyChanged
+      ) => {
+        const res = await fetch("/api/basicDetailUpdate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fullName: fullName,
+            dob: dob,
+            socialCategory: socialCategory,
+            gender: gender,
+            maritialStatus: marStatus,
+            phyChanged: phyChanged,
+            id: userData._id,
+          }),
+        });
+
+        const res2 = await res.json();
+        if (res2.msg) {
+          context.openModal("success", res2.msg);
+          router.reload();
+        } else {
+          context.openModal("fail", res2.error);
+        }
+      };
+
       return (
         <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full   `}>
           <div className="z-10  relative w-full flex justify-center  items-center h-full modalColor">
             <div className="absolute h-full w-full  sm:w-4/6 sm:h-4/5  mt-24 sm:mt-0 rounded-sm bg-white">
               <ModelHeader name="Basic Detail" />
-              <form className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center">
+              <form
+                onSubmit={updateBasicDetails}
+                className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center"
+              >
                 <div className="grid grid-cols-1  w-full sm:grid-cols-2 gap-5 sm:w-2/4 ">
                   <div className="flex flex-col ">
                     <label
@@ -66,7 +125,10 @@ const Profile = ({ userData }) => {
                     <input
                       type="text"
                       id="Name"
-                      name="Name"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={basicDetails.fullName ? basicDetails.fullName : ""}
+                      name="fullName"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -77,14 +139,24 @@ const Profile = ({ userData }) => {
                     >
                       Social Category
                     </label>
-                    <select className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <option>Your Social Category</option>
-                      <option>General</option>
-                      <option>ST</option>
-                      <option>OBC</option>
-                      <option>SC</option>
-                      <option>VJ/NT</option>
-                      <option>OPEN</option>
+                    <select
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        basicDetails.socialCategory
+                          ? basicDetails.socialCategory
+                          : ""
+                      }
+                      name="socialCategory"
+                      className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    >
+                      <option value="">Your Social Category</option>
+                      <option value="General">General</option>
+                      <option value="ST">ST</option>
+                      <option value="OBC">OBC</option>
+                      <option value="SC">SC</option>
+                      <option value="VJ/NT">VJ/NT</option>
+                      <option value="OPEN">OPEN</option>
                     </select>
                   </div>
                   <div className="flex flex-col ">
@@ -97,7 +169,10 @@ const Profile = ({ userData }) => {
                     <input
                       type="date"
                       id="DOB"
-                      name="DOB"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={basicDetails.dob ? basicDetails.dob : ""}
+                      name="dob"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -113,8 +188,11 @@ const Profile = ({ userData }) => {
                         <input
                           className="mr-2"
                           type="radio"
-                          name="gender"
                           value="Male"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.gender === "Male"}
+                          name="gender"
                         />
                         <span>Male</span>
                       </div>
@@ -124,6 +202,9 @@ const Profile = ({ userData }) => {
                           type="radio"
                           name="gender"
                           value="Female"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.gender === "Female"}
                         />
                         <span>Female </span>
                       </div>
@@ -133,6 +214,9 @@ const Profile = ({ userData }) => {
                           type="radio"
                           name="gender"
                           value="Other"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.gender === "Other"}
                         />
                         <span>Other</span>
                       </div>
@@ -147,11 +231,27 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" value="Married" name="marStatus" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          value="Married"
+                          name="marStatus"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.marStatus === "Married"}
+                        />
                         <span>Married</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="marStatus" value="Unmarried"/>
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="marStatus"
+                          value="Unmarried"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.marStatus === "Unmarried"}
+                        />
                         <span>Unmarried </span>
                       </div>
                     </div>
@@ -165,19 +265,34 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" name="pyhChanged" value="Yes" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="phyChanged"
+                          value="Yes"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.phyChanged === "Yes"}
+                        />
                         <span>Yes</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="pyhChanged" value="No" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="phyChanged"
+                          value="No"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={basicDetails.phyChanged === "No"}
+                        />
                         <span>No </span>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-5">
-                  <button type="button" className="pBtn px-10 py-3 mt-10">
-                    {" "}
+                  <button type="submit" className="pBtn px-10 py-3 mt-10">
                     Submit
                   </button>
                   <button type="reset" className="border px-10 py-3 mt-10">

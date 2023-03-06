@@ -130,8 +130,8 @@ const userSchema = new Schema(
       },
     },
     profileCompletion: {
-      type: String,
-      default: "20",
+      type: Number,
+      default: 20,
     },
     notification: {
       SMS: {

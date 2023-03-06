@@ -75,7 +75,7 @@ const Home = () => {
   const HeaderCard = () => {
     const name = context.userAllData.credentails.fName;
     const [progress, setProgress] = useState(
-      context.userAllData.profileCompletion
+      context.userAllData.profileCompletion.toString()
     );
     return (
       <div className="border mb-5 ">
