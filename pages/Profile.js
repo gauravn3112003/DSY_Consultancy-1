@@ -11,7 +11,6 @@ const Profile = ({ userData }) => {
   const [requiredState, setRequired] = useState(false);
   useEffect(() => {
     localStorage.setItem("userName", userData.credentails.fName);
-
   }, []);
 
   const router = useRouter();
@@ -80,7 +79,7 @@ const Profile = ({ userData }) => {
         marStatus,
         phyChanged
       ) => {
-        const res = await fetch(baseUrl+"/api/basicDetailUpdate", {
+        const res = await fetch("/api/basicDetailUpdate", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
