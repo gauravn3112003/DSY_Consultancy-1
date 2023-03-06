@@ -68,7 +68,15 @@ const Profile = ({ userData }) => {
         e.preventDefault();
         const { fullName, socialCategory, dob, gender, marStatus, phyChanged } =
           basicDetails;
-        onSubmit(fullName, socialCategory, dob, gender, marStatus, phyChanged);
+        onSubmit(
+          fullName,
+          socialCategory,
+          dob,
+          gender,
+          marStatus,
+          phyChanged,
+          userData._id
+        );
       };
 
       const onSubmit = async (
@@ -77,7 +85,8 @@ const Profile = ({ userData }) => {
         dob,
         gender,
         marStatus,
-        phyChanged
+        phyChanged,
+        id
       ) => {
         const res = await fetch("/api/basicDetailUpdate", {
           method: "POST",
@@ -91,7 +100,7 @@ const Profile = ({ userData }) => {
             gender: gender,
             maritialStatus: marStatus,
             phyChanged: phyChanged,
-            id: userData._id,
+            id: id,
           }),
         });
 
