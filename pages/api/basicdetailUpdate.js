@@ -32,6 +32,7 @@ export default async (req, res) => {
     ) {
       return res.status(422).json({ error: "Please fill all the fields" });
     }
+    let credentials = {};
 
     let bDeatails = {
       maritialStatus: maritialStatus,
@@ -45,7 +46,7 @@ export default async (req, res) => {
     const update = {
       profileCompletion: newProcess,
       basicDetails: bDeatails,
-      credentails: { fName: fullName },
+      "credentails.fName": fullName,
     };
     const userData = await User.findOneAndUpdate({ _id: id }, update);
 
