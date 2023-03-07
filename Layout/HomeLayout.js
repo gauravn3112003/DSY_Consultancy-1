@@ -30,7 +30,7 @@ export default function HomeLayout({ children }) {
     const router = useRouter();
     return (
       <div className="userData m-auto mt-20 hidden  mb-5  p-5 flex-wrap  text-white  justify-between md:flex items-center container rounded-sm">
-        <div className="avtarP">{context.username.charAt(0)}</div>
+        <div className="avtarP">{context.username.charAt(0).toUpperCase()}</div>
         <div className="mt-2 sm:mt-0  ">
           <h1 className="text-center font-semibold text-2xl">
             {context.username}

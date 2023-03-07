@@ -13,6 +13,63 @@ const Profile = ({ userData }) => {
     localStorage.setItem("userName", userData.credentails.fName);
   }, []);
 
+  const [basicDetails, setBasicDetails] = useState({});
+  const onChange = (e) => {
+    setBasicDetails({
+      ...basicDetails,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const updateBasicDetails = async (e) => {
+    e.preventDefault();
+    const { fullName, socialCategory, dob, gender, marStatus, phyChanged } =
+      basicDetails;
+    onSubmit(
+      fullName,
+      socialCategory,
+      dob,
+      gender,
+      marStatus,
+      phyChanged,
+      userData._id
+    );
+  };
+
+  const onSubmit = async (
+    fullName,
+    socialCategory,
+    dob,
+    gender,
+    marStatus,
+    phyChanged,
+    id
+  ) => {
+    const res = await fetch("/api/basicDetailUpdate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName: fullName,
+        dob: dob,
+        socialCategory: socialCategory,
+        gender: gender,
+        maritialStatus: marStatus,
+        phyChanged: phyChanged,
+        id: id,
+      }),
+    });
+
+    const res2 = await res.json();
+    if (res2.msg) {
+      context.openModal("success", res2.msg);
+      router.reload();
+    } else {
+      context.openModal("fail", res2.error);
+    }
+  };
+
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
@@ -56,63 +113,6 @@ const Profile = ({ userData }) => {
       }
     };
     const BasicDetailModal = () => {
-      const [basicDetails, setBasicDetails] = useState({});
-      const onChange = (e) => {
-        setBasicDetails({
-          ...basicDetails,
-          [e.target.name]: e.target.value,
-        });
-      };
-
-      const updateBasicDetails = async (e) => {
-        e.preventDefault();
-        const { fullName, socialCategory, dob, gender, marStatus, phyChanged } =
-          basicDetails;
-        onSubmit(
-          fullName,
-          socialCategory,
-          dob,
-          gender,
-          marStatus,
-          phyChanged,
-          userData._id
-        );
-      };
-
-      const onSubmit = async (
-        fullName,
-        socialCategory,
-        dob,
-        gender,
-        marStatus,
-        phyChanged,
-        id
-      ) => {
-        const res = await fetch("/api/basicDetailUpdate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            fullName: fullName,
-            dob: dob,
-            socialCategory: socialCategory,
-            gender: gender,
-            maritialStatus: marStatus,
-            phyChanged: phyChanged,
-            id: id,
-          }),
-        });
-
-        const res2 = await res.json();
-        if (res2.msg) {
-          context.openModal("success", res2.msg);
-          router.reload();
-        } else {
-          context.openModal("fail", res2.error);
-        }
-      };
-
       return (
         <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full   `}>
           <div className="z-10  relative w-full flex justify-center  items-center h-full modalColor">

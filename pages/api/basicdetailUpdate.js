@@ -13,13 +13,6 @@ export default async (req, res) => {
     id,
   } = req.body;
 
-  const progress = await User.findById(id);
-  let newProcess = 40;
-  const process = 40;
-  if (progress.profileCompletion < 40) {
-    newProcess = process;
-  }
-
   try {
     if (
       !fullName ||
@@ -32,8 +25,13 @@ export default async (req, res) => {
     ) {
       return res.status(422).json({ error: "Please fill all the fields" });
     }
-    let credentials = {};
 
+    const progress = await User.findById(id);
+    let newProcess = 40;
+    const process = 40;
+    if (progress.profileCompletion < 40) {
+      newProcess = process;
+    }
     let bDeatails = {
       maritialStatus: maritialStatus,
       dob: dob,
