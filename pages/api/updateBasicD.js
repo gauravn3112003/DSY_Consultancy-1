@@ -23,7 +23,7 @@ export default async (req, res) => {
       !phyChanged ||
       !id
     ) {
-      return res.status(422).json({ error: "Please fill all the fields" });
+      return res.status(401).json({ error: "Please fill all the fields" });
     }
 
     const progress = await User.findById(id);
