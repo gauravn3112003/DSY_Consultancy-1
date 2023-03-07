@@ -96,7 +96,7 @@ const Pricing = () => {
 
 
             <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
-              <div className="h-full p-6 rounded-sm bg-white border-2 border-p flex flex-col relative overflow-hidden">
+              <div className="h-full p-6 rounded-sm bg-white border border-p flex flex-col relative overflow-hidden">
                 <span className="pBtn text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
                   POPULAR
                 </span>

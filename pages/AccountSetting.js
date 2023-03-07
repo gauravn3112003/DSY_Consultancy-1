@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const NotiRemind = () => {
   return (
-    <div className="bg-white p-5  rounded-sm ">
+    <div className="bg-white border-blue-500 border p-5  rounded-sm ">
       <div className="flex flex-col sm:w-2/4 w-full justify-around">
         <div>
           <p className="font-bold text-lg">Notification & Reminders</p>

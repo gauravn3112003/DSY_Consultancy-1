@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import College from "./College";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import { useRouter } from "next/router";
+import Loading from "./Components/Loading";
 
 const BreadCrumb = () => {
   const [userOpen, setUserOpen] = useState("hidden");
@@ -142,11 +144,11 @@ const CollegeCard = (props) => {
       <div target="_blank" className="flex flex-col bg-white cursor-pointer ">
         <p
           rel="noopener noreferrer"
-          className="  h-52 grid place-items-center overflow-hidden"
+          className="  h-52 grid place-items-center border overflow-hidden"
           aria-label="Te nulla oportere reprimique his dolorum"
         >
           <img
-            className="object-cover h-full cursor-pointer "
+            className="object-cover h-40 w-40  bg-yellow-300 cursor-pointer "
             src={props.image}
           />
         </p>
@@ -190,7 +192,32 @@ const CollegeCard = (props) => {
   );
 };
 
-const AllCollege = ({ data }) => {
+const AllCollege = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setdata] = useState(null);
+  const router = useRouter();
+  useEffect(() => {
+    const getColleges = async () => {
+      const res = await fetch(baseUrl + "/api/Colleges", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      setdata(data);
+    };
+    getColleges();
+  }, []);
+  console.log(data);
+
+  const Loader = () => {
+    return (
+      <div className=" bg-white h-screen grid place-items-center">
+        <img src="/img/loader.gif" className="" alt="" />
+      </div>
+    );
+  };
 
   return (
     <>
@@ -201,90 +228,36 @@ const AllCollege = ({ data }) => {
           content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission, DSY consultancy, DSY consultancy | All Colleges"
         />
 
-        <meta
-          name="title"
-          content="DSY consultancy | All Colleges"
-        />
+        <meta name="title" content="DSY consultancy | All Colleges" />
       </Head>
-
       <div className="mt-20 px-5 sm:px-0  container m-auto">
         <BreadCrumb />
         <section className=" overflow-y-scroll h-screen ">
           <div className=" space-y-6 ">
-            {/* Carosore */}
-
-            {/* <!-- Carousel wrapper --> */}
-            {/* <Swiper
-              spaceBetween={30}
-              centeredSlides={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              modules={[Autoplay, Pagination, Navigation]}
-              className="mySwiper"
-            >
-              <SwiperSlide>
-                <img
-                  className="object-fill w-full h-96"
-                  src="https://cdn.pixabay.com/photo/2022/03/20/15/40/nature-7081138__340.jpg"
-                  alt="image slide 1"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="object-fill w-full h-96"
-                  src="https://cdn.pixabay.com/photo/2022/07/24/17/55/wind-energy-7342177__340.jpg"
-                  alt="image slide 2"
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  className="object-fill w-full h-96"
-                  src="https://cdn.pixabay.com/photo/2022/07/26/03/35/jogger-7344979__340.jpg"
-                  alt="image slide 3"
-                />
-              </SwiperSlide>
-            </Swiper> */}
-  
-            {/* Cards */}
-            <div className="grid  grid-cols-1 gap-x-4 gap-y-8  md:grid-cols-2 lg:grid-cols-4">
-              {data.map((item, index) => {
-                return (
-                  <CollegeCard
-                    key={index}
-                    approvedBy={item.approvedBy}
-                    id={item._id}
-                    cName={item.name}
-                    image={item.image}
-                    views={item.views}
-                  />
-                );
-              })}
-            </div>
+            {/* <Loader/> */}
+            {!data ? (
+              <Loader />
+            ) : (
+              <div className="grid  grid-cols-1 gap-x-4 gap-y-8  md:grid-cols-2 lg:grid-cols-4">
+                {data.map((item, index) => {
+                  return (
+                    <CollegeCard
+                      key={index}
+                      approvedBy={item.approvedBy}
+                      id={item._id}
+                      cName={item.name}
+                      image={item.image}
+                      views={item.views}
+                    />
+                  );
+                })}
+              </div>
+            )}
           </div>
         </section>
       </div>
     </>
   );
 };
-
-export async function getServerSideProps() {
-  // for show all Colleges
-  const res = await fetch(baseUrl + "/api/Colleges", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
-  return {
-    props: { data },
-  };
-}
 
 export default AllCollege;

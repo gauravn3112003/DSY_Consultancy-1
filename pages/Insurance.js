@@ -17,7 +17,7 @@ const Insurance = () => {
               content="DSY consultancy | Insurance"
             />
       </Head>
-      <div className="bg-white p-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
+      <div className="bg-white p-5 border-blue-500 border flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
         <div className="flex flex-col sm:w-2/4 w-full ">
           <div>
             <p className="text-base font-semibold ">

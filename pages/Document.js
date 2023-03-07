@@ -11,7 +11,7 @@ const BasicDoc = () => {
       <div className=" flex w-full  gap-5 flex-wrap ">
         <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div className="max-w-xl">
-            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@ const BasicDoc = () => {
         </div>
         <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div className="max-w-xl">
-            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const BasicDoc = () => {
         </div>{" "}
         <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div className="max-w-xl">
-            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ const AddmissionDoc = () => {
       <div className=" flex w-full  gap-5 flex-wrap ">
         <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div className="max-w-xl">
-            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +149,7 @@ const AddmissionDoc = () => {
         </div>
         <div className="sm:w-48 w-full flex flex-row  sm:flex-col bg-slate-100 p-2 ">
           <div className="max-w-xl">
-            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+            <label className="flex justify-center sm:w-full mr-5 sm:mr-0 h-20 w-20 px-4 transition bg-white border border-gray-300 border-dashed rounded-sm appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +185,7 @@ const AddmissionDoc = () => {
 };
 const DocMsg = () => {
   return (
-    <div className="bg-white border border-blue-600 shadow-inner  p-5 mb-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
+    <div className="bg-white border-blue-500 border shadow-inner  p-5 mb-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
       <div className="flex flex-col sm:w-2/4 w-full justify-around">
         <div>
           <p className="text-base font-semibold">

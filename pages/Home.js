@@ -78,7 +78,7 @@ const Home = () => {
       context.userAllData.profileCompletion.toString()
     );
     return (
-      <div className="border mb-5 ">
+        <div className="mb-5 border-blue-500 border">
         <div className="bg-white p-5   flex sm:flex-row flex-col-reverse items-center w-full  justify-between rounded-sm ">
           <div className="flex flex-col sm:w-2/4 w-full justify-around">
             <div>
