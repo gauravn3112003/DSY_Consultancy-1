@@ -12,12 +12,12 @@ export default function Document() {
 
         <meta
           name="keywords"
-          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, Direct Second Year Admission Consultancy | DSY, Direct Second Year Admission Consultancy, Direct Second Year Admission"
+          content="Direct Second Year Admission, Consultancy Services, Admission Assistance, Education Counseling, Admission Consultancy, College Admission Guidance, Admission Process, Admission Requirements, Engineering Admissions, After Diploma Admissions, DSY, DSY Consultancy | Direct Second Year Admission Consultancy, Direct Second Year Admission Consultancy, Direct Second Year Admission"
         />
 
         <meta
           name="title"
-          content="Direct Second Year Admission Consultancy | DSY"
+          content="DSY Consultancy | Direct Second Year Admission Consultancy"
         />
         <meta
           name="description"
@@ -29,7 +29,7 @@ export default function Document() {
         <meta property="og:url" content={baseUrl} />
         <meta
           property="og:title"
-          content="Direct Second Year Admission Consultancy | DSY"
+          content="DSY Consultancy | Direct Second Year Admission Consultancy"
         />
         <meta
           property="og:description"
@@ -42,7 +42,7 @@ export default function Document() {
         <meta property="twitter:url" content={baseUrl} />
         <meta
           property="twitter:title"
-          content="Direct Second Year Admission Consultancy | DSY"
+          content="DSY Consultancy | Direct Second Year Admission Consultancy"
         />
         <meta
           property="twitter:description"

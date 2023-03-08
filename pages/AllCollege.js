@@ -193,9 +193,11 @@ const CollegeCard = (props) => {
 };
 
 const AllCollege = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setdata] = useState(null);
   const router = useRouter();
+
+
   useEffect(() => {
     const getColleges = async () => {
       const res = await fetch(baseUrl + "/api/Colleges", {
@@ -209,7 +211,10 @@ const AllCollege = () => {
     };
     getColleges();
   }, []);
-  console.log(data);
+  // useEffect(() => {
+  //   setLoading(false); // set loading to false when the data is fetched
+  // }, [data]);
+
 
   const Loader = () => {
     return (
@@ -259,5 +264,19 @@ const AllCollege = () => {
     </>
   );
 };
+
+// export async function getServerSideProps() {
+//   // for show all Colleges
+//   const res = await fetch(baseUrl + "/api/Colleges", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   const data = await res.json();
+//   return {
+//     props: { data },
+//   };
+// }
 
 export default AllCollege;

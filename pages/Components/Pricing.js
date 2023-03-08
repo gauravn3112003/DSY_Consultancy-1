@@ -5,19 +5,17 @@ const Pricing = () => {
     <>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
-
           <div className="flex flex-col text-center w-full mb-20">
             <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
               Pricing
             </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical.
-            </p>
-       
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere impedit alias fugit natus nesciunt, modi nisi nobis ducimus! Unde, magni!</p>
+            <div className="flex mt-6 justify-center">
+              <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+            </div>
           </div>
 
           <div className="flex flex-wrap justify-center -m-4">
-
             <div className="p-4 xl:w-1/4 md:w-1/2   w-full">
               <div className="h-full p-6 rounded-sm bg-white flex flex-col relative overflow-hidden">
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
@@ -93,7 +91,6 @@ const Pricing = () => {
                 </p>
               </div>
             </div>
-
 
             <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
               <div className="h-full p-6 rounded-sm bg-white border border-p flex flex-col relative overflow-hidden">
@@ -303,7 +300,6 @@ const Pricing = () => {
                 </p>
               </div>
             </div>
-            
           </div>
         </div>
       </section>

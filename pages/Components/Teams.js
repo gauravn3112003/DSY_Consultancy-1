@@ -1,4 +1,6 @@
 import React from "react";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
 
 const Teams = () => {
   return (
@@ -9,35 +11,23 @@ const Teams = () => {
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Our Team
             </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify, subway tile poke farm-to-table. Franzen you probably
-              haven't heard of them.
-            </p>
-          </div>
-
-          <marquee width="100%" direction="left" scrollamount="12">
-
-
-            <div className="flex gap-5 w-fit flex-row bg-white p-5 ">
-              <div className="h-full flex  w-auto  rounded-sm">
-                <img
-                  alt="team"
-                  className="w-16 h-16 bg-gray-100  rounded-full mr-4"
-                  src="https://dummyimage.com/80x80"
-                />
-
-                <div className="">
-                  <h2 className="text-gray-900 title-font font-medium">
-                    Gaurav Narnaware
-                  </h2>
-                  <p className="text-gray-500">Web Developer</p>
-                </div>
-              </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quis vitae aut. Consectetur, molestiae cumque recusandae laborum fugiat eaque ipsa omnis repellendus! Eum sed corporis asperiores laborum quasi ipsam distinctio.</p>
+            <div className="flex mt-6 justify-center">
+              <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
             </div>
-
-            
-          </marquee>
+          </div>
+          <div className="grid place-items-center">
+            <AvatarGroup max={4}>
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+              <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
+              <Avatar
+                alt="Trevor Henderson"
+                src="/static/images/avatar/5.jpg"
+              />
+            </AvatarGroup>
+          </div>
         </div>
       </section>
     </>

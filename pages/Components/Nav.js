@@ -64,13 +64,13 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="bg-white px-2 sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
-        <div className="container flex flex-wrap items-center justify-between mx-auto">
+      <nav className="bg-white  sm:px-4 py-2.5 0 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
+        <div className="container  flex px-5 flex-wrap items-center justify-between mx-auto">
           <Link href="/">
-            <a className="flex items-center">
+            <a className="">
               <img
                 src="/img/DSY.svg"
-                className="w-2/4 mr-3 sm:h-9"
+                className="md:h- h-10 mr-3 sm:h-9"
                 alt="Flowbite Logo"
               />
               <span className="self-center text-xl font-semibold whitespace-nowrap pColor">

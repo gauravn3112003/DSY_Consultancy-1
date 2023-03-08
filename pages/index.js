@@ -11,7 +11,7 @@ import Loading from "./Components/Loading";
 const CollegeCard = () => {
   const Card = () => {
     return (
-      <div className="flex flex-col hover:bg-blue-500 bg-white  flex-1 p-6">
+      <div className="flex  flex-col hover:bg-blue-500 bg-white  flex-1 p-6">
         <p
           rel="noopener noreferrer"
           aria-label="Te nulla oportere reprimique his dolorum"
@@ -34,7 +34,7 @@ const CollegeCard = () => {
   return (
     <>
       <Link href="/">
-        <article className="flex w-96 flex-row gap-5 cursor-pointer ">
+        <article className="flex w-96 p-4 flex-row gap-5 cursor-pointer ">
           <Card />
           <Card />
           <Card />
@@ -48,8 +48,8 @@ const CollegeCard = () => {
 
 const AppDown = () => {
   return (
-    <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto flex items-center md:flex-row flex-col">
+    <section className=" w-full md:block hidden text-gray-600 body-font">
+      <div className="container  pt-24 mx-auto flex items-center md:flex-row flex-col">
         <div className="flex flex-col md:pr-10 md:mb-0 mb-6 pr-0 w-full md:w-auto md:text-left text-center">
           <h2 className="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">
             Download our Application
@@ -150,14 +150,13 @@ const Home = () => {
               content="DSY consultancy | Direct Second Year Admission Consultancy"
             />
           </Head>
-          <div className="  heroBg text-black">
-            <section className="  sm:h-auto   ">
-              <div className=" container m-auto mt-14 p-5 ">
+          <section className="w-full bg-sky-50 mb-5 sm:mb-0">
+            <div className="container mt-14 px-5 m-auto ">
+              <i className="bi text-2xl justify-start items-center py-5 bi-megaphone-fill flex">
                 <marquee
-                  width="100%"
-                  direction="left"
-                  className="blink text-blue-900"
+                  direction="right"
                   scrollamount="12"
+                  className="px-5 text-base"
                 >
                   Admission for Direct second Year will be started{" "}
                   <span className="ml-5 ">
@@ -166,66 +165,62 @@ const Home = () => {
                     </a>
                   </span>
                 </marquee>
-              </div>
-              <div className="container   mx-auto flex px-5     pt-0 md:flex-row flex-col items-center">
-                <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left  md:mb-0 items-center text-center">
-                  <h1 className="title-font text-left font-normal sm:text-4xl text-3xl   ">
-                    <span className="font-bold"> Direct Second Year</span>{" "}
-                    Admission&nbsp;
-                    <br className="hidden lg:inline-block" />
-                    Consultancy
-                  </h1>
-                  <p className="   opacity-70 text-justify leading-relaxed">
-                    Get help from our Direct Second Year Admission Consultancy
-                    to secure admission to second year engineering courses in
-                    India. Contact us today to start your journey towards a
-                    successful engineering career.
-                  </p>
+              </i>
+            </div>
+          </section>
+          <section className="  h-screen md:h-full  text-black sm:h-auto   ">
+            <div className="container   mx-auto flex px-5  md:justify-between justify-start h-full  pt-0 md:flex-row flex-col items-center">
+              <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left  md:mb-0 items-center text-center">
+                <h1 className="title-font text-left font-normal sm:text-4xl text-3xl   ">
+                  <span className="font-bold"> Direct Second Year</span>{" "}
+                  Admission&nbsp;
+                  <br className="hidden lg:inline-block" />
+                  Consultancy
+                </h1>
+                <p className="   opacity-70 text-justify leading-relaxed">
+                  Get help from our Direct Second Year Admission Consultancy to
+                  secure admission to second year engineering courses in India.
+                  Contact us today to start your journey towards a successful
+                  engineering career.
+                </p>
 
-                  <div className="py-5 flex text-left w-full sm:text-left font-bold text-xl ">
-                    We help&nbsp;
-                    <span className="pColor ntext-left">
-                      <Typewriter
-                        options={{
-                          strings: [
-                            "to find right College",
-                            "to get Admission",
-                          ],
-                          autoStart: true,
-                          loop: true,
-                        }}
-                      />
-                    </span>
-                  </div>
+                <div className="py-5 flex text-left w-full sm:text-left font-bold text-xl ">
+                  We help&nbsp;
+                  <span className="pColor ntext-left">
+                    <Typewriter
+                      options={{
+                        strings: ["to find right College", "to get Admission"],
+                        autoStart: true,
+                        loop: true,
+                      }}
+                    />
+                  </span>
+                </div>
 
-                  <div className="flex w-full  justify-start ">
-                    <button className="inline-flex font-semibold pBtn border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
-                      Search College
-                    </button>
-                    {!user && (
-                      <Link href="/Login">
-                        <button className="ml-4 font-semibold inline-flex pColor border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
-                          Sign In
-                        </button>
-                      </Link>
-                    )}
-                  </div>
+                <div className="flex w-full  justify-start ">
+                  <button className="inline-flex font-semibold pBtn border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
+                    Search College
+                  </button>
+                  {!user && (
+                    <Link href="/Login">
+                      <button className="ml-4 font-semibold inline-flex pColor border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
+                        Sign In
+                      </button>
+                    </Link>
+                  )}
                 </div>
-                <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                  <img
-                    className="object-cover object-center w-full rounded-sm"
-                    alt="hero"
-                    src="/img/hero2.gif"
-                  />
-                </div>
+                <AppDown />
               </div>
-              <div className="container m-auto px-5">
-                <i className="bi text-2xl justify-start items-center py-5 bi-megaphone-fill flex">
-                  <marquee direction="right" scrollamount="12" className="px-5 text-base"> fdsgsgghjghdusgh</marquee>
-                </i>
+              <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                <img
+                  className="object-cover object-center w-full rounded-sm"
+                  alt="hero"
+                  src="/img/hero2.gif"
+                />
               </div>
-            </section>
-          </div>
+            </div>
+          </section>
+
           <div className="w-full bg-blue-900 text-white flex">
             <div className="rounded-lg container  m-auto w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
               {listUser.map((listUsers, index) => (
@@ -249,14 +244,21 @@ const Home = () => {
             </div>
             <div className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"></div>
           </div>
-          <AppDown />
-          <section className="container m-auto p-5">
-            <h1 className="sm:text-4xl text-center text-3xl font-medium title-font mb-5 text-gray-900">
-              University
-            </h1>
-            <marquee width="100%" direction="left" scrollamount="12">
-              <CollegeCard />
-            </marquee>
+          <section className="text-gray-600 body-font">
+            <div className="container px-5 py-5 mx-auto">
+              <div className="text-center mb-20">
+                <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
+                  University
+                </h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis commodi molestiae veniam, fuga laborum nam.</p>
+                <div className="flex mt-6 justify-center">
+                  <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+                </div>
+                <marquee width="100%" direction="left" scrollamount="12">
+                  <CollegeCard />
+                </marquee>
+              </div>
+            </div>
           </section>
           <Steps />
           <Pricing />
