@@ -133,6 +133,7 @@ const Nav = () => {
                   />
                 );
               })}
+              <ListItem location={!user ? "/AllCollege" :"/College"} name="Colleges" />
             </ul>
           </div>
         </div>
@@ -200,7 +201,9 @@ const Nav = () => {
             {TopNav.map((item, index) => {
               return (
                 <div className="flex  items-center mb-2" key={index}>
-                  <i className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm text-slate-800 bi text-sm  mr-5`}></i>
+                  <i
+                    className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm text-slate-800 bi text-sm  mr-5`}
+                  ></i>
                   <Link href={item.location}>
                     <button
                       onClick={function () {

@@ -4,48 +4,44 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
+import CollegeUnder from "./Components/Filters/CollegeUnder";
+import { collegeByUnder } from "./Components/Filters/Services/quieries";
 
 const College = ({ data }) => {
+
+  
+  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const onChangeCollegeUnderHandler = (under, isChecked) => {
+    isChecked
+      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
+      : setSelectedCollegeUnder(
+          selectedCollegeUnder.filter((und) => und !== under)
+        );
+  };
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
+
+
   const AllCollegesData = (props) => {
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {data.map((item, index) => {
+        {undercolleges.map((item, index) => {
           return (
             <span key={index}>
               {item.department.map((department, indexDep) => {
                 return (
                   <span key={indexDep}>
-                    {" "}
-                    {item.instituteCode == props.data ? (
-                      <SingleCollege
-                        collegeName={item.name}
-                        approvedBy={item.approvedBy}
-                        collegeType={item.collegeType}
-                        collegeId={item._id}
-                        location={item.location.addressLine}
-                        instituteCode={item.instituteCode}
-                        image={item.image}
-                        contactNo={item.contactNo}
-                        department={department.courseName}
-                      />
-                    ) : (
-                      ""
-                    )}
-                    {props.data == "" ? (
-                      <SingleCollege
-                        collegeName={item.name}
-                        approvedBy={item.approvedBy}
-                        image={item.image}
-                        collegeId={item._id}
-                        collegeType={item.collegeType}
-                        location={item.location.addressLine}
-                        instituteCode={item.instituteCode}
-                        contactNo={item.contactNo}
-                        department={department.courseName}
-                      />
-                    ) : (
-                      ""
-                    )}
+                    <SingleCollege
+                      collegeName={item.name}
+                      approvedBy={item.approvedBy}
+                      collegeType={item.collegeType}
+                      collegeId={item._id}
+                      location={item.location.addressLine}
+                      instituteCode={item.instituteCode}
+                      image={item.image}
+                      contactNo={item.contactNo}
+                      department={department.courseName}
+                      collegeUnder={item.collegeUnder}
+                    />
                   </span>
                 );
               })}
@@ -77,6 +73,8 @@ const College = ({ data }) => {
               <br />
               <span className="text-xs">
                 <span className="font-bold">Type :</span> {props.collegeType}
+                <span className="font-bold ml-5">Under:</span>{" "}
+                {props.collegeUnder}
               </span>
               <br />
               <span className="text-xs">
@@ -126,29 +124,6 @@ const College = ({ data }) => {
     );
   };
 
-  const items = [
-    {
-      Name: "Category",
-      Location: "/",
-    },
-    {
-      Name: "Course",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-    {
-      Name: "Near Me",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-  ];
-
   const NavItem = (props) => {
     return (
       <Link href={props.location}>
@@ -175,10 +150,34 @@ const College = ({ data }) => {
 
   const HeaderFilter = () => {
     const [search, setSearch] = useState("");
+
     const inputChangedHandler = (e) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
+
+    const items = [
+      {
+        Name: "Category",
+        Location: "/",
+      },
+      {
+        Name: "Course",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+      {
+        Name: "Near Me",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+    ];
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -194,13 +193,14 @@ const College = ({ data }) => {
               />
             </form>
           </div>
+
           <div className="cursor-pointer relative">
             <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
             <span onClick={toggleUser} className="text-slate-400">
               Filter
             </span>
             <div
-              className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+              className={`absolute ${userOpen} right-0 z-10 mt-2 w-80 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
@@ -216,6 +216,11 @@ const College = ({ data }) => {
                     />
                   );
                 })}
+                <div className="h-1 mx-5 my-5 bg-slate-100" />
+                <CollegeUnder
+                  selectedCollegeUnder={selectedCollegeUnder}
+                  onChangeUnder={onChangeCollegeUnderHandler}
+                />
               </div>
             </div>
           </div>
@@ -236,7 +241,6 @@ const College = ({ data }) => {
 
         <meta name="title" content="DSY consultancy | Colleges" />
       </Head>
-
       <HeaderFilter />
     </HomeLayout>
   );

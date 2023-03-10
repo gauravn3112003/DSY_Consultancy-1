@@ -1,3 +1,5 @@
+
+
 const TopNav = [
   {
     name: "Home",
@@ -8,11 +10,6 @@ const TopNav = [
     name: "Latest News",
     location: "/Latest",
     icon: "bi-newspaper",
-  },
-  {
-    name: "Colleges",
-    location: "/AllCollege",
-    icon: "bi-building-fill",
   },
   {
     name: "About",
