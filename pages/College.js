@@ -119,15 +119,15 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
-                <CollegeUnder
+                {/* <CollegeUnder
                   selectedCollegeUnder={selectedCollegeUnder}
                   onChangeUnder={onChangeCollegeUnderHandler}
-                />
+                /> */}
               </div>
             </div>
           </div>
         </div>
-        <AllCollegesData undercolleges={undercolleges}F />
+        <AllCollegesData undercolleges={data} />
       </>
     );
   };
