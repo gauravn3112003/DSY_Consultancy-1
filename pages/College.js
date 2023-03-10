@@ -4,8 +4,22 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
+import { collegeByUnder } from "./Components/Services/quieries";
+import CollegeUnder from "./Components/Filters/CollegeUnder";
 
 const College = ({ data }) => {
+  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const onChangeCollegeUnderHandler = (under, isChecked) => {
+    isChecked
+      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
+      : setSelectedCollegeUnder(
+          selectedCollegeUnder.filter((und) => und !== under)
+        );
+  };
+
+  // filter for College Under
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
+
   const AllCollegesData = ({ undercolleges }) => {
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
@@ -198,11 +212,16 @@ const College = ({ data }) => {
                     />
                   );
                 })}
+                <div className="h-1 mx-5 my-5 bg-slate-100" />
+                <CollegeUnder
+                  selectedCollegeUnder={selectedCollegeUnder}
+                  onChangeUnder={onChangeCollegeUnderHandler}
+                />
               </div>
             </div>
           </div>
         </div>
-        <AllCollegesData undercolleges={data} />
+        <AllCollegesData undercolleges={undercolleges} />
       </>
     );
   };
