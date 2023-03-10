@@ -76,8 +76,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 1
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  font-semibold mr-5 rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -90,8 +90,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 2
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  font-semibold mr-5 rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -104,8 +104,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 3
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  font-semibold mr-5 rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -118,8 +118,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 4
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  font-semibold mr-5 rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -132,8 +132,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 5
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  font-semibold mr-5 rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
