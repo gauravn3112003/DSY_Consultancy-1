@@ -4,57 +4,10 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
+import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
-  const AllCollegesData = (props) => {
-    return (
-      <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {data.map((item, index) => {
-          return (
-            <span key={index}>
-              {item.department.map((department, indexDep) => {
-                return (
-                  <span key={indexDep}>
-                    {" "}
-                    {item.instituteCode == props.data ? (
-                      <SingleCollege
-                        collegeName={item.name}
-                        approvedBy={item.approvedBy}
-                        collegeType={item.collegeType}
-                        collegeId={item._id}
-                        location={item.location.addressLine}
-                        instituteCode={item.instituteCode}
-                        image={item.image}
-                        contactNo={item.contactNo}
-                        department={department.courseName}
-                      />
-                    ) : (
-                      ""
-                    )}
-                    {props.data == "" ? (
-                      <SingleCollege
-                        collegeName={item.name}
-                        approvedBy={item.approvedBy}
-                        image={item.image}
-                        collegeId={item._id}
-                        collegeType={item.collegeType}
-                        location={item.location.addressLine}
-                        instituteCode={item.instituteCode}
-                        contactNo={item.contactNo}
-                        department={department.courseName}
-                      />
-                    ) : (
-                      ""
-                    )}
-                  </span>
-                );
-              })}
-            </span>
-          );
-        })}
-      </div>
-    );
-  };
+
 
   const SingleCollege = (props) => {
     return (
@@ -220,7 +173,8 @@ const College = ({ data }) => {
             </div>
           </div>
         </div>
-        <AllCollegesData data={search} />
+        <AllCollegesData undercolleges={data} />
+        
       </>
     );
   };
