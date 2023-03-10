@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build",
+    "build": "next build",
     "start": "react-scripts --openssl-legacy-provider start",
     "lint": "next lint"
   },
