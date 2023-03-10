@@ -12,8 +12,8 @@ const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
   const undercolleges = collegeByUnder(selectedCollegeUnder, data);
 
-  
-  const onChangeCollegeUnderHandler = (under, isChecked) => {
+
+  const collegeUnderhandler = (under, isChecked) => {
     isChecked
       ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
       : setSelectedCollegeUnder(
@@ -115,7 +115,7 @@ const College = ({ data }) => {
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
                 <CollegeUnder
                   selectedCollegeUnder={selectedCollegeUnder}
-                  onChangeUnder={onChangeCollegeUnderHandler}
+                  onChangeUnder={collegeUnderhandler}
                 />
               </div>
             </div>
