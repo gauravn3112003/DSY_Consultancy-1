@@ -5,9 +5,9 @@ import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
 import { collegeByUnder } from "./Components/Services/quieries";
-import CollegeUnder from "./Components/Filters/CollegeUnder";
 
 const College = ({ data }) => {
+  const [filteredCollege, setfilteredCollege] = useState({});
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
   const onChangeCollegeUnderHandler = (under, isChecked) => {
     isChecked
@@ -19,8 +19,7 @@ const College = ({ data }) => {
 
   // filter for College Under
   const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-
-  const AllCollegesData = ({ undercolleges }) => {
+  const AllCollegesData = () => {
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
         {undercolleges.map((item, index) => {
@@ -175,6 +174,27 @@ const College = ({ data }) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
+
+    const CollegeUnder = ({ selectedCollegeUnder, onChangeUnder }) => {
+      const checkBoxItem = ["Government", "Private"];
+
+      return (
+        <div className="  px-5 pb-5 grid grid-cols-2 gap-5">
+          {checkBoxItem.map((item, index) => {
+            return (
+              <div className="flex gap-2    items-center" key={index}>
+                <input
+                  type="checkbox"
+                  checked={selectedCollegeUnder.includes(item)}
+                  onChange={(e) => onChangeUnder(item, e.target.checked)}
+                />
+                <label className="text-xs">{item}</label>
+              </div>
+            );
+          })}
+        </div>
+      );
+    };
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -221,7 +241,7 @@ const College = ({ data }) => {
             </div>
           </div>
         </div>
-        <AllCollegesData undercolleges={undercolleges} />
+        <AllCollegesData />
       </>
     );
   };
