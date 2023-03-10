@@ -4,7 +4,6 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
-import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
   const AllCollegesData = ({ undercolleges }) => {
