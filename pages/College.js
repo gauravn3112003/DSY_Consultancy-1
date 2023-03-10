@@ -3,27 +3,12 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
-import Loading from "./Components/Loading";
-import { collegeByUnder } from "./Components/Services/quieries";
-import CollegeUnder from "./Components/Filters/CollegeUnder";
 
 const College = ({ data }) => {
-  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
-  const onChangeCollegeUnderHandler = (under, isChecked) => {
-    isChecked
-      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
-      : setSelectedCollegeUnder(
-          selectedCollegeUnder.filter((und) => und !== under)
-        );
-  };
-
-  // filter for College Under
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-
-  const AllCollegesData = ({ undercolleges }) => {
+  const AllCollegesData = () => {
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {undercolleges.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <span key={index}>
               {item.department.map((department, indexDep) => {
@@ -122,28 +107,6 @@ const College = ({ data }) => {
       </div>
     );
   };
-  const items = [
-    {
-      Name: "Category",
-      Location: "/",
-    },
-    {
-      Name: "Course",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-    {
-      Name: "Near Me",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-  ];
 
   const NavItem = (props) => {
     return (
@@ -171,10 +134,34 @@ const College = ({ data }) => {
 
   const HeaderFilter = () => {
     const [search, setSearch] = useState("");
+
     const inputChangedHandler = (e) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
+
+    const items = [
+      {
+        Name: "Category",
+        Location: "/",
+      },
+      {
+        Name: "Course",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+      {
+        Name: "Near Me",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+    ];
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -190,13 +177,14 @@ const College = ({ data }) => {
               />
             </form>
           </div>
+
           <div className="cursor-pointer relative">
             <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
             <span onClick={toggleUser} className="text-slate-400">
               Filter
             </span>
             <div
-              className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+              className={`absolute ${userOpen} right-0 z-10 mt-2 w-80 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
@@ -213,15 +201,15 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
-                <CollegeUnder
+                {/* <CollegeUnder
                   selectedCollegeUnder={selectedCollegeUnder}
                   onChangeUnder={onChangeCollegeUnderHandler}
-                />
+                /> */}
               </div>
             </div>
           </div>
         </div>
-        <AllCollegesData undercolleges={undercolleges} />
+        <AllCollegesData />
       </>
     );
   };
@@ -237,7 +225,6 @@ const College = ({ data }) => {
 
         <meta name="title" content="DSY consultancy | Colleges" />
       </Head>
-
       <HeaderFilter />
     </HomeLayout>
   );
