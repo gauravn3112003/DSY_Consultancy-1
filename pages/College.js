@@ -7,7 +7,6 @@ import Loading from "./Components/Loading";
 import { collegeByUnder } from "./Components/Services/quieries";
 
 const College = ({ data }) => {
-  const [filteredCollege, setfilteredCollege] = useState({});
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
   const onChangeCollegeUnderHandler = (under, isChecked) => {
     isChecked
@@ -241,7 +240,6 @@ const College = ({ data }) => {
             </div>
           </div>
         </div>
-        <AllCollegesData />
       </>
     );
   };
@@ -259,6 +257,7 @@ const College = ({ data }) => {
       </Head>
 
       <HeaderFilter />
+      <AllCollegesData />
     </HomeLayout>
   );
 };
