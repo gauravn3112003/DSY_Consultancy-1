@@ -4,10 +4,15 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
+import CollegeUnder from "./Components/Filters/CollegeUnder";
 import { collegeByUnder } from "./Components/Services/quieries";
+import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
+
+  
   const onChangeCollegeUnderHandler = (under, isChecked) => {
     isChecked
       ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
@@ -16,184 +21,59 @@ const College = ({ data }) => {
         );
   };
 
-  // filter for College Under
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-  const AllCollegesData = () => {
-    return (
-      <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {undercolleges.map((item, index) => {
-          return (
-            <span key={index}>
-              {item.department.map((department, indexDep) => {
-                return (
-                  <span key={indexDep}>
-                    <SingleCollege
-                      collegeName={item.name}
-                      approvedBy={item.approvedBy}
-                      collegeType={item.collegeType}
-                      collegeId={item._id}
-                      location={item.location.addressLine}
-                      instituteCode={item.instituteCode}
-                      image={item.image}
-                      contactNo={item.contactNo}
-                      department={department.courseName}
-                      collegeUnder={item.collegeUnder}
-                    />
-                  </span>
-                );
-              })}
-            </span>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const SingleCollege = (props) => {
-    return (
-      <div className="flex-wrap flex   gap-5 sm:gap-5 bg-white mb-5  rounded-sm p-5 ">
-        <div className="flex w-full gap-5">
-          <div className="sm:w-32 w-20  grid place-items-center">
-            <img
-              className="rounded-full border-blue-900 border sm:h-24 w-10 h-10 sm:w-24"
-              src={props.image}
-              alt=""
-            />
-          </div>
-          <div className="   w-full">
-            <h1 className="font-bold text-xl">{props.collegeName} </h1>
-            <div className="">
-              <span className="text-xs">
-                <span className="font-bold">Approved By :</span>{" "}
-                {props.approvedBy}
-              </span>
-              <br />
-              <span className="text-xs">
-                <span className="font-bold">Type :</span> {props.collegeType}
-                <span className="font-bold ml-5">Under:</span>{" "}
-                {props.collegeUnder}
-              </span>
-              <br />
-              <span className="text-xs">
-                <span className="font-bold">Location :</span> {props.location}
-              </span>
-              <br />
-              <span className="text-xs">
-                <span className="font-bold">Institute Code :</span>{" "}
-                {props.instituteCode}
-              </span>
-              <span className="ml-5 text-xs">
-                <span className="font-bold">Branch :</span> {props.department}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div className="  flex  gap-5 w-full">
-          <Link
-            href={{
-              pathname: `/CollegeDa/[id]`,
-              query: {
-                id: props.collegeId,
-                // cName: props.collegeName.replace(" ", "+"),
-              },
-            }}
-          >
-            <a
-              type="button"
-              target="_blank"
-              className="pBtn w-2/4 text-center px-3 text-sm py-2"
-            >
-              Read More
-            </a>
-          </Link>
-
-          <Link href={`tel:+91${props.contactNo}`}>
-            <a
-              type="button"
-              className="border w-2/4 text-center px-3 text-sm py-2"
-            >
-              Make a call
-            </a>
-          </Link>
-        </div>
-      </div>
-    );
-  };
-  const items = [
-    {
-      Name: "Category",
-      Location: "/",
-    },
-    {
-      Name: "Course",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-    {
-      Name: "Near Me",
-      Location: "/",
-    },
-    {
-      Name: "Rating",
-      Location: "/",
-    },
-  ];
-
-  const NavItem = (props) => {
-    return (
-      <Link href={props.location}>
-        <a
-          className="text-gray-700 navItem block px-4 py-2 text-sm"
-          role="menuitem"
-          tabIndex="-1"
-          id="menu-item-0"
-        >
-          {props.name}
-        </a>
-      </Link>
-    );
-  };
-
-  const [userOpen, setUserOpen] = useState("hidden");
-  const toggleUser = () => {
-    if (userOpen == "hidden") {
-      setUserOpen("block");
-    } else {
-      setUserOpen("hidden");
-    }
-  };
-
   const HeaderFilter = () => {
     const [search, setSearch] = useState("");
+
     const inputChangedHandler = (e) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
 
-    const CollegeUnder = ({ selectedCollegeUnder, onChangeUnder }) => {
-      const checkBoxItem = ["Government", "Private"];
+    const [userOpen, setUserOpen] = useState("hidden");
+    const toggleUser = () => {
+      if (userOpen == "hidden") {
+        setUserOpen("block");
+      } else {
+        setUserOpen("hidden");
+      }
+    };
 
+    const NavItem = (props) => {
       return (
-        <div className="  px-5 pb-5 grid grid-cols-2 gap-5">
-          {checkBoxItem.map((item, index) => {
-            return (
-              <div className="flex gap-2    items-center" key={index}>
-                <input
-                  type="checkbox"
-                  checked={selectedCollegeUnder.includes(item)}
-                  onChange={(e) => onChangeUnder(item, e.target.checked)}
-                />
-                <label className="text-xs">{item}</label>
-              </div>
-            );
-          })}
-        </div>
+        <Link href={props.location}>
+          <a
+            className="text-gray-700 navItem block px-4 py-2 text-sm"
+            role="menuitem"
+            tabIndex="-1"
+            id="menu-item-0"
+          >
+            {props.name}
+          </a>
+        </Link>
       );
     };
+    const items = [
+      {
+        Name: "Category",
+        Location: "/",
+      },
+      {
+        Name: "Course",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+      {
+        Name: "Near Me",
+        Location: "/",
+      },
+      {
+        Name: "Rating",
+        Location: "/",
+      },
+    ];
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -209,13 +89,14 @@ const College = ({ data }) => {
               />
             </form>
           </div>
+
           <div className="cursor-pointer relative">
             <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
             <span onClick={toggleUser} className="text-slate-400">
               Filter
             </span>
             <div
-              className={`absolute ${userOpen} right-0 z-10 mt-2 w-56 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+              className={`absolute ${userOpen} right-0 z-10 mt-2 w-80 origin-top-right rounded-sm bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="menu-button"
@@ -255,9 +136,8 @@ const College = ({ data }) => {
 
         <meta name="title" content="DSY consultancy | Colleges" />
       </Head>
-
       <HeaderFilter />
-      <AllCollegesData />
+      <AllCollegesData undercolleges={undercolleges} />
     </HomeLayout>
   );
 };
