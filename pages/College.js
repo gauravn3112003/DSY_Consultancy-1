@@ -7,7 +7,36 @@ import Loading from "./Components/Loading";
 import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
-
+  const AllCollegesData = ({ undercolleges }) => {
+    return (
+      <div className=" h-full flex flex-col overflow-y-scroll w-full ">
+        {undercolleges.map((item, index) => {
+          return (
+            <span key={index}>
+              {item.department.map((department, indexDep) => {
+                return (
+                  <span key={indexDep}>
+                    <SingleCollege
+                      collegeName={item.name}
+                      approvedBy={item.approvedBy}
+                      collegeType={item.collegeType}
+                      collegeId={item._id}
+                      location={item.location.addressLine}
+                      instituteCode={item.instituteCode}
+                      image={item.image}
+                      contactNo={item.contactNo}
+                      department={department.courseName}
+                      collegeUnder={item.collegeUnder}
+                    />
+                  </span>
+                );
+              })}
+            </span>
+          );
+        })}
+      </div>
+    );
+  };
 
   const SingleCollege = (props) => {
     return (
@@ -30,6 +59,8 @@ const College = ({ data }) => {
               <br />
               <span className="text-xs">
                 <span className="font-bold">Type :</span> {props.collegeType}
+                <span className="font-bold ml-5">Under:</span>{" "}
+                {props.collegeUnder}
               </span>
               <br />
               <span className="text-xs">
@@ -78,7 +109,6 @@ const College = ({ data }) => {
       </div>
     );
   };
-
   const items = [
     {
       Name: "Category",
@@ -174,7 +204,6 @@ const College = ({ data }) => {
           </div>
         </div>
         <AllCollegesData undercolleges={data} />
-        
       </>
     );
   };
