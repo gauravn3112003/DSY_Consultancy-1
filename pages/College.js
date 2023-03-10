@@ -4,9 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import Loading from "./Components/Loading";
-import CollegeUnder from "./Components/Filters/CollegeUnder";
+import CollegeUnder from "./Components/CollegeUnder";
 import { collegeByUnder } from "./Components/quieries";
-import AddCollegeDetails from "./Admin/AddCollegeDetails";
 import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
