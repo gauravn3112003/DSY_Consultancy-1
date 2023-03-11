@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
-import CollegeUnder from "./Components/Filter/CollegeUnder";
 
 const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
@@ -170,6 +169,32 @@ const College = ({ data }) => {
         Location: "/",
       },
     ];
+
+    // College Under Components
+
+    const CollegeUnder = () => {
+      const checkBoxItem = ["Government", "Private"];
+
+      return (
+        <div className="  px-5 pb-5 grid grid-cols-2 gap-5">
+          {checkBoxItem.map((item, index) => {
+            return (
+              <div className="flex gap-2    items-center" key={index}>
+                <input
+                  type="checkbox"
+                  checked={selectedCollegeUnder.includes(item)}
+                  onChange={(e) =>
+                    onChangeCollegeUnderHandler(item, e.target.checked)
+                  }
+                />
+                <label className="text-xs">{item}</label>
+              </div>
+            );
+          })}
+        </div>
+      );
+    };
+
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -209,10 +234,7 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
-                <CollegeUnder
-                  selectedCollegeUnder={selectedCollegeUnder}
-                  onChangeUnder={onChangeCollegeUnderHandler}
-                />
+                <CollegeUnder />
               </div>
             </div>
           </div>
