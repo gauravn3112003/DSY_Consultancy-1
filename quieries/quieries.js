@@ -1,18 +1,17 @@
 export const collegeByUnder = (selectedunder, colleges, district) => {
-  console.log(district);
+  let filterCollege = !selectedunder.length
+    ? colleges
+    : colleges.filter((clgDetail) =>
+        selectedunder.includes(clgDetail.collegeUnder)
+      );
 
-  if (district == "" && !selectedunder.length) {
+  if (filterCollege.length == 0) {
     return colleges;
   }
-
-
-  // Sorting by district 
-  return colleges.filter((clgDetail) =>
-    district.includes(clgDetail.location.district)
-  );
-  // return colleges.filter(
-  //   (clgDetail) =>
-  //     selectedunder.includes(clgDetail.collegeUnder) ||
-  //     district.includes(clgDetail.location.district)
-  // );
+  // Sorting by district
+  return district == ""
+    ? filterCollege
+    : filterCollege.filter((filterClg) =>
+        district.includes(filterClg.location.district)
+      );
 };

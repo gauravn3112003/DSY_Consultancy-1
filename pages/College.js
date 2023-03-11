@@ -90,18 +90,22 @@ const College = ({ data }) => {
         </div>
       );
     };
+
+    console.log(undercolleges);
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {undercolleges.map((item, index) => {
-          return (
-            <span key={index}>
-              {item.department.length == 0
-                ? (
+        {undercolleges.length == 0 ? (
+          <div className="p-5 bg-white font-semibold">College Not Found</div>
+        ) : (
+          undercolleges.map((item, index) => {
+            return (
+              <span key={index}>
+                {item.department.length <= 0 ? (
                   <div className="p-5 bg-white font-semibold">
                     College Not Found
                   </div>
-                )
-                : item.department.map((department, indexDep) => {
+                ) : (
+                  item.department.map((department, indexDep) => {
                     return (
                       <span key={indexDep}>
                         <SingleCollege
@@ -119,10 +123,12 @@ const College = ({ data }) => {
                         />
                       </span>
                     );
-                  })}
-            </span>
-          );
-        })}
+                  })
+                )}
+              </span>
+            );
+          })
+        )}
       </div>
     );
   };
@@ -224,7 +230,7 @@ const College = ({ data }) => {
           >
             <option value="" className="text-center font-bold py-2">
               {" "}
-              Select District
+              All District
             </option>
             {removeDubDist.map((item, index) => {
               return (
