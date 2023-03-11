@@ -8,8 +8,3 @@ export const collegeByUnder = (selectedunder, colleges) => {
 };
 
 
-const quieries = () => {
-  return <div></div>;
-};
-
-export default quieries;

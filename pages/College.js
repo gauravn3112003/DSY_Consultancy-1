@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
-import { collegeByUnder } from "./quieries/quieries";
+import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
 
 const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
