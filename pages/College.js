@@ -99,10 +99,6 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
-                {/* <CollegeUnder
-                  selectedCollegeUnder={selectedCollegeUnder}
-                  onChangeUnder={onChangeCollegeUnderHandler}
-                /> */}
               </div>
             </div>
           </div>
