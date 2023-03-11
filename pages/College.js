@@ -3,8 +3,17 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
+import CollegeUnder from "./Components/Filter/CollegeUnder";
 
 const College = ({ data }) => {
+  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const onChangeCollegeUnderHandler = (under, isChecked) => {
+    isChecked
+      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
+      : setSelectedCollegeUnder(
+          selectedCollegeUnder.filter((und) => und !== under)
+        );
+  };
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
@@ -200,6 +209,10 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
+                <CollegeUnder
+                  selectedCollegeUnder={selectedCollegeUnder}
+                  onChangeUnder={onChangeCollegeUnderHandler}
+                />
               </div>
             </div>
           </div>
