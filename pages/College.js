@@ -3,23 +3,32 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
-import Loading from "./Components/Loading";
-import CollegeUnder from "./Components/Filters/CollegeUnder";
-import { collegeByUnder } from "./Components/Services/quieries";
 import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
-  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-  const onChangeCollegeUnderHandler = (under, isChecked) => {
-    isChecked
-      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
-      : setSelectedCollegeUnder(
-          selectedCollegeUnder.filter((und) => und !== under)
-        );
+  const NavItem = (props) => {
+    return (
+      <Link href={props.location}>
+        <a
+          className="text-gray-700 navItem block px-4 py-2 text-sm"
+          role="menuitem"
+          tabIndex="-1"
+          id="menu-item-0"
+        >
+          {props.name}
+        </a>
+      </Link>
+    );
   };
 
-
+  const [userOpen, setUserOpen] = useState("hidden");
+  const toggleUser = () => {
+    if (userOpen == "hidden") {
+      setUserOpen("block");
+    } else {
+      setUserOpen("hidden");
+    }
+  };
 
   const HeaderFilter = () => {
     const [search, setSearch] = useState("");
@@ -28,22 +37,7 @@ const College = ({ data }) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
-    
 
-    const NavItem = (props) => {
-      return (
-        <Link href={props.location}>
-          <a
-            className="text-gray-700 navItem block px-4 py-2 text-sm"
-            role="menuitem"
-            tabIndex="-1"
-            id="menu-item-0"
-          >
-            {props.name}
-          </a>
-        </Link>
-      );
-    };
     const items = [
       {
         Name: "Category",
@@ -105,10 +99,10 @@ const College = ({ data }) => {
                   );
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
-                <CollegeUnder
+                {/* <CollegeUnder
                   selectedCollegeUnder={selectedCollegeUnder}
                   onChangeUnder={onChangeCollegeUnderHandler}
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -129,7 +123,7 @@ const College = ({ data }) => {
         <meta name="title" content="DSY consultancy | Colleges" />
       </Head>
       <HeaderFilter />
-      <AllCollegesData undercolleges={undercolleges} />
+      <AllCollegesData data={data} />
     </HomeLayout>
   );
 };

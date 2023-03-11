@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 
-const AllCollegesData = ({undercolleges}) => {
+const AllCollegesData = ({data}) => {
   return (
     <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-      {undercolleges.map((item, index) => {
+      {data.map((item, index) => {
         return (
           <span key={index}>
             {item.department.map((department, indexDep) => {
