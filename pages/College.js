@@ -6,6 +6,9 @@ import baseUrl from "directsecondyearadmission/baseUrl";
 import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
 
 const College = ({ data }) => {
+
+
+  // checkbox handler function 
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
   const onChangeCollegeUnderHandler = (under, isChecked) => {
     isChecked
@@ -17,6 +20,9 @@ const College = ({ data }) => {
 
   // filter for College Under
   const undercolleges = collegeByUnder(selectedCollegeUnder, data);
+
+
+  // ALl Colleeg data components 
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
@@ -174,8 +180,9 @@ const College = ({ data }) => {
       },
     ];
 
-    // College Under Components
 
+
+    // College Under Components
     const CollegeUnder = () => {
       const checkBoxItem = ["Government", "Private"];
 
@@ -263,6 +270,8 @@ const College = ({ data }) => {
 };
 
 export async function getServerSideProps() {
+
+  
   // for show all Colleges
   const res = await fetch(baseUrl + "/api/Colleges", {
     method: "GET",
