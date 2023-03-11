@@ -1,6 +1,19 @@
 import React, { useState } from "react";
+import { collegeByUnder } from "../Services/quieries";
 
-const CollegeUnder = ({ selectedCollegeUnder, onChangeUnder }) => {
+const CollegeUnder = ({ data }) => {
+  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const collegeUnderhandler = (under, isChecked) => {
+    isChecked
+      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
+      : setSelectedCollegeUnder(
+          selectedCollegeUnder.filter((und) => und !== under)
+        );
+  };
+
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
+  console.log(undercolleges);
+
   const checkBoxItem = ["Government", "Private"];
 
   return (
@@ -11,7 +24,7 @@ const CollegeUnder = ({ selectedCollegeUnder, onChangeUnder }) => {
             <input
               type="checkbox"
               checked={selectedCollegeUnder.includes(item)}
-              onChange={(e) => onChangeUnder(item, e.target.checked)}
+              onChange={(e) => collegeUnderhandler(item, e.target.checked)}
             />
             <label className="text-xs">{item}</label>
           </div>

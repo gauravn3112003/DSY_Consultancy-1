@@ -3,24 +3,10 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
-import Loading from "./Components/Loading";
 import CollegeUnder from "./Components/Filters/CollegeUnder";
-import { collegeByUnder } from "./Components/Services/quieries";
 import AllCollegesData from "./Components/AllCollegesData";
 
 const College = ({ data }) => {
-  const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-
-
-  const collegeUnderhandler = (under, isChecked) => {
-    isChecked
-      ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
-      : setSelectedCollegeUnder(
-          selectedCollegeUnder.filter((und) => und !== under)
-        );
-  };
-
   const HeaderFilter = () => {
     const [search, setSearch] = useState("");
 
@@ -114,8 +100,7 @@ const College = ({ data }) => {
                 })}
                 <div className="h-1 mx-5 my-5 bg-slate-100" />
                 <CollegeUnder
-                  selectedCollegeUnder={selectedCollegeUnder}
-                  onChangeUnder={collegeUnderhandler}
+                 data={data}
                 />
               </div>
             </div>
@@ -137,7 +122,7 @@ const College = ({ data }) => {
         <meta name="title" content="DSY consultancy | Colleges" />
       </Head>
       <HeaderFilter />
-      <AllCollegesData undercolleges={undercolleges} />
+      <AllCollegesData undercolleges={data} />
     </HomeLayout>
   );
 };
