@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
+import { collegeByUnder } from "./quieries/quieries";
 
 const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
@@ -13,6 +14,9 @@ const College = ({ data }) => {
           selectedCollegeUnder.filter((und) => und !== under)
         );
   };
+
+  // filter for College Under
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
@@ -87,7 +91,7 @@ const College = ({ data }) => {
     };
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {data.map((item, index) => {
+        {undercolleges.map((item, index) => {
           return (
             <span key={index}>
               {item.department.map((department, indexDep) => {
@@ -198,7 +202,6 @@ const College = ({ data }) => {
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
-          {/* <p className="font-semibold text-slate-400">College</p> */}
           <div>
             <form>
               <input
