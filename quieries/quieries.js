@@ -1,10 +1,17 @@
+export const collegeByUnder = (selectedunder, colleges, district) => {
+  let filterCollege = !selectedunder.length
+    ? colleges
+    : colleges.filter((clgDetail) =>
+        selectedunder.includes(clgDetail.collegeUnder)
+      );
 
-import React, { useEffect, useState } from "react";
-export const collegeByUnder = (selectedunder, colleges) => {
-  if (!selectedunder.length) {
-    return colleges;
+  if (!filterCollege) {
+    return colleges
   }
-  return colleges.filter((under) => selectedunder.includes(under.collegeUnder));
+  // Sorting by district
+  return district == ""
+    ? filterCollege
+    : filterCollege.filter((filterClg) =>
+        district.includes(filterClg.location.district)
+      );
 };
-
-

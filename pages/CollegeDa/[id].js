@@ -76,8 +76,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 1
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  mr-5 font-semibold rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -90,8 +90,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 2
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  mr-5 font-semibold rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -104,8 +104,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 3
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  mr-5 font-semibold rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -118,8 +118,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 4
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  mr-5 font-semibold rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -132,8 +132,8 @@ const CollegeData = ({ College }) => {
             }}
             className={
               count == 5
-                ? "bg-sky-500 text-white px-5  font-semibold rounded-3xl  p-2"
-                : " font-semibold"
+                ? "bg-sky-500 text-white px-5  mr-5 font-semibold rounded-3xl  p-2"
+                : " font-semibold mr-5"
             }
             type="button"
           >
@@ -149,6 +149,11 @@ const CollegeData = ({ College }) => {
   const CollegeArtical = (props) => {
     return (
       <div className="mt-5">
+        {props.Artical == " " && (
+          <div className="py-5 font-semibold text-sm text-center">
+            Artical Not Found
+          </div>
+        )}
         <div dangerouslySetInnerHTML={{ __html: props.Artical }} />
         <span className="text-sm m-0  font-semibold  flex  border-t-2 py-5">
           {" "}
@@ -179,6 +184,7 @@ const CollegeData = ({ College }) => {
               <th className="py-3 border-none bg-blue-50">Annual Fees</th>
             </tr>
           </thead>
+
           <tbody>
             {courses.map((item, index) => {
               return (
@@ -200,6 +206,11 @@ const CollegeData = ({ College }) => {
             })}
           </tbody>
         </table>
+        {courses.length == 0 && (
+          <div className="py-5 border font-semibold text-sm text-center">
+            No Data Found
+          </div>
+        )}
       </div>
     );
   };
@@ -254,6 +265,11 @@ const CollegeData = ({ College }) => {
             );
           })}
         </table>
+        {category.length == 0 && (
+          <div className="py-5 border font-semibold text-sm text-center">
+            No Data Found
+          </div>
+        )}
       </div>
     );
   };
@@ -304,15 +320,21 @@ const CollegeData = ({ College }) => {
   const CollegeImages = ({ images }) => {
     return (
       <div className="">
-        <Box sx={{ height: 1000, overflowY: "scroll" }}>
-          <ImageList variant="masonry" cols={4} gap={8}>
-            {images.map((item, index) => (
-              <ImageListItem key={index}>
-                <img src={`${item}`} loading="lazy" />
-              </ImageListItem>
-            ))}
-          </ImageList>
-        </Box>
+        {images.length == 0 ? (
+          <div className="py-5 border font-semibold text-sm text-center">
+            No Images Found
+          </div>
+        ) : (
+          <Box sx={{ height: 1000, overflowY: "scroll" }}>
+            <ImageList variant="masonry" cols={4} gap={8}>
+              {images.map((item, index) => (
+                <ImageListItem key={index}>
+                  <img src={`${item}`} loading="lazy" />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          </Box>
+        )}
       </div>
     );
   };
@@ -394,6 +416,19 @@ const CollegeData = ({ College }) => {
                 );
               })}
             </span>
+
+            <div className="mt-5 flex justify-between items-center text-sm font-semibold">
+              <span>
+                <i className="bi text-slate-400 mr-2   bi-pen-fill"></i>
+                Written By :{" "}
+                <span className=" font-normal">{College.addedBy}</span>{" "}
+              </span>
+
+              <span>
+                <i className="bi text-slate-400 mr-2   bi-eye-fill"></i>
+                <span className=" font-normal"> {College.views}</span>{" "}
+              </span>
+            </div>
           </div>
 
           <div></div>

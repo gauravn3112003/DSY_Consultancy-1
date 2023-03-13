@@ -6,6 +6,7 @@ import TopNav from "directsecondyearadmission/navItem/TopNav";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import { LoginStatus } from "directsecondyearadmission/Layout/CollegeLayout";
 const Nav = () => {
   const status = useContext(collegeContext);
   // console.log(userData);
@@ -200,7 +201,9 @@ const Nav = () => {
             {TopNav.map((item, index) => {
               return (
                 <div className="flex  items-center mb-2" key={index}>
-                  <i className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm text-slate-800 bi text-sm  mr-5`}></i>
+                  <i
+                    className={`${item.icon} p-1 px-2 bg-blue-50 rounded-sm text-slate-800 bi text-sm  mr-5`}
+                  ></i>
                   <Link href={item.location}>
                     <button
                       onClick={function () {
@@ -215,18 +218,8 @@ const Nav = () => {
               );
             })}
             {!user && (
-              <div className="flex bg-red-100 py-3 mt-5 rounded-sm pBtn  items-center  mb-2">
-                <Link href="/Login">
-                  <button
-                    onClick={function () {
-                      setnav("hidden");
-                    }}
-                    className=" w-full text-sm text-center font-light "
-                  >
-                    <i className="bi-person-fill bi mr-5"></i>
-                    Sign In
-                  </button>
-                </Link>
+              <div className="rounded-sm  mt-5    mb-2">
+                <LoginStatus />
               </div>
             )}
           </div>

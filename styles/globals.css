@@ -117,12 +117,7 @@ th {
   margin: 0;
 }
 
-.navItem {
-  width: 100%;
-}
-.navItem:hover {
-  background-color: rgb(224 242 254 / 1);
-}
+
 
 /* home Layouut */
 .avtarP {

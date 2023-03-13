@@ -198,9 +198,11 @@ const Home = () => {
                 </div>
 
                 <div className="flex w-full  justify-start ">
-                  <button className="inline-flex font-semibold pBtn border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
-                    Search College
-                  </button>
+                  <Link href="/AllCollege">
+                    <button className="inline-flex font-semibold pBtn border-0 py-2  px-6 focus:outline-none  rounded-sm text-lg">
+                      Find College
+                    </button>
+                  </Link>
                   {!user && (
                     <Link href="/Login">
                       <button className="ml-4 font-semibold inline-flex pColor border py-2 px-6 focus:outline-none hover:bg-gray-200 rounded-sm text-lg">
@@ -244,13 +246,16 @@ const Home = () => {
             </div>
             <div className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"></div>
           </div>
-          <section className="text-gray-600 body-font">
+          <section className="text-gray-600 mt-20 body-font">
             <div className="container px-5 py-5 mx-auto">
               <div className="text-center mb-20">
                 <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">
                   University
                 </h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis commodi molestiae veniam, fuga laborum nam.</p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
+                  commodi molestiae veniam, fuga laborum nam.
+                </p>
                 <div className="flex mt-6 justify-center">
                   <div className="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
                 </div>

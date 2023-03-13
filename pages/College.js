@@ -10,6 +10,7 @@ const College = ({ data }) => {
 
   // checkbox handler function 
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
+  const [district, setdistrict] = useState("");
   const onChangeCollegeUnderHandler = (under, isChecked) => {
     isChecked
       ? setSelectedCollegeUnder((prevUnder) => [...prevUnder, under])
@@ -19,10 +20,8 @@ const College = ({ data }) => {
   };
 
   // filter for College Under
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data);
-
-
-  // ALl Colleeg data components 
+  const undercolleges = collegeByUnder(selectedCollegeUnder, data, district);
+  
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
@@ -51,6 +50,7 @@ const College = ({ data }) => {
                 <br />
                 <span className="text-xs">
                   <span className="font-bold">Location :</span> {props.location}
+                  , {props.district}
                 </span>
                 <br />
                 <span className="text-xs">
@@ -64,13 +64,12 @@ const College = ({ data }) => {
             </div>
           </div>
 
-          <div className="  flex  gap-5 w-full">
+          <div className="  flex  gap-5 w-full justify-center items-center">
             <Link
               href={{
                 pathname: `/CollegeDa/[id]`,
                 query: {
                   id: props.collegeId,
-                  // cName: props.collegeName.replace(" ", "+"),
                 },
               }}
             >
@@ -95,32 +94,44 @@ const College = ({ data }) => {
         </div>
       );
     };
+
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {undercolleges.map((item, index) => {
-          return (
-            <span key={index}>
-              {item.department.map((department, indexDep) => {
-                return (
-                  <span key={indexDep}>
-                    <SingleCollege
-                      collegeName={item.name}
-                      approvedBy={item.approvedBy}
-                      collegeType={item.collegeType}
-                      collegeId={item._id}
-                      location={item.location.addressLine}
-                      instituteCode={item.instituteCode}
-                      image={item.image}
-                      contactNo={item.contactNo}
-                      department={department.courseName}
-                      collegeUnder={item.collegeUnder}
-                    />
-                  </span>
-                );
-              })}
-            </span>
-          );
-        })}
+        {undercolleges.length == 0 ? (
+          <div className="p-5 bg-white font-semibold">College Not Found</div>
+        ) : (
+          undercolleges.map((item, index) => {
+            return (
+              <span key={index}>
+                {item.department.length <= 0 ? (
+                  <div className="p-5 bg-white font-semibold">
+                    College Not Found
+                  </div>
+                ) : (
+                  item.department.map((department, indexDep) => {
+                    return (
+                      <span key={indexDep}>
+                        <SingleCollege
+                          collegeName={item.name}
+                          approvedBy={item.approvedBy}
+                          collegeType={item.collegeType}
+                          collegeId={item._id}
+                          location={item.location.addressLine}
+                          district={item.location.district}
+                          instituteCode={item.instituteCode}
+                          image={item.image}
+                          contactNo={item.contactNo}
+                          department={department.courseName}
+                          collegeUnder={item.collegeUnder}
+                        />
+                      </span>
+                    );
+                  })
+                )}
+              </span>
+            );
+          })
+        )}
       </div>
     );
   };
@@ -129,7 +140,7 @@ const College = ({ data }) => {
     return (
       <Link href={props.location}>
         <a
-          className="text-gray-700 navItem block px-4 py-2 text-sm"
+          className="text-gray-700 hover:bg-sky-100 pl-5  block  mx-5 py-2 text-sm"
           role="menuitem"
           tabIndex="-1"
           id="menu-item-0"
@@ -187,7 +198,7 @@ const College = ({ data }) => {
       const checkBoxItem = ["Government", "Private"];
 
       return (
-        <div className="  px-5 pb-5 grid grid-cols-2 gap-5">
+        <div className="  px-5  grid grid-cols-2 gap-5">
           {checkBoxItem.map((item, index) => {
             return (
               <div className="flex gap-2    items-center" key={index}>
@@ -206,6 +217,41 @@ const College = ({ data }) => {
       );
     };
 
+    const DistrictFilter = () => {
+      const districtName = data.map((item) => item.location.district);
+      const removeDubDist = data.filter(
+        (district, index) =>
+          !districtName.includes(district.location.district, index + 1)
+      );
+
+      return (
+        <div className="px-5">
+          <select
+            value={district}
+            onChange={function (e) {
+              setdistrict(e.target.value);
+            }}
+            className=" outline-none w-full py-2 rounded-sm border"
+          >
+            <option value="" className="text-center font-bold py-2">
+              {" "}
+              All District
+            </option>
+            {removeDubDist.map((item, index) => {
+              return (
+                <option
+                  key={index}
+                  value={item.location.district}
+                  className="text-center text-sm"
+                >
+                  {item.location.district}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      );
+    };
     return (
       <>
         <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -233,7 +279,7 @@ const College = ({ data }) => {
               aria-labelledby="menu-button"
               tabIndex="-1"
             >
-              <div className="py-1" role="none">
+              <div className="py-5" role="none">
                 {items.map((item, index) => {
                   return (
                     <NavItem
@@ -243,8 +289,10 @@ const College = ({ data }) => {
                     />
                   );
                 })}
-                <div className="h-1 mx-5 my-5 bg-slate-100" />
+                <div className="h-1 mx-5 my-5 bg-slate-50" />
                 <CollegeUnder />
+                <div className="h-1 mx-5 my-5 bg-slate-50" />
+                <DistrictFilter />
               </div>
             </div>
           </div>
