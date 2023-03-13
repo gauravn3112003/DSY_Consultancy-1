@@ -24,10 +24,6 @@ const College = ({ data }) => {
       Location: "/",
     },
     {
-      Name: "Course",
-      Location: "/",
-    },
-    {
       Name: "Rating",
       Location: "/",
     },
