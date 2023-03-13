@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import HomeNav from "directsecondyearadmission/navItem/HomeNav";
+import Image from "next/image";
 // components
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
@@ -130,9 +131,31 @@ export default function HomeLayout({ children }) {
   }
   return (
     <>
-      <section className="body-font   ">
-        <div className="container p-5  mt-20 m-auto  ">
-          <div className="bg-white p-5">Login First</div>
+      <section className="body-font  mt-20 mx-5 ">
+        <div className="container m-auto">
+          <div className="bg-white p-5 border-blue-500 border flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
+            <div className="flex flex-col sm:w-2/4 w-full ">
+              <div>
+                <p className="text-base font-semibold ">
+                  Sorry! You are not a DSY user
+                </p>
+                <p className="text-sm mt-3  text-slate-400">
+                  Login Now for Become a User
+                 
+                </p>
+              </div>
+
+              <Link href="/Login">
+                <button type="button" className="pBtn px-10 mt-5 py-3">
+                  Login
+                </button>
+              </Link>
+            </div>
+
+            <div className="sm:mb-0 mb-10">
+              <Image width={200} height={150} src="/img/loginUser.svg" />
+            </div>
+          </div>
         </div>
       </section>
     </>

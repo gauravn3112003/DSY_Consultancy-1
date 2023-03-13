@@ -5,7 +5,7 @@ import Image from "next/image";
 const Counsellor = () => {
   return (
     <HomeLayout>
-       <Head>
+      <Head>
         <title>DSY consultancy | Counsellor</title>
         <meta
           name="keywords"
@@ -32,7 +32,7 @@ const Counsellor = () => {
         </div>
 
         <div className="sm:mb-0 mb-10">
-          <Image  width={200} height={150 }src="/img/counsellor.svg" alt="" />
+          <Image width={200} height={150} src="/img/counsellor.svg" alt="" />
         </div>
       </div>
     </HomeLayout>

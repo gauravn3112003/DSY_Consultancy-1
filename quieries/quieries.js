@@ -5,7 +5,7 @@ export const collegeByUnder = (selectedunder, colleges, district) => {
         selectedunder.includes(clgDetail.collegeUnder)
       );
 
-  if (filterCollege.length == 0) {
+  if (!filterCollege) {
     return colleges;
   }
   // Sorting by district

@@ -91,7 +91,6 @@ const College = ({ data }) => {
       );
     };
 
-    console.log(undercolleges);
     return (
       <div className=" h-full flex flex-col overflow-y-scroll w-full ">
         {undercolleges.length == 0 ? (
