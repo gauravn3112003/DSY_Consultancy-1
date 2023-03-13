@@ -19,13 +19,15 @@ body {
   background-color: #fbfbfb;
 }
 :root {
-  --pColor: rgb(32, 4, 85);
+  /* --pColor: rgb(32, 4, 85); */
+  --pColor: #2400FF;
   --btn-color: white;
   --pColorHover: rgb(44, 9, 138);
 
   /* --pColor:#00B4D8; */
   /* for nav bar  */
   --pBackground: #fbfbff;
+  /* --pBackground: #2400FF; */
   --pTextNav: white;
 
   --Background: #caf0f8;
