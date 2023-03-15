@@ -7,28 +7,18 @@ function generateSiteMap(posts) {
      <!--We manually set the two URLs we know already-->
      <url>
      <loc>https://dsyconsultancy.netlify.app/</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
-     <priority>1.00</priority>
      </url>
      <url>
      <loc>https://dsyconsultancy.netlify.app/home</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
-     <priority>0.80</priority>
      </url>
      <url>
      <loc>https://dsyconsultancy.netlify.app/latest</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
-     <priority>0.80</priority>
      </url>
      <url>
      <loc>https://dsyconsultancy.netlify.app/AllCollege</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
-     <priority>0.80</priority>
      </url>
      <url>
      <loc>https://dsyconsultancy.netlify.app/contactus</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
-     <priority>0.80</priority>
      </url>
      <url>
        <loc>https://dsyconsultancy.netlify.app/College</loc>
@@ -37,17 +27,14 @@ function generateSiteMap(posts) {
      </url>
      <url>
        <loc>https://dsyconsultancy.netlify.app/Login</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
 
      </url>
      <url>
        <loc>https://dsyconsultancy.netlify.app/Register</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
 
      </url>
      <url>
        <loc>https://dsyconsultancy.netlify.app/Profile</loc>
-     <lastmod>2023-03-05T07:14:29+00:00</lastmod>
 
      </url>
 
@@ -58,7 +45,6 @@ function generateSiteMap(posts) {
          return `
        <url>
            <loc>${`${EXTERNAL_DATA_URL}CollegeDa/${item._id}`}</loc>
-           <lastmod>${item.updatedDate}</lastmod>
        </url>
      `;
        })
