@@ -7,6 +7,48 @@ import Image from "next/image";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 
+
+export const SideUserData = () => {
+  const router = useRouter();
+  const context = useContext(collegeContext);
+  return (
+    <div className=" p-5  bgColor text-white shadow-sm mb-5 flex flex-col justify-between items-center rounded-sm">
+      <div className="border shadow-md bg-white p-5 pColor font-bold text-2xl h-20 w-20 flex justify-center items-center rounded-full mb-5">
+        {context.username.charAt(0).toUpperCase()}
+      </div>
+      <div>
+        <p className=" font-semibold  text-base text-center  ">
+          Welcome to DSY consultancy !
+        </p>
+        <h1 className=" py-2 text-center text-base">
+          <i className="bi bi-person-fill mr-2"></i>
+
+          {context.username}
+        </h1>
+        <div className="flex mt-2 justify-center items-center  sm:mt-0  flex-col ">
+          {router.pathname == "/Profile" ? (
+            ""
+          ) : (
+            <Link
+              href={{
+                pathname: `/Profile`,
+                query: {
+                  id: context.userId,
+                },
+              }}
+            >
+              <a className=" text-center  font-semibold  text-xs">
+                Mange your profile
+              </a>
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 export default function HomeLayout({ children }) {
   const router = useRouter();
 
@@ -17,8 +59,8 @@ export default function HomeLayout({ children }) {
         <Link href={props.location}>
           <a
             className={`flex items-center ${
-              router.pathname == props.location && "bg-sky-100"
-            }  mb-2 px-4 p-2 my-1 navItem   rounded-sm hover:bg-sky-100 `}
+              router.pathname == props.location && "bg-sky-100 font-semibold"
+            }  mb-2 px-4 p-2 my-1 navItem   rounded-sm hover:bg-sky-100  hover:font-semibold`}
           >
             <i className={`bi ${props.icon} mr-2`}></i>
             <span className="text-sm">{props.name}</span>
@@ -27,10 +69,11 @@ export default function HomeLayout({ children }) {
       </li>
     );
   };
+
   const UserData = () => {
     const router = useRouter();
     return (
-      <div className="userData m-auto mt-20 hidden  mb-5  p-5 flex-wrap  text-white  justify-between md:flex items-center container rounded-sm">
+      <div className="bgColor m-auto  hidden  mb-5  p-5 flex-wrap  text-white  justify-between md:flex items-center container rounded-sm">
         <div className="avtarP">{context.username.charAt(0).toUpperCase()}</div>
         <div className="mt-2 sm:mt-0  ">
           <h1 className="text-center font-semibold text-2xl">
@@ -64,12 +107,12 @@ export default function HomeLayout({ children }) {
   if (context.loginStatus) {
     return (
       <>
-        <section className="body-font   px-5">
-          <UserData />
-          <div className="container   mt-20 home  ">
-            <aside className={`screenSidebar rounded-sm `}>
+        <section className="body-font md:mt-20   mt-0 px-5">
+          {/* <UserData /> */}
+          <div className="container    home  ">
+            <aside className={`screenSidebar shadow-md rounded-sm `}>
               <div className="rounded-sm">
-                <i className="bi bi-x-lg colorBlack close "></i>
+                {/* <SideUserData /> */}
                 <ul className="mb-2">
                   <li>
                     <Link
@@ -83,8 +126,9 @@ export default function HomeLayout({ children }) {
                     >
                       <a
                         className={`flex items-center ${
-                          router.pathname == "/Profile" && "bg-sky-100"
-                        }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100  rounded-sm`}
+                          router.pathname == "/Profile" &&
+                          "bg-sky-100 font-semibold"
+                        }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100 hover:font-semibold  rounded-sm`}
                       >
                         <i className={`bi bi-person-fill mr-2`}></i>
                         <span className="text-sm">Profile</span>
@@ -108,8 +152,8 @@ export default function HomeLayout({ children }) {
                         <a
                           className={`flex items-center ${
                             router.pathname == "/Admin/AllContact" &&
-                            "bg-sky-100"
-                          }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100  rounded-sm`}
+                            "bg-sky-100 font-semibold"
+                          }  mb-2 px-4 p-2 my-1 navItem hover:bg-sky-100 hover:font-semibold  rounded-sm`}
                         >
                           <i className={`bi bi-bar-chart-line-fill mr-2`}></i>
                           <span className="text-sm">Dashboard</span>
@@ -120,7 +164,7 @@ export default function HomeLayout({ children }) {
                 </ul>
               </div>
 
-              <div className="sideAds">Space for ads</div>
+              {/* <div className="sideAds">Space for ads</div> */}
             </aside>
 
             <div className="screenLayout mt-20 md:mt-0 ">{children}</div>
@@ -133,7 +177,7 @@ export default function HomeLayout({ children }) {
     <>
       <section className="body-font  mt-20 mx-5 ">
         <div className="container m-auto">
-          <div className="bg-white p-5 border-blue-500 border flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
+          <div className="bg-white p-5   border flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
             <div className="flex flex-col sm:w-2/4 w-full ">
               <div>
                 <p className="text-base font-semibold ">
@@ -141,7 +185,6 @@ export default function HomeLayout({ children }) {
                 </p>
                 <p className="text-sm mt-3  text-slate-400">
                   Login Now for Become a User
-                 
                 </p>
               </div>
 

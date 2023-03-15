@@ -16,7 +16,7 @@ body {
   background-color: rgba(0, 0, 0, 0.579);
 }
 .heroBg{
-  background-color: #fbfbfb;
+  background-color: #fbfbff;
 }
 :root {
   /* --pColor: rgb(32, 4, 85); */
@@ -26,7 +26,7 @@ body {
 
   /* --pColor:#00B4D8; */
   /* for nav bar  */
-  --pBackground: #fbfbff;
+  --pBackground: #f6f6fd;
   /* --pBackground: #2400FF; */
   --pTextNav: white;
 

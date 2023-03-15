@@ -159,12 +159,12 @@ const College = ({ data }) => {
             <div className="font-medium mt-2 flex items-center text-xs ">
               <i className="bi text-slate-400 mr-2 text-xs bi-pin-map-fill"></i>
               <span className="text-slate-400 font-normal text-justify">
-                {props.location},{props.district}
+                {props.location}, <span className="font-semibold text-sm" ></span>
               </span>
             </div>
             <div className="font-medium mt-2 flex items-center text-xs ">
-              {/* <i className="bi text-slate-400 mr-2 text-xs bi-pin-map-fill"></i> */}
-              <span className="text-slate-800 font-semibold text-justify">
+              <i className="bi text-slate-400 mr-2 text-xs bi-building-fill"></i>
+              <span className="text-slate-800 font-bold text-xs">
                 {props.department}
               </span>
             </div>
@@ -173,6 +173,10 @@ const College = ({ data }) => {
               <div className="font-medium mt-2 flex items-center pColor text-xs ">
                 <i className="bi text-slate-400 mr-2   bi-send-fill"></i>
                 <div>{props.collegeType}</div>
+              </div>
+              <div className="font-medium mt-2 flex items-center pColor text-xs ">
+                {/* <i className="bi text-slate-400 mr-2   bi-send-fill"></i> */}
+                <div>{props.district}</div>
               </div>
               <div className="font-medium mt-2 flex items-center pColor text-xs ">
                 <div>{props.collegeUnder}</div>
@@ -204,6 +208,14 @@ const College = ({ data }) => {
                 className="border  text-center px-3 w-full text-xs py-2"
               >
                 Make a call
+              </a>
+            </Link>
+            <Link href={`tel:+91${props.contactNo}`}>
+              <a
+                type="button"
+                className="border  text-center px-3 w-full text-xs py-2"
+              >
+               Save
               </a>
             </Link>
           </div>

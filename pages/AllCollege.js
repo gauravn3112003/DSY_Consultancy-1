@@ -259,13 +259,20 @@ const AllCollege = () => {
             alt=""
           />
         </div>
-        <div className="font-bold text-blue-900  text-xs py-2">
-          {props.approvedBy}
+        <div className="font-bold flex justify-between  text-blue-900  text-xs py-2">
+          <div>{props.approvedBy}</div>
+          <div>
+            <i className="bi text-slate-400 mr-2 text-xs bi-eye-fill"></i>
+
+            {props.views}
+          </div>{" "}
         </div>
         <div className="font-bold  text-base ">{props.cName} </div>
         <div className="font-medium mt-2 flex items-center text-xs ">
           <i className="bi text-slate-400 mr-5 text-xs bi-pin-map-fill"></i>
-          <span className="text-slate-400 font-normal text-justify">{props.address}  {props.district}</span>
+          <span className="text-slate-400 font-normal text-justify">
+            {props.address} {props.district}
+          </span>
         </div>
 
         <div className="font-medium mt-2 flex justify-between items-center pColor text-xs ">

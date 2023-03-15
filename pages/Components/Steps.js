@@ -26,7 +26,7 @@ const Steps = () => {
 
   const Card = (props) => {
     return (
-      <div className="p-4 bg-white  md:h-auto h-60 flex flex-col text-center items-center">
+      <div className="p-4 bg-white  shadow-md md:h-auto h-60 flex flex-col text-center items-center">
         <div className="w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0">
           <i className={`bi ${props.icon} text-3xl`}></i>
         </div>

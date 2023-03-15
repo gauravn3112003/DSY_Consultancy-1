@@ -7,11 +7,13 @@ import HomeNav from "directsecondyearadmission/navItem/HomeNav";
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { LoginStatus } from "directsecondyearadmission/Layout/CollegeLayout";
+import { useRouter } from "next/router";
 const Nav = () => {
   const status = useContext(collegeContext);
   // console.log(userData);
   // console.log(status.userAllData.credentails);
   const [nav, setnav] = useState("hidden");
+  const router = useRouter
   const [overlay, setOverlay] = useState("");
   const user = status.loginStatus;
   const userD = status.userAllData.credentails;
@@ -23,13 +25,18 @@ const Nav = () => {
 
   const ListItem = (props) => {
     return (
-      <li>
+      <li  className = {` ${
+        router.pathname == props.location && "text-blue-600"
+      } block   py-2  pl-3 pr-4 text-sm rounded-sm  md:p-0`}>
         <Link href={props.location}>
           <a
             onClick={closeNav}
-            className="block  colorBlack py-2 navItem pl-3 pr-4 text-sm rounded-sm   md:p-0"
+           
             aria-current="page"
           >
+            <i
+              className={`${props.icon} p-1 px-2  rounded-sm text-slate-800 bi text-sm  mr-1`}
+            ></i>
             {props.name}
           </a>
         </Link>
@@ -131,6 +138,7 @@ const Nav = () => {
                     key={index}
                     location={item.location}
                     name={item.name}
+                    icon={item.icon}
                   />
                 );
               })}
