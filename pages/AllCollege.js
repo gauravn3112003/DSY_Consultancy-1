@@ -52,10 +52,6 @@ const AllCollege = () => {
     getColleges();
   }, []);
 
-  // useEffect(() => {
-  //   setLoading(false); // set loading to false when the data is fetched
-  // }, [data]);
-
   const Loader = () => {
     return (
       <div className=" bg-white grid place-items-center">

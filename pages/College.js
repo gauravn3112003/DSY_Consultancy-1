@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
+import AllCollege from "./AllCollege";
+import { allColleges } from "directsecondyearadmission/quieries/CollegeDataQuieries";
 
 const College = ({ data }) => {
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
@@ -403,15 +405,11 @@ const College = ({ data }) => {
   );
 };
 
+
 export async function getServerSideProps() {
+
   // for show all Colleges
-  const res = await fetch(baseUrl + "/api/Colleges", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
+  const data = await allColleges()
   return {
     props: { data },
   };

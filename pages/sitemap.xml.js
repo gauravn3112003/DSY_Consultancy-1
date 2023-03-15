@@ -57,7 +57,7 @@ function generateSiteMap(posts) {
        .map((item) => {
          return `
        <url>
-           <loc>${`${EXTERNAL_DATA_URL}/CollegeDa/${item._id}`}</loc>
+           <loc>${`${EXTERNAL_DATA_URL}CollegeDa/${item._id}`}</loc>
            <lastmod>${item.updatedDate}</lastmod>
        </url>
      `;

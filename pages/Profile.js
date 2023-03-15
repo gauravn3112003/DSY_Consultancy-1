@@ -6,6 +6,7 @@ import Head from "next/head";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import { getUserData } from "directsecondyearadmission/quieries/UserDataQuieries";
 const Profile = ({ userData }) => {
   const context = useContext(collegeContext);
   const [requiredState, setRequired] = useState(false);
@@ -937,13 +938,7 @@ export async function getServerSideProps(context) {
     },
   });
 
-  const userData = await res.json();
-  if (userData.error) {
-    return {
-      notFound: true,
-    };
-  }
-
+  const userData = await getUserData(id)
   return {
     props: { userData },
   };
