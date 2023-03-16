@@ -141,7 +141,7 @@ const College = ({ data }) => {
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
-        <div className=" flex   mb-5 gap-10 justify-between md:flex-row flex-col sm:gap-5 bg-white  rounded-sm p-5 ">
+        <div className=" flex   shadow-md mb-5 gap-10 justify-between md:flex-row flex-col sm:gap-5 bg-white  rounded-sm p-5 ">
           <div className=" grid px-10 bg-slate-50 md:py-0 py-10  rounded-sm place-items-center ">
             <img
               className="rounded-full border-blue-900 border-2 h-20 w-20 "
@@ -262,7 +262,7 @@ const College = ({ data }) => {
             })
           )}
         </div>
-        <div className=" h-full  flex-col md:flex hidden bg-white  overflow-y-scroll w-2/6 ">
+        <div className=" h-full  flex-col md:flex hidden bg-white  shadow-md overflow-y-scroll w-2/6 ">
           <div className="flex  px-5 pt-5">
             <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
             <span onClick={toggleUser} className="text-slate-400">
@@ -322,7 +322,7 @@ const College = ({ data }) => {
 
     return (
       <>
-        <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
+        <div className="relative mb-5 rounded-sm    shadow-md items-center p-5 flex justify-between h-14  bg-white w-full">
           <div>
             <ol className="flex h-8 space-x-2">
               <li className="flex items-center">

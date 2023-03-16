@@ -251,7 +251,7 @@ const AllCollege = () => {
 
   const CollegeCard = (props) => {
     return (
-      <div className="  bg-white  h-96 flex flex-col justify-between  rounded-sm  p-5">
+      <div className="  bg-white  h-96 flex flex-col shadow-md justify-between  rounded-sm  p-5">
         <div className="h-32 grid bg-slate-50 rounded-sm place-items-center ">
           <img
             className="rounded-full border-blue-900 border-2 h-20 w-20 "

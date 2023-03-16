@@ -318,7 +318,8 @@ const Profile = ({ userData }) => {
 
     const basicDetail = userData.basicDetails;
     return (
-      <div className="bg-white p-5 rounded-sm ">
+      <div className="bg-white p-5 shadow-md rounded-sm ">
+
         <BasicDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Basic Details</h1>
@@ -457,7 +458,7 @@ const Profile = ({ userData }) => {
 
     const contactDetail = userData.contactDetails;
     return (
-      <div className="bg-white p-5 mt-5 rounded-sm">
+      <div className="bg-white shadow-md p-5 mt-5 rounded-sm">
         <ContactDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Contact Details</h1>
@@ -684,7 +685,7 @@ const Profile = ({ userData }) => {
 
     const EducationDetail = userData.educationDetails;
     return (
-      <div className="bg-white p-5 rounded-sm mt-5">
+      <div className="bg-white p-5 shadow-md rounded-sm mt-5">
         <EducationDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Education Details</h1>
@@ -871,7 +872,7 @@ const Profile = ({ userData }) => {
     const preferenceDetail = userData.preferences;
 
     return (
-      <div className="bg-white p-5 mt-5 rounded-sm">
+      <div className="bg-white shadow-md p-5 mt-5 rounded-sm">
         <PreferenceesDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Preferences</h1>
