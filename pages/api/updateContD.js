@@ -9,7 +9,6 @@ export default async (req, res) => {
     if (!mobileNo || !email || !city || !state || !id) {
       return res.status(401).json({ error: "Please fill all the fields" });
     }
-
     const progress = await User.findById(id);
     const process = 80;
     let newProcess = progress.profileCompletion;
