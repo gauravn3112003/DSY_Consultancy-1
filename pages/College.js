@@ -2,9 +2,7 @@ import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import baseUrl from "directsecondyearadmission/baseUrl";
 import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
-import AllCollege from "./AllCollege";
 import { allColleges } from "directsecondyearadmission/quieries/CollegeDataQuieries";
 
 const College = ({ data }) => {
@@ -511,10 +509,6 @@ const College = ({ data }) => {
 
 
 export async function getServerSideProps() {
-
-
-  
- 
   // for show all Colleges
   const data = await allColleges()
   return {
