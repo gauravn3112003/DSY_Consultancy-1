@@ -33,6 +33,8 @@ const CollegeState = (props) => {
   const [userId, setUserId] = useState("");
   const [username, setUsername] = useState("");
   const [adminKey, setadminKey] = useState("Admin");
+  const [profileCompletion, setProfileCompletion] = useState(null);
+
   const [userAllData, setuserAllData] = useState({});
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -42,6 +44,7 @@ const CollegeState = (props) => {
       const payload = JSON.parse(payloadString);
 
       setUserId(localStorage.getItem("userId"));
+      setProfileCompletion(localStorage.getItem("profileCompletion"));
       setUsername(localStorage.getItem("userName"));
       setLoginStatus(true);
       const userDetails = localStorage.getItem("userDetail");
@@ -60,7 +63,7 @@ const CollegeState = (props) => {
       localStorage.removeItem("userDetail");
       toast.success("Logout Succesfully", {});
       router.push("/");
-      router.reload()
+      router.reload();
     }
   };
 
@@ -77,6 +80,9 @@ const CollegeState = (props) => {
         userAllData,
         setuserAllData,
         logOut,
+
+        profileCompletion,
+        setProfileCompletion,
 
         // popup
         openModal,

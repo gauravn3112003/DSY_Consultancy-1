@@ -12,6 +12,7 @@ const Profile = ({ userData }) => {
   const [requiredState, setRequired] = useState(false);
   useEffect(() => {
     localStorage.setItem("userName", userData.credentails.fName);
+    localStorage.setItem("profileCompletion", userData.profileCompletion);
   }, []);
 
   const router = useRouter();
@@ -319,7 +320,6 @@ const Profile = ({ userData }) => {
     const basicDetail = userData.basicDetails;
     return (
       <div className="bg-white p-5 shadow-md rounded-sm ">
-
         <BasicDetailModal />
         <div className="header flex pb-2  justify-between items-center">
           <h1 className="text-lg font-bold">Basic Details</h1>
@@ -373,12 +373,53 @@ const Profile = ({ userData }) => {
       }
     };
     const ContactDetailModal = () => {
+      const [contactDetails, setContactDetails] = useState({});
+      const onChange = (e) => {
+        setContactDetails({
+          ...contactDetails,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+      const updateContDetails = async (e) => {
+        e.preventDefault();
+        const { mobileNo, email, city, state } = contactDetails;
+        onSubmit(mobileNo, email, city, state, userData._id);
+      };
+
+      const onSubmit = async (mobileNo, email, city, state, id) => {
+        const res = await fetch("/api/updateContD", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            mobileNo,
+            email,
+            city,
+            state,
+            id,
+          }),
+        });
+
+        const res2 = await res.json();
+        if (res2.msg) {
+          context.openModal("success", res2.msg);
+          router.reload();
+        } else {
+          context.openModal("fail", res2.error);
+        }
+      };
+
       return (
         <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full   `}>
           <div className="z-10  relative w-full flex justify-center  items-center h-full modalColor">
             <div className="absolute h-full w-full  sm:w-4/6 sm:h-4/5  mt-24 sm:mt-0 rounded-sm bg-white">
               <ModelHeader name="Contact Detail" />
-              <form className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center">
+              <form
+                onSubmit={updateContDetails}
+                className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center"
+              >
                 <div className="grid grid-cols-1  w-full sm:grid-cols-2 gap-5 sm:w-2/4 ">
                   <div className="flex flex-col ">
                     <label
@@ -390,7 +431,12 @@ const Profile = ({ userData }) => {
                     <input
                       type="number"
                       id="MoNum"
-                      name="MoNum"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        contactDetails.mobileNo ? contactDetails.mobileNo : ""
+                      }
+                      name="mobileNo"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -403,8 +449,9 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="email"
-                      required={true}
-                      id="email"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={contactDetails.email ? contactDetails.email : ""}
                       name="email"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
@@ -420,6 +467,9 @@ const Profile = ({ userData }) => {
                     <input
                       type="text"
                       id="state"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={contactDetails.state ? contactDetails.state : ""}
                       name="state"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
@@ -433,7 +483,9 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="text"
-                      id="city"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={contactDetails.city ? contactDetails.city : ""}
                       name="city"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
@@ -939,7 +991,7 @@ export async function getServerSideProps(context) {
     },
   });
 
-  const userData = await getUserData(id)
+  const userData = await getUserData(id);
   return {
     props: { userData },
   };

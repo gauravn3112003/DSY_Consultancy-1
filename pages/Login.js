@@ -17,8 +17,6 @@ const Login = () => {
     styleM: "hidden",
   });
 
-
-
   const alert = (msg) => {
     setUserMsg({ msgM: msg, styleM: "block" });
     setTimeout(() => {
@@ -58,7 +56,12 @@ const Login = () => {
       status.setUsername(res2.userDetail.credentails.fName);
       localStorage.setItem("userName", res2.userDetail.credentails.fName);
       localStorage.setItem("userId", res2.userDetail._id);
+      localStorage.setItem(
+        "profileCompletion",
+        res2.userDetail.profileCompletion
+      );
 
+      status.setProfileCompletion(res2.userDetail.profileCompletion);
       status.setUserId(res2.userDetail._id);
       status.setuserAllData(res2.userDetail);
       status.setLoginStatus(true);
@@ -73,7 +76,7 @@ const Login = () => {
 
   return (
     <Auth>
-       <Head>
+      <Head>
         <title>DSY consultancy | Login</title>
         <meta
           name="keywords"

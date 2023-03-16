@@ -75,9 +75,7 @@ const Home = () => {
   };
   const HeaderCard = () => {
     const name = context.userAllData.credentails.fName;
-    const [progress, setProgress] = useState(
-      context.userAllData.profileCompletion.toString()
-    );
+    const [progress, setProgress] = useState(context.profileCompletion);
     return (
       <div className="mb-5   shadow-md border">
         <div className="bg-white p-5   flex sm:flex-row flex-col-reverse items-center w-full  justify-between rounded-sm ">
