@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const NotiRemind = () => {
   return (
-    <div className="bg-white border-blue-500 border p-5  rounded-sm ">
+    <div className="bg-white   shadow-md border p-5  rounded-sm ">
       <div className="flex flex-col sm:w-2/4 w-full justify-around">
         <div>
           <p className="font-bold text-lg">Notification & Reminders</p>
@@ -74,7 +74,7 @@ const NotiRemind = () => {
 
 const ReportIssue = () => {
   return (
-    <div className="bg-white p-5  mt-5 rounded-sm ">
+    <div className="bg-white p-5  shadow-md mt-5 rounded-sm ">
       <p className="font-bold text-lg">Report an Issue</p>
 
       <textarea
@@ -84,7 +84,7 @@ const ReportIssue = () => {
       ></textarea>
 
       <div className="flex justify-end mt-5">
-        <button type="button" className="pBtn px-10 rounded-sm   py-2">
+        <button type="button" className="pBtn px-10 rounded-sm   w-52 py-2">
           Submit
         </button>
       </div>
@@ -110,7 +110,7 @@ const AccountSetting = () => {
       <NotiRemind />
       <ReportIssue />
 
-      <div className="bg-white p-5  mt-5 rounded-sm ">
+      <div className="bg-white shadow-md p-5  mt-5 rounded-sm ">
         <p className="font-bold text-lg">Change Password</p>
         <div className="mt-5 flex flex-col sm:flex-row gap-5">
           <div className="w-full ">
@@ -146,7 +146,7 @@ const AccountSetting = () => {
           </Link>
         </p>
        <div className="mt-5 flex justify-end">
-       <button type="button" className="pBtn px-10 rounded-sm py-2">
+       <button type="button" className="pBtn px-10 w-52 rounded-sm py-2">
           {" "}
           Change password
         </button>

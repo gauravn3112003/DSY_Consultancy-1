@@ -11,21 +11,21 @@ import Loading from "./Components/Loading";
 const CollegeCard = () => {
   const Card = () => {
     return (
-      <div className="flex  flex-col hover:bg-blue-500 bg-white  flex-1 p-6">
+      <div className="flex  shadow-md flex-col hover:bg-blue-900 hover:text-white bg-white  flex-1 p-6">
         <p
           rel="noopener noreferrer"
           aria-label="Te nulla oportere reprimique his dolorum"
         ></p>
         <a
           rel="noopener noreferrer"
-          className="text-xs tracking-wider uppercase hover:underline dark:text-violet-400"
+          className="text-xs tracking-wider uppercase hover:underline "
         >
           Convenire
         </a>
         <h3 className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug">
           Te nulla oportere reprimique his dolorum
         </h3>
-        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
+        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs ">
           <span>June 1, 2020</span>
         </div>
       </div>
@@ -168,7 +168,7 @@ const Home = () => {
               </i>
             </div>
           </section>
-          <section className="  h-screen md:h-full  text-black sm:h-auto   ">
+          <section className="  h-screen md:h-full  heroBg text-black sm:h-auto   ">
             <div className="container   mx-auto flex px-5  md:justify-between justify-start h-full  pt-0 md:flex-row flex-col items-center">
               <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left  md:mb-0 items-center text-center">
                 <h1 className="title-font text-left font-normal sm:text-4xl text-3xl   ">
@@ -177,7 +177,7 @@ const Home = () => {
                   <br className="hidden lg:inline-block" />
                   Consultancy
                 </h1>
-                <p className="   opacity-70 text-justify leading-relaxed">
+                <p className="   opacity-70 text-justify leading-relaxed mt-5">
                   Get help from our Direct Second Year Admission Consultancy to
                   secure admission to second year engineering courses in India.
                   Contact us today to start your journey towards a successful

@@ -5,6 +5,7 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
@@ -22,7 +23,7 @@ const Home = () => {
 
   const CounsellorCard = () => {
     return (
-      <div className="bg-white p-5 flex sm:flex-row  flex-col-reverse items-center  justify-between rounded-sm ">
+      <div className="bg-white p-5 shadow-md flex sm:flex-row  flex-col-reverse items-center  justify-between rounded-sm ">
         <div className="flex flex-col sm:w-2/4 w-full justify-around">
           <div>
             <p className="text-base font-semibold">
@@ -50,7 +51,7 @@ const Home = () => {
 
   const InsuranceCard = () => {
     return (
-      <div className="bg-white p-5 flex sm:flex-row  flex-col-reverse items-center  justify-between rounded-sm ">
+      <div className="bg-white p-5 flex sm:flex-row shadow-md flex-col-reverse items-center  justify-between rounded-sm ">
         <div className="flex flex-col sm:w-2/4 w-full justify-around">
           <div>
             <p className="text-base font-semibold">DSY Insurance</p>
@@ -78,7 +79,7 @@ const Home = () => {
       context.userAllData.profileCompletion.toString()
     );
     return (
-        <div className="mb-5 border-blue-500 border">
+      <div className="mb-5   shadow-md border">
         <div className="bg-white p-5   flex sm:flex-row flex-col-reverse items-center w-full  justify-between rounded-sm ">
           <div className="flex flex-col sm:w-2/4 w-full justify-around">
             <div>
@@ -90,11 +91,22 @@ const Home = () => {
                 college recommendations for you.
               </p>
             </div>
-
-            <button type="button" className="pBtn px-10 mt-5 py-3">
-              {" "}
-              Complete Your Profile
-            </button>
+            <Link
+              href={{
+                pathname: `/Profile`,
+                query: {
+                  id: context.userId,
+                },
+              }}
+            >
+              <button
+                type="button"
+                className="font-bold bg-slate-600 text-white px-10 mt-5 py-3"
+              >
+                {" "}
+                Complete Your Profile
+              </button>
+            </Link>
           </div>
 
           <div className="sm:mb-0  mb-10">
@@ -105,7 +117,7 @@ const Home = () => {
         <div className="w-full p-5 bg-white">
           <div className="w-full bg-gray-200 rounded-full dark:bg-gray-200">
             <div
-              className="bgColor text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+              className="bg-slate-400 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
               style={{ width: progress + "%" }}
             >
               {" "}

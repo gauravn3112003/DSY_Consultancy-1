@@ -16,8 +16,8 @@ const Pricing = () => {
           </div>
 
           <div className="flex flex-wrap justify-center -m-4">
-            <div className="p-4 xl:w-1/4 md:w-1/2   w-full">
-              <div className="h-full p-6 rounded-sm bg-white flex flex-col relative overflow-hidden">
+            <div className="p-4  xl:w-1/4 md:w-1/2   w-full">
+              <div className="h-full shadow-md p-6 rounded-sm bg-white flex flex-col relative overflow-hidden">
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                   START
                 </h2>
@@ -92,8 +92,8 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
-              <div className="h-full p-6 rounded-sm bg-white border border-p flex flex-col relative overflow-hidden">
+            <div className="p-4  xl:w-1/4 md:w-1/2 w-full">
+              <div className="h-full shadow-md p-6 rounded-sm bg-white border border-p flex flex-col relative overflow-hidden">
                 <span className="pBtn text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
                   POPULAR
                 </span>
@@ -190,8 +190,8 @@ const Pricing = () => {
               </div>
             </div>
 
-            <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
-              <div className="h-full p-6 rounded-sm bg-white flex flex-col relative overflow-hidden">
+            <div className="p-4  xl:w-1/4 md:w-1/2 w-full">
+              <div className="h-full shadow-md p-6 rounded-sm bg-white flex flex-col relative overflow-hidden">
                 <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                   BUSINESS
                 </h2>

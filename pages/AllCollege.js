@@ -52,10 +52,6 @@ const AllCollege = () => {
     getColleges();
   }, []);
 
-  // useEffect(() => {
-  //   setLoading(false); // set loading to false when the data is fetched
-  // }, [data]);
-
   const Loader = () => {
     return (
       <div className=" bg-white grid place-items-center">
@@ -255,63 +251,69 @@ const AllCollege = () => {
 
   const CollegeCard = (props) => {
     return (
-      <>
-        <Link
-          target="_blank"
-          href={{
-            pathname: `/CollegeDa/[id]`,
-            query: {
-              id: props.id,
-            },
-          }}
-        >
-          <a target="_blank" className="flex flex-col bg-white cursor-pointer ">
-            <p
-              rel="noopener noreferrer"
-              className="  h-52 relative grid place-items-center  overflow-hidden"
-              aria-label="Te nulla oportere reprimique his dolorum"
-            >
-              <span className="absolute left-5 top-5 bgColor text-white text-xs px-2 py-1 rounded-sm">
-                {props.collegeUnder}
-              </span>
-              <img
-                className="object-cover h-40 w-40  cursor-pointer "
-                src={props.image}
-              />
-            </p>
-            <div className="flex flex-col flex-1 p-6">
-              <p
-                rel="noopener noreferrer"
-                aria-label="Te nulla oportere reprimique his dolorum"
-              ></p>
-              <p
-                rel="noopener noreferrer"
-                className="text-xs tracking-wider uppercase hover:underline dark:text-violet-400"
-              >
-                {props.approvedBy}
-              </p>
+      <div className="  bg-white  h-96 flex flex-col shadow-md justify-between  rounded-sm  p-5">
+        <div className="h-32 grid bg-slate-50 rounded-sm place-items-center ">
+          <img
+            className="rounded-full border-blue-900 border-2 h-20 w-20 "
+            src={props.image}
+            alt=""
+          />
+        </div>
+        <div className="font-bold flex justify-between  text-blue-900  text-xs py-2">
+          <div>{props.approvedBy}</div>
+          <div>
+            <i className="bi text-slate-400 mr-2 text-xs bi-eye-fill"></i>
 
-              <p
-                target="_blank"
-                className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug"
-              >
-                {props.cName}
-              </p>
-              <p className="text-sm text-slate-500">{props.address}</p>
-              <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
-                <div>
-                  <i className="bi mr-2 bi-eye-fill"></i>
-                  <span>{props.views} Views</span>
-                </div>
-                <div>
-                  <i className="bi mr-2 bi-pin-map-fill"></i>
-                  <span>{props.district}</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </Link>
-      </>
+            {props.views}
+          </div>{" "}
+        </div>
+        <div className="font-bold  text-base ">{props.cName} </div>
+        <div className="font-medium mt-2 flex items-center text-xs ">
+          <i className="bi text-slate-400 mr-5 text-xs bi-pin-map-fill"></i>
+          <span className="text-slate-400 font-normal text-justify">
+            {props.address} {props.district}
+          </span>
+        </div>
+
+        <div className="font-medium mt-2 flex justify-between items-center pColor text-xs ">
+          <div className="font-medium mt-2 flex items-center pColor text-xs ">
+            <i className="bi text-slate-400 mr-2   bi-send-fill"></i>
+            <div>{props.collegeType}</div>
+          </div>
+          <div className="font-medium mt-2 flex items-center pColor text-xs ">
+            <div>{props.collegeUnder}</div>
+            <i className="bi text-slate-400 ml-2   bi-flag-fill"></i>
+          </div>
+        </div>
+
+        <div className=" mt-5 flex  gap-5 w-full justify-center items-center">
+          <Link
+            href={{
+              pathname: `/CollegeDa/[id]`,
+              query: {
+                id: props.id,
+              },
+            }}
+          >
+            <a
+              type="button"
+              target="_blank"
+              className="pBtn w-2/4 text-center px-3 text-xs py-2"
+            >
+              Read More
+            </a>
+          </Link>
+
+          <Link href={`tel:+91${props.contacts}`}>
+            <a
+              type="button"
+              className="border w-2/4 text-center px-3 text-xs py-2"
+            >
+              Make a call
+            </a>
+          </Link>
+        </div>
+      </div>
     );
   };
   const CompleteData = () => {
@@ -331,7 +333,7 @@ const AllCollege = () => {
                     <p className="mt-5 text-xl">College Not Found</p>
                   </div>
                 )}
-                <div className="grid  grid-cols-1 gap-x-4 gap-y-8  md:grid-cols-2 lg:grid-cols-4">
+                <div className="grid  grid-cols-1 gap-x-4 gap-y-4 overflow-y-scroll  md:grid-cols-2 lg:grid-cols-4">
                   {undercolleges.map((item, index) => {
                     return (
                       <CollegeCard
@@ -340,7 +342,9 @@ const AllCollege = () => {
                         id={item._id}
                         cName={item.name}
                         collegeUnder={item.collegeUnder}
+                        collegeType={item.collegeType}
                         address={item.location.addressLine}
+                        contacts={item.contacts.contactNo}
                         district={item.location.district}
                         image={item.image}
                         views={item.views}

@@ -8,6 +8,7 @@ import ImageListItem from "@mui/material/ImageListItem";
 import Head from "next/head";
 import Rating from "@mui/material/Rating";
 import baseUrl from "directsecondyearadmission/baseUrl";
+import { getSingleCollegeData } from "directsecondyearadmission/quieries/CollegeDataQuieries";
 
 const CollegeCard = () => {
   return (
@@ -463,32 +464,9 @@ const CollegeData = ({ College }) => {
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-
-  const res = await fetch(baseUrl + "/api/College/" + id, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  const data = await res.json();
-  if (data.error) {
-    return {
-      notFound: true,
-    };
-  }
-  console.log(data._id);
-  await fetch(baseUrl + "/api/viewsIn", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      instituteCode: data.instituteCode,
-    }),
-  });
+  const posts = await getSingleCollegeData(id);
   return {
-    props: { College: data },
+    props: { College: posts },
   };
 }
 

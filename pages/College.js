@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import baseUrl from "directsecondyearadmission/baseUrl";
 import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
+import AllCollege from "./AllCollege";
+import { allColleges } from "directsecondyearadmission/quieries/CollegeDataQuieries";
 
 const College = ({ data }) => {
 
@@ -19,52 +21,176 @@ const College = ({ data }) => {
         );
   };
 
+  // Sorting lists
+
+  const items = [
+    {
+      Name: "Category",
+      Location: "/",
+    },
+    {
+      Name: "Rating",
+      Location: "/",
+    },
+    {
+      Name: "Near Me",
+      Location: "/",
+    },
+    {
+      Name: "Rating",
+      Location: "/",
+    },
+  ];
+
   // filter for College Under
   const undercolleges = collegeByUnder(selectedCollegeUnder, data, district);
+
   
+
+
+  // College Under Components
+  const CollegeUnder = () => {
+    const checkBoxItem = ["Government", "Private"];
+
+    return (
+      <div className="  px-5  grid grid-cols-2 gap-5">
+        {checkBoxItem.map((item, index) => {
+          return (
+            <div className="flex gap-2    items-center" key={index}>
+              <input
+                type="checkbox"
+                checked={selectedCollegeUnder.includes(item)}
+                onChange={(e) =>
+                  onChangeCollegeUnderHandler(item, e.target.checked)
+                }
+              />
+              <label className="text-xs">{item}</label>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  // sorting items components
+  const SortCollege = () => {
+    return (
+      <div className="p-5">
+        {items.map((item, index) => {
+          return (
+            <div key={index} className="py-2 cursor-pointer  hover:bg-sky-100 hover:pl-10 hover:font-semibold">
+              {item.Name}
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  // College Name filter Components
+  const CollegeNameFilter = () => {
+    return (
+      <div className="  px-5  ">
+        <input
+          type="text"
+          list="collegeList"
+          className="w-full py-2 px-2 outline-none  border "
+          placeholder="Search College..."
+        />
+        <datalist id="collegeList">
+          {undercolleges.map((item, index) => {
+            return (
+              <option key={index} value={item.name}>
+                {item.name}
+              </option>
+            );
+          })}
+        </datalist>
+      </div>
+    );
+  };
+
+  const DistrictFilter = () => {
+    const districtName = data.map((item) => item.location.district);
+    const removeDubDist = data.filter(
+      (district, index) =>
+        !districtName.includes(district.location.district, index + 1)
+    );
+
+    return (
+      <div className="px-5">
+        <select
+          value={district}
+          onChange={function (e) {
+            setdistrict(e.target.value);
+          }}
+          className=" outline-none w-full py-2 rounded-sm border"
+        >
+          <option value="" className="text-center font-bold py-2">
+            {" "}
+            All District
+          </option>
+          {removeDubDist.map((item, index) => {
+            return (
+              <option
+                key={index}
+                value={item.location.district}
+                className="text-center text-sm"
+              >
+                {item.location.district}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+    );
+  };
   const AllCollegesData = () => {
     const SingleCollege = (props) => {
       return (
-        <div className="flex-wrap flex   gap-5 sm:gap-5 bg-white mb-5  rounded-sm p-5 ">
-          <div className="flex w-full gap-5">
-            <div className="sm:w-32 w-20  grid place-items-center">
-              <img
-                className="rounded-full border-blue-900 border sm:h-24 w-10 h-10 sm:w-24"
-                src={props.image}
-                alt=""
-              />
+        <div className=" flex   shadow-md mb-5 gap-10 justify-between md:flex-row flex-col sm:gap-5 bg-white  rounded-sm p-5 ">
+          <div className=" grid px-10 bg-slate-50 md:py-0 py-10  rounded-sm place-items-center ">
+            <img
+              className="rounded-full border-blue-900 border-2 h-20 w-20 "
+              src={props.image}
+              alt=""
+            />
+          </div>
+          <div className="">
+            <div className="font-bold  text-lg">
+              {props.collegeName} ({props.instituteCode}){" "}
             </div>
-            <div className="   w-full">
-              <h1 className="font-bold text-xl">{props.collegeName} </h1>
-              <div className="">
-                <span className="text-xs">
-                  <span className="font-bold">Approved By :</span>{" "}
-                  {props.approvedBy}
-                </span>
-                <br />
-                <span className="text-xs">
-                  <span className="font-bold">Type :</span> {props.collegeType}
-                  <span className="font-bold ml-5">Under:</span>{" "}
-                  {props.collegeUnder}
-                </span>
-                <br />
-                <span className="text-xs">
-                  <span className="font-bold">Location :</span> {props.location}
-                  , {props.district}
-                </span>
-                <br />
-                <span className="text-xs">
-                  <span className="font-bold">Institute Code :</span>{" "}
-                  {props.instituteCode}
-                </span>
-                <span className="ml-5 text-xs">
-                  <span className="font-bold">Branch :</span> {props.department}
-                </span>
+            <div className="font-bold text-blue-900  text-xs py-2">
+              {props.approvedBy}
+            </div>
+            <div className="font-medium mt-2 flex items-center text-xs ">
+              <i className="bi text-slate-400 mr-2 text-xs bi-pin-map-fill"></i>
+              <span className="text-slate-400 font-normal text-justify">
+                {props.location}, <span className="font-semibold text-sm" ></span>
+              </span>
+            </div>
+            <div className="font-medium mt-2 flex items-center text-xs ">
+              <i className="bi text-slate-400 mr-2 text-xs bi-building-fill"></i>
+              <span className="text-slate-800 font-bold text-xs">
+                {props.department}
+              </span>
+            </div>
+
+            <div className="font-medium mt-2 flex justify-between items-center pColor text-xs ">
+              <div className="font-medium mt-2 flex items-center pColor text-xs ">
+                <i className="bi text-slate-400 mr-2   bi-send-fill"></i>
+                <div>{props.collegeType}</div>
+              </div>
+              <div className="font-medium mt-2 flex items-center pColor text-xs ">
+                {/* <i className="bi text-slate-400 mr-2   bi-send-fill"></i> */}
+                <div>{props.district}</div>
+              </div>
+              <div className="font-medium mt-2 flex items-center pColor text-xs ">
+                <div>{props.collegeUnder}</div>
+                <i className="bi text-slate-400 ml-2   bi-flag-fill"></i>
               </div>
             </div>
           </div>
-
-          <div className="  flex  gap-5 w-full justify-center items-center">
+          <div className=" md:mt-5 -mt-5 flex justify-between items-center md:flex-col flex-row gap-5 ">
             <Link
               href={{
                 pathname: `/CollegeDa/[id]`,
@@ -76,7 +202,7 @@ const College = ({ data }) => {
               <a
                 type="button"
                 target="_blank"
-                className="pBtn w-2/4 text-center px-3 text-sm py-2"
+                className="pBtn  text-center px-3 w-full text-xs py-2"
               >
                 Read More
               </a>
@@ -85,9 +211,17 @@ const College = ({ data }) => {
             <Link href={`tel:+91${props.contactNo}`}>
               <a
                 type="button"
-                className="border w-2/4 text-center px-3 text-sm py-2"
+                className="border  text-center px-3 w-full text-xs py-2"
               >
                 Make a call
+              </a>
+            </Link>
+            <Link href={`tel:+91${props.contactNo}`}>
+              <a
+                type="button"
+                className="border  text-center px-3 w-full text-xs py-2"
+              >
+               Save
               </a>
             </Link>
           </div>
@@ -96,42 +230,66 @@ const College = ({ data }) => {
     };
 
     return (
-      <div className=" h-full flex flex-col overflow-y-scroll w-full ">
-        {undercolleges.length == 0 ? (
-          <div className="p-5 bg-white font-semibold">College Not Found</div>
-        ) : (
-          undercolleges.map((item, index) => {
-            return (
-              <span key={index}>
-                {item.department.length <= 0 ? (
-                  <div className="p-5 bg-white font-semibold">
-                    College Not Found
-                  </div>
-                ) : (
-                  item.department.map((department, indexDep) => {
-                    return (
-                      <span key={indexDep}>
-                        <SingleCollege
-                          collegeName={item.name}
-                          approvedBy={item.approvedBy}
-                          collegeType={item.collegeType}
-                          collegeId={item._id}
-                          location={item.location.addressLine}
-                          district={item.location.district}
-                          instituteCode={item.instituteCode}
-                          image={item.image}
-                          contactNo={item.contactNo}
-                          department={department.courseName}
-                          collegeUnder={item.collegeUnder}
-                        />
-                      </span>
-                    );
-                  })
-                )}
-              </span>
-            );
-          })
-        )}
+      <div className=" h-full flex  overflow-y-scroll gap-5 w-full  ">
+        <div className=" h-full flex flex-col  overflow-y-scroll md:w-2/3 w-full ">
+          {undercolleges.length == 0 ? (
+            <div className="p-5 bg-white font-semibold">College Not Found</div>
+          ) : (
+            undercolleges.map((item, index) => {
+              return (
+                <span key={index}>
+                  {item.department.length <= 0 ? (
+                    <div className="p-5 bg-white font-semibold">
+                      College Not Found
+                    </div>
+                  ) : (
+                    item.department.map((department, indexDep) => {
+                      return (
+                        <span key={indexDep}>
+                          <SingleCollege
+                            collegeName={item.name}
+                            approvedBy={item.approvedBy}
+                            collegeType={item.collegeType}
+                            collegeId={item._id}
+                            location={item.location.addressLine}
+                            district={item.location.district}
+                            instituteCode={item.instituteCode}
+                            image={item.image}
+                            contactNo={item.contactNo}
+                            department={department.courseName}
+                            collegeUnder={item.collegeUnder}
+                          />
+                        </span>
+                      );
+                    })
+                  )}
+                </span>
+              );
+            })
+          )}
+        </div>
+        <div className=" h-full  flex-col md:flex hidden bg-white  shadow-md overflow-y-scroll w-2/6 ">
+          <div className="flex  px-5 pt-5">
+            <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
+            <span onClick={toggleUser} className="text-slate-400">
+              Sort
+            </span>
+          </div>
+          <SortCollege />
+          <div className="flex  p-5">
+            <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
+            <span onClick={toggleUser} className="text-slate-400">
+              Filter
+            </span>
+          </div>
+
+          <CollegeUnder />
+          <div className="h-1 mx-5 my-5 bg-slate-50" />
+
+          <DistrictFilter />
+          <div className="h-1 mx-5 my-5 bg-slate-50" />
+          <CollegeNameFilter />
+        </div>
       </div>
     );
   };
@@ -167,6 +325,7 @@ const College = ({ data }) => {
       e.preventDefault();
       setSearch(e.target.value);
     };
+
 
     const items = [
       {
@@ -252,22 +411,53 @@ const College = ({ data }) => {
         </div>
       );
     };
+ 
     return (
       <>
-        <div className="relative mb-5 rounded-sm   items-center p-5 flex justify-between h-14  bg-white w-full">
+        <div className="relative mb-5 rounded-sm    shadow-md items-center p-5 flex justify-between h-14  bg-white w-full">
           <div>
-            <form>
-              <input
-                type="search"
-                name="search"
-                onChange={inputChangedHandler}
-                className="text-sm outline-none rounded-sm bg-slate-100 px-2 py-1  "
-                placeholder="Search"
-              />
-            </form>
+            <ol className="flex h-8 space-x-2">
+              <li className="flex items-center">
+                <Link href="/">
+                  <a
+                    rel="noopener noreferrer"
+                    title="Back to homepage"
+                    className="hover:underline"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="w-5 h-5 pr-1 dark:text-gray-400"
+                    >
+                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+                    </svg>
+                  </a>
+                </Link>
+              </li>
+
+              <li className="flex items-center space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  className="w-2 h-2 mt-1 transform rotate-90 fill-current dark:text-gray-600"
+                >
+                  <path d="M32 30.031h-32l16-28.061z"></path>
+                </svg>
+                <a
+                  rel="noopener noreferrer"
+                  href="#"
+                  className="flex items-center px-1 capitalize hover:underline cursor-default"
+                >
+                  Colleges
+                </a>
+              </li>
+            </ol>
           </div>
 
-          <div className="cursor-pointer relative">
+          <div className="cursor-pointer relative block md:hidden">
             <i className="bi bi-funnel-fill mr-4" onClick={toggleUser}></i>
             <span onClick={toggleUser} className="text-slate-400">
               Filter
@@ -293,6 +483,8 @@ const College = ({ data }) => {
                 <CollegeUnder />
                 <div className="h-1 mx-5 my-5 bg-slate-50" />
                 <DistrictFilter />
+                <div className="h-1  mx-5 my-5 bg-slate-50" />
+                <CollegeNameFilter />
               </div>
             </div>
           </div>
@@ -317,17 +509,14 @@ const College = ({ data }) => {
   );
 };
 
+
 export async function getServerSideProps() {
 
+
   
+ 
   // for show all Colleges
-  const res = await fetch(baseUrl + "/api/Colleges", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
+  const data = await allColleges()
   return {
     props: { data },
   };

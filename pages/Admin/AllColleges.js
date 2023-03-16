@@ -1,6 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
 import baseUrl from "../../baseUrl";
+import { getColleges } from "directsecondyearadmission/quieries/adminQuieries";
 const AllColleges = (props) => {
   // console.log(props);
   return (
@@ -9,9 +10,9 @@ const AllColleges = (props) => {
         All Colleges
       </div>
 
-      <div className="px-5 mt-5 overflow-x-scroll ">
+      <div className="h-full mt-5 mx-5 overflow-scroll">
         <table className=" border-none w-full overflow-x-scroll">
-          <thead className="border-none   ">
+          <thead className="border-none  text-sm ">
             <tr className="bg-blue-50 border-none">
               <th className="border-none py-3  text-center px-3">Sr. No.</th>
               <th className="border-none py-3  text-center px-3">Images</th>
@@ -23,9 +24,12 @@ const AllColleges = (props) => {
               <th className="border-none py-3  text-center px-3">
                 Institute Code
               </th>
+              <th className="border-none py-3  text-center px-3">
+                Added by
+              </th>
             </tr>
           </thead>
-          <tbody className="mt-10">
+          <tbody className="mt-10 text-xs">
             {props.data.map((i, index) => {
               return (
                 <tr className="border-none  mt-10" key={index}>
@@ -57,6 +61,9 @@ const AllColleges = (props) => {
                   <td className="px-3 py-2  mt-2 border-none text-center">
                     {i.instituteCode}{" "}
                   </td>
+                  <td className="px-3 py-2  mt-2 border-none font-bold text-center">
+                    {i.addedBy}{" "}
+                  </td>
                 </tr>
               );
             })}
@@ -69,13 +76,7 @@ const AllColleges = (props) => {
 
 export async function getServerSideProps() {
   // for show all Colleges
-  const res = await fetch(baseUrl + "/api/Colleges", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
+  const data = await getColleges()
   return {
     props: { data },
   };

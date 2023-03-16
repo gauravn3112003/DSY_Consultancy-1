@@ -36,7 +36,7 @@ const BasicDoc = () => {
           </div>
           <div>
             <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs text-slate-400">
               File should be max 2mb and jpg, jpeg, png, pdf
             </p>
           </div>
@@ -68,7 +68,7 @@ const BasicDoc = () => {
           </div>
           <div>
             <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs text-slate-400">
               File should be max 2mb and jpg, jpeg, png, pdf
             </p>
           </div>
@@ -100,7 +100,7 @@ const BasicDoc = () => {
           </div>
           <div>
             <h2 className="text-sm mt-5 font-semibold">10th Marksheet</h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs text-slate-400">
               File should be max 2mb and jpg, jpeg, png, pdf
             </p>
           </div>
@@ -142,7 +142,7 @@ const AddmissionDoc = () => {
           </div>
           <div>
             <h2 className="text-sm mt-5 font-semibold">12th Marksheet</h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs text-slate-400">
               File should be max 2mb and jpg, jpeg, png, pdf
             </p>
           </div>
@@ -174,7 +174,7 @@ const AddmissionDoc = () => {
           </div>
           <div>
             <h2 className="text-sm mt-5 font-semibold">12th Marksheet</h2>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs text-slate-400">
               File should be max 2mb and jpg, jpeg, png, pdf
             </p>
           </div>
@@ -185,7 +185,7 @@ const AddmissionDoc = () => {
 };
 const DocMsg = () => {
   return (
-    <div className="bg-white border-blue-500 border shadow-inner  p-5 mb-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
+    <div className="bg-white  border shadow-md p-5 mb-5 flex sm:flex-row flex-col-reverse items-center  justify-between rounded-sm ">
       <div className="flex flex-col sm:w-2/4 w-full justify-around">
         <div>
           <p className="text-base font-semibold">
@@ -217,7 +217,7 @@ const Document = () => {
 
   const UserDoc = ({ children }) => {
     return (
-      <div className="bg-white p-5 rounded-sm">
+      <div className="bg-white p-5 shadow-md rounded-sm">
         <div className="flex gap-5 p-5 bg-slate-100 ">
           <button
             onClick={goToBasic}
