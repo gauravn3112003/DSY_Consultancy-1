@@ -3,32 +3,66 @@ import User from "directsecondyearadmission/Modal/User";
 initDB();
 
 export default async (req, res) => {
-  const { mobileNo, email, city, state, id } = req.body;
+  const {
+    sBoard,
+    sSchool,
+    sPassYear,
+    sMarkType,
+    sPercentage,
+    cBoard,
+    cSchool,
+    cPassYear,
+    cMarkType,
+    cPercentage,
+    id,
+  } = req.body;
 
   try {
-    if (!mobileNo || !email || !city || !state || !id) {
+    if (
+      !sBoard ||
+      !sSchool ||
+      !sPassYear ||
+      !sMarkType ||
+      !sPercentage ||
+      !cBoard ||
+      !cSchool ||
+      !cPassYear ||
+      !cMarkType ||
+      !cPercentage ||
+      !id
+    ) {
       return res.status(401).json({ error: "Please fill all the fields" });
     }
     const progress = await User.findById(id);
-    const process = 80;
+    const process = 90;
     let newProcess = progress.profileCompletion;
     if (
       progress.profileCompletion < process &&
-      progress.profileCompletion > 35
+      progress.profileCompletion > 75
     ) {
       newProcess = process;
     }
 
-    let cDeatails = {
-      mobileNo,
-      email,
-      city,
-      state,
+    let eduDeatails = {
+      ssc: {
+        board: sBoard,
+        school: sSchool,
+        passingYear: sPassYear,
+        markType: sMarkType,
+        percentage: sPercentage,
+      },
+      diploma: {
+        board: cBoard,
+        school: cSchool,
+        passingYear: cPassYear,
+        markType: cMarkType,
+        percentage: cPercentage,
+      },
     };
 
     const update = {
       profileCompletion: newProcess,
-      contactDetails: cDeatails,
+      educationDetails: eduDeatails,
     };
 
     const userData = await User.findOneAndUpdate({ _id: id }, update);

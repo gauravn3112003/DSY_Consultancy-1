@@ -1,6 +1,7 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
 import React, { useState, useEffect } from "react";
 import baseUrl from "directsecondyearadmission/baseUrl";
+
 import Link from "next/link";
 import Head from "next/head";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
@@ -8,8 +9,15 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import { getUserData } from "directsecondyearadmission/quieries/UserDataQuieries";
 const Profile = ({ userData }) => {
+  const currentYear = new Date().getFullYear();
   const context = useContext(collegeContext);
   const [requiredState, setRequired] = useState(false);
+  let years = [];
+
+  for (let index = 1990; index < currentYear; index++) {
+    years.push(index);
+  }
+
   useEffect(() => {
     localStorage.setItem("userName", userData.credentails.fName);
     localStorage.setItem("profileCompletion", userData.profileCompletion);
@@ -555,12 +563,93 @@ const Profile = ({ userData }) => {
       }
     };
     const EducationDetailModal = () => {
+      const [eductaionDetails, setEductaionDetails] = useState({});
+      const onChange = (e) => {
+        setEductaionDetails({
+          ...eductaionDetails,
+          [e.target.name]: e.target.value,
+        });
+      };
+
+      const updateEdutDetails = async (e) => {
+        e.preventDefault();
+        const {
+          sBoard,
+          sSchool,
+          sPassYear,
+          sMarkType,
+          sPercentage,
+          cBoard,
+          cSchool,
+          cPassYear,
+          cMarkType,
+          cPercentage,
+        } = eductaionDetails;
+        onSubmit(
+          sBoard,
+          sSchool,
+          sPassYear,
+          sMarkType,
+          sPercentage,
+          cBoard,
+          cSchool,
+          cPassYear,
+          cMarkType,
+          cPercentage,
+          userData._id
+        );
+      };
+
+      const onSubmit = async (
+        sBoard,
+        sSchool,
+        sPassYear,
+        sMarkType,
+        sPercentage,
+        cBoard,
+        cSchool,
+        cPassYear,
+        cMarkType,
+        cPercentage,
+        id
+      ) => {
+        const res = await fetch("/api/updateEduD", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            sBoard,
+            sSchool,
+            sPassYear,
+            sMarkType,
+            sPercentage,
+            cBoard,
+            cSchool,
+            cPassYear,
+            cMarkType,
+            cPercentage,
+            id,
+          }),
+        });
+
+        const res2 = await res.json();
+        if (res2.msg) {
+          context.openModal("success", res2.msg);
+          router.reload();
+        } else {
+          context.openModal("fail", res2.error);
+        }
+      };
       return (
         <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full   `}>
           <div className="z-10  relative w-full flex justify-center overflow-y-scroll  items-center h-full modalColor">
             <div className="absolute overflow-y-scroll h-full w-full  sm:w-4/6 sm:h-4/5  mt-24 sm:mt-0 rounded-sm bg-white">
               <ModelHeader name="Education Detail" />
-              <form className="w-full px-5  pb-10 pt-5 sm:pt-0 mt-5 grid overflow-y-scroll place-items-center">
+              <form
+                onSubmit={updateEdutDetails}
+                className="w-full px-5  pb-10 pt-5 sm:pt-0 mt-5 grid overflow-y-scroll place-items-center"
+              >
                 <h2 className=" w-full font-semibold  sm:w-2/4">
                   Class X (required)
                 </h2>
@@ -572,12 +661,20 @@ const Profile = ({ userData }) => {
                     >
                       Board
                     </label>
-                    <select className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <option>Board</option>
-                      <option>ICSE</option>
-                      <option>CBSE</option>
-                      <option>STATE BOARD</option>
-                      <option>OTHER</option>
+                    <select
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.sBoard ? eductaionDetails.sBoard : ""
+                      }
+                      name="sBoard"
+                      className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    >
+                      <option value="Select">---Select---</option>
+                      <option value="ICSE">ICSE</option>
+                      <option value="CBSE">CBSE</option>
+                      <option value="MSBSHSE">MSBSHSE</option>
+                      <option value="OTHER">OTHER</option>
                     </select>
                   </div>
                   <div className="flex flex-col ">
@@ -589,9 +686,12 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="text"
-                      required={true}
-                      id="SName"
-                      name="SName"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.sSchool ? eductaionDetails.sSchool : ""
+                      }
+                      name="sSchool"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -604,9 +704,14 @@ const Profile = ({ userData }) => {
                       Pass Year
                     </label>
                     <input
-                      type="number"
-                      id="PassYear"
-                      name="PassYear"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.sPassYear
+                          ? eductaionDetails.sPassYear
+                          : ""
+                      }
+                      name="sPassYear"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -617,10 +722,20 @@ const Profile = ({ userData }) => {
                     >
                       Mark Type
                     </label>
-                    <select className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <option>Type</option>
-                      <option>CGPA</option>
-                      <option>Percentage</option>
+                    <select
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.sMarkType
+                          ? eductaionDetails.sMarkType
+                          : ""
+                      }
+                      name="sMarkType"
+                      className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    >
+                      <option value="Select">---Select---</option>
+                      <option value="Percentage">Percentage</option>
+                      <option value="CGPA">CGPA</option>
                     </select>
                   </div>
                   <div className="flex flex-col ">
@@ -632,8 +747,14 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="number"
-                      id="Marks"
-                      name="Marks"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.sPercentage
+                          ? eductaionDetails.sPercentage
+                          : ""
+                      }
+                      name="sPercentage"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -654,9 +775,12 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="text"
-                      required={true}
-                      id="Board"
-                      name="Board"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.cBoard ? eductaionDetails.cBoard : ""
+                      }
+                      name="cBoard"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -669,9 +793,12 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="text"
-                      required={true}
-                      id="SName"
-                      name="SName"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.cSchool ? eductaionDetails.cSchool : ""
+                      }
+                      name="cSchool"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -685,8 +812,14 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="number"
-                      id="PassYear"
-                      name="PassYear"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.cPassYear
+                          ? eductaionDetails.cPassYear
+                          : ""
+                      }
+                      name="cPassYear"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
@@ -697,10 +830,20 @@ const Profile = ({ userData }) => {
                     >
                       Mark Type
                     </label>
-                    <select className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <option>Type</option>
-                      <option>CGPA</option>
-                      <option>Percentage</option>
+                    <select
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.cMarkType
+                          ? eductaionDetails.cMarkType
+                          : ""
+                      }
+                      name="cMarkType"
+                      className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    >
+                      <option value="Select">---Select---</option>
+                      <option value="CGPA">CGPA</option>
+                      <option value="Percentage">Percentage</option>
                     </select>
                   </div>
                   <div className="flex flex-col ">
@@ -712,19 +855,23 @@ const Profile = ({ userData }) => {
                     </label>
                     <input
                       type="number"
-                      id="Marks"
-                      name="Marks"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        eductaionDetails.cPercentage
+                          ? eductaionDetails.cPercentage
+                          : ""
+                      }
+                      name="cPercentage"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-5">
                   <button type="submit" className="pBtn px-10 py-3 mt-10">
-                    {" "}
                     Submit
                   </button>
                   <button type="reset" className="border px-10 py-3 mt-10">
-                    {" "}
                     Reset
                   </button>
                 </div>
