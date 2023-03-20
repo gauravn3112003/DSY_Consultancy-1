@@ -8,22 +8,42 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import { getUserData } from "directsecondyearadmission/quieries/UserDataQuieries";
-const Profile = ({ userData }) => {
+import { allColleges } from "directsecondyearadmission/quieries/CollegeDataQuieries";
+const Profile = ({ userData, CollegeData }) => {
   const currentYear = new Date().getFullYear();
   const context = useContext(collegeContext);
   const [requiredState, setRequired] = useState(false);
-  let years = [];
+  const router = useRouter();
 
-  for (let index = 1990; index < currentYear; index++) {
-    years.push(index);
-  }
+  const districtName = CollegeData.map((item) => item.location.district);
+  const removeDubDist = CollegeData.filter(
+    (district, index) =>
+      !districtName.includes(district.location.district, index + 1)
+  );
+
+  const univercityName = CollegeData.map((item) => item.university);
+  const removeDubUniversity = CollegeData.filter(
+    (university, index) =>
+      !univercityName.includes(university.university, index + 1)
+  );
+
+  let depName = [];
+  CollegeData.map((item) =>
+    item.department.map((course) => {
+      depName.push(course.courseName);
+    })
+  );
+
+  const removeDubBranch = depName.filter(
+    (course, index) => !depName.includes(course, index + 1)
+  );
+
 
   useEffect(() => {
     localStorage.setItem("userName", userData.credentails.fName);
     localStorage.setItem("profileCompletion", userData.profileCompletion);
   }, []);
 
-  const router = useRouter();
   const [modalOpen, setModalOpen] = useState("hidden");
   const toggleUser = () => {
     if (modalOpen == "hidden") {
@@ -966,12 +986,67 @@ const Profile = ({ userData }) => {
       }
     };
     const PreferenceesDetailModal = () => {
+      const [preferenceDetails, setPreferenceDetails] = useState({});
+      const onChange = (e) => {
+        setPreferenceDetails({
+          ...preferenceDetails,
+          [e.target.name]: e.target.value,
+        });
+      };
+      const updatePreftDetails = async (e) => {
+        e.preventDefault();
+        const { university, branch, location, collegeType, needLoan } =
+          preferenceDetails;
+        onSubmit(
+          university,
+          branch,
+          location,
+          collegeType,
+          needLoan,
+          userData._id
+        );
+      };
+
+      const onSubmit = async (
+        university,
+        branch,
+        location,
+        collegeType,
+        needLoan,
+        id
+      ) => {
+        const res = await fetch("/api/updatePrefD", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            university,
+            branch,
+            location,
+            collegeType,
+            needLoan,
+            id,
+          }),
+        });
+
+        const res2 = await res.json();
+        if (res2.msg) {
+          context.openModal("success", res2.msg);
+          router.reload();
+        } else {
+          context.openModal("fail", res2.error);
+        }
+      };
       return (
         <div className={`fixed top-0 ${modalOpen} left-0 h-full  w-full   `}>
           <div className="z-10  relative w-full flex justify-center  items-center h-full modalColor">
             <div className="absolute h-full w-full  sm:w-4/6 sm:h-4/5  mt-24 sm:mt-0 rounded-sm bg-white">
               <ModelHeader name="Preferences" />
-              <form className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center">
+              <form
+                onSubmit={updatePreftDetails}
+                className="w-full sm:mt-14 mt-5 px-5 sm:px-0 grid place-items-center"
+              >
                 <div className="grid grid-cols-1  w-full sm:grid-cols-2 gap-5 sm:w-2/4 ">
                   <div className="flex flex-col ">
                     <label
@@ -980,12 +1055,29 @@ const Profile = ({ userData }) => {
                     >
                       University
                     </label>
-                    <input
-                      type="number"
-                      id="University"
-                      name="University"
+                    <select
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
-                    />
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        preferenceDetails.university
+                          ? preferenceDetails.university
+                          : ""
+                      }
+                      name="university"
+                    >
+                      {removeDubUniversity.sort().map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.university}
+                            className="text-left text-sm"
+                          >
+                            {item.university}
+                          </option>
+                        );
+                      })}
+                    </select>
                   </div>
                   <div className="flex flex-col ">
                     <label
@@ -994,13 +1086,26 @@ const Profile = ({ userData }) => {
                     >
                       Branch
                     </label>
-                    <input
-                      type="text"
-                      required={true}
+                    <select
                       id="Branch"
-                      name="Branch"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        preferenceDetails.branch ? preferenceDetails.branch : ""
+                      }
+                      name="branch"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
-                    />
+                    >
+                      <option value="">---Select---</option>
+
+                      {removeDubBranch.sort().map((item, index) => {
+                        return (
+                          <option value={item} key={index}>
+                            {item}
+                          </option>
+                        );
+                      })}
+                    </select>
                   </div>
                   <div className="flex flex-col ">
                     <label
@@ -1009,11 +1114,21 @@ const Profile = ({ userData }) => {
                     >
                       What type of college you are interested in?
                     </label>
-                    <select className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                      <option>Type</option>
-                      <option>Government</option>
-                      <option>Non-Government</option>
-                      <option>Both</option>
+                    <select
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        preferenceDetails.collegeType
+                          ? preferenceDetails.collegeType
+                          : ""
+                      }
+                      name="collegeType"
+                      className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    >
+                      <option value="">---Select---</option>
+                      <option value="Government">Government</option>
+                      <option value="Non-Government">Non-Government</option>
+                      <option value="Both">Both</option>
                     </select>
                   </div>
 
@@ -1022,15 +1137,35 @@ const Profile = ({ userData }) => {
                       htmlFor="City"
                       className="leading-7 text-sm text-gray-600"
                     >
-                      City
+                      District
                     </label>
                     <input
+                      placeholder="Enter District"
                       type="text"
-                      required={true}
-                      id="City"
-                      name="City"
+                      list="District"
+                      required={requiredState}
+                      onChange={onChange}
+                      value={
+                        preferenceDetails.location
+                          ? preferenceDetails.location
+                          : ""
+                      }
+                      name="location"
                       className="w-full bg-white rounded-sm  border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 "
                     />
+                    <datalist id="District" name="district">
+                      {removeDubDist.map((item, index) => {
+                        return (
+                          <option
+                            key={index}
+                            value={item.location.district}
+                            className="text-left text-sm"
+                          >
+                            {item.location.district}
+                          </option>
+                        );
+                      })}
+                    </datalist>
                   </div>
 
                   <div className="flex flex-col ">
@@ -1042,11 +1177,27 @@ const Profile = ({ userData }) => {
                     </label>
                     <div className="grid items-center grid-cols-3">
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="needLoan"
+                          value="Yes"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={preferenceDetails.needLoan === "Yes"}
+                        />
                         <span>Yes</span>
                       </div>
                       <div>
-                        <input className="mr-2" type="radio" name="" />
+                        <input
+                          className="mr-2"
+                          type="radio"
+                          name="needLoan"
+                          value="No"
+                          required={requiredState}
+                          onChange={onChange}
+                          checked={preferenceDetails.needLoan === "No"}
+                        />
                         <span>No </span>
                       </div>
                     </div>
@@ -1069,7 +1220,6 @@ const Profile = ({ userData }) => {
       );
     };
     const preferenceDetail = userData.preferences;
-
     return (
       <div className="bg-white shadow-md p-5 mt-5 rounded-sm">
         <PreferenceesDetailModal />
@@ -1130,17 +1280,12 @@ const Profile = ({ userData }) => {
 export async function getServerSideProps(context) {
   const { id } = context.query;
   // const context = useContext(collegeContext);
-
-  const res = await fetch(baseUrl + "/api/User/" + id, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
   const userData = await getUserData(id);
+
+  const CollegeData = await allColleges();
+
   return {
-    props: { userData },
+    props: { userData, CollegeData },
   };
 }
 export default Profile;
