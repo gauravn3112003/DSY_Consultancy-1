@@ -1,4 +1,5 @@
 import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
+import { PUBLIC_ADMINKEY, PUBLIC_ROOTKEY } from "directsecondyearadmission/quieries/UserKeys";
 import initDB from "../../Helpers/initDB";
 import Colleges from "../../Modal/Colleges";
 initDB();
@@ -17,7 +18,8 @@ export default async (req, res) => {
 const addCollege = Authenticated(async (req, res) => {
   try {
     console.log(req.decoded.userData.role);
-    if (req.decoded.userData.role == "Admin") {
+    if (req.decoded.userData.role == PUBLIC_ADMINKEY ||
+      req.decoded.userData.role == PUBLIC_ROOTKEY) {
       const {
         name,
         instituteCode,

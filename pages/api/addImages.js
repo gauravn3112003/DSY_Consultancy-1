@@ -1,14 +1,15 @@
 import initDB from "../../Helpers/initDB";
 import Colleges from "../../Modal/Colleges";
 import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
+import { PUBLIC_ADMINKEY, PUBLIC_ROOTKEY } from "directsecondyearadmission/quieries/UserKeys";
 
 initDB();
 
 export default Authenticated(async (req, res) => {
   const { imageUrl, instituteCode } = req.body;
-
   try {
-    if ( req.decoded.userData.role  == "Admin") {
+    if (req.decoded.userData.role == PUBLIC_ADMINKEY ||
+      req.decoded.userData.role == PUBLIC_ROOTKEY ) {
       if (!imageUrl || !instituteCode) {
         return res.status(422).json({ error: "Please fill all the fields" });
       }

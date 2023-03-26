@@ -120,6 +120,11 @@ th {
 }
 
 
+/* Text editor height  */
+.se-wrapper-wysiwyg {
+  height: 40vh !important;
+}
+
 
 /* home Layouut */
 .avtarP {

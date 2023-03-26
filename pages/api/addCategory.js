@@ -1,4 +1,5 @@
 import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
+import { PUBLIC_ADMINKEY, PUBLIC_ROOTKEY } from "directsecondyearadmission/quieries/UserKeys";
 import initDB from "../../Helpers/initDB";
 import Colleges from "../../Modal/Colleges";
 initDB();
@@ -16,7 +17,10 @@ export default Authenticated(async (req, res) => {
   const filter = { department: { $elemMatch: { choiceCode } } };
   const update = { $push: { "department.$.categories": studentCategory } };
   try {
-    if (req.decoded.userData.role == "Admin") {
+    if (
+      req.decoded.userData.role == PUBLIC_ADMINKEY ||
+      req.decoded.userData.role == PUBLIC_ROOTKEY
+    ) {
       if (!category || !min || !max || !aFees || !aSeats || !choiceCode) {
         return res.status(422).json({ error: "please fill all the fields" });
       }

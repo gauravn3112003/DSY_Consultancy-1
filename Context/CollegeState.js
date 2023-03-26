@@ -32,7 +32,7 @@ const CollegeState = (props) => {
 
   const [userId, setUserId] = useState("");
   const [username, setUsername] = useState("");
-  const [adminKey, setadminKey] = useState("Admin");
+  const [adminKey, setadminKey] = useState("user");
   const [token, setToken] = useState("");
   const [profileCompletion, setProfileCompletion] = useState(null);
 
@@ -46,6 +46,9 @@ const CollegeState = (props) => {
       setToken(localStorage.getItem("token"));
       setUsername(localStorage.getItem("userName"));
       setLoginStatus(true);
+
+
+      setadminKey(localStorage.getItem("userRole"))
 
       const userDetails = localStorage.getItem("userDetail");
       if (userDetails) {
@@ -72,6 +75,7 @@ const CollegeState = (props) => {
     <collegeContext.Provider
       value={{
         adminKey,
+        setadminKey,
         username,
         setUsername,
         userId,

@@ -6,7 +6,11 @@ import Image from "next/image";
 // components
 import { useContext } from "react";
 import collegeContext from "directsecondyearadmission/Context/collegeContext";
-
+import { Public } from "@mui/icons-material";
+import {
+  PUBLIC_ADMINKEY,
+  PUBLIC_ROOTKEY,
+} from "directsecondyearadmission/quieries/UserKeys";
 
 export const SideUserData = () => {
   const router = useRouter();
@@ -47,7 +51,6 @@ export const SideUserData = () => {
     </div>
   );
 };
-
 
 export default function HomeLayout({ children }) {
   const router = useRouter();
@@ -146,7 +149,8 @@ export default function HomeLayout({ children }) {
                     );
                   })}
 
-                  {context.userAllData.role == context.adminKey && (
+                  {(context.adminKey == PUBLIC_ADMINKEY ||
+                    context.adminKey == PUBLIC_ROOTKEY) && (
                     <li>
                       <Link href="/Admin/AllContact">
                         <a

@@ -7,6 +7,7 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { PUBLIC_ADMINKEY, PUBLIC_ROOTKEY } from "directsecondyearadmission/quieries/UserKeys";
 
 const HeaderFilter = () => {
   const [userOpen, setUserOpen] = useState("hidden");
@@ -155,7 +156,10 @@ const Dashboard = ({ children }) => {
     );
   };
 
-  if (context.userAllData.role == context.adminKey) {
+  if (
+    context.adminKey == PUBLIC_ADMINKEY ||
+    context.adminKey == PUBLIC_ROOTKEY
+  ) {
     return (
       <HomeLayout>
         <HeaderAdmin />

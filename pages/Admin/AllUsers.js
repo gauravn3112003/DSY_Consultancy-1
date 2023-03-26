@@ -1,8 +1,45 @@
 import { getallUsers } from "directsecondyearadmission/quieries/adminQuieries";
 import React from "react";
+import { useState, useEffect } from "react";
 import Dashboard from "./Dashboard";
-
+import { useContext } from "react";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
+import { useRouter } from "next/router";
+import {
+  PUBLIC_ADMINKEY,
+  PUBLIC_ROOTKEY,
+} from "directsecondyearadmission/quieries/UserKeys";
 const AllUsers = (props) => {
+  const context = useContext(collegeContext);
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
+  const router = useRouter();
+  const handleRole = async (userRole, id) => {
+    const res = await fetch("/api/updateRole", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify({
+        newRole: userRole,
+        id: id,
+      }),
+    });
+    const res2 = await res.json();
+    if (res2.msg) {
+      context.openModal("success", res2.msg);
+      router.reload();
+    } else {
+      context.openModal("fail", res2.error);
+    }
+  };
   return (
     <Dashboard>
       <div className="px-5 font-semibold text-slate-400 bg-white">
@@ -22,7 +59,7 @@ const AllUsers = (props) => {
               <th className="border-none py-3  text-left px-3">
                 profile Completion
               </th>
-              <th className="border-none py-3 text-left px-3">Role</th>
+              <th className="border-none py-3 text-center px-3">Role</th>
             </tr>
           </thead>
           <tbody className="mt-10 text-xs">
@@ -54,8 +91,21 @@ const AllUsers = (props) => {
                   <td className="px-3 py-2  mt-2 border-none text-left">
                     {i.profileCompletion}%
                   </td>
-                  <td className="px-3 py-2 font-semibold  mt-2 border-none text-left">
-                    {i.role}
+                  <td
+                    className="px-3 py-2 font-semibold  text-xs mt-2 cursor-pointer flex justify-between items-center border-none text-left"
+                    onClick={() =>
+                      handleRole(
+                        i.role == "user" ? PUBLIC_ADMINKEY : "user",
+                        i._id
+                      )
+                    }
+                  >
+                    <input
+                      type="checkbox"
+                      readOnly={true}
+                      checked={i.role == "Admin" || i.role == PUBLIC_ROOTKEY}
+                    />
+                    {i.role == PUBLIC_ROOTKEY ? "Root" : "Admin"}
                   </td>
                 </tr>
               );

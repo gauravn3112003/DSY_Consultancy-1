@@ -55,6 +55,7 @@ const Login = () => {
       localStorage.setItem("token", res2.token);
       status.setUsername(res2.userDetail.credentails.fName);
       localStorage.setItem("userName", res2.userDetail.credentails.fName);
+      localStorage.setItem("userRole", res2.userDetail.role);
       localStorage.setItem("userId", res2.userDetail._id);
       localStorage.setItem(
         "profileCompletion",
@@ -62,6 +63,7 @@ const Login = () => {
       );
 
       status.setToken(res2.token);
+      status.setadminKey(res2.userDetail.role);
       status.setProfileCompletion(res2.userDetail.profileCompletion);
       status.setUserId(res2.userDetail._id);
       status.setuserAllData(res2.userDetail);

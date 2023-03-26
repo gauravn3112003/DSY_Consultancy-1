@@ -8,7 +8,7 @@ function Authenticated(icomponent) {
     }
 
     try {
-      const userData = jwt.verify(
+      jwt.verify(
         authorization,
         process.env.JWT_SECRET,
         function (err, decoded) {
