@@ -20,16 +20,14 @@ export const LoginStatus = () => {
 };
 export default function CollegeLayout({ children }) {
   const router = useRouter();
-
   const context = useContext(collegeContext);
-
   return (
     <>
       <section className="body-font  h-screen  overflow-scroll   ">
         <div className="container flex  md:flex-row gap-5 flex-col  justify-between mt-20 m-auto ">
           <div className="  md:mt-0 wfull md:w-4/5 ">{children}</div>
 
-          <div className="rounded-sm wfull md:mx-0 mx-5  h-screen p-5 right-0 md:w-1/5 bg-white ">
+          <div className="rounded-sm wfull md:mx-0 mx-5  h-screen  right-0 md:w-1/5 bg-white ">
             <LoginStatus />
           </div>
         </div>

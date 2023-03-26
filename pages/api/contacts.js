@@ -16,7 +16,6 @@ function MyComponent() {
 
 export default async (req, res) => {
   const { uName, phoneNo, email, message } = req.query;
-  console.log(req.query);
   try {
     if (!uName || !phoneNo || !email || !message) {
       return res.status(401).json({ error: "Please fill all the fields" });

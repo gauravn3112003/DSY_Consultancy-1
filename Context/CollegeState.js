@@ -33,20 +33,20 @@ const CollegeState = (props) => {
   const [userId, setUserId] = useState("");
   const [username, setUsername] = useState("");
   const [adminKey, setadminKey] = useState("Admin");
+  const [token, setToken] = useState("");
   const [profileCompletion, setProfileCompletion] = useState(null);
 
   const [userAllData, setuserAllData] = useState({});
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      const [, payloadBase64] = token.split(".");
-      const payloadString = atob(payloadBase64);
-      const payload = JSON.parse(payloadString);
+    
 
       setUserId(localStorage.getItem("userId"));
       setProfileCompletion(localStorage.getItem("profileCompletion"));
+      setToken(localStorage.getItem("token"));
       setUsername(localStorage.getItem("userName"));
       setLoginStatus(true);
+
       const userDetails = localStorage.getItem("userDetail");
       if (userDetails) {
         setuserAllData(JSON.parse(userDetails));
@@ -60,6 +60,7 @@ const CollegeState = (props) => {
       localStorage.removeItem("token");
       localStorage.removeItem("userName");
       localStorage.removeItem("userId");
+      localStorage.removeItem("profileCompletion");
       localStorage.removeItem("userDetail");
       toast.success("Logout Succesfully", {});
       router.push("/");
@@ -87,6 +88,10 @@ const CollegeState = (props) => {
         // popup
         openModal,
         closeModal,
+
+        // token
+        token,
+        setToken,
       }}
     >
       <PopUpModal

@@ -39,7 +39,7 @@ const signUpUser = async (req, res) => {
       fName,
       username,
       email,
-      password: CryptoJS.AES.encrypt(password, "secret key 123").toString(),
+      password: CryptoJS.AES.encrypt(password,process.env.CRYPTO_SECRET).toString(),
     };
 
     if (password == cpassword) {

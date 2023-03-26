@@ -1,8 +1,9 @@
 import initDB from "../../Helpers/initDB";
 import User from "directsecondyearadmission/Modal/User";
+import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
 initDB();
 
-export default async (req, res) => {
+export default Authenticated(async (req, res) => {
   const { mobileNo, email, city, state, id } = req.body;
 
   try {
@@ -44,4 +45,4 @@ export default async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-
+import { useContext, useEffect } from "react";
+import CollegeState from "directsecondyearadmission/Context/CollegeState";
+import collegeContext from "directsecondyearadmission/Context/collegeContext";
 const InstituteCheck = () => {
+  const context = useContext(collegeContext);
+
   const [instituteCode, setInstituteCode] = useState({});
   const [message, setMessage] = useState("");
   const onChange = (e) => {
@@ -10,24 +14,30 @@ const InstituteCheck = () => {
     });
   };
 
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
   const onCheck = async (e) => {
     e.preventDefault();
     const { insCode } = instituteCode;
     onSubmit(insCode);
   };
   const onSubmit = async (insCode) => {
-    const res = await fetch(
-      "/api/checkCollege",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          instituteCode: insCode,
-        }),
-      }
-    );
+    const res = await fetch("/api/checkCollege", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify({
+        instituteCode: insCode,
+      }),
+    });
 
     const res2 = await res.json();
     if (res2.msg) {

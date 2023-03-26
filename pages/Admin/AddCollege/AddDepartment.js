@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddCollegeDetails from "../AddCollegeDetails";
 import Link from "next/link";
 import InstituteCheck from "./InstituteCheck";
@@ -48,7 +48,13 @@ const Stepper = () => {
 const AddDepartment = () => {
   const [requiredState, setRequired] = useState(false);
   const [depDetails, setDepDetails] = useState({});
+  const [token, setToken] = useState("");
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
   const onChange = (e) => {
     setDepDetails({
       ...depDetails,
@@ -67,6 +73,7 @@ const AddDepartment = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: token,
       },
       body: JSON.stringify({
         courseName: courseName,
@@ -105,6 +112,7 @@ const AddDepartment = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: token,
         },
         body: JSON.stringify({
           instituteCode: insCode,
@@ -185,6 +193,7 @@ const AddDepartment = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: token,
         },
         body: JSON.stringify({
           category: category,

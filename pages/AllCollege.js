@@ -33,8 +33,7 @@ const AllCollege = () => {
   };
 
   // filter for College Under
-  const undercolleges = collegeByUnder(selectedCollegeUnder, data, district);
-
+    const undercolleges = collegeByUnder(selectedCollegeUnder, data, district);
   const router = useRouter();
   const context = useContext(collegeContext);
 

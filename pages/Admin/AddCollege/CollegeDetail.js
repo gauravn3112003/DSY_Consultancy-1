@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddCollegeDetails from "../AddCollegeDetails";
 import Link from "next/link";
 import InstituteCheck from "./InstituteCheck";
@@ -12,7 +12,13 @@ const CollegeDetail = () => {
   console.log(context.username);
   const [cDetails, setCDetails] = useState({});
   const [requiredState, setRequired] = useState(false);
+  const [token, setToken] = useState("");
 
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+  }, []);
   const onChange = (e) => {
     setCDetails({
       ...cDetails,
@@ -91,6 +97,7 @@ const CollegeDetail = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: token,
       },
       body: JSON.stringify({
         name: cName,

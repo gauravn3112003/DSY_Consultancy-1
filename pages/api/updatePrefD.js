@@ -1,10 +1,10 @@
 import initDB from "../../Helpers/initDB";
 import User from "directsecondyearadmission/Modal/User";
+import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
 initDB();
 
-export default async (req, res) => {
+export default Authenticated(async (req, res) => {
   const { university, branch, location, collegeType, needLoan, id } = req.body;
-
   try {
     if (
       !university ||
@@ -26,7 +26,6 @@ export default async (req, res) => {
     ) {
       newProcess = process;
     }
-
     let pDeatails = {
       needLoan: needLoan,
       branch: branch,
@@ -52,4 +51,4 @@ export default async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});

@@ -108,7 +108,6 @@ const Dashboard = ({ children }) => {
   const router = useRouter();
   const HeaderAdmin = () => {
     const [data, setData] = useState();
-    console.log(context.userAllData.role);
     useEffect(() => {
       const status = async () => {
         const res = await fetch(baseUrl + "/api/Colleges", {

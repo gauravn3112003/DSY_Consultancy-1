@@ -1,3 +1,4 @@
+import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
 import initDB from "../../Helpers/initDB";
 import Colleges from "../../Modal/Colleges";
 initDB();
@@ -13,90 +14,95 @@ export default async (req, res) => {
 };
 
 // To Add College
-const addCollege = async (req, res) => {
-  const {
-    name,
-    instituteCode,
-    iframe,
-    collegeUnder,
-    collegeType,
-    university,
-    addressLine,
-    taluka,
-    district,
-    city,
-    latitude,
-    longitude,
-    rating,
-    contactNo,
-    website,
-    email,
-    approvedBy,
-    image,
-    topRecruiters,
-    addedBy,
-  } = req.body;
-
+const addCollege = Authenticated(async (req, res) => {
   try {
-    if (
-      !name ||
-      !instituteCode ||
-      !iframe ||
-      !collegeUnder ||
-      !collegeType ||
-      !university ||
-      !addressLine ||
-      !taluka ||
-      !district ||
-      !city ||
-      !latitude ||
-      !longitude ||
-      !rating ||
-      !contactNo ||
-      !website ||
-      !email ||
-      !approvedBy ||
-      !image ||
-      !topRecruiters ||
-      !addedBy
-    ) {
-      return res.status(401).json({ error: "please fill all the fields" });
-    }
-    const checkCollege = await Colleges.findOne({ instituteCode });
-    if (checkCollege) {
-      return res.status(200).json({ error: "Already College Added" });
-    }
-    const college = await new Colleges({
-      name,
-      instituteCode,
-      iframe,
-      collegeUnder,
-      collegeType,
-      university,
-      location: {
+    console.log(req.decoded.userData.role);
+    if (req.decoded.userData.role == "Admin") {
+      const {
+        name,
+        instituteCode,
+        iframe,
+        collegeUnder,
+        collegeType,
+        university,
         addressLine,
         taluka,
         district,
         city,
         latitude,
         longitude,
-      },
-      rating,
-      contacts: {
+        rating,
         contactNo,
         website,
         email,
-      },
-      approvedBy,
-      addedBy: addedBy,
-      image,
-      topRecruiters,
-    }).save();
-    res.status(201).json({ msg: "College Added", college });
+        approvedBy,
+        image,
+        topRecruiters,
+        addedBy,
+      } = req.body;
+
+      if (
+        !name ||
+        !instituteCode ||
+        !iframe ||
+        !collegeUnder ||
+        !collegeType ||
+        !university ||
+        !addressLine ||
+        !taluka ||
+        !district ||
+        !city ||
+        !latitude ||
+        !longitude ||
+        !rating ||
+        !contactNo ||
+        !website ||
+        !email ||
+        !approvedBy ||
+        !image ||
+        !topRecruiters ||
+        !addedBy
+      ) {
+        return res.status(401).json({ error: "please fill all the fields" });
+      }
+      const checkCollege = await Colleges.findOne({ instituteCode });
+      if (checkCollege) {
+        return res.status(200).json({ error: "Already College Added" });
+      }
+      const college = await new Colleges({
+        name,
+        instituteCode,
+        iframe,
+        collegeUnder,
+        collegeType,
+        university,
+        location: {
+          addressLine,
+          taluka,
+          district,
+          city,
+          latitude,
+          longitude,
+        },
+        rating,
+        contacts: {
+          contactNo,
+          website,
+          email,
+        },
+        approvedBy,
+        addedBy: addedBy,
+        image,
+        topRecruiters,
+      }).save();
+      res.status(201).json({ msg: "College Added", college });
+    } else {
+      res.status(403).json({ error: "Access Denied" });
+    }
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });
   }
-};
+});
 
 const getCollege = async (req, res) => {
   try {

@@ -5,7 +5,6 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 const Steps = () => {
   const context = useContext(collegeContext);
   const router = useRouter();
-  console.log(context);
   const cardList = [
     {
       icon: "bi-person-check-fill",

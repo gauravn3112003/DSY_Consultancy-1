@@ -43,9 +43,6 @@ const College = ({ data }) => {
   // filter for College Under
   const undercolleges = collegeByUnder(selectedCollegeUnder, data, district);
 
-  
-
-
   // College Under Components
   const CollegeUnder = () => {
     const checkBoxItem = ["Government", "Private"];

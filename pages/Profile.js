@@ -14,6 +14,7 @@ const Profile = ({ userData, CollegeData }) => {
   const context = useContext(collegeContext);
   const [requiredState, setRequired] = useState(false);
   const router = useRouter();
+  const [token, setToken] = useState("");
 
   const districtName = CollegeData.map((item) => item.location.district);
   const removeDubDist = CollegeData.filter(
@@ -38,10 +39,12 @@ const Profile = ({ userData, CollegeData }) => {
     (course, index) => !depName.includes(course, index + 1)
   );
 
-
   useEffect(() => {
     localStorage.setItem("userName", userData.credentails.fName);
     localStorage.setItem("profileCompletion", userData.profileCompletion);
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
   }, []);
 
   const [modalOpen, setModalOpen] = useState("hidden");
@@ -122,6 +125,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: token,
           },
           body: JSON.stringify({
             fullName: fullName,
@@ -420,6 +424,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: token,
           },
           body: JSON.stringify({
             mobileNo,
@@ -637,6 +642,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: token,
           },
           body: JSON.stringify({
             sBoard,
@@ -1019,6 +1025,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: token,
           },
           body: JSON.stringify({
             university,

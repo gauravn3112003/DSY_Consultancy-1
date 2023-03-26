@@ -61,6 +61,7 @@ const Login = () => {
         res2.userDetail.profileCompletion
       );
 
+      status.setToken(res2.token);
       status.setProfileCompletion(res2.userDetail.profileCompletion);
       status.setUserId(res2.userDetail._id);
       status.setuserAllData(res2.userDetail);

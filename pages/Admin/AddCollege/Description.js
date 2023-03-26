@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
@@ -57,6 +57,14 @@ const SunEditor = dynamic(() => import("suneditor-react"), {
 const TextEditor = () => {
   const CollegeTextEditor = () => {
     const [description, setDescription] = useState({});
+
+    const [token, setToken] = useState("");
+
+    useEffect(() => {
+      if (localStorage.getItem("token")) {
+        setToken(localStorage.getItem("token"));
+      }
+    }, []);
     const onChange = (e) => {
       setDescription({
         ...description,
@@ -66,7 +74,6 @@ const TextEditor = () => {
     function handleChange(content) {
       setDescription({ collegeDetail: content });
     }
-    console.log(description);
 
     const addDetails = async (e) => {
       e.preventDefault();
@@ -79,6 +86,7 @@ const TextEditor = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          authorization: token,
         },
         body: JSON.stringify({
           collegeDetail: collegeDetail,
@@ -93,13 +101,14 @@ const TextEditor = () => {
         toast.error(res2.error);
       }
     };
+
     return (
       <AddCollegeDetails>
         <Stepper />
 
         <div className=" container m-auto p-5 bg-white">
           <Toastmsg />
-            <InstituteCheck />
+          <InstituteCheck />
           <form onSubmit={addDetails}>
             <div className="  mr-1 mb-2  w-full">
               <label
@@ -220,125 +229,14 @@ const TextEditor = () => {
               Submit
             </button>
           </form>
-          <div className="mt-7 bg-white p-5">
-            <h1 className="font-semibold text-slate-400 mb-5">Preview</h1>
-            <CollegeData data={description.collegeDetail} />
-          </div>
+         
         </div>
       </AddCollegeDetails>
     );
   };
 
-  const CollegeCard = () => {
-    return (
-      <div className="flex flex-col w-full sm:w-80 bg-slate-100 cursor-pointer ">
-        <p
-          rel="noopener noreferrer"
-          aria-label="Te nulla oportere reprimique his dolorum"
-        >
-          <img
-            className="object-cover cursor-pointer w-full h-52 "
-            src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1600"
-          />
-        </p>
-        <div className="flex flex-col flex-1 p-6">
-          <p
-            rel="noopener noreferrer"
-            aria-label="Te nulla oportere reprimique his dolorum"
-          ></p>
-          <a
-            rel="noopener noreferrer"
-            className="text-xs tracking-wider uppercase hover:underline dark:text-violet-400"
-          >
-            Convenire
-          </a>
-          <Link
-            target="_blank"
-            href={{
-              pathname: `/CollegeDa/[id]`,
-              query: {
-                id: "HeyCollegeswala",
-                cName: "COEP",
-              },
-            }}
-          >
-            <a
-              target="_blank"
-              className="flex-1 cursor-pointer py-2 text-lg font-semibold leading-snug"
-            >
-              Te nulla oportere reprimique his dolorum
-            </a>
-          </Link>
-          <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-400">
-            <span>June 1, 2020</span>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
-  const CollegeData = (props) => {
-    return (
-      <>
-        <div className="container bg-white rounded-sm  mx-auto space-y-12">
-          <article className=" ">
-            <div className="space-y-6 border-b-2 pb-5">
-              <h1 className="text-4xl font-bold sm:text-3xl md:tracking-tight ">
-                Suspendisse ut magna et ipsum sodales accumsan.
-              </h1>
-              <div className="flex items-start text-slate-400 justify-between w-full flex-row md:items-center ">
-                <div className="flex items-center ">
-                  <img
-                    src="/img/logo.svg"
-                    alt=""
-                    className="w-4 h-4 border mr-2 rounded-full "
-                  />
-                  <p className="text-sm ">Gaurav Narnaware • July 19th, 2021</p>
-                </div>
-                <p className=" text-sm ">4 min read • 1,570 views</p>
-              </div>
-            </div>
-            <div className="mt-5 overflow-x-scroll">
-              <div dangerouslySetInnerHTML={{ __html: props.data }} />
-            </div>
-          </article>
-          <div>
-            <div className="flex flex-wrap py-6 space-x-2 border-b-2 border-dashed ">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
-              >
-                #MambaUI
-              </a>
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
-              >
-                #TailwindCSS
-              </a>
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="px-3 py-1 rounded-sm  pBtn hover:font-bold transition-shadow"
-              >
-                #Angular
-              </a>
-            </div>
-            <div className="space-y-2 mt-5">
-              <h4 className="text-lg font-semibold">More Colleges</h4>
-              <div className="flex  gap-5 flex-wrap ">
-                <CollegeCard />
-                <CollegeCard />
-                <CollegeCard />
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  };
+
   return (
     <>
       <CollegeTextEditor />

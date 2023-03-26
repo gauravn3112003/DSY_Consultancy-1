@@ -27,7 +27,7 @@ const signUpUser = async (req, res) => {
     }
     var bytes = CryptoJS.AES.decrypt(
       checkUserEmail.credentails.password,
-      "secret key 123"
+      process.env.CRYPTO_SECRET
     );
     var decryptedPass = bytes.toString(CryptoJS.enc.Utf8);
 
@@ -40,14 +40,13 @@ const signUpUser = async (req, res) => {
           userId: User._id,
           userData: checkUserEmail,
         },
-        "secretKeyJWT",
+        process.env.JWT_SECRET,
         {
           expiresIn: "7d",
         }
       );
 
-      // const decoded = jwt.verify(token, "secretKeyJWT");
-      // const payload =
+    
       return res
         .status(200)
         .json({ msg: "Login Successfull", token, userDetail: checkUserEmail });
