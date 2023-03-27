@@ -104,6 +104,7 @@ const AllUsers = (props) => {
                           i._id
                         )
                       }
+                      
                       checked={
                         i.role == PUBLIC_ADMINKEY || i.role == PUBLIC_ROOTKEY
                           ? true
@@ -124,7 +125,7 @@ const AllUsers = (props) => {
 
 export default AllUsers;
 export async function getServerSideProps() {
-  
+
   // for show all Colleges
   const data = await getallUsers();
   return {
