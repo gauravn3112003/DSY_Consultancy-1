@@ -13,7 +13,10 @@ export default Authenticated(async (req, res) => {
       const changeUser = await User.findByIdAndUpdate(id, filter);
       res
         .status(201)
-        .json({ msg: changeUser.credentails.username + " now " + newRole });
+        .json({
+          msg: changeUser.credentails.username + " now " + newRole,
+          role: newRole,
+        });
     } else {
       res.status(403).json({ error: "Access Denied" });
     }

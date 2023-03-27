@@ -9,9 +9,12 @@ import {
   PUBLIC_ADMINKEY,
   PUBLIC_ROOTKEY,
 } from "directsecondyearadmission/quieries/UserKeys";
+import { faUserCheck } from "@fortawesome/free-solid-svg-icons";
 const AllUsers = (props) => {
   const context = useContext(collegeContext);
+
   const [token, setToken] = useState("");
+  const [checkUser, setcheckUser] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -20,6 +23,7 @@ const AllUsers = (props) => {
   }, []);
 
   const router = useRouter();
+
   const handleRole = async (userRole, id) => {
     const res = await fetch("/api/updateRole", {
       method: "POST",
@@ -91,19 +95,20 @@ const AllUsers = (props) => {
                   <td className="px-3 py-2  mt-2 border-none text-left">
                     {i.profileCompletion}%
                   </td>
-                  <td
-                    className="px-3 py-2 font-semibold  text-xs mt-2 cursor-pointer flex justify-between items-center border-none text-left"
-                    onClick={() =>
-                      handleRole(
-                        i.role == "user" ? PUBLIC_ADMINKEY : "user",
-                        i._id
-                      )
-                    }
-                  >
+                  <td className="px-3 py-2 font-semibold  text-xs mt-2 cursor-pointer flex justify-between items-center border-none text-left">
                     <input
                       type="checkbox"
-                      readOnly={true}
-                      checked={i.role == "Admin" || i.role == PUBLIC_ROOTKEY}
+                      onChange={() =>
+                        handleRole(
+                          i.role == "user" ? PUBLIC_ADMINKEY : "user",
+                          i._id
+                        )
+                      }
+                      checked={
+                        i.role == PUBLIC_ADMINKEY || i.role == PUBLIC_ROOTKEY
+                          ? true
+                          : false
+                      }
                     />
                     {i.role == PUBLIC_ROOTKEY ? "Root" : "Admin"}
                   </td>
