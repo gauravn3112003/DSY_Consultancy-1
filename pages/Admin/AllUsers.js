@@ -124,6 +124,7 @@ const AllUsers = (props) => {
 
 export default AllUsers;
 export async function getServerSideProps() {
+  
   // for show all Colleges
   const data = await getallUsers();
   return {
