@@ -7,6 +7,16 @@ const userSchema = new Schema(
     phoneNo: Number,
     email: String,
     message: String,
+    coOrdinates: {
+      longitude: {
+        type: String,
+        default: "00.0000",
+      },
+      latitude: {
+        type: String,
+        default: "00.0000",
+      },
+    },
   },
   { timestamps: true }
 );

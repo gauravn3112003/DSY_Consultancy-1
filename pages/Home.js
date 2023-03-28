@@ -6,20 +6,44 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
+import { GetCurrentLocation } from "directsecondyearadmission/quieries/getCurrentLocation";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
-  // const [coOrdinates, setcoOrdinates] = useState({});
+  const [coOrdinates, setcoOrdinates] = useState({});
+  const [token, setToken] = useState("");
 
-  // console.log(coOrdinates);
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(function (position) {
-  //     setcoOrdinates({
-  //       latitude: position.coords.latitude,
-  //       longitude: position.coords.longitude,
-  //     });
-  //   });
-  // });
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setToken(localStorage.getItem("token"));
+    }
+
+    const updateLocation = async (latitude, longitude) => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setcoOrdinates({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+
+      const res = await fetch("/api/updateUserLocation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: token,
+        },
+        body: JSON.stringify({
+          latitude: latitude,
+          longitude: longitude,
+        }),
+      });
+
+      console.log(await res.json());
+    };
+
+    updateLocation(coOrdinates.latitude, coOrdinates.longitude);
+  }, []);
+
 
   const CounsellorCard = () => {
     return (
