@@ -7,7 +7,10 @@ import collegeContext from "directsecondyearadmission/Context/collegeContext";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { PUBLIC_ADMINKEY, PUBLIC_ROOTKEY } from "directsecondyearadmission/quieries/UserKeys";
+import {
+  PUBLIC_ADMINKEY,
+  PUBLIC_ROOTKEY,
+} from "directsecondyearadmission/quieries/UserKeys";
 
 const HeaderFilter = () => {
   const [userOpen, setUserOpen] = useState("hidden");
@@ -108,7 +111,7 @@ const Dashboard = ({ children }) => {
   const context = useContext(collegeContext);
   const router = useRouter();
   const HeaderAdmin = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState({});
     useEffect(() => {
       const status = async () => {
         const res = await fetch(baseUrl + "/api/Colleges", {
@@ -118,31 +121,49 @@ const Dashboard = ({ children }) => {
           },
         });
         const data = await res.json();
-        setData(data);
+
+        const res2 = await fetch(baseUrl + "/api/getAllContacts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data2 = await res2.json();
+
+        const res3 = await fetch(baseUrl + "/api/signUp", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data3 = await res3.json();
+
+        setData({ colleges: data, contacts: data2, users: data3 });
       };
       status();
     }, []);
+    console.log(data);
     return (
       <section className="text-gray-600 rounded-sm bg-white body-font">
         <div className="container px-5 py-5 mx-auto">
           <div className="flex flex-wrap -m-4 text-center">
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-                50
+                {data.users ? data.users.length : "..."}
               </h2>
               <p className="leading-relaxed">Users</p>
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-                {data ? data.length : <>...</>}
+                {data.colleges ? data.colleges.length : "..."}
               </h2>
               <p className="leading-relaxed">Colleges</p>
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
-                35
+                {data.contacts ? data.contacts.length : "..."}
               </h2>
-              <p className="leading-relaxed">Subscriber</p>
+              <p className="leading-relaxed">Contacts</p>
             </div>
             <div className="p-4 sm:w-1/4 w-1/2">
               <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">

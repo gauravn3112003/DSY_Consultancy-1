@@ -96,22 +96,16 @@ const AllUsers = (props) => {
                     {i.profileCompletion}%
                   </td>
                   <td className="px-3 py-2 font-semibold  text-xs mt-2 cursor-pointer flex justify-between items-center border-none text-left">
-                    <input
-                      type="checkbox"
-                      onChange={() =>
+                    <div
+                      onClick={() =>
                         handleRole(
                           i.role == "user" ? PUBLIC_ADMINKEY : "user",
                           i._id
                         )
                       }
-                      
-                      checked={
-                        i.role == PUBLIC_ADMINKEY || i.role == PUBLIC_ROOTKEY
-                          ? true
-                          : false
-                      }
-                    />
-                    {i.role == PUBLIC_ROOTKEY ? "Root" : "Admin"}
+                    >
+                      {i.role == PUBLIC_ROOTKEY ? "Root" : i.role}
+                    </div>
                   </td>
                 </tr>
               );
@@ -125,7 +119,6 @@ const AllUsers = (props) => {
 
 export default AllUsers;
 export async function getServerSideProps() {
-
   // for show all Colleges
   const data = await getallUsers();
   return {
