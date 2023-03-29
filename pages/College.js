@@ -1,12 +1,14 @@
 import HomeLayout from "directsecondyearadmission/Layout/HomeLayout";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { collegeByUnder } from "directsecondyearadmission/quieries/quieries";
 import { allColleges } from "directsecondyearadmission/quieries/CollegeDataQuieries";
 
-const College = () => {
-  // checkbox handler function
+const College = ({ data }) => {
+
+
+  // checkbox handler function 
   const [selectedCollegeUnder, setSelectedCollegeUnder] = useState([]);
   const [district, setdistrict] = useState("");
   const onChangeCollegeUnderHandler = (under, isChecked) => {
@@ -17,16 +19,6 @@ const College = () => {
         );
   };
 
-  const [data, setdataColl] = useState({});
-
-  useEffect(() => {
-    const getCollegeData = async () => {
-      const data = await allColleges();
-      setdataColl(data);
-      return data;
-    };
-    getCollegeData();
-  }, []);
   // Sorting lists
 
   const items = [
@@ -81,10 +73,7 @@ const College = () => {
       <div className="p-5">
         {items.map((item, index) => {
           return (
-            <div
-              key={index}
-              className="py-2 cursor-pointer  hover:bg-sky-100 hover:pl-10 hover:font-semibold"
-            >
+            <div key={index} className="py-2 cursor-pointer  hover:bg-sky-100 hover:pl-10 hover:font-semibold">
               {item.Name}
             </div>
           );
@@ -103,7 +92,7 @@ const College = () => {
           placeholder="Search College..."
         />
         <datalist id="collegeList">
-          {undercolleges.length > 0 && undercolleges.map((item, index) => {
+          {undercolleges.map((item, index) => {
             return (
               <option key={index} value={item.name}>
                 {item.name}
@@ -116,8 +105,8 @@ const College = () => {
   };
 
   const DistrictFilter = () => {
-    const districtName = data.length > 0 && data.map((item) => item.location.district);
-    const removeDubDist = data.length > 0 && data.filter(
+    const districtName = data.map((item) => item.location.district);
+    const removeDubDist = data.filter(
       (district, index) =>
         !districtName.includes(district.location.district, index + 1)
     );
@@ -135,7 +124,7 @@ const College = () => {
             {" "}
             All District
           </option>
-          {removeDubDist.length > 0 && removeDubDist.map((item, index) => {
+          {removeDubDist.map((item, index) => {
             return (
               <option
                 key={index}
@@ -171,8 +160,7 @@ const College = () => {
             <div className="font-medium mt-2 flex items-center text-xs ">
               <i className="bi text-slate-400 mr-2 text-xs bi-pin-map-fill"></i>
               <span className="text-slate-400 font-normal text-justify">
-                {props.location},{" "}
-                <span className="font-semibold text-sm"></span>
+                {props.location}, <span className="font-semibold text-sm" ></span>
               </span>
             </div>
             <div className="font-medium mt-2 flex items-center text-xs ">
@@ -228,7 +216,7 @@ const College = () => {
                 type="button"
                 className="border  text-center px-3 w-full text-xs py-2"
               >
-                Save
+               Save
               </a>
             </Link>
           </div>
@@ -242,7 +230,7 @@ const College = () => {
           {undercolleges.length == 0 ? (
             <div className="p-5 bg-white font-semibold">College Not Found</div>
           ) : (
-            undercolleges.length > 0 && undercolleges.map((item, index) => {
+            undercolleges.map((item, index) => {
               return (
                 <span key={index}>
                   {item.department.length <= 0 ? (
@@ -333,6 +321,7 @@ const College = () => {
       setSearch(e.target.value);
     };
 
+
     const items = [
       {
         Name: "Category",
@@ -355,6 +344,8 @@ const College = () => {
         Location: "/",
       },
     ];
+
+
 
     // College Under Components
     const CollegeUnder = () => {
@@ -381,8 +372,8 @@ const College = () => {
     };
 
     const DistrictFilter = () => {
-      const districtName = data.length > 0 && data.map((item) => item.location.district);
-      const removeDubDist = data.length > 0 && data.filter(
+      const districtName = data.map((item) => item.location.district);
+      const removeDubDist = data.filter(
         (district, index) =>
           !districtName.includes(district.location.district, index + 1)
       );
@@ -400,7 +391,7 @@ const College = () => {
               {" "}
               All District
             </option>
-            { removeDubDist && removeDubDist.map((item, index) => {
+            {removeDubDist.map((item, index) => {
               return (
                 <option
                   key={index}
@@ -415,7 +406,7 @@ const College = () => {
         </div>
       );
     };
-
+ 
     return (
       <>
         <div className="relative mb-5 rounded-sm    shadow-md items-center p-5 flex justify-between h-14  bg-white w-full">
@@ -513,9 +504,10 @@ const College = () => {
   );
 };
 
+
 export async function getServerSideProps() {
   // for show all Colleges
-  const data = await allColleges();
+  const data = await allColleges()
   return {
     props: { data },
   };
