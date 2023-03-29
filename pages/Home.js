@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
+import { GetCurrentLocation } from "directsecondyearadmission/quieries/GetCurrentLocation";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
@@ -17,32 +18,31 @@ const Home = () => {
       setToken(localStorage.getItem("token"));
     }
 
-    const updateLocation = async (latitude, longitude) => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        setcoOrdinates({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
-        });
+    navigator.geolocation.getCurrentPosition(function (position) {
+      setcoOrdinates({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
       });
+    });
 
+    const updateLocation = async () => {
       const res = await fetch("/api/updateUserLocation", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token,
+          Authorization: token,
         },
         body: JSON.stringify({
-          latitude: latitude,
-          longitude: longitude,
+          latitude: coOrdinates.latitude,
+          longitude: coOrdinates.longitude,
         }),
       });
 
       console.log(await res.json());
     };
-
-    updateLocation(coOrdinates.latitude, coOrdinates.longitude);
+    // GetCurrentLocation(coOrdinates.latitude, coOrdinates.longitude, token);
+    updateLocation();
   }, []);
-
 
   const CounsellorCard = () => {
     return (

@@ -142,7 +142,7 @@ const Dashboard = ({ children }) => {
       };
       status();
     }, []);
-    console.log(data);
+
     return (
       <section className="text-gray-600 rounded-sm bg-white body-font">
         <div className="container px-5 py-5 mx-auto">

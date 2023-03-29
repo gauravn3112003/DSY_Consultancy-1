@@ -72,9 +72,3 @@ const AllContact = () => {
 };
 
 export default AllContact;
-// export async function getServerSideProps() {
-//   const data = await getAllContacts();
-//   return {
-//     props: { data },
-//   };
-// }

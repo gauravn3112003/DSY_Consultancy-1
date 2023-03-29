@@ -1,11 +1,10 @@
-import Authenticated from "directsecondyearadmission/Helpers/Authenticated";
+import Authenticated from "../../Helpers/Authenticated";
 import initDB from "../../Helpers/initDB";
 import User from "../../Modal/User";
 initDB();
 
 export default Authenticated(async (req, res) => {
   const { latitude, longitude } = req.body;
-
   try {
     let id = req.decoded.userData._id;
     let coOrdinates = {
@@ -14,7 +13,7 @@ export default Authenticated(async (req, res) => {
     };
 
     const filter = { coOrdinates: coOrdinates };
-    const changeUser = await User.findByIdAndUpdate(id, filter);
+    await User.findByIdAndUpdate(id, filter);
 
     res.status(201).json({
       Location: coOrdinates,
