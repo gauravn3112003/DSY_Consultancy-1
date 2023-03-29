@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
-import { GetCurrentLocation } from "directsecondyearadmission/quieries/getCurrentLocation";
 const Home = () => {
   const context = useContext(collegeContext);
   const loginStatus = context.loginStatus;
