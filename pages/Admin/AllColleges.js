@@ -2,8 +2,21 @@ import React from "react";
 import Dashboard from "./Dashboard";
 import baseUrl from "../../baseUrl";
 import { getColleges } from "directsecondyearadmission/quieries/adminQuieries";
-const AllColleges = (props) => {
+import { useState } from "react";
+import { useEffect } from "react";
+import Loader2 from "../Components/Loader2";
+const AllColleges = () => {
   // console.log(props);
+
+  const [data, setdata] = useState(null);
+  useEffect(() => {
+    const getAllColleges = async () => {
+      const data = await getColleges();
+      setdata(data);
+    };
+    getAllColleges();
+  }, []);
+
   return (
     <Dashboard>
       <div className="px-5  font-semibold text-slate-400 bg-white">
@@ -24,62 +37,53 @@ const AllColleges = (props) => {
               <th className="border-none py-3  text-center px-3">
                 Institute Code
               </th>
-              <th className="border-none py-3  text-center px-3">
-                Added by
-              </th>
+              <th className="border-none py-3  text-center px-3">Added by</th>
             </tr>
           </thead>
           <tbody className="mt-10 text-xs">
-            {props.data.map((i, index) => {
-              return (
-                <tr className="border-none  mt-10" key={index}>
-                  <td className="px-3 py-2   mt-2 border-none font-bold text-lg text-center">
-                    <span className="text-black">{index + 1}</span>
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none  grid place-items-center ">
-                    {" "}
-                    <img
-                      src={i.image}
-                      className="w-10 h-10 rounded-full  border border-blue-900"
-                      alt=""
-                    />{" "}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none">{i.name}</td>
-                  <td className="px-3 py-2  mt-2 border-none">
-                    {i.university}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none">
-                    {" "}
-                    {i.collegeUnder}{" "}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none">
-                    {i.collegeType}{" "}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none">
-                    {i.location.city}{" "}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none text-center">
-                    {i.instituteCode}{" "}
-                  </td>
-                  <td className="px-3 py-2  mt-2 border-none font-bold text-center">
-                    {i.addedBy}{" "}
-                  </td>
-                </tr>
-              );
-            })}
+            {data &&
+              data.map((i, index) => {
+                return (
+                  <tr className="border-none  mt-10" key={index}>
+                    <td className="px-3 py-2   mt-2 border-none font-bold text-lg text-center">
+                      <span className="text-black">{index + 1}</span>
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none  grid place-items-center ">
+                      {" "}
+                      <img
+                        src={i.image}
+                        className="w-10 h-10 rounded-full  border border-blue-900"
+                        alt=""
+                      />{" "}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">{i.name}</td>
+                    <td className="px-3 py-2  mt-2 border-none">
+                      {i.university}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">
+                      {" "}
+                      {i.collegeUnder}{" "}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">
+                      {i.collegeType}{" "}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">
+                      {i.location.city}{" "}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none text-center">
+                      {i.instituteCode}{" "}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none font-bold text-center">
+                      {i.addedBy}{" "}
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
+        {!data && <Loader2 />}
       </div>
     </Dashboard>
   );
 };
-
-export async function getServerSideProps() {
-  // for show all Colleges
-  const data = await getColleges()
-  return {
-    props: { data },
-  };
-}
-
 export default AllColleges;
