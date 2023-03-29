@@ -19,7 +19,6 @@ export default async (req, res) => {
 // To Add College
 const addCollege = Authenticated(async (req, res) => {
   try {
-    console.log(req.decoded.userData.role);
     if (req.decoded.userData.role == PUBLIC_ADMINKEY ||
       req.decoded.userData.role == PUBLIC_ROOTKEY) {
       const {
