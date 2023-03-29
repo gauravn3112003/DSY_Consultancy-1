@@ -10,13 +10,7 @@ const AllContact = () => {
   const [data, setdata] = useState(null);
   useEffect(() => {
     const getContactData = async () => {
-      const res = await fetch(baseUrl + "/api/getAllContacts", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
+      const data = await getAllContacts();
       setdata(data);
     };
     getContactData();
@@ -44,32 +38,31 @@ const AllContact = () => {
             </tr>
           </thead>
           <tbody className="mt-10 text-xs">
-            {data && data.map((i, index) => {
-                  return (
-                    <tr className="border-none  mt-10" key={index}>
-                      <td className="px-3 py-2   mt-2 border-none font-bold text-lg text-left">
-                        <span className="text-black">{index + 1}</span>
-                      </td>
-                      <td className="px-3 py-2  mt-2 border-none text-left ">
-                        {i.uName}
-                      </td>
-                      <td className="px-3 py-2  mt-2 border-none">
-                        {" "}
-                        {i.phoneNo}
-                      </td>
-                      <td className="px-3 py-2  mt-2 border-none">{i.email}</td>
-                      <td className="px-3 py-2  mt-2 border-none">
-                        {i.message}
-                      </td>
-                      <td className="px-3 py-2  mt-2 border-none">sdf</td>
-                      <td className="px-3 py-2 grid place-items-center  mt-2 border-none">
-                        <button className="">
-                          <i className="bi  font-bold text-2xl text-red-600 bi-trash3-fill"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+            {data &&
+              data.map((i, index) => {
+                return (
+                  <tr className="border-none  mt-10" key={index}>
+                    <td className="px-3 py-2   mt-2 border-none font-bold text-lg text-left">
+                      <span className="text-black">{index + 1}</span>
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none text-left ">
+                      {i.uName}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">
+                      {" "}
+                      {i.phoneNo}
+                    </td>
+                    <td className="px-3 py-2  mt-2 border-none">{i.email}</td>
+                    <td className="px-3 py-2  mt-2 border-none">{i.message}</td>
+                    <td className="px-3 py-2  mt-2 border-none">sdf</td>
+                    <td className="px-3 py-2 grid place-items-center  mt-2 border-none">
+                      <button className="">
+                        <i className="bi  font-bold text-2xl text-red-600 bi-trash3-fill"></i>
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
         {!data && <Loader2 />}

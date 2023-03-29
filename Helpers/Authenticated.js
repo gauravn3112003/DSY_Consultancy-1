@@ -2,14 +2,14 @@ import jwt from "jsonwebtoken";
 
 function Authenticated(icomponent) {
   return (req, res) => {
-    const { Authorization } = req.headers;
-    if (!Authorization) {
+    const { authorization } = req.headers;
+    if (!authorization) {
       return res.status(401).json({ error: "You must logged in" });
     }
 
     try {
       jwt.verify(
-        Authorization,
+        authorization,
         process.env.JWT_SECRET,
         function (err, decoded) {
           if (err) {
