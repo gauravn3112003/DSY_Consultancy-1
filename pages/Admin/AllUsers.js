@@ -29,7 +29,7 @@ const AllUsers = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: token,
+        "Authorization": token,
       },
       body: JSON.stringify({
         newRole: userRole,

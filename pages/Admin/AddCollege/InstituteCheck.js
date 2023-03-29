@@ -32,7 +32,7 @@ const InstituteCheck = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: token,
+        "Authorization": token,
       },
       body: JSON.stringify({
         instituteCode: insCode,

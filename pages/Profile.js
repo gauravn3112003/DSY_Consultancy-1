@@ -125,7 +125,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authorization: token,
+            "Authorization": token,
           },
           body: JSON.stringify({
             fullName: fullName,
@@ -424,7 +424,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authorization: token,
+            "Authorization": token,
           },
           body: JSON.stringify({
             mobileNo,
@@ -642,7 +642,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authorization: token,
+            "Authorization": token,
           },
           body: JSON.stringify({
             sBoard,
@@ -1025,7 +1025,7 @@ const Profile = ({ userData, CollegeData }) => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            authorization: token,
+            "Authorization": token,
           },
           body: JSON.stringify({
             university,

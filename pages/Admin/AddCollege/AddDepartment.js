@@ -73,7 +73,7 @@ const AddDepartment = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: token,
+        "Authorization": token,
       },
       body: JSON.stringify({
         courseName: courseName,
@@ -112,7 +112,7 @@ const AddDepartment = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: token,
+          "Authorization": token,
         },
         body: JSON.stringify({
           instituteCode: insCode,
@@ -193,7 +193,7 @@ const AddDepartment = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          authorization: token,
+          "Authorization": token,
         },
         body: JSON.stringify({
           category: category,
