@@ -4,6 +4,8 @@ import initDB from "../../Helpers/initDB";
 import Colleges from "../../Modal/Colleges";
 initDB();
 export default async (req, res) => {
+
+  res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate');
   switch (req.method) {
     case "GET":
       await getCollege(req, res);
